@@ -1,0 +1,433 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>A Quick Note about Python 3 &mdash; Python4Astronomers 1.1 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="Python4Astronomers 1.1 documentation" href="../index.html" />
+    <link rel="up" title="An introduction to Pure Python" href="pure_python.html" />
+    <link rel="next" title="Core packages for analysis: IPython, NumPy, and SciPy" href="../core/core.html" />
+    <link rel="prev" title="Importing Modules" href="modules.html" />
+ 
+<script type="text/javascript"> 
+$(document).ready(function(){
+
+$(".flip0").click(function(){
+    $(".panel0").slideToggle("normal");
+  });
+
+$(".flip1").click(function(){
+    $(".panel1").slideToggle("normal");
+  });
+
+$(".flip2").click(function(){
+    $(".panel2").slideToggle("normal");
+  });
+
+$(".flip3").click(function(){
+    $(".panel3").slideToggle("normal");
+  });
+
+$(".flip4").click(function(){
+    $(".panel4").slideToggle("normal");
+  });
+
+$(".flip5").click(function(){
+    $(".panel5").slideToggle("normal");
+  });
+
+$(".flip6").click(function(){
+    $(".panel6").slideToggle("normal");
+  });
+
+$(".flip7").click(function(){
+    $(".panel7").slideToggle("normal");
+  });
+
+$(".flip8").click(function(){
+    $(".panel8").slideToggle("normal");
+  });
+
+$(".flip9").click(function(){
+    $(".panel9").slideToggle("normal");
+  });
+
+});
+</script>
+ 
+<style type="text/css"> 
+
+div.panel0,p.flip0
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip0
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel0
+{
+display:none;
+}
+
+div.panel1,p.flip1
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip1
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel1
+{
+display:none;
+}
+
+div.panel2,p.flip2
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip2
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel2
+{
+display:none;
+}
+
+div.panel3,p.flip3
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip3
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel3
+{
+display:none;
+}
+
+div.panel4,p.flip4
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip4
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel4
+{
+display:none;
+}
+
+div.panel5,p.flip5
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip5
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel5
+{
+display:none;
+}
+
+div.panel6,p.flip6
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip6
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel6
+{
+display:none;
+}
+
+div.panel7,p.flip7
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip7
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel7
+{
+display:none;
+}
+
+div.panel8,p.flip8
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip8
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel8
+{
+display:none;
+}
+
+div.panel9,p.flip9
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip9
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel9
+{
+display:none;
+}
+
+</style>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-18709417-2']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../core/core.html" title="Core packages for analysis: IPython, NumPy, and SciPy"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="modules.html" title="Importing Modules"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">Python4Astronomers 1.1 documentation</a> &raquo;</li>
+          <li><a href="pure_python.html" accesskey="U">An introduction to Pure Python</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">A Quick Note about Python 3</a><ul>
+<li><a class="reference internal" href="#integer-division">Integer division</a></li>
+<li><a class="reference internal" href="#the-print-statement">The <tt class="docutils literal"><span class="pre">print</span></tt> statement</a></li>
+<li><a class="reference internal" href="#string-formatting">String formatting</a></li>
+<li><a class="reference internal" href="#writing-future-proof-scripts">Writing future-proof scripts</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="modules.html"
+                        title="previous chapter">Importing Modules</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="../core/core.html"
+                        title="next chapter">Core packages for analysis: IPython, NumPy, and SciPy</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/pure_python/python3.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="a-quick-note-about-python-3">
+<h1>A Quick Note about Python 3<a class="headerlink" href="#a-quick-note-about-python-3" title="Permalink to this headline">¶</a></h1>
+<p>There is currently a shift in the Python community as people move from Python 2.x to Python 3.x. The newer version of Python brings a number of improvements to the language, but also breaks backward compatibility. That is to say, programs written in Python 2.x will not necessarily run in Python 3.x. As a result of this, the Python community has been slow to move to the new version, as this requires that all of the pre-existing libraries and modules are updated. Nevertheless, this transition is now almost complete, with many of the large number of add-in packages now compatible with Python 3.x.</p>
+<p>Since this transition is not totally complete, we will concentrate on Python 2.x in these workshops. You should be aware that this transition is taking place, and that there will be some changes if you move to Python 3.x. We introduce two of the many differences in the following subsections.</p>
+<div class="section" id="integer-division">
+<h2>Integer division<a class="headerlink" href="#integer-division" title="Permalink to this headline">¶</a></h2>
+<p>In Python 2.x dividing two integers leads to unexpected results:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="mi">3</span> <span class="o">/</span> <span class="mi">2</span>
+<span class="go">1</span>
+</pre></div>
+</div>
+<p>In Python 3.x this behavior has been fixed:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="mi">3</span> <span class="o">/</span> <span class="mi">2</span>
+<span class="go">1.5</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="the-print-statement">
+<h2>The <tt class="docutils literal"><span class="pre">print</span></tt> statement<a class="headerlink" href="#the-print-statement" title="Permalink to this headline">¶</a></h2>
+<p>In Python 3.x, the <tt class="docutils literal"><span class="pre">print</span></tt> statement has been replaced with the <tt class="docutils literal"><span class="pre">print()</span></tt> function. The new syntax is therefore:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="s">&quot;Hello World!&quot;</span><span class="p">)</span>
+<span class="go">Hello World!</span>
+</pre></div>
+</div>
+<p>instead of:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="s">&quot;Hello World!&quot;</span>
+<span class="go">Hello World!</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="string-formatting">
+<h2>String formatting<a class="headerlink" href="#string-formatting" title="Permalink to this headline">¶</a></h2>
+<p>Python 2 uses the following syntax for string formatting:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">format_string</span> <span class="o">%</span> <span class="n">values</span>
+</pre></div>
+</div>
+<p>for example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="s">&quot;</span><span class="si">%s</span><span class="s"> </span><span class="si">%d</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="s">&#39;spam&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>while Python 3 uses:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">format_string</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>and uses a <tt class="docutils literal"><span class="pre">{}</span></tt> notation instead of <tt class="docutils literal"><span class="pre">%</span></tt>, for example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="s">&quot;{:s} {:d}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s">&#39;spam&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="writing-future-proof-scripts">
+<h2>Writing future-proof scripts<a class="headerlink" href="#writing-future-proof-scripts" title="Permalink to this headline">¶</a></h2>
+<p>Python 2.6 and 2.7 already support the new formatting notation, so if you want
+to write future-proof scripts, you can already switch to using the new
+formatting in Python 2.</p>
+<p>In addition, you can also start using the new division and print statement. To do this, simply do:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">division</span><span class="p">,</span> <span class="n">print_function</span>
+</pre></div>
+</div>
+<p>e.g. at the start of a script, and you can then use Python 3 syntax for division and printing.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../core/core.html" title="Core packages for analysis: IPython, NumPy, and SciPy"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="modules.html" title="Importing Modules"
+             >previous</a> |</li>
+        <li><a href="../index.html">Python4Astronomers 1.1 documentation</a> &raquo;</li>
+          <li><a href="pure_python.html" >An introduction to Pure Python</a> &raquo;</li> 
+      </ul>
+    </div>
+ <small>Copyright:
+ Smithsonian Astrophysical Observatory under terms of
+ <a rel="license"
+ href="http://creativecommons.org/licenses/by/3.0/">CC
+ Attribution 3.0</a></small> <a rel="license"
+ href="http://creativecommons.org/licenses/by/3.0/"><img alt="Creative Commons
+ License" style="border-width:0"
+ src="http://i.creativecommons.org/l/by/3.0/80x15.png" /></a>
+
+  </body>
+</html>

@@ -1,0 +1,409 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Importing Modules &mdash; Python4Astronomers 1.1 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="Python4Astronomers 1.1 documentation" href="../index.html" />
+    <link rel="up" title="An introduction to Pure Python" href="pure_python.html" />
+    <link rel="next" title="A Quick Note about Python 3" href="python3.html" />
+    <link rel="prev" title="Reading and Writing files in Pure Python" href="files.html" />
+ 
+<script type="text/javascript"> 
+$(document).ready(function(){
+
+$(".flip0").click(function(){
+    $(".panel0").slideToggle("normal");
+  });
+
+$(".flip1").click(function(){
+    $(".panel1").slideToggle("normal");
+  });
+
+$(".flip2").click(function(){
+    $(".panel2").slideToggle("normal");
+  });
+
+$(".flip3").click(function(){
+    $(".panel3").slideToggle("normal");
+  });
+
+$(".flip4").click(function(){
+    $(".panel4").slideToggle("normal");
+  });
+
+$(".flip5").click(function(){
+    $(".panel5").slideToggle("normal");
+  });
+
+$(".flip6").click(function(){
+    $(".panel6").slideToggle("normal");
+  });
+
+$(".flip7").click(function(){
+    $(".panel7").slideToggle("normal");
+  });
+
+$(".flip8").click(function(){
+    $(".panel8").slideToggle("normal");
+  });
+
+$(".flip9").click(function(){
+    $(".panel9").slideToggle("normal");
+  });
+
+});
+</script>
+ 
+<style type="text/css"> 
+
+div.panel0,p.flip0
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip0
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel0
+{
+display:none;
+}
+
+div.panel1,p.flip1
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip1
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel1
+{
+display:none;
+}
+
+div.panel2,p.flip2
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip2
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel2
+{
+display:none;
+}
+
+div.panel3,p.flip3
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip3
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel3
+{
+display:none;
+}
+
+div.panel4,p.flip4
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip4
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel4
+{
+display:none;
+}
+
+div.panel5,p.flip5
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip5
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel5
+{
+display:none;
+}
+
+div.panel6,p.flip6
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip6
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel6
+{
+display:none;
+}
+
+div.panel7,p.flip7
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip7
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel7
+{
+display:none;
+}
+
+div.panel8,p.flip8
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip8
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel8
+{
+display:none;
+}
+
+div.panel9,p.flip9
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip9
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel9
+{
+display:none;
+}
+
+</style>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-18709417-2']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="python3.html" title="A Quick Note about Python 3"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="files.html" title="Reading and Writing files in Pure Python"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">Python4Astronomers 1.1 documentation</a> &raquo;</li>
+          <li><a href="pure_python.html" accesskey="U">An introduction to Pure Python</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="files.html"
+                        title="previous chapter">Reading and Writing files in Pure Python</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="python3.html"
+                        title="next chapter">A Quick Note about Python 3</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/pure_python/modules.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="importing-modules">
+<h1>Importing Modules<a class="headerlink" href="#importing-modules" title="Permalink to this headline">¶</a></h1>
+<p>One of the strengths of Python is that there are many built-in add-ons - or
+<em>modules</em> - which allow you to do complex tasks in only a few lines of code. In addition, there are many other third-party modules (e.g. Numpy, Scipy,
+Matplotlib) that can be installed, and you can also develop your own modules
+that include functionalities you commonly use.</p>
+<p>The built-in modules are referred to as the <em>Standard Library</em>, and you can
+find a full list of the available functionality in the <a class="reference external" href="http://docs.python.org/library/index.html">Python Documentation</a>.</p>
+<p>To use modules in your Python session or script, you need to import them. The
+following example shows how to import the built-in <tt class="docutils literal"><span class="pre">os</span></tt> module, which
+contains amongst other things many useful functions relating to files and
+paths:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">os</span>
+</pre></div>
+</div>
+<p>This will give you access to functions available within this module, which you
+can now access if you use the module name as a prefix. For example, if we want
+to check if a file <tt class="docutils literal"><span class="pre">data/m31.fits</span></tt> exists, we can use the <tt class="docutils literal"><span class="pre">os.path.exists</span></tt>
+function:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="s">&#39;data/m31.fits&#39;</span><span class="p">)</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+<p>In this case, we can use the function in an <tt class="docutils literal"><span class="pre">if</span></tt> statement, since it returns a boolean:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="s">&#39;data/m31.fits&#39;</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="k">print</span> <span class="s">&quot;The file exists&quot;</span>
+<span class="gp">... </span><span class="k">else</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="k">print</span> <span class="s">&quot;The file does not exist&quot;</span>
+<span class="gp">...</span>
+<span class="go">The file does not exist</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">As with objects in Python, once you have imported a module, you can
+(in IPython) type the name of the module, followed by <tt class="docutils literal"><span class="pre">.</span></tt>, then
+press TAB to see the available functions!</p>
+</div>
+<p>If a module name is too long to be conveniently written each time you want to use a function, you can define a shortcut when you import it:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>In the following workshops we will look a number of third-party modules in
+more detail, such as <tt class="docutils literal"><span class="pre">numpy</span></tt> for creating and manipulating high performance
+arrays, <tt class="docutils literal"><span class="pre">scipy</span></tt> for scientific computing and <tt class="docutils literal"><span class="pre">matplotlib.pyplot</span></tt> for
+plotting.</p>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="python3.html" title="A Quick Note about Python 3"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="files.html" title="Reading and Writing files in Pure Python"
+             >previous</a> |</li>
+        <li><a href="../index.html">Python4Astronomers 1.1 documentation</a> &raquo;</li>
+          <li><a href="pure_python.html" >An introduction to Pure Python</a> &raquo;</li> 
+      </ul>
+    </div>
+ <small>Copyright:
+ Smithsonian Astrophysical Observatory under terms of
+ <a rel="license"
+ href="http://creativecommons.org/licenses/by/3.0/">CC
+ Attribution 3.0</a></small> <a rel="license"
+ href="http://creativecommons.org/licenses/by/3.0/"><img alt="Creative Commons
+ License" style="border-width:0"
+ src="http://i.creativecommons.org/l/by/3.0/80x15.png" /></a>
+
+  </body>
+</html>
