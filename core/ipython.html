@@ -394,9 +394,9 @@ the command:</p>
 screen with <tt class="docutils literal"><span class="pre">pl.show()</span></tt>, you have to close the plot if you want to continue
 working in the shell. With the <tt class="docutils literal"><span class="pre">--pylab</span></tt> option, plots are shown in a
 separate thread, allowing you to simultaneously edit data and view a plot:</p>
-<div class="last highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="n">x</span> <span class="o">=</span> <span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mf">0.2</span><span class="p">)</span>
+<div class="last highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mf">0.2</span><span class="p">)</span>
 
-<span class="gp">In [2]: </span><span class="n">y</span> <span class="o">=</span> <span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="gp">In [2]: </span><span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 
 <span class="gp">In [3]: </span><span class="k">print</span> <span class="n">x</span>
 <span class="go">[ 0.   0.2  0.4  0.6  0.8  1.   1.2  1.4  1.6  1.8  2.   2.2  2.4  2.6  2.8</span>

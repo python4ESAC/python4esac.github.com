@@ -385,7 +385,7 @@ for more details.</p>
 </div>
 <p>Note that this will probably take several hours, and is best done overnight.</p>
 <p>To install the packages required for this course, use:</p>
-<div class="highlight-python"><pre>sudo port install py27-pyfits py27-pywcs py27-vo py27-asciitable py27-atpy py27-aplpy</pre>
+<div class="highlight-python"><pre>sudo port install py27-pyfits py27-pywcs py27-vo py27-asciitable py27-atpy py27-aplpy py27-mayavi py27-beautifulsoup</pre>
 </div>
 <p>MacPorts will automatically take care of any dependencies, including
 <tt class="docutils literal"><span class="pre">py27-pyregion</span></tt> and <tt class="docutils literal"><span class="pre">py27-parsing</span></tt>.</p>
@@ -442,6 +442,7 @@ command line check the version numbers of python and ipython:</p>
 <span class="kn">import</span> <span class="nn">scipy</span>
 <span class="kn">import</span> <span class="nn">scipy.linalg</span>
 <span class="kn">import</span> <span class="nn">pylab</span> <span class="kn">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">mayavi</span> <span class="kn">import</span> <span class="n">mlab</span>
 
 <span class="k">print</span> <span class="n">numpy</span><span class="o">.</span><span class="n">__version__</span>
 <span class="k">print</span> <span class="n">scipy</span><span class="o">.</span><span class="n">__version__</span>

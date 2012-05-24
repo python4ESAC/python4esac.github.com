@@ -1,0 +1,647 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Scipy FFT &mdash; Python4Astronomers 1.1 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="Python4Astronomers 1.1 documentation" href="../index.html" />
+    <link rel="up" title="Core packages for analysis: IPython, NumPy, and SciPy" href="core.html" />
+    <link rel="next" title="Plotting and Images" href="../plotting/plotting.html" />
+    <link rel="prev" title="NumPy record arrays" href="numpy_recarray.html" />
+ 
+<script type="text/javascript"> 
+$(document).ready(function(){
+
+$(".flip0").click(function(){
+    $(".panel0").slideToggle("normal");
+  });
+
+$(".flip1").click(function(){
+    $(".panel1").slideToggle("normal");
+  });
+
+$(".flip2").click(function(){
+    $(".panel2").slideToggle("normal");
+  });
+
+$(".flip3").click(function(){
+    $(".panel3").slideToggle("normal");
+  });
+
+$(".flip4").click(function(){
+    $(".panel4").slideToggle("normal");
+  });
+
+$(".flip5").click(function(){
+    $(".panel5").slideToggle("normal");
+  });
+
+$(".flip6").click(function(){
+    $(".panel6").slideToggle("normal");
+  });
+
+$(".flip7").click(function(){
+    $(".panel7").slideToggle("normal");
+  });
+
+$(".flip8").click(function(){
+    $(".panel8").slideToggle("normal");
+  });
+
+$(".flip9").click(function(){
+    $(".panel9").slideToggle("normal");
+  });
+
+});
+</script>
+ 
+<style type="text/css"> 
+
+div.panel0,p.flip0
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip0
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel0
+{
+display:none;
+}
+
+div.panel1,p.flip1
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip1
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel1
+{
+display:none;
+}
+
+div.panel2,p.flip2
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip2
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel2
+{
+display:none;
+}
+
+div.panel3,p.flip3
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip3
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel3
+{
+display:none;
+}
+
+div.panel4,p.flip4
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip4
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel4
+{
+display:none;
+}
+
+div.panel5,p.flip5
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip5
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel5
+{
+display:none;
+}
+
+div.panel6,p.flip6
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip6
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel6
+{
+display:none;
+}
+
+div.panel7,p.flip7
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip7
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel7
+{
+display:none;
+}
+
+div.panel8,p.flip8
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip8
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel8
+{
+display:none;
+}
+
+div.panel9,p.flip9
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip9
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel9
+{
+display:none;
+}
+
+</style>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-18709417-2']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../plotting/plotting.html" title="Plotting and Images"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="numpy_recarray.html" title="NumPy record arrays"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">Python4Astronomers 1.1 documentation</a> &raquo;</li>
+          <li><a href="core.html" accesskey="U">Core packages for analysis: IPython, NumPy, and SciPy</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Scipy FFT</a><ul>
+<li><a class="reference internal" href="#getting-started">Getting started</a></li>
+<li><a class="reference internal" href="#the-analytical-broadening-kernel">The analytical broadening kernel</a></li>
+<li><a class="reference internal" href="#the-synthetic-line">The synthetic line</a></li>
+<li><a class="reference internal" href="#the-analytical-fourier-transform">The analytical Fourier transform</a></li>
+<li><a class="reference internal" href="#computing-the-fourier-transform">Computing the Fourier transform</a></li>
+<li><a class="reference internal" href="#measuring-the-vsini">Measuring the vsini</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="numpy_recarray.html"
+                        title="previous chapter">NumPy record arrays</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="../plotting/plotting.html"
+                        title="next chapter">Plotting and Images</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/core/scipy_fft.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="scipy-fft">
+<h1><a class="toc-backref" href="#id1">Scipy FFT</a><a class="headerlink" href="#scipy-fft" title="Permalink to this headline">¶</a></h1>
+<div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#scipy-fft" id="id1">Scipy FFT</a><ul>
+<li><a class="reference internal" href="#getting-started" id="id2">Getting started</a></li>
+<li><a class="reference internal" href="#the-analytical-broadening-kernel" id="id3">The analytical broadening kernel</a></li>
+<li><a class="reference internal" href="#the-synthetic-line" id="id4">The synthetic line</a></li>
+<li><a class="reference internal" href="#the-analytical-fourier-transform" id="id5">The analytical Fourier transform</a></li>
+<li><a class="reference internal" href="#computing-the-fourier-transform" id="id6">Computing the Fourier transform</a></li>
+<li><a class="reference internal" href="#measuring-the-vsini" id="id7">Measuring the vsini</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<p>In this tutorial, we dig a bit deeper in scipy&#8217;s 1D FFT capabilities, exploring
+rotational broadening in stellar spectra along the way. For a full list of
+available functions, see <a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/fftpack.html">http://docs.scipy.org/doc/scipy/reference/fftpack.html</a>.</p>
+<p>The flow of the programming is as follows (see, e.g., Carroll 1933, Dravins 1990,
+Reiners 2001, Simon-Diaz 2006):</p>
+<ol class="arabic simple">
+<li>First, we construct a rotational broadening kernel assuming a linear limb-darkened star</li>
+<li>We generate a synthetic spectral line, and convolve it with the kernel using <tt class="docutils literal"><span class="pre">fftconvolve</span></tt>.</li>
+<li>We add some noise on the spectrum.</li>
+</ol>
+<p>Next, we assume we don&#8217;t know the projected equatorial velocity, and derive it
+from the generated spectrum, using the Fourier method. We compare an oversampled
+computed Fourier transform (<tt class="docutils literal"><span class="pre">fft</span></tt>) with the analytical one. So the steps are:</p>
+<ol class="arabic simple" start="4">
+<li>Compute the <tt class="docutils literal"><span class="pre">fft</span></tt> of the generated spectrum and compare with the analytical one (of the broadening kernel only)</li>
+<li>Compare the output vsini with input value.</li>
+</ol>
+<div class="section" id="getting-started">
+<h2><a class="toc-backref" href="#id2">Getting started</a><a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h2>
+<p>We need a lot of functions. First, we import the Fourier functions:</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [5]: </span><span class="kn">from</span> <span class="nn">scipy.fftpack</span> <span class="kn">import</span> <span class="n">fft</span><span class="p">,</span><span class="n">fftfreq</span>
+
+<span class="gp">In [6]: </span><span class="kn">from</span> <span class="nn">scipy.signal</span> <span class="kn">import</span> <span class="n">fftconvolve</span>
+</pre></div>
+</div>
+<p>For the analytical computation of the Fourier transformation, Bessel functions
+are required:</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [7]: </span><span class="kn">from</span> <span class="nn">scipy.special</span> <span class="kn">import</span> <span class="n">j1</span>
+</pre></div>
+</div>
+<p>And of course the usual imports. An explicit import of <tt class="docutils literal"><span class="pre">pi</span></tt>, <tt class="docutils literal"><span class="pre">sin</span></tt>, <tt class="docutils literal"><span class="pre">cos</span></tt>
+and <tt class="docutils literal"><span class="pre">sqrt</span></tt> is done to avoid extensive use of <tt class="docutils literal"><span class="pre">np.</span></tt> which could make the code
+less readable.</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [8]: </span><span class="kn">import</span> <span class="nn">pylab</span> <span class="kn">as</span> <span class="nn">plt</span>
+
+<span class="gp">In [9]: </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+
+<span class="gp">In [10]: </span><span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">pi</span><span class="p">,</span><span class="n">sin</span><span class="p">,</span><span class="n">cos</span><span class="p">,</span><span class="n">sqrt</span>
+</pre></div>
+</div>
+<p>To finalize the setup, we need some constants:</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [11]: </span><span class="n">midwave</span> <span class="o">=</span> <span class="mf">4480.</span> <span class="c"># central wavelength of line</span>
+
+<span class="gp">In [12]: </span><span class="n">cc</span> <span class="o">=</span> <span class="mf">2.99792458e+18</span> <span class="c"># velocity of light in angstrom/s</span>
+
+<span class="gp">In [13]: </span><span class="n">epsilon</span> <span class="o">=</span> <span class="mf">0.6</span> <span class="c"># linear limbdarkening parameter</span>
+
+<span class="gp">In [14]: </span><span class="n">vsini</span> <span class="o">=</span> <span class="mf">75.</span><span class="o">*</span><span class="mf">1e13</span> <span class="c"># input vsini in A/s (75 km/s)</span>
+
+<span class="gp">In [15]: </span><span class="n">dlam</span> <span class="o">=</span> <span class="mf">0.01</span> <span class="c"># spectrum resolution (A)</span>
+</pre></div>
+</div>
+<p>We will add some noise to a generate spectrum. To be able to reproduce the results,
+we make sure that we always add the same noise, regardless of how many times
+we run the script:</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [16]: </span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">1111</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="the-analytical-broadening-kernel">
+<h2><a class="toc-backref" href="#id3">The analytical broadening kernel</a><a class="headerlink" href="#the-analytical-broadening-kernel" title="Permalink to this headline">¶</a></h2>
+<p>The rotational broadening function <em>G</em> is only defined on a certain interval, but
+we&#8217;ll be lazy and solve that issue later. For now, we make the wavelength interval
+broad enough, i.e. +/- 5 angstrom, using the spectral resolution given above.</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [17]: </span><span class="n">delta</span> <span class="o">=</span> <span class="n">midwave</span><span class="o">*</span><span class="n">vsini</span><span class="o">/</span><span class="n">cc</span>
+
+<span class="gp">In [18]: </span><span class="n">lambdas</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mf">10.</span><span class="o">/</span><span class="n">dlam</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="c"># wavelength interval</span>
+
+<span class="gp">In [19]: </span><span class="n">y</span> <span class="o">=</span> <span class="mi">1</span><span class="o">-</span><span class="p">(</span><span class="n">lambdas</span><span class="o">/</span><span class="n">delta</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="c"># transformation of wavelengths</span>
+
+<span class="gp">In [20]: </span><span class="n">G</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">epsilon</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="o">+</span><span class="n">pi</span><span class="o">*</span><span class="n">epsilon</span><span class="o">/</span><span class="mf">2.</span><span class="o">*</span><span class="n">y</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">pi</span><span class="o">*</span><span class="n">delta</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">epsilon</span><span class="o">/</span><span class="mi">3</span><span class="p">))</span>  <span class="c"># the kernel</span>
+</pre></div>
+</div>
+<p>The <tt class="docutils literal"><span class="pre">sqrt</span></tt> is of course only defined for positive numbers. For negative numbers,
+numpy silently fills in <tt class="docutils literal"><span class="pre">nan</span></tt> (not a number). We remove all the wavelength
+and kernel elements wherever the kernel is not defined:</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [21]: </span><span class="k">print</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+<span class="go">[ nan  nan  nan ...,  nan  nan  nan]</span>
+
+<span class="gp">In [22]: </span><span class="n">keep</span> <span class="o">=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">G</span><span class="p">)</span> <span class="c"># returns boolean array with `False` where there are nans</span>
+
+<span class="gp">In [23]: </span><span class="n">lambdas</span><span class="p">,</span><span class="n">G</span> <span class="o">=</span> <span class="n">lambdas</span><span class="p">[</span><span class="n">keep</span><span class="p">],</span><span class="n">G</span><span class="p">[</span><span class="n">keep</span><span class="p">]</span> <span class="c"># crop the arrays not to contain nans</span>
+
+<span class="gp">In [24]: </span><span class="n">lambdas</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span><span class="n">lambdas</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+<span class="gr">Out[24]: </span><span class="p">(</span><span class="o">-</span><span class="mf">1.1200000000000001</span><span class="p">,</span> <span class="mf">1.1200000000000001</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The broadening kernel is only defined between -1.12 and 1.12 A. We could have
+foreseen this, since</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [25]: </span><span class="mf">1.12</span><span class="o">/</span><span class="n">midwave</span><span class="o">*</span><span class="p">(</span><span class="mf">3e5</span><span class="p">)</span> <span class="c"># approximate velocity in km/s of 1.12 angstrom at 4480A</span>
+<span class="gr">Out[25]: </span><span class="mf">75.0</span>
+</pre></div>
+</div>
+<p>Finally make a plot of the rotational kernel.</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [26]: </span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">lambdas</span><span class="p">,</span><span class="n">G</span><span class="p">)</span>
+<span class="gr">Out[26]: </span><span class="p">[</span><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">lines</span><span class="o">.</span><span class="n">Line2D</span> <span class="n">at</span> <span class="mh">0x4beaa10</span><span class="o">&gt;</span><span class="p">]</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../_images/rotkernel.png"><img alt="../_images/rotkernel.png" src="../_images/rotkernel.png" style="width: 400.0px; height: 300.0px;" /></a>
+</div>
+<div class="section" id="the-synthetic-line">
+<h2><a class="toc-backref" href="#id4">The synthetic line</a><a class="headerlink" href="#the-synthetic-line" title="Permalink to this headline">¶</a></h2>
+<p>Suppose a line has an intrinsic Gaussian profile in absence of rotation:</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [27]: </span><span class="n">wavelengths</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">midwave</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span><span class="n">midwave</span><span class="o">+</span><span class="mi">5</span><span class="o">+</span><span class="n">dlam</span><span class="p">,</span><span class="n">dlam</span><span class="p">)</span>
+
+<span class="gp">In [28]: </span><span class="n">spec_line</span> <span class="o">=</span> <span class="mi">1</span><span class="o">-</span><span class="mf">0.5</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span> <span class="o">-</span><span class="p">(</span><span class="n">wavelengths</span><span class="o">-</span><span class="n">midwave</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="mf">0.1</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span> <span class="c"># width of 0.1A</span>
+</pre></div>
+</div>
+<p>This needs to be convolved with the rotational broadening kernel. Scipy (and
+numpy have a <tt class="docutils literal"><span class="pre">convolve</span></tt> function that does not use the FFT, but here we choose
+to use the FFT version. We construct the new wavelength array for the convolved
+spectrum, and make sure the equivalent width has not changed during the
+convolution process:</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [29]: </span><span class="n">spec_conv</span> <span class="o">=</span> <span class="n">fftconvolve</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">spec_line</span><span class="p">,</span><span class="n">G</span><span class="p">,</span><span class="n">mode</span><span class="o">=</span><span class="s">&#39;full&#39;</span><span class="p">)</span>
+
+<span class="gp">In [30]: </span><span class="n">N</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">spec_conv</span><span class="p">)</span> <span class="c"># equals len(spec_line)+len(G)+1 when mode=&#39;full&#39;</span>
+
+<span class="gp">In [31]: </span><span class="n">wavelengths_conv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="n">N</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="n">N</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">dlam</span> <span class="o">+</span> <span class="n">midwave</span>
+
+<span class="gp">In [32]: </span><span class="n">EW_before</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">trapz</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">spec_line</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="n">wavelengths</span><span class="p">)</span> <span class="c"># trapezoidal integration</span>
+
+<span class="gp">In [33]: </span><span class="n">EW_after</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">trapz</span><span class="p">(</span><span class="n">spec_conv</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="n">wavelengths_conv</span><span class="p">)</span>
+
+<span class="gp">In [34]: </span><span class="n">spec_conv</span> <span class="o">=</span> <span class="mi">1</span><span class="o">-</span><span class="n">spec_conv</span><span class="o">/</span><span class="n">EW_after</span><span class="o">*</span><span class="n">EW_before</span>
+</pre></div>
+</div>
+<p>Finally, we simulate an observed profile by adding random Gaussian noise:</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [35]: </span><span class="n">spec_obs</span> <span class="o">=</span> <span class="n">spec_conv</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">spec_conv</span><span class="p">),</span><span class="n">scale</span><span class="o">=</span><span class="mf">0.02</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>A plot of the unbroadened (black) and broadened line (red/blue) can be made with:</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [36]: </span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+
+<span class="gp">In [37]: </span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">wavelengths</span><span class="p">,</span><span class="n">spec_line</span><span class="p">,</span><span class="s">&#39;k-&#39;</span><span class="p">);</span>
+
+<span class="gp">In [38]: </span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">wavelengths_conv</span><span class="p">,</span><span class="n">spec_conv</span><span class="p">,</span><span class="s">&#39;r-&#39;</span><span class="p">);</span>
+
+<span class="gp">In [39]: </span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">wavelengths_conv</span><span class="p">,</span><span class="n">spec_obs</span><span class="p">,</span><span class="s">&#39;b-&#39;</span><span class="p">);</span>
+
+<span class="gp">In [40]: </span><span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">4478</span><span class="p">,</span><span class="mi">4482</span><span class="p">)</span>
+<span class="gr">Out[40]: </span><span class="p">(</span><span class="mi">4478</span><span class="p">,</span> <span class="mi">4482</span><span class="p">)</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../_images/speclines.png"><img alt="../_images/speclines.png" src="../_images/speclines.png" style="width: 400.0px; height: 300.0px;" /></a>
+</div>
+<div class="section" id="the-analytical-fourier-transform">
+<h2><a class="toc-backref" href="#id5">The analytical Fourier transform</a><a class="headerlink" href="#the-analytical-fourier-transform" title="Permalink to this headline">¶</a></h2>
+<p>Let&#8217;s get back to the rotational kernel. The analytical Fourier transform is
+easily computed. First, we need to define the domain in frequency space on which
+to compute the transform, and then we evaluate it. Note the use of scipy&#8217;s
+Bessel function:</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [41]: </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">1000</span><span class="p">)[</span><span class="mi">1</span><span class="p">:]</span>  <span class="c"># exclude zero</span>
+
+<span class="gp">In [42]: </span><span class="n">g</span> <span class="o">=</span> <span class="mf">2.</span> <span class="o">/</span> <span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">epsilon</span><span class="o">/</span><span class="mf">3.</span><span class="p">))</span> <span class="o">*</span> <span class="p">(</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">epsilon</span><span class="p">)</span><span class="o">*</span><span class="n">j1</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">+</span>  <span class="n">epsilon</span><span class="o">*</span> <span class="p">(</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="n">x</span><span class="p">))</span>
+
+<span class="gp">In [43]: </span><span class="n">g</span> <span class="o">=</span> <span class="n">g</span><span class="o">**</span><span class="mi">2</span> <span class="c"># convert to power</span>
+</pre></div>
+</div>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [44]: </span><span class="n">x</span> <span class="o">/=</span> <span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">pi</span><span class="o">*</span><span class="n">delta</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="computing-the-fourier-transform">
+<h2><a class="toc-backref" href="#id6">Computing the Fourier transform</a><a class="headerlink" href="#computing-the-fourier-transform" title="Permalink to this headline">¶</a></h2>
+<p>When calculating the FFT with <tt class="docutils literal"><span class="pre">fft</span></tt>, a complex array is returned. In this case,
+we are only interested in the power. Also, we need to increase the frequency
+resolution of the Fourier transform, so that we can nicely resolve the zeros.
+This is done via zero padding, and there exists and optional keyword <tt class="docutils literal"><span class="pre">n</span></tt> to
+the function <tt class="docutils literal"><span class="pre">fft</span></tt> to do just that. If you do not specify <tt class="docutils literal"><span class="pre">n</span></tt>, <tt class="docutils literal"><span class="pre">n</span></tt> equals
+the length of the input array, otherwise the input array is zero-padded until
+it is of size <tt class="docutils literal"><span class="pre">n</span></tt>. We choose to make our input array 100 times larger. Finally,
+the Fourier method is sensitive to noise outside of the spectral line region.
+Therefore, we cut the spectrum to have little continuum remaining.</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [45]: </span><span class="n">keep</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">midwave</span><span class="o">-</span><span class="n">wavelengths_conv</span><span class="p">)</span><span class="o">&lt;</span><span class="mf">1.2</span> <span class="c"># minimize contribution of continuum</span>
+
+<span class="gp">In [46]: </span><span class="n">spec_to_transform</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">spec_obs</span><span class="p">)[</span><span class="n">keep</span><span class="p">]</span>
+
+<span class="gp">In [47]: </span><span class="n">new_n</span> <span class="o">=</span> <span class="mi">100</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">spec_to_transform</span><span class="p">)</span> <span class="c"># new length for zeropadding</span>
+
+<span class="gp">In [48]: </span><span class="n">spec_fft</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">fft</span><span class="p">(</span><span class="n">spec_to_transform</span><span class="p">,</span><span class="n">n</span><span class="o">=</span><span class="n">new_n</span><span class="p">))</span><span class="o">**</span><span class="mi">2</span> <span class="c"># power of FFT</span>
+</pre></div>
+</div>
+<p>The domain of the Fourier transform is retrieved via <tt class="docutils literal"><span class="pre">fftfreq</span></tt>, but we exclude
+the negative frequencies:</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [49]: </span><span class="n">x_fft</span> <span class="o">=</span> <span class="n">fftfreq</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">spec_fft</span><span class="p">),</span><span class="n">d</span><span class="o">=</span><span class="n">dlam</span><span class="p">)</span>
+
+<span class="gp">In [50]: </span><span class="n">keep</span> <span class="o">=</span> <span class="n">x_fft</span><span class="o">&gt;=</span><span class="mi">0</span> <span class="c"># only positive frequencies</span>
+
+<span class="gp">In [51]: </span><span class="n">x_fft</span><span class="p">,</span> <span class="n">spec_fft</span> <span class="o">=</span> <span class="n">x_fft</span><span class="p">[</span><span class="n">keep</span><span class="p">],</span> <span class="n">spec_fft</span><span class="p">[</span><span class="n">keep</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="measuring-the-vsini">
+<h2><a class="toc-backref" href="#id7">Measuring the vsini</a><a class="headerlink" href="#measuring-the-vsini" title="Permalink to this headline">¶</a></h2>
+<p>The measured vsini corresponds to the first zero in the Fourier transform. Due
+to discretization and noise, zero will never be reached, so we need to look for
+local minima: those are the locations where the first derivative switches sign
+from negative to positive:</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [52]: </span><span class="n">neg_to_pos</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">spec_fft</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span><span class="o">&lt;=</span><span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">spec_fft</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span><span class="o">&gt;=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="gp">In [53]: </span><span class="n">minima</span> <span class="o">=</span> <span class="n">x_fft</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="n">neg_to_pos</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Let&#8217;s compare that to the minima from the analytical transform:</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [54]: </span><span class="n">neg_to_pos</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">g</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span><span class="o">&lt;=</span><span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">g</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span><span class="o">&gt;=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="gp">In [55]: </span><span class="n">minima_an</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="n">neg_to_pos</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>The frequency domain can be converted from s/A to s/km (inverse velocity) as
+follows:</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [56]: </span><span class="n">q1</span> <span class="o">=</span> <span class="mf">0.610</span> <span class="o">+</span> <span class="mf">0.062</span><span class="o">*</span><span class="n">epsilon</span> <span class="o">+</span> <span class="mf">0.027</span><span class="o">*</span><span class="n">epsilon</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mf">0.012</span><span class="o">*</span><span class="n">epsilon</span><span class="o">**</span><span class="mi">3</span> <span class="o">+</span> <span class="mf">0.004</span><span class="o">*</span><span class="n">epsilon</span><span class="o">**</span><span class="mi">4</span>
+
+<span class="gp">In [57]: </span><span class="n">vsini_zeros</span> <span class="o">=</span> <span class="n">cc</span><span class="o">/</span><span class="n">midwave</span><span class="o">*</span><span class="n">q1</span><span class="o">/</span><span class="n">minima</span><span class="o">/</span><span class="mf">1e13</span>
+
+<span class="gp">In [58]: </span><span class="n">vsini_zeros_an</span> <span class="o">=</span> <span class="n">cc</span><span class="o">/</span><span class="n">midwave</span><span class="o">*</span><span class="n">q1</span><span class="o">/</span><span class="n">minima_an</span><span class="o">/</span><span class="mf">1e13</span>
+</pre></div>
+</div>
+<p>The first zero should be the input vsini:</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [59]: </span><span class="k">print</span><span class="p">(</span><span class="n">vsini_zeros_an</span><span class="p">[:</span><span class="mi">10</span><span class="p">])</span>
+<span class="go">[ 75.05337352  42.62290348  29.76254467  22.91452554  18.6283553</span>
+<span class="go">  15.6929781   13.53903993  11.91871754  10.63384553]</span>
+
+<span class="gp">In [60]: </span><span class="k">print</span><span class="p">(</span><span class="n">vsini_zeros</span><span class="p">[:</span><span class="mi">10</span><span class="p">])</span>
+<span class="go">[ 76.57885529  44.35192036  31.49248783  24.08249069  15.01334399</span>
+<span class="go">  12.70222063   9.33724639   8.21966092   7.45410426   6.81900121]</span>
+</pre></div>
+</div>
+<p>Finally, we can make a nice plot: We use the s/A scaling on the x-axis, but
+set the tickmarks to correspond to km/s.</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [61]: </span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">();</span>
+
+<span class="gp">In [62]: </span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">g</span><span class="o">/</span><span class="n">g</span><span class="o">.</span><span class="n">max</span><span class="p">());</span>
+
+<span class="gp">In [63]: </span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_fft</span><span class="p">,</span><span class="n">spec_fft</span><span class="o">/</span><span class="n">spec_fft</span><span class="o">.</span><span class="n">max</span><span class="p">());</span>
+
+<span class="gp">In [64]: </span><span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">set_yscale</span><span class="p">(</span><span class="s">&#39;log&#39;</span><span class="p">);</span>
+
+<span class="gp">In [65]: </span><span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.05</span><span class="p">);</span>
+
+<span class="gp">In [66]: </span><span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mf">1e-8</span><span class="p">,</span><span class="mf">1e1</span><span class="p">);</span>
+
+<span class="gp">In [67]: </span><span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">();</span>
+
+<span class="gp">In [68]: </span><span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">minima_an</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span><span class="o">*</span><span class="n">midwave</span><span class="o">/</span><span class="n">q1</span><span class="o">/</span><span class="n">cc</span><span class="o">*</span><span class="mf">1e13</span><span class="p">,[</span><span class="s">&#39;{0:.2f}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">vsini_zeros_an</span><span class="p">[:</span><span class="mi">5</span><span class="p">]])</span>
+<span class="gr">Out[68]: </span>
+<span class="go">([&lt;matplotlib.axis.XTick at 0x5109c50&gt;,</span>
+<span class="go">  &lt;matplotlib.axis.XTick at 0x5109590&gt;,</span>
+<span class="go">  &lt;matplotlib.axis.XTick at 0x4c97650&gt;,</span>
+<span class="go">  &lt;matplotlib.axis.XTick at 0x5109510&gt;,</span>
+<span class="go">  &lt;matplotlib.axis.XTick at 0x4323590&gt;],</span>
+<span class="go"> &lt;a list of 5 Text xticklabel objects&gt;)</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../_images/vsini.png"><img alt="../_images/vsini.png" src="../_images/vsini.png" style="width: 400.0px; height: 300.0px;" /></a>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../plotting/plotting.html" title="Plotting and Images"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="numpy_recarray.html" title="NumPy record arrays"
+             >previous</a> |</li>
+        <li><a href="../index.html">Python4Astronomers 1.1 documentation</a> &raquo;</li>
+          <li><a href="core.html" >Core packages for analysis: IPython, NumPy, and SciPy</a> &raquo;</li> 
+      </ul>
+    </div>
+ <small>Copyright:
+ Smithsonian Astrophysical Observatory under terms of
+ <a rel="license"
+ href="http://creativecommons.org/licenses/by/3.0/">CC
+ Attribution 3.0</a></small> <a rel="license"
+ href="http://creativecommons.org/licenses/by/3.0/"><img alt="Creative Commons
+ License" style="border-width:0"
+ src="http://i.creativecommons.org/l/by/3.0/80x15.png" /></a>
+
+  </body>
+</html>
