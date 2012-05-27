@@ -337,15 +337,84 @@ display:none;
 <p>The catalog we use is the Geneva Photometry Catalog from Rufener (1988).
 It is accessible through the ViZieR website via its designation <tt class="docutils literal"><span class="pre">II/169/main</span></tt>.
 First we will download the catalog to the local disk:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="kn">import</span> <span class="nn">urllib</span><span class="o">,</span> <span class="nn">pyfits</span>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="kn">import</span> <span class="nn">urllib</span><span class="o">,</span> <span class="nn">pyfits</span><span class="o">,</span> <span class="nn">os</span>
 
-<span class="gp">In [2]: </span><span class="c">#vizier_url = &#39;http://vizier.u-strasbg.fr/viz-bin/asu-fits/VizieR?&#39; # website of ViZieR</span>
+<span class="gp">In [2]: </span><span class="n">vizier_url</span> <span class="o">=</span> <span class="s">&#39;http://vizier.u-strasbg.fr/viz-bin/asu-fits/VizieR?&#39;</span> <span class="c"># website of ViZieR</span>
 
-<span class="gp">In [3]: </span><span class="c">#cat_url = &#39;&amp;-source=II/169/main&#39; # name of the catalog</span>
+<span class="gp">In [3]: </span><span class="n">cat_url</span> <span class="o">=</span> <span class="s">&#39;&amp;-source=II/169/main&#39;</span> <span class="c"># name of the catalog</span>
 
-<span class="gp">In [4]: </span><span class="c">#cat_options = &#39;&amp;-oc=deg,eq=J2000&amp;-out.all&#39; # retrieve all columns, coordinates in J2000 and degrees</span>
+<span class="gp">In [4]: </span><span class="n">cat_options</span> <span class="o">=</span> <span class="s">&#39;&amp;-oc=deg,eq=J2000&amp;-out.all&#39;</span> <span class="c"># retrieve all columns, coordinates in J2000 and degrees</span>
 
-<span class="gp">In [5]: </span><span class="c">#urllib.URLopener().retrieve(vizier_url+cat_url+cat_options,filename=&#39;gen.fits&#39;)</span>
+<span class="gp">In [5]: </span><span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="s">&#39;gen.fits&#39;</span><span class="p">):</span> <span class="c"># don&#39;t download if the file already exists</span>
+<span class="gp">   ...:</span>      <span class="n">urllib</span><span class="o">.</span><span class="n">URLopener</span><span class="p">()</span><span class="o">.</span><span class="n">retrieve</span><span class="p">(</span><span class="n">vizier_url</span><span class="o">+</span><span class="n">cat_url</span><span class="o">+</span><span class="n">cat_options</span><span class="p">,</span><span class="n">filename</span><span class="o">=</span><span class="s">&#39;gen.fits&#39;</span><span class="p">)</span>
+<span class="gp">   ...:</span> 
+<span class="go">ERROR: An unexpected error occurred while tokenizing input</span>
+<span class="go">The following traceback may be corrupted or invalid</span>
+<span class="go">The error message is: (&#39;EOF in multi-line statement&#39;, (284, 0))</span>
+
+<span class="go">---------------------------------------------------------------------------</span>
+<span class="go">IOError                                   Traceback (most recent call last)</span>
+<span class="go">/home/nhmc/code/repo/python4ESAC/source/&lt;ipython-input-5-01735b769970&gt; in &lt;module&gt;()</span>
+<span class="go">      1 if not os.path.isfile(&#39;gen.fits&#39;): # don&#39;t download if the file already exists</span>
+<span class="go">----&gt; 2      urllib.URLopener().retrieve(vizier_url+cat_url+cat_options,filename=&#39;gen.fits&#39;)</span>
+
+<span class="go">/usr/lib/python2.7/urllib.pyc in retrieve(self, url, filename, reporthook, data)</span>
+<span class="go">    235             except IOError:</span>
+<span class="go">    236                 pass</span>
+<span class="go">--&gt; 237         fp = self.open(url, data)</span>
+<span class="go">    238         try:</span>
+<span class="go">    239             headers = fp.info()</span>
+
+<span class="go">/usr/lib/python2.7/urllib.pyc in open(self, fullurl, data)</span>
+<span class="go">    203         try:</span>
+<span class="go">    204             if data is None:</span>
+<span class="go">--&gt; 205                 return getattr(self, name)(url)</span>
+<span class="go">    206             else:</span>
+<span class="go">    207                 return getattr(self, name)(url, data)</span>
+
+<span class="go">/usr/lib/python2.7/urllib.pyc in open_http(self, url, data)</span>
+<span class="go">    340         if realhost: h.putheader(&#39;Host&#39;, realhost)</span>
+<span class="go">    341         for args in self.addheaders: h.putheader(*args)</span>
+<span class="go">--&gt; 342         h.endheaders(data)</span>
+<span class="go">    343         errcode, errmsg, headers = h.getreply()</span>
+<span class="go">    344         fp = h.getfile()</span>
+
+<span class="go">/usr/lib/python2.7/httplib.pyc in endheaders(self, message_body)</span>
+<span class="go">    949         else:</span>
+<span class="go">    950             raise CannotSendHeader()</span>
+<span class="go">--&gt; 951         self._send_output(message_body)</span>
+<span class="go">    952 </span>
+<span class="go">    953     def request(self, method, url, body=None, headers={}):</span>
+
+<span class="go">/usr/lib/python2.7/httplib.pyc in _send_output(self, message_body)</span>
+<span class="go">    809             msg += message_body</span>
+<span class="go">    810             message_body = None</span>
+<span class="go">--&gt; 811         self.send(msg)</span>
+<span class="go">    812         if message_body is not None:</span>
+<span class="go">    813             #message_body was not a string (i.e. it is a file) and</span>
+
+<span class="go">/usr/lib/python2.7/httplib.pyc in send(self, data)</span>
+<span class="go">    771         if self.sock is None:</span>
+<span class="go">    772             if self.auto_open:</span>
+<span class="go">--&gt; 773                 self.connect()</span>
+<span class="go">    774             else:</span>
+<span class="go">    775                 raise NotConnected()</span>
+
+<span class="go">/usr/lib/python2.7/httplib.pyc in connect(self)</span>
+<span class="go">    752         &quot;&quot;&quot;Connect to the host and port specified in __init__.&quot;&quot;&quot;</span>
+<span class="go">    753         self.sock = socket.create_connection((self.host,self.port),</span>
+<span class="go">--&gt; 754                                              self.timeout, self.source_address)</span>
+<span class="go">    755 </span>
+<span class="go">    756         if self._tunnel_host:</span>
+
+<span class="go">/usr/lib/python2.7/socket.pyc in create_connection(address, timeout, source_address)</span>
+<span class="go">    569 </span>
+<span class="go">    570     if err is not None:</span>
+<span class="go">--&gt; 571         raise err</span>
+<span class="go">    572     else:</span>
+<span class="go">    573         raise error(&quot;getaddrinfo returns an empty list&quot;)</span>
+
+<span class="go">IOError: [Errno socket error] [Errno 110] Connection timed out</span>
 </pre></div>
 </div>
 <p>What&#8217;s in this FITS file? Let&#8217;s have a look:</p>
@@ -395,18 +464,18 @@ and functions like <tt class="docutils literal"><span class="pre">sum</span></tt
 all the data in columns in a matrix is not optimal, because we want to access
 columns by their name (easy to remember), not by a number (difficult to remember).
 That&#8217;s easy enough with the FITS table extension:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="k">print</span><span class="p">(</span><span class="n">hdus</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">names</span><span class="p">)</span>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [4]: </span><span class="k">print</span><span class="p">(</span><span class="n">hdus</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">names</span><span class="p">)</span>
 <span class="go">---------------------------------------------------------------------------</span>
 <span class="go">NameError                                 Traceback (most recent call last)</span>
-<span class="go">/home/nhmc/code/repo/python4ESAC/source/&lt;ipython-input-1-22f2abba1c52&gt; in &lt;module&gt;()</span>
+<span class="go">/home/nhmc/code/repo/python4ESAC/source/&lt;ipython-input-4-22f2abba1c52&gt; in &lt;module&gt;()</span>
 <span class="go">----&gt; 1 print(hdus[1].columns.names)</span>
 
 <span class="go">NameError: name &#39;hdus&#39; is not defined</span>
 
-<span class="gp">In [2]: </span><span class="k">print</span><span class="p">(</span><span class="n">hdus</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">field</span><span class="p">(</span><span class="s">&#39;Vmag&#39;</span><span class="p">))</span>
+<span class="gp">In [5]: </span><span class="k">print</span><span class="p">(</span><span class="n">hdus</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">field</span><span class="p">(</span><span class="s">&#39;Vmag&#39;</span><span class="p">))</span>
 <span class="go">---------------------------------------------------------------------------</span>
 <span class="go">NameError                                 Traceback (most recent call last)</span>
-<span class="go">/home/nhmc/code/repo/python4ESAC/source/&lt;ipython-input-2-bcee80642605&gt; in &lt;module&gt;()</span>
+<span class="go">/home/nhmc/code/repo/python4ESAC/source/&lt;ipython-input-5-bcee80642605&gt; in &lt;module&gt;()</span>
 <span class="go">----&gt; 1 print(hdus[1].data.field(&#39;Vmag&#39;))</span>
 
 <span class="go">NameError: name &#39;hdus&#39; is not defined</span>
@@ -418,33 +487,33 @@ for bright and blue stars, and plot the coordinates.</p>
 <span class="pre">arrays</span></tt>, which are very similar to FITS table extensions, but add the power of
 numpy. In fact, when you use pyfits, the pyFITS record behaves almost like a numpy
 recarray.</p>
-<p>Let&#8217;s start with a small example. We make a record array with 3 columns: an index
+<p class="flip1">Click to Show/Hide Introduction to recarray</p> <div class="panel1"><p>Let&#8217;s start with a small example. We make a record array with 3 columns: an index
 array (integer type), a column with magnitude values, and a column with star
 names:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="n">col1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [6]: </span><span class="n">col1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
 <span class="go">---------------------------------------------------------------------------</span>
 <span class="go">NameError                                 Traceback (most recent call last)</span>
-<span class="go">/home/nhmc/code/repo/python4ESAC/source/&lt;ipython-input-1-b4065cd331b7&gt; in &lt;module&gt;()</span>
+<span class="go">/home/nhmc/code/repo/python4ESAC/source/&lt;ipython-input-6-b4065cd331b7&gt; in &lt;module&gt;()</span>
 <span class="go">----&gt; 1 col1 = np.arange(4)</span>
 
 <span class="go">NameError: name &#39;np&#39; is not defined</span>
 
-<span class="gp">In [2]: </span><span class="n">col2</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.03</span><span class="p">,</span><span class="o">-</span><span class="mf">1.47</span><span class="p">,</span><span class="mf">1.816</span><span class="p">,</span><span class="mf">0.42</span><span class="p">]</span>
+<span class="gp">In [7]: </span><span class="n">col2</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.03</span><span class="p">,</span><span class="o">-</span><span class="mf">1.47</span><span class="p">,</span><span class="mf">1.816</span><span class="p">,</span><span class="mf">0.42</span><span class="p">]</span>
 
-<span class="gp">In [3]: </span><span class="n">col3</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;Vega&#39;</span><span class="p">,</span> <span class="s">&#39;Sirius&#39;</span><span class="p">,</span> <span class="s">&#39;Mirfak&#39;</span><span class="p">,</span> <span class="s">&#39;Betelgeuse&#39;</span><span class="p">]</span>
+<span class="gp">In [8]: </span><span class="n">col3</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;Vega&#39;</span><span class="p">,</span> <span class="s">&#39;Sirius&#39;</span><span class="p">,</span> <span class="s">&#39;Mirfak&#39;</span><span class="p">,</span> <span class="s">&#39;Betelgeuse&#39;</span><span class="p">]</span>
 
-<span class="gp">In [4]: </span><span class="n">recarr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">rec</span><span class="o">.</span><span class="n">fromarrays</span><span class="p">([</span><span class="n">col1</span><span class="p">,</span><span class="n">col2</span><span class="p">,</span><span class="n">col3</span><span class="p">],</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;index&#39;</span><span class="p">,</span><span class="s">&#39;vmag&#39;</span><span class="p">,</span><span class="s">&#39;name&#39;</span><span class="p">])</span>
+<span class="gp">In [9]: </span><span class="n">recarr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">rec</span><span class="o">.</span><span class="n">fromarrays</span><span class="p">([</span><span class="n">col1</span><span class="p">,</span><span class="n">col2</span><span class="p">,</span><span class="n">col3</span><span class="p">],</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;index&#39;</span><span class="p">,</span><span class="s">&#39;vmag&#39;</span><span class="p">,</span><span class="s">&#39;name&#39;</span><span class="p">])</span>
 <span class="go">---------------------------------------------------------------------------</span>
 <span class="go">NameError                                 Traceback (most recent call last)</span>
-<span class="go">/home/nhmc/code/repo/python4ESAC/source/&lt;ipython-input-4-57eefed2fbf5&gt; in &lt;module&gt;()</span>
+<span class="go">/home/nhmc/code/repo/python4ESAC/source/&lt;ipython-input-9-57eefed2fbf5&gt; in &lt;module&gt;()</span>
 <span class="go">----&gt; 1 recarr = np.rec.fromarrays([col1,col2,col3],names=[&#39;index&#39;,&#39;vmag&#39;,&#39;name&#39;])</span>
 
 <span class="go">NameError: name &#39;np&#39; is not defined</span>
 
-<span class="gp">In [5]: </span><span class="n">recarr</span>
+<span class="gp">In [10]: </span><span class="n">recarr</span>
 <span class="go">---------------------------------------------------------------------------</span>
 <span class="go">NameError                                 Traceback (most recent call last)</span>
-<span class="go">/home/nhmc/code/repo/python4ESAC/source/&lt;ipython-input-5-24420bbe2c82&gt; in &lt;module&gt;()</span>
+<span class="go">/home/nhmc/code/repo/python4ESAC/source/&lt;ipython-input-10-24420bbe2c82&gt; in &lt;module&gt;()</span>
 <span class="go">----&gt; 1 recarr</span>
 
 <span class="go">NameError: name &#39;recarr&#39; is not defined</span>
@@ -452,176 +521,190 @@ names:</p>
 </div>
 <p>The default string representation is quite difficult to read. Luckily, <tt class="docutils literal"><span class="pre">matplotlib</span></tt>
 provides us with a nice alternative:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="kn">import</span> <span class="nn">pylab</span> <span class="kn">as</span> <span class="nn">plt</span>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [11]: </span><span class="kn">import</span> <span class="nn">pylab</span> <span class="kn">as</span> <span class="nn">plt</span>
 
-<span class="gp">In [2]: </span><span class="k">print</span><span class="p">(</span><span class="n">plt</span><span class="o">.</span><span class="n">mlab</span><span class="o">.</span><span class="n">rec2txt</span><span class="p">(</span><span class="n">recarr</span><span class="p">))</span> <span class="c"># pretty print</span>
+<span class="gp">In [12]: </span><span class="k">print</span><span class="p">(</span><span class="n">plt</span><span class="o">.</span><span class="n">mlab</span><span class="o">.</span><span class="n">rec2txt</span><span class="p">(</span><span class="n">recarr</span><span class="p">))</span> <span class="c"># pretty print</span>
 <span class="go">---------------------------------------------------------------------------</span>
 <span class="go">NameError                                 Traceback (most recent call last)</span>
-<span class="go">/home/nhmc/code/repo/python4ESAC/source/&lt;ipython-input-2-4e8c35c4065d&gt; in &lt;module&gt;()</span>
+<span class="go">/home/nhmc/code/repo/python4ESAC/source/&lt;ipython-input-12-4e8c35c4065d&gt; in &lt;module&gt;()</span>
 <span class="go">----&gt; 1 print(plt.mlab.rec2txt(recarr)) # pretty print</span>
 
 <span class="go">NameError: name &#39;recarr&#39; is not defined</span>
 
-<span class="gp">In [3]: </span><span class="n">recarr</span><span class="p">[</span><span class="s">&#39;vmag&#39;</span><span class="p">]</span> <span class="c"># extract one column</span>
+<span class="gp">In [13]: </span><span class="n">recarr</span><span class="p">[</span><span class="s">&#39;vmag&#39;</span><span class="p">]</span> <span class="c"># extract one column</span>
 <span class="go">---------------------------------------------------------------------------</span>
 <span class="go">NameError                                 Traceback (most recent call last)</span>
-<span class="go">/home/nhmc/code/repo/python4ESAC/source/&lt;ipython-input-3-f1aea7f0c647&gt; in &lt;module&gt;()</span>
+<span class="go">/home/nhmc/code/repo/python4ESAC/source/&lt;ipython-input-13-f1aea7f0c647&gt; in &lt;module&gt;()</span>
 <span class="go">----&gt; 1 recarr[&#39;vmag&#39;] # extract one column</span>
 
 <span class="go">NameError: name &#39;recarr&#39; is not defined</span>
 
-<span class="gp">In [4]: </span><span class="n">recarr</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="c"># extract first row (or record)</span>
+<span class="gp">In [14]: </span><span class="n">recarr</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="c"># extract first row (or record)</span>
 <span class="go">---------------------------------------------------------------------------</span>
 <span class="go">NameError                                 Traceback (most recent call last)</span>
-<span class="go">/home/nhmc/code/repo/python4ESAC/source/&lt;ipython-input-4-0ddd87358497&gt; in &lt;module&gt;()</span>
+<span class="go">/home/nhmc/code/repo/python4ESAC/source/&lt;ipython-input-14-0ddd87358497&gt; in &lt;module&gt;()</span>
 <span class="go">----&gt; 1 recarr[0] # extract first row (or record)</span>
 
 <span class="go">NameError: name &#39;recarr&#39; is not defined</span>
 
-<span class="gp">In [5]: </span><span class="n">recarr</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">names</span> <span class="c"># access column names</span>
+<span class="gp">In [15]: </span><span class="n">recarr</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">names</span> <span class="c"># access column names</span>
 <span class="go">---------------------------------------------------------------------------</span>
 <span class="go">NameError                                 Traceback (most recent call last)</span>
-<span class="go">/home/nhmc/code/repo/python4ESAC/source/&lt;ipython-input-5-5d8abefc041c&gt; in &lt;module&gt;()</span>
+<span class="go">/home/nhmc/code/repo/python4ESAC/source/&lt;ipython-input-15-5d8abefc041c&gt; in &lt;module&gt;()</span>
 <span class="go">----&gt; 1 recarr.dtype.names # access column names</span>
 
 <span class="go">NameError: name &#39;recarr&#39; is not defined</span>
 
-<span class="gp">In [6]: </span><span class="n">recarr2</span> <span class="o">=</span> <span class="n">recarr</span><span class="p">[</span> <span class="p">(</span><span class="n">recarr</span><span class="p">[</span><span class="s">&#39;vmag&#39;</span><span class="p">]</span><span class="o">&lt;</span><span class="mi">0</span><span class="p">)</span> <span class="p">]</span> <span class="c"># slicing is possible as usual</span>
+<span class="gp">In [16]: </span><span class="n">recarr2</span> <span class="o">=</span> <span class="n">recarr</span><span class="p">[</span> <span class="p">(</span><span class="n">recarr</span><span class="p">[</span><span class="s">&#39;vmag&#39;</span><span class="p">]</span><span class="o">&lt;</span><span class="mi">0</span><span class="p">)</span> <span class="p">]</span> <span class="c"># slicing is possible as usual</span>
 <span class="go">---------------------------------------------------------------------------</span>
 <span class="go">NameError                                 Traceback (most recent call last)</span>
-<span class="go">/home/nhmc/code/repo/python4ESAC/source/&lt;ipython-input-6-8d37ca3b6f4e&gt; in &lt;module&gt;()</span>
+<span class="go">/home/nhmc/code/repo/python4ESAC/source/&lt;ipython-input-16-8d37ca3b6f4e&gt; in &lt;module&gt;()</span>
 <span class="go">----&gt; 1 recarr2 = recarr[ (recarr[&#39;vmag&#39;]&lt;0) ] # slicing is possible as usual</span>
 
 <span class="go">NameError: name &#39;recarr&#39; is not defined</span>
 
-<span class="gp">In [7]: </span><span class="k">print</span><span class="p">(</span><span class="n">plt</span><span class="o">.</span><span class="n">mlab</span><span class="o">.</span><span class="n">rec2txt</span><span class="p">(</span><span class="n">recarr2</span><span class="p">))</span> <span class="c"># pretty print</span>
+<span class="gp">In [17]: </span><span class="k">print</span><span class="p">(</span><span class="n">plt</span><span class="o">.</span><span class="n">mlab</span><span class="o">.</span><span class="n">rec2txt</span><span class="p">(</span><span class="n">recarr2</span><span class="p">))</span> <span class="c"># pretty print</span>
 <span class="go">---------------------------------------------------------------------------</span>
 <span class="go">NameError                                 Traceback (most recent call last)</span>
-<span class="go">/home/nhmc/code/repo/python4ESAC/source/&lt;ipython-input-7-3fab79f8a568&gt; in &lt;module&gt;()</span>
+<span class="go">/home/nhmc/code/repo/python4ESAC/source/&lt;ipython-input-17-3fab79f8a568&gt; in &lt;module&gt;()</span>
 <span class="go">----&gt; 1 print(plt.mlab.rec2txt(recarr2)) # pretty print</span>
 
 <span class="go">NameError: name &#39;recarr2&#39; is not defined</span>
 </pre></div>
 </div>
-<p>Back to the catalog. Though a pyFITS record has almost the same behaviour as
+</div><p>Though a pyFITS record has almost the same behaviour as
 we require, a numpy record array is more general in its use. Therefore, we convert
 the FITS record to a numpy record array:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="n">names</span> <span class="o">=</span> <span class="n">hdus</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">names</span> <span class="c"># we need the column names</span>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [18]: </span><span class="n">names</span> <span class="o">=</span> <span class="n">hdus</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">names</span> <span class="c"># we need the column names</span>
 <span class="go">---------------------------------------------------------------------------</span>
 <span class="go">NameError                                 Traceback (most recent call last)</span>
-<span class="go">/home/nhmc/code/repo/python4ESAC/source/&lt;ipython-input-1-692d6524f6fe&gt; in &lt;module&gt;()</span>
+<span class="go">/home/nhmc/code/repo/python4ESAC/source/&lt;ipython-input-18-692d6524f6fe&gt; in &lt;module&gt;()</span>
 <span class="go">----&gt; 1 names = hdus[1].columns.names # we need the column names</span>
 
 <span class="go">NameError: name &#39;hdus&#39; is not defined</span>
 
-<span class="gp">In [2]: </span><span class="n">cols</span> <span class="o">=</span> <span class="p">[</span><span class="n">hdus</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">field</span><span class="p">(</span><span class="n">col</span><span class="p">)</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">names</span><span class="p">]</span> <span class="c"># and their content</span>
+<span class="gp">In [19]: </span><span class="n">cols</span> <span class="o">=</span> <span class="p">[</span><span class="n">hdus</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">field</span><span class="p">(</span><span class="n">col</span><span class="p">)</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">names</span><span class="p">]</span> <span class="c"># and their content</span>
 <span class="go">---------------------------------------------------------------------------</span>
 <span class="go">NameError                                 Traceback (most recent call last)</span>
-<span class="go">/home/nhmc/code/repo/python4ESAC/source/&lt;ipython-input-2-11bf4cbb9aba&gt; in &lt;module&gt;()</span>
+<span class="go">/home/nhmc/code/repo/python4ESAC/source/&lt;ipython-input-19-11bf4cbb9aba&gt; in &lt;module&gt;()</span>
 <span class="go">----&gt; 1 cols = [hdus[1].data.field(col) for col in names] # and their content</span>
 
 <span class="go">NameError: name &#39;names&#39; is not defined</span>
 
-<span class="gp">In [3]: </span><span class="n">cat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">rec</span><span class="o">.</span><span class="n">fromarrays</span><span class="p">(</span><span class="n">cols</span><span class="p">,</span><span class="n">names</span><span class="o">=</span><span class="n">names</span><span class="p">)</span>
+<span class="gp">In [20]: </span><span class="n">cat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">rec</span><span class="o">.</span><span class="n">fromarrays</span><span class="p">(</span><span class="n">cols</span><span class="p">,</span><span class="n">names</span><span class="o">=</span><span class="n">names</span><span class="p">)</span>
 <span class="go">---------------------------------------------------------------------------</span>
 <span class="go">NameError                                 Traceback (most recent call last)</span>
-<span class="go">/home/nhmc/code/repo/python4ESAC/source/&lt;ipython-input-3-b677b371521b&gt; in &lt;module&gt;()</span>
+<span class="go">/home/nhmc/code/repo/python4ESAC/source/&lt;ipython-input-20-b677b371521b&gt; in &lt;module&gt;()</span>
 <span class="go">----&gt; 1 cat = np.rec.fromarrays(cols,names=names)</span>
 
 <span class="go">NameError: name &#39;np&#39; is not defined</span>
 
-<span class="gp">In [4]: </span><span class="k">print</span><span class="p">(</span><span class="n">cat</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">names</span><span class="p">)</span> <span class="c"># similar to hdus[1].columns.names</span>
+<span class="gp">In [21]: </span><span class="k">print</span><span class="p">(</span><span class="n">cat</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">names</span><span class="p">)</span> <span class="c"># similar to hdus[1].columns.names</span>
 <span class="go">---------------------------------------------------------------------------</span>
 <span class="go">NameError                                 Traceback (most recent call last)</span>
-<span class="go">/home/nhmc/code/repo/python4ESAC/source/&lt;ipython-input-4-dbae3e9aa6c4&gt; in &lt;module&gt;()</span>
+<span class="go">/home/nhmc/code/repo/python4ESAC/source/&lt;ipython-input-21-dbae3e9aa6c4&gt; in &lt;module&gt;()</span>
 <span class="go">----&gt; 1 print(cat.dtype.names) # similar to hdus[1].columns.names</span>
 
 <span class="go">NameError: name &#39;cat&#39; is not defined</span>
 
-<span class="gp">In [5]: </span><span class="n">cat</span><span class="o">.</span><span class="n">shape</span> <span class="c"># and we have access to numpy commands</span>
+<span class="gp">In [22]: </span><span class="n">cat</span><span class="o">.</span><span class="n">shape</span> <span class="c"># and we have access to numpy commands</span>
 <span class="go">---------------------------------------------------------------------------</span>
 <span class="go">NameError                                 Traceback (most recent call last)</span>
-<span class="go">/home/nhmc/code/repo/python4ESAC/source/&lt;ipython-input-5-8f75c4ebac66&gt; in &lt;module&gt;()</span>
+<span class="go">/home/nhmc/code/repo/python4ESAC/source/&lt;ipython-input-22-8f75c4ebac66&gt; in &lt;module&gt;()</span>
 <span class="go">----&gt; 1 cat.shape # and we have access to numpy commands</span>
 
 <span class="go">NameError: name &#39;cat&#39; is not defined</span>
 </pre></div>
 </div>
 <p>Next, we make a new catalog, with only the bright and blue stars.</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="n">bright_blue</span> <span class="o">=</span> <span class="p">(</span><span class="n">cat</span><span class="p">[</span><span class="s">&#39;Vmag&#39;</span><span class="p">]</span><span class="o">&lt;</span><span class="mi">3</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">cat</span><span class="p">[</span><span class="s">&#39;V-B&#39;</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">)</span>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [23]: </span><span class="n">bright_blue</span> <span class="o">=</span> <span class="p">(</span><span class="n">cat</span><span class="p">[</span><span class="s">&#39;Vmag&#39;</span><span class="p">]</span><span class="o">&lt;</span><span class="mi">3</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">cat</span><span class="p">[</span><span class="s">&#39;V-B&#39;</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">)</span>
 <span class="go">---------------------------------------------------------------------------</span>
 <span class="go">NameError                                 Traceback (most recent call last)</span>
-<span class="go">/home/nhmc/code/repo/python4ESAC/source/&lt;ipython-input-1-6ce81650ddfe&gt; in &lt;module&gt;()</span>
+<span class="go">/home/nhmc/code/repo/python4ESAC/source/&lt;ipython-input-23-6ce81650ddfe&gt; in &lt;module&gt;()</span>
 <span class="go">----&gt; 1 bright_blue = (cat[&#39;Vmag&#39;]&lt;3) &amp; (cat[&#39;V-B&#39;]&gt;0)</span>
 
 <span class="go">NameError: name &#39;cat&#39; is not defined</span>
 
-<span class="gp">In [2]: </span><span class="nb">len</span><span class="p">(</span><span class="n">bright_blue</span><span class="p">),</span><span class="nb">sum</span><span class="p">(</span><span class="n">bright_blue</span><span class="p">)</span> <span class="c"># how many stars do we have, and how many or bright and blue?</span>
+<span class="gp">In [24]: </span><span class="nb">len</span><span class="p">(</span><span class="n">bright_blue</span><span class="p">),</span><span class="nb">sum</span><span class="p">(</span><span class="n">bright_blue</span><span class="p">)</span> <span class="c"># how many stars do we have, and how many or bright and blue?</span>
 <span class="go">---------------------------------------------------------------------------</span>
 <span class="go">NameError                                 Traceback (most recent call last)</span>
-<span class="go">/home/nhmc/code/repo/python4ESAC/source/&lt;ipython-input-2-836aba048677&gt; in &lt;module&gt;()</span>
+<span class="go">/home/nhmc/code/repo/python4ESAC/source/&lt;ipython-input-24-836aba048677&gt; in &lt;module&gt;()</span>
 <span class="go">----&gt; 1 len(bright_blue),sum(bright_blue) # how many stars do we have, and how many or bright and blue?</span>
 
 <span class="go">NameError: name &#39;bright_blue&#39; is not defined</span>
 
-<span class="gp">In [3]: </span><span class="n">cat_select</span> <span class="o">=</span> <span class="n">cat</span><span class="p">[</span><span class="n">bright_blue</span><span class="p">]</span> <span class="c"># make the selection</span>
+<span class="gp">In [25]: </span><span class="n">cat_select</span> <span class="o">=</span> <span class="n">cat</span><span class="p">[</span><span class="n">bright_blue</span><span class="p">]</span> <span class="c"># make the selection</span>
 <span class="go">---------------------------------------------------------------------------</span>
 <span class="go">NameError                                 Traceback (most recent call last)</span>
-<span class="go">/home/nhmc/code/repo/python4ESAC/source/&lt;ipython-input-3-e106553a2dc6&gt; in &lt;module&gt;()</span>
+<span class="go">/home/nhmc/code/repo/python4ESAC/source/&lt;ipython-input-25-e106553a2dc6&gt; in &lt;module&gt;()</span>
 <span class="go">----&gt; 1 cat_select = cat[bright_blue] # make the selection</span>
 
 <span class="go">NameError: name &#39;cat&#39; is not defined</span>
 
-<span class="gp">In [4]: </span><span class="n">cat_select</span> <span class="o">=</span> <span class="n">cat_select</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">cat_select</span><span class="p">[</span><span class="s">&#39;Vmag&#39;</span><span class="p">])]</span> <span class="c"># sort according to magnitude</span>
+<span class="gp">In [26]: </span><span class="n">cat_select</span> <span class="o">=</span> <span class="n">cat_select</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">cat_select</span><span class="p">[</span><span class="s">&#39;Vmag&#39;</span><span class="p">])]</span> <span class="c"># sort according to magnitude</span>
 <span class="go">---------------------------------------------------------------------------</span>
 <span class="go">NameError                                 Traceback (most recent call last)</span>
-<span class="go">/home/nhmc/code/repo/python4ESAC/source/&lt;ipython-input-4-0d26cec878e6&gt; in &lt;module&gt;()</span>
+<span class="go">/home/nhmc/code/repo/python4ESAC/source/&lt;ipython-input-26-0d26cec878e6&gt; in &lt;module&gt;()</span>
 <span class="go">----&gt; 1 cat_select = cat_select[np.argsort(cat_select[&#39;Vmag&#39;])] # sort according to magnitude</span>
 
 <span class="go">NameError: name &#39;cat_select&#39; is not defined</span>
 </pre></div>
 </div>
-<p>Now we can make the plots that we want. For fun, we first make a histogram of
+<p class="flip2">Click to Show/Hide Alternative with dictionaries</p> <div class="panel2"><p>How would the above look when we would use dictionaries instead of record arrays?
+First, we make a dictionary of the catalog:</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="n">cat2</span> <span class="o">=</span> <span class="p">{</span><span class="n">name</span><span class="p">:</span><span class="n">cat</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">cat</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">names</span><span class="p">}</span>
+
+<span class="gp">In [2]: </span><span class="n">cat2_select</span> <span class="o">=</span> <span class="p">{</span><span class="n">key</span><span class="p">:</span><span class="n">cat2</span><span class="p">[</span><span class="n">key</span><span class="p">][</span><span class="n">bright_blue</span><span class="p">]</span> <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">cat2</span><span class="p">}</span>
+
+<span class="gp">In [3]: </span><span class="n">sortarray</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">cat2_select</span><span class="p">[</span><span class="s">&#39;Vmag&#39;</span><span class="p">])</span>
+
+<span class="gp">In [4]: </span><span class="n">cat2_select</span> <span class="o">=</span> <span class="p">{</span><span class="n">key</span><span class="p">:</span><span class="n">cat2_select</span><span class="p">[</span><span class="n">key</span><span class="p">][</span><span class="n">sa</span><span class="p">]</span> <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">cat2_select</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Compare [2] with [31] and [4] with [32]. Though we can the same with dictionary
+with an equal amount of lines, record arrays provide a much more logical interface,
+and does not require us to cycle over the columns in the catalog manually.</p>
+</div><p>Now we can make the plots that we want. For fun, we first make a histogram of
 the magnitudes of all stars in the catalog. Then, we make a plot of the location
 of all stars (grey dots) and the selected one (blue dots). Also, we scale the
 size of the dots with the brightness of star.</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">cat</span><span class="p">[</span><span class="s">&#39;Vmag&#39;</span><span class="p">],</span><span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [27]: </span><span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">cat</span><span class="p">[</span><span class="s">&#39;Vmag&#39;</span><span class="p">],</span><span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
 <span class="go">---------------------------------------------------------------------------</span>
 <span class="go">NameError                                 Traceback (most recent call last)</span>
-<span class="go">/home/nhmc/code/repo/python4ESAC/source/&lt;ipython-input-1-877bceb7bcfc&gt; in &lt;module&gt;()</span>
+<span class="go">/home/nhmc/code/repo/python4ESAC/source/&lt;ipython-input-27-877bceb7bcfc&gt; in &lt;module&gt;()</span>
 <span class="go">----&gt; 1 plt.hist(cat[&#39;Vmag&#39;],bins=50)</span>
 
 <span class="go">NameError: name &#39;cat&#39; is not defined</span>
 </pre></div>
 </div>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="n">size</span> <span class="o">=</span> <span class="p">((</span><span class="n">cat</span><span class="p">[</span><span class="s">&#39;Vmag&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">-</span><span class="n">cat</span><span class="p">[</span><span class="s">&#39;Vmag&#39;</span><span class="p">])</span><span class="o">/</span><span class="mf">5.</span><span class="p">)</span><span class="o">**</span><span class="mi">3</span> <span class="c"># size the dots with mag</span>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [28]: </span><span class="n">size</span> <span class="o">=</span> <span class="p">((</span><span class="n">cat</span><span class="p">[</span><span class="s">&#39;Vmag&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">-</span><span class="n">cat</span><span class="p">[</span><span class="s">&#39;Vmag&#39;</span><span class="p">])</span><span class="o">/</span><span class="mf">5.</span><span class="p">)</span><span class="o">**</span><span class="mi">3</span> <span class="c"># size the dots with mag</span>
 <span class="go">---------------------------------------------------------------------------</span>
 <span class="go">NameError                                 Traceback (most recent call last)</span>
-<span class="go">/home/nhmc/code/repo/python4ESAC/source/&lt;ipython-input-1-ce4df0f9e91b&gt; in &lt;module&gt;()</span>
+<span class="go">/home/nhmc/code/repo/python4ESAC/source/&lt;ipython-input-28-ce4df0f9e91b&gt; in &lt;module&gt;()</span>
 <span class="go">----&gt; 1 size = ((cat[&#39;Vmag&#39;].max()-cat[&#39;Vmag&#39;])/5.)**3 # size the dots with mag</span>
 
 <span class="go">NameError: name &#39;cat&#39; is not defined</span>
 
-<span class="gp">In [2]: </span><span class="n">size_select</span> <span class="o">=</span> <span class="p">((</span><span class="n">cat</span><span class="p">[</span><span class="s">&#39;Vmag&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">-</span><span class="n">cat_select</span><span class="p">[</span><span class="s">&#39;Vmag&#39;</span><span class="p">])</span><span class="o">/</span><span class="mf">5.</span><span class="p">)</span><span class="o">**</span><span class="mi">3</span>
+<span class="gp">In [29]: </span><span class="n">size_select</span> <span class="o">=</span> <span class="p">((</span><span class="n">cat</span><span class="p">[</span><span class="s">&#39;Vmag&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">-</span><span class="n">cat_select</span><span class="p">[</span><span class="s">&#39;Vmag&#39;</span><span class="p">])</span><span class="o">/</span><span class="mf">5.</span><span class="p">)</span><span class="o">**</span><span class="mi">3</span>
 <span class="go">---------------------------------------------------------------------------</span>
 <span class="go">NameError                                 Traceback (most recent call last)</span>
-<span class="go">/home/nhmc/code/repo/python4ESAC/source/&lt;ipython-input-2-2c7a8a3909e2&gt; in &lt;module&gt;()</span>
+<span class="go">/home/nhmc/code/repo/python4ESAC/source/&lt;ipython-input-29-2c7a8a3909e2&gt; in &lt;module&gt;()</span>
 <span class="go">----&gt; 1 size_select = ((cat[&#39;Vmag&#39;].max()-cat_select[&#39;Vmag&#39;])/5.)**3</span>
 
 <span class="go">NameError: name &#39;cat&#39; is not defined</span>
 
-<span class="gp">In [3]: </span><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">cat</span><span class="p">[</span><span class="s">&#39;_RAJ2000&#39;</span><span class="p">],</span><span class="n">cat</span><span class="p">[</span><span class="s">&#39;_DEJ2000&#39;</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s">&#39;0.5&#39;</span><span class="p">,</span><span class="n">s</span><span class="o">=</span><span class="n">size</span><span class="p">,</span><span class="n">edgecolors</span><span class="o">=</span><span class="s">&#39;none&#39;</span><span class="p">)</span>
+<span class="gp">In [30]: </span><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">cat</span><span class="p">[</span><span class="s">&#39;_RAJ2000&#39;</span><span class="p">],</span><span class="n">cat</span><span class="p">[</span><span class="s">&#39;_DEJ2000&#39;</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s">&#39;0.5&#39;</span><span class="p">,</span><span class="n">s</span><span class="o">=</span><span class="n">size</span><span class="p">,</span><span class="n">edgecolors</span><span class="o">=</span><span class="s">&#39;none&#39;</span><span class="p">)</span>
 <span class="go">---------------------------------------------------------------------------</span>
 <span class="go">NameError                                 Traceback (most recent call last)</span>
-<span class="go">/home/nhmc/code/repo/python4ESAC/source/&lt;ipython-input-3-e682f1bfeb1f&gt; in &lt;module&gt;()</span>
+<span class="go">/home/nhmc/code/repo/python4ESAC/source/&lt;ipython-input-30-e682f1bfeb1f&gt; in &lt;module&gt;()</span>
 <span class="go">----&gt; 1 plt.scatter(cat[&#39;_RAJ2000&#39;],cat[&#39;_DEJ2000&#39;],color=&#39;0.5&#39;,s=size,edgecolors=&#39;none&#39;)</span>
 
 <span class="go">NameError: name &#39;cat&#39; is not defined</span>
 
-<span class="gp">In [4]: </span><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">cat_select</span><span class="p">[</span><span class="s">&#39;_RAJ2000&#39;</span><span class="p">],</span><span class="n">cat_select</span><span class="p">[</span><span class="s">&#39;_DEJ2000&#39;</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s">&#39;b&#39;</span><span class="p">,</span><span class="n">s</span><span class="o">=</span><span class="n">size_select</span><span class="p">,</span><span class="n">edgecolors</span><span class="o">=</span><span class="s">&#39;none&#39;</span><span class="p">)</span>
+<span class="gp">In [31]: </span><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">cat_select</span><span class="p">[</span><span class="s">&#39;_RAJ2000&#39;</span><span class="p">],</span><span class="n">cat_select</span><span class="p">[</span><span class="s">&#39;_DEJ2000&#39;</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s">&#39;b&#39;</span><span class="p">,</span><span class="n">s</span><span class="o">=</span><span class="n">size_select</span><span class="p">,</span><span class="n">edgecolors</span><span class="o">=</span><span class="s">&#39;none&#39;</span><span class="p">)</span>
 <span class="go">---------------------------------------------------------------------------</span>
 <span class="go">NameError                                 Traceback (most recent call last)</span>
-<span class="go">/home/nhmc/code/repo/python4ESAC/source/&lt;ipython-input-4-c9f7f8bf1b7b&gt; in &lt;module&gt;()</span>
+<span class="go">/home/nhmc/code/repo/python4ESAC/source/&lt;ipython-input-31-c9f7f8bf1b7b&gt; in &lt;module&gt;()</span>
 <span class="go">----&gt; 1 plt.scatter(cat_select[&#39;_RAJ2000&#39;],cat_select[&#39;_DEJ2000&#39;],color=&#39;b&#39;,s=size_select,edgecolors=&#39;none&#39;)</span>
 
 <span class="go">NameError: name &#39;cat_select&#39; is not defined</span>
@@ -641,24 +724,24 @@ size of the dots with the brightness of star.</p>
 </tbody>
 </table>
 <p>Finally, we are interested in the names 10 brightest blue stars in this catalog.
-To this end, we need to convert the HD number to the official star name. We use
+We need to convert the HD number to the official star name. We use
 the <tt class="docutils literal"><span class="pre">sesame</span></tt> online database (i.e. SIMBAD), download the HTML files with the
-info on the stars, and extract their name and spectral types. To this end, we
+info on the stars, and extract their name and spectral types. We
 can use the non-standard package BeautifulSoup:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="kn">import</span> <span class="nn">BeautifulSoup</span> <span class="kn">as</span> <span class="nn">bs</span>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [32]: </span><span class="kn">import</span> <span class="nn">BeautifulSoup</span> <span class="kn">as</span> <span class="nn">bs</span>
 
-<span class="gp">In [2]: </span><span class="kn">import</span> <span class="nn">urllib2</span>
+<span class="gp">In [33]: </span><span class="kn">import</span> <span class="nn">urllib2</span>
 
-<span class="gp">In [3]: </span><span class="k">for</span> <span class="n">hd</span> <span class="ow">in</span> <span class="n">cat_select</span><span class="p">[</span><span class="s">&#39;HD&#39;</span><span class="p">][:</span><span class="mi">10</span><span class="p">]:</span>
-<span class="gp">   ...:</span>      <span class="n">html</span> <span class="o">=</span> <span class="s">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">line</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">urllib2</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="s">&#39;http://cdsweb.u-strasbg.fr/cgi-bin/nph-sesame/-oxpsIF/S?HD{0}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">hd</span><span class="p">))</span><span class="o">.</span><span class="n">readlines</span><span class="p">()])</span>
-<span class="gp">   ...:</span>      <span class="n">page</span> <span class="o">=</span> <span class="n">bs</span><span class="o">.</span><span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">html</span><span class="p">)</span>
-<span class="gp">   ...:</span>      <span class="n">name</span> <span class="o">=</span> <span class="n">page</span><span class="p">(</span><span class="s">&#39;oname&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">text</span>
-<span class="gp">   ...:</span>      <span class="n">sptype</span> <span class="o">=</span> <span class="n">page</span><span class="p">(</span><span class="s">&#39;sptype&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">text</span>
-<span class="gp">   ...:</span>      <span class="k">print</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="n">sptype</span><span class="p">)</span>
-<span class="gp">   ...:</span> 
+<span class="gp">In [34]: </span><span class="k">for</span> <span class="n">hd</span> <span class="ow">in</span> <span class="n">cat_select</span><span class="p">[</span><span class="s">&#39;HD&#39;</span><span class="p">][:</span><span class="mi">10</span><span class="p">]:</span>
+<span class="gp">   ....:</span>      <span class="n">html</span> <span class="o">=</span> <span class="s">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">line</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">urllib2</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="s">&#39;http://cdsweb.u-strasbg.fr/cgi-bin/nph-sesame/-oxpsIF/S?HD{0}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">hd</span><span class="p">))</span><span class="o">.</span><span class="n">readlines</span><span class="p">()])</span>
+<span class="gp">   ....:</span>      <span class="n">page</span> <span class="o">=</span> <span class="n">bs</span><span class="o">.</span><span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">html</span><span class="p">)</span>
+<span class="gp">   ....:</span>      <span class="n">name</span> <span class="o">=</span> <span class="n">page</span><span class="p">(</span><span class="s">&#39;oname&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">text</span>
+<span class="gp">   ....:</span>      <span class="n">sptype</span> <span class="o">=</span> <span class="n">page</span><span class="p">(</span><span class="s">&#39;sptype&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">text</span>
+<span class="gp">   ....:</span>      <span class="k">print</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="n">sptype</span><span class="p">)</span>
+<span class="gp">   ....:</span> 
 <span class="go">---------------------------------------------------------------------------</span>
 <span class="go">NameError                                 Traceback (most recent call last)</span>
-<span class="go">/home/nhmc/code/repo/python4ESAC/source/&lt;ipython-input-3-bd87ee3c3645&gt; in &lt;module&gt;()</span>
+<span class="go">/home/nhmc/code/repo/python4ESAC/source/&lt;ipython-input-34-bd87ee3c3645&gt; in &lt;module&gt;()</span>
 <span class="go">----&gt; 1 for hd in cat_select[&#39;HD&#39;][:10]:</span>
 <span class="go">      2      html = &quot;&quot;.join([line for line in urllib2.urlopen(&#39;http://cdsweb.u-strasbg.fr/cgi-bin/nph-sesame/-oxpsIF/S?HD{0}&#39;.format(hd)).readlines()])</span>
 <span class="go">      3      page = bs.BeautifulSoup(html)</span>
@@ -669,7 +752,8 @@ can use the non-standard package BeautifulSoup:</p>
 </pre></div>
 </div>
 <p>There seems to be a solar-like star in there!</p>
-</div>
+<p class="flip3">Click to Show/Hide Solution without BeatifulSoup </p> <div class="panel3"><p>What would the previous script look like when BeautifulSoup is not installed?</p>
+</div></div>
 
 
           </div>

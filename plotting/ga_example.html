@@ -1,0 +1,577 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Random-point crossover genetic algorithm with demo GUI &mdash; Python4Astronomers 1.1 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="Python4Astronomers 1.1 documentation" href="../index.html" />
+ 
+<script type="text/javascript"> 
+$(document).ready(function(){
+
+$(".flip0").click(function(){
+    $(".panel0").slideToggle("normal");
+  });
+
+$(".flip1").click(function(){
+    $(".panel1").slideToggle("normal");
+  });
+
+$(".flip2").click(function(){
+    $(".panel2").slideToggle("normal");
+  });
+
+$(".flip3").click(function(){
+    $(".panel3").slideToggle("normal");
+  });
+
+$(".flip4").click(function(){
+    $(".panel4").slideToggle("normal");
+  });
+
+$(".flip5").click(function(){
+    $(".panel5").slideToggle("normal");
+  });
+
+$(".flip6").click(function(){
+    $(".panel6").slideToggle("normal");
+  });
+
+$(".flip7").click(function(){
+    $(".panel7").slideToggle("normal");
+  });
+
+$(".flip8").click(function(){
+    $(".panel8").slideToggle("normal");
+  });
+
+$(".flip9").click(function(){
+    $(".panel9").slideToggle("normal");
+  });
+
+});
+</script>
+ 
+<style type="text/css"> 
+
+div.panel0,p.flip0
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip0
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel0
+{
+display:none;
+}
+
+div.panel1,p.flip1
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip1
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel1
+{
+display:none;
+}
+
+div.panel2,p.flip2
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip2
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel2
+{
+display:none;
+}
+
+div.panel3,p.flip3
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip3
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel3
+{
+display:none;
+}
+
+div.panel4,p.flip4
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip4
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel4
+{
+display:none;
+}
+
+div.panel5,p.flip5
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip5
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel5
+{
+display:none;
+}
+
+div.panel6,p.flip6
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip6
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel6
+{
+display:none;
+}
+
+div.panel7,p.flip7
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip7
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel7
+{
+display:none;
+}
+
+div.panel8,p.flip8
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip8
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel8
+{
+display:none;
+}
+
+div.panel9,p.flip9
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip9
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel9
+{
+display:none;
+}
+
+</style>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-18709417-2']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li><a href="../index.html">Python4Astronomers 1.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Random-point crossover genetic algorithm with demo GUI</a><ul>
+<li><a class="reference internal" href="#a-simple-genetic-algorithm">A simple genetic algorithm</a></li>
+<li><a class="reference internal" href="#a-simple-gui">A simple GUI</a></li>
+</ul>
+</li>
+</ul>
+
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/plotting/ga_example.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="random-point-crossover-genetic-algorithm-with-demo-gui">
+<h1><a class="toc-backref" href="#id1">Random-point crossover genetic algorithm with demo GUI</a><a class="headerlink" href="#random-point-crossover-genetic-algorithm-with-demo-gui" title="Permalink to this headline">¶</a></h1>
+<p>In this tutorial we write a code that implements a simple genetic algorithm to
+find a maximum of a function, <em>and</em> construct a graphical user interface around it
+to visualise the program. We will use about <em>as many lines of codes as there
+letters in the title of this tutorial</em>. Granted, for clarity, some single-line
+statement should be expanded in multi-line statements, though I personally feel
+the code is not particularly obfuscated.</p>
+<div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#random-point-crossover-genetic-algorithm-with-demo-gui" id="id1">Random-point crossover genetic algorithm with demo GUI</a><ul>
+<li><a class="reference internal" href="#a-simple-genetic-algorithm" id="id2">A simple genetic algorithm</a></li>
+<li><a class="reference internal" href="#a-simple-gui" id="id3">A simple GUI</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="a-simple-genetic-algorithm">
+<h2><a class="toc-backref" href="#id2">A simple genetic algorithm</a><a class="headerlink" href="#a-simple-genetic-algorithm" title="Permalink to this headline">¶</a></h2>
+<p>Typically, a genetic algorithm has the following ingredients, introducing some
+terminology along the way:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>A function that needs to be maximized</li>
+<li>A function that returns the <em>fitness</em> of a set of parameters (<em>individual</em> from a <em>population</em>)</li>
+</ol>
+<p>3. A function that generates a new individual starting from other individuals
+(<em>child</em> from <em>parents</em> via a <em>breeding mechanism</em>)
+4. A function that selects <em>fit</em> individuals (i.e. individuals with a high
+fitness) for breeding</p>
+</div></blockquote>
+<p>First, as always, the necessary import statements:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">pylab</span> <span class="kn">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+</pre></div>
+</div>
+<p>Let&#8217;s introduce the fitness function that needs so be maximized. We choose 2D function
+with a lot of local maxima:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">maxfunc</span><span class="p">(</span><span class="n">sample</span><span class="p">):</span>
+    <span class="n">x</span><span class="p">,</span><span class="n">y</span> <span class="o">=</span> <span class="n">sample</span>
+    <span class="k">return</span> <span class="p">(</span><span class="mf">16.</span><span class="o">*</span><span class="n">x</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">x</span><span class="p">)</span> <span class="o">*</span> <span class="n">y</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">y</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mf">15.</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">x</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mf">15.</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">y</span><span class="p">))</span><span class="o">**</span><span class="mi">2</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../_images/ga_maxfunc.png"><img alt="../_images/ga_maxfunc.png" src="../_images/ga_maxfunc.png" style="width: 400.0px; height: 300.0px;" /></a>
+<p>Suppose we have a population consisting of a lot of individuals, and we have
+a fitness value for all of them. We might want to rank the individuals according
+to their fitness. The function returns the sorted sample and the cumulative
+fitness. Using the latter, we can later on choose to keep a fraction of a given
+population for further breeding:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">rank</span><span class="p">(</span><span class="n">sample</span><span class="p">,</span><span class="n">fitness</span><span class="p">):</span>
+    <span class="n">fitness</span> <span class="o">/=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">fitness</span><span class="p">)</span> <span class="c"># normalize fitness values</span>
+    <span class="n">sa</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">fitness</span><span class="p">)</span> <span class="c"># sort the sample</span>
+    <span class="k">return</span> <span class="n">sample</span><span class="p">[</span><span class="n">sa</span><span class="p">],</span><span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">fitness</span><span class="p">[</span><span class="n">sa</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>The &#8216;good&#8217; individuals are chosen to be a random fraction (but at the most 10%)
+of the original population. Of course if we choose e.g. 10% of the population,
+we will choose the 10% fittest individuals:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">select_individuals</span><span class="p">(</span><span class="n">acfitness</span><span class="p">,</span><span class="n">min_value</span><span class="o">=</span><span class="mf">0.9</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">acfitness</span><span class="o">&gt;</span><span class="nb">min</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(),</span><span class="n">min_value</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Next up, is a breeding function. We use a random point crossover mechanism
+(i.e., if there are <tt class="docutils literal"><span class="pre">n</span></tt> parameters, we choose the first <tt class="docutils literal"><span class="pre">n1</span></tt> parameters of
+parent 1 and the last <tt class="docutils literal"><span class="pre">n-n1</span></tt> parameters of parent2 to generate a new individual.
+This is a bit overkill in 2D, since <tt class="docutils literal"><span class="pre">n1=1</span></tt> always:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">breed_crossover</span><span class="p">(</span><span class="n">parent1</span><span class="p">,</span><span class="n">parent2</span><span class="p">,</span><span class="n">parents</span><span class="p">):</span>
+    <span class="n">index</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">low</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">high</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">parent1</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span> <span class="c"># random point between 1 and 1 is always 1</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="n">parent1</span><span class="p">[:</span><span class="n">index</span><span class="p">],</span><span class="n">parent2</span><span class="p">[</span><span class="n">index</span><span class="p">:]])</span>
+</pre></div>
+</div>
+<p>Given a population, we know now which individuals are good enough to be parents,
+and we know how to breed having parents. Thus, we can generate some offspring. In
+doing so, we add another random event: we randomly choose parents from the population
+to breed with (determined with <tt class="docutils literal"><span class="pre">index1</span></tt> and <tt class="docutils literal"><span class="pre">index2</span></tt> below):</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">generate_offspring</span><span class="p">(</span><span class="n">sample</span><span class="p">,</span><span class="n">good_individuals</span><span class="p">,</span><span class="n">breed_func</span><span class="p">):</span>
+    <span class="n">parents</span> <span class="o">=</span> <span class="n">sample</span><span class="p">[</span><span class="n">good_individuals</span><span class="p">]</span> <span class="c"># select only good individuals</span>
+    <span class="n">nr_of_children</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="o">-</span><span class="n">good_individuals</span><span class="p">)</span> <span class="c"># how many individuals need to be replaced?</span>
+    <span class="n">Np</span><span class="p">,</span><span class="n">Ni</span> <span class="o">=</span> <span class="n">parents</span><span class="o">.</span><span class="n">shape</span>
+    <span class="n">children</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">nr_of_children</span><span class="p">,</span><span class="n">Ni</span><span class="p">))</span> <span class="c"># prepare to fill in the children</span>
+    <span class="n">index1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">nr_of_children</span><span class="p">,</span><span class="n">high</span><span class="o">=</span><span class="n">Np</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(),</span><span class="nb">int</span><span class="p">)</span> <span class="c"># random parent 1</span>
+    <span class="n">index2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">nr_of_children</span><span class="p">,</span><span class="n">high</span><span class="o">=</span><span class="n">Np</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(),</span><span class="nb">int</span><span class="p">)</span> <span class="c"># random parent 2</span>
+    <span class="k">for</span> <span class="n">nr</span><span class="p">,(</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">index1</span><span class="p">,</span><span class="n">index2</span><span class="p">)):</span>
+        <span class="n">children</span><span class="p">[</span><span class="n">nr</span><span class="p">]</span> <span class="o">=</span> <span class="n">breed_func</span><span class="p">(</span><span class="n">parents</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">parents</span><span class="p">[</span><span class="n">j</span><span class="p">],</span><span class="n">parents</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">children</span>
+</pre></div>
+</div>
+<p>A function that accepts an &#8216;old&#8217; population and evolves it to a &#8216;new&#8217; generation
+is then straightforwardly implemented with:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">evolve</span><span class="p">(</span><span class="n">sample</span><span class="p">,</span><span class="n">eval_func</span><span class="p">,</span><span class="n">breed_func</span><span class="p">):</span>
+    <span class="n">fitness</span> <span class="o">=</span> <span class="n">eval_func</span><span class="p">(</span><span class="n">sample</span><span class="o">.</span><span class="n">T</span><span class="p">)</span> <span class="c"># evaulation function needs 2xN instead of Nx2</span>
+    <span class="n">sample</span><span class="p">,</span><span class="n">fitness_</span> <span class="o">=</span> <span class="n">rank</span><span class="p">(</span><span class="n">sample</span><span class="p">,</span><span class="n">copy</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">fitness</span><span class="p">))</span>
+    <span class="n">good</span><span class="p">,</span><span class="n">bad</span> <span class="o">=</span> <span class="n">select_individuals</span><span class="p">(</span><span class="n">sample</span><span class="p">,</span><span class="n">fitness_</span><span class="p">)</span>
+    <span class="n">children</span> <span class="o">=</span> <span class="n">generate_offspring</span><span class="p">(</span><span class="n">sample</span><span class="p">,</span><span class="n">good</span><span class="p">,</span><span class="n">breed_func</span><span class="p">)</span>
+    <span class="n">sample</span><span class="p">[</span><span class="n">bad</span><span class="p">]</span> <span class="o">=</span> <span class="n">children</span>
+    <span class="k">return</span> <span class="n">sample</span>
+</pre></div>
+</div>
+<p>That&#8217;s it, using 31 lines of code. We could know generate an initial population and let it evolve by
+iteratively calling <tt class="docutils literal"><span class="pre">evolve</span></tt> on the population.</p>
+<p>We have about 20 lines of code left to construct an interactive GUI.</p>
+</div>
+<div class="section" id="a-simple-gui">
+<h2><a class="toc-backref" href="#id3">A simple GUI</a><a class="headerlink" href="#a-simple-gui" title="Permalink to this headline">¶</a></h2>
+<p>Luckily, <tt class="docutils literal"><span class="pre">matplotlib</span></tt> <em>already</em> has a GUI. By just calling <tt class="docutils literal"><span class="pre">plt.show()</span></tt>, a
+main window is created and an event loop is started. All we need to do is add
+some functionality. This is the list of features we will implement in the GUI:</p>
+<blockquote>
+<div><ul class="simple">
+<li>the user should be able to change the number of individuals in the population
+via a Slider widget.</li>
+<li>the user should be able initialise the sample with the keyboard button <tt class="docutils literal"><span class="pre">i</span></tt>.</li>
+<li>the user should be able to evolve the populations hitting <tt class="docutils literal"><span class="pre">enter</span></tt>.</li>
+</ul>
+</div></blockquote>
+<p>Each time the user hits <tt class="docutils literal"><span class="pre">i</span></tt>, the function that needs to be maximized has to be
+shown to the screen, as well as the initial population. Hitting <tt class="docutils literal"><span class="pre">enter</span></tt> should
+remove the old population, evolve it and show the new population.</p>
+<p>Let&#8217;s start with the keyboard events. We construct a function called <tt class="docutils literal"><span class="pre">ontype</span></tt>,
+which receives a keyboard event from the GUI. This event has an attribute <tt class="docutils literal"><span class="pre">key</span></tt>,
+which is a string corresponding to the button the user just pressed. If <tt class="docutils literal"><span class="pre">key</span></tt>
+equals <tt class="docutils literal"><span class="pre">i</span></tt> or <tt class="docutils literal"><span class="pre">enter</span></tt>, we need to do something. Otherwise, the function should
+exit quitely.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">ontype</span><span class="p">(</span><span class="n">event</span><span class="p">):</span>
+
+    <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">key</span><span class="o">==</span><span class="s">&#39;enter&#39;</span><span class="p">:</span>
+        <span class="c">#-- retrieve the sample data from the plot: the sample is plotted in white</span>
+        <span class="k">for</span> <span class="n">child</span> <span class="ow">in</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">get_children</span><span class="p">():</span>
+            <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">child</span><span class="p">,</span><span class="s">&#39;get_color&#39;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">child</span><span class="o">.</span><span class="n">get_color</span><span class="p">()</span><span class="o">==</span><span class="s">&#39;1&#39;</span><span class="p">:</span>
+                <span class="n">sample</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">child</span><span class="o">.</span><span class="n">get_data</span><span class="p">())</span><span class="o">.</span><span class="n">T</span> <span class="c"># put it in the right format</span>
+                <span class="k">break</span> <span class="c"># make sure `child` is now set to the right artist</span>
+        <span class="n">sample</span><span class="p">,</span><span class="n">fitness</span> <span class="o">=</span> <span class="n">evolve</span><span class="p">(</span><span class="n">sample</span><span class="p">,</span><span class="n">maxfunc</span><span class="p">,</span><span class="n">breed_crossover</span><span class="p">)</span>
+        <span class="n">child</span><span class="o">.</span><span class="n">set_data</span><span class="p">(</span><span class="n">sample</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span><span class="n">sample</span><span class="p">[:,</span><span class="mi">1</span><span class="p">])</span>
+
+    <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">key</span><span class="o">==</span><span class="s">&#39;i&#39;</span><span class="p">:</span>
+        <span class="n">sample</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="n">slider</span><span class="o">.</span><span class="n">val</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span><span class="n">low</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">high</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="c"># initialize sample</span>
+        <span class="n">bkg</span> <span class="o">=</span> <span class="n">maxfunc</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mgrid</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span><span class="mi">500</span><span class="n">j</span><span class="p">,</span><span class="mi">0</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span><span class="mi">500</span><span class="n">j</span><span class="p">])</span> <span class="c"># make the background</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">cla</span><span class="p">()</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sample</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span><span class="n">sample</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span><span class="s">&#39;o&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s">&#39;1&#39;</span><span class="p">,</span><span class="n">mec</span><span class="o">=</span><span class="s">&#39;1&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">bkg</span><span class="p">,</span><span class="n">extent</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span><span class="n">aspect</span><span class="o">=</span><span class="s">&#39;auto&#39;</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">spectral</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">set_autoscale_on</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Notice how the function uses the object-oriented interface to <tt class="docutils literal"><span class="pre">matplotlib</span></tt>.
+Using <tt class="docutils literal"><span class="pre">get_children()</span></tt> on the current axis (<tt class="docutils literal"><span class="pre">plt.gca()</span></tt>), allows to cycle
+through all the elements that are in the plot. We look for a particular element
+that has a white color. Because not all elements in a plot <em>have</em> colors, we need
+to check if the particular element has an attribute called <tt class="docutils literal"><span class="pre">color</span></tt> first. Since there
+are only very few elements in the plot in this example, we can safely assume
+that whatever is white, is representing
+the population. We retrieve the coordinates of the individuals with <tt class="docutils literal"><span class="pre">get_data()</span></tt>,
+which returns the <tt class="docutils literal"><span class="pre">x</span></tt> and <tt class="docutils literal"><span class="pre">y</span></tt> coordinate arrays. Having what we want, we
+break the loop. After evolving, we update the values of the plot element representing
+the new population with <tt class="docutils literal"><span class="pre">set_data</span></tt>.</p>
+<p>Initialisation is a bit simpler: we only generate a random set of parameters
+in the right domain and make the background function. The value for the number
+of parameters is taken from the slider widget, which we construct later on.
+For plotting, we first
+make sure the axes is cleared (<tt class="docutils literal"><span class="pre">cla()</span></tt>), then plot the sample as white dots
+and add the background. We set <tt class="docutils literal"><span class="pre">autoscale</span></tt> to <tt class="docutils literal"><span class="pre">False</span></tt> so that the axis limits
+stay the same regardless of what we plot (if one of the individuals lies on the edges,
+there might be an automatic rescaling otherwise).</p>
+<p>Finally, we need to force a <tt class="docutils literal"><span class="pre">draw</span></tt> statement. When something is added to the
+canvas, it is not automatically rendered. Rendering is an expensive operation,
+so matplotlib chooses to only render stuff when explicitly needed.</p>
+<p>This took about 16 lines of code. We can only use about 5 more to make the
+slide widget and build the GUI.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">axpop</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">axes</span><span class="p">([</span><span class="mf">0.20</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.65</span><span class="p">,</span> <span class="mf">0.03</span><span class="p">],</span> <span class="n">axisbg</span><span class="o">=</span><span class="s">&#39;lightgoldenrodyellow&#39;</span><span class="p">)</span> <span class="c"># axis for the slide</span>
+    <span class="n">slider</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">Slider</span><span class="p">(</span><span class="n">axpop</span><span class="p">,</span> <span class="s">&#39;Population&#39;</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">2000</span><span class="p">,</span> <span class="n">valinit</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span> <span class="c"># the slider</span>
+    <span class="n">ax1</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">axes</span><span class="p">([</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">0.15</span><span class="p">,</span><span class="mf">0.85</span><span class="p">,</span><span class="mf">0.77</span><span class="p">])</span> <span class="c"># main axis to plot the results</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">gcf</span><span class="p">()</span><span class="o">.</span><span class="n">canvas</span><span class="o">.</span><span class="n">mpl_connect</span><span class="p">(</span><span class="s">&#39;key_press_event&#39;</span><span class="p">,</span><span class="n">ontype</span><span class="p">)</span> <span class="c"># connect the ontype function to the GUI</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span> <span class="c"># show the window</span>
+</pre></div>
+</div>
+<p>Here, we made a new Slider axes and initiated the main axes used to plot all the
+results to. Then, we connected the <tt class="docutils literal"><span class="pre">ontype</span></tt> function to the current figure (<tt class="docutils literal"><span class="pre">plt.gcf()</span></tt>)
+and showed the main window to the screen.</p>
+<p>The first line in statement (<tt class="docutils literal"><span class="pre">if</span> <span class="pre">__name__==&quot;__main__&quot;</span></tt>) makes sure that this
+part of the code is only executed when run in the terminal with:</p>
+<div class="highlight-python"><pre>$:&gt; python ga.py</pre>
+</div>
+<p>We wrote quite some functions that we might want to use in other scripts as well.
+Then we could simply do an <tt class="docutils literal"><span class="pre">import</span> <span class="pre">ga</span></tt>, in which case all the code that comes
+after <tt class="docutils literal"><span class="pre">if</span> <span class="pre">__name__==&quot;__main__&quot;</span></tt> will not be executed.</p>
+<p>That&#8217;s still 2 lines to spare!</p>
+<p>This is the output from an example run:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="51%" />
+<col width="49%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="first last reference internal image-reference" href="../_images/ga_init.png"><img alt="../_images/ga_init.png" src="../_images/ga_init.png" style="width: 400.0px; height: 300.0px;" /></a>
+</td>
+<td><a class="first last reference internal image-reference" href="../_images/ga_2.png"><img alt="../_images/ga_2.png" src="../_images/ga_2.png" style="width: 400.0px; height: 300.0px;" /></a>
+</td>
+</tr>
+<tr class="row-even"><td><a class="first last reference internal image-reference" href="../_images/ga_3.png"><img alt="../_images/ga_3.png" src="../_images/ga_3.png" style="width: 400.0px; height: 300.0px;" /></a>
+</td>
+<td><a class="first last reference internal image-reference" href="../_images/ga_4.png"><img alt="../_images/ga_4.png" src="../_images/ga_4.png" style="width: 400.0px; height: 300.0px;" /></a>
+</td>
+</tr>
+<tr class="row-odd"><td><a class="first last reference internal image-reference" href="../_images/ga_5.png"><img alt="../_images/ga_5.png" src="../_images/ga_5.png" style="width: 400.0px; height: 300.0px;" /></a>
+</td>
+<td><a class="first last reference internal image-reference" href="../_images/ga_6.png"><img alt="../_images/ga_6.png" src="../_images/ga_6.png" style="width: 400.0px; height: 300.0px;" /></a>
+</td>
+</tr>
+<tr class="row-even"><td><a class="first last reference internal image-reference" href="../_images/ga_7.png"><img alt="../_images/ga_7.png" src="../_images/ga_7.png" style="width: 400.0px; height: 300.0px;" /></a>
+</td>
+<td><a class="first last reference internal image-reference" href="../_images/ga_8.png"><img alt="../_images/ga_8.png" src="../_images/ga_8.png" style="width: 400.0px; height: 300.0px;" /></a>
+</td>
+</tr>
+<tr class="row-odd"><td><a class="first last reference internal image-reference" href="../_images/ga_9.png"><img alt="../_images/ga_9.png" src="../_images/ga_9.png" style="width: 400.0px; height: 300.0px;" /></a>
+</td>
+<td><a class="first last reference internal image-reference" href="../_images/ga_10.png"><img alt="../_images/ga_10.png" src="../_images/ga_10.png" style="width: 400.0px; height: 300.0px;" /></a>
+</td>
+</tr>
+<tr class="row-even"><td><a class="first last reference internal image-reference" href="../_images/ga_11.png"><img alt="../_images/ga_11.png" src="../_images/ga_11.png" style="width: 400.0px; height: 300.0px;" /></a>
+</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li><a href="../index.html">Python4Astronomers 1.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+ <small>Copyright:
+ Smithsonian Astrophysical Observatory under terms of
+ <a rel="license"
+ href="http://creativecommons.org/licenses/by/3.0/">CC
+ Attribution 3.0</a></small> <a rel="license"
+ href="http://creativecommons.org/licenses/by/3.0/"><img alt="Creative Commons
+ License" style="border-width:0"
+ src="http://i.creativecommons.org/l/by/3.0/80x15.png" /></a>
+
+  </body>
+</html>

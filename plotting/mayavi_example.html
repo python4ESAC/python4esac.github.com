@@ -385,7 +385,7 @@ optimizers.</p>
 <span class="gp">In [4]: </span><span class="kn">from</span> <span class="nn">mayavi</span> <span class="kn">import</span> <span class="n">mlab</span>
 <span class="go">---------------------------------------------------------------------------</span>
 <span class="go">ImportError                               Traceback (most recent call last)</span>
-<span class="go">/home/nhmc/code/repo/python4ESAC/source/py4ast/core/&lt;ipython-input-4-3f0e4b94a8ea&gt; in &lt;module&gt;()</span>
+<span class="go">/home/nhmc/code/repo/python4ESAC/source/&lt;ipython-input-4-3f0e4b94a8ea&gt; in &lt;module&gt;()</span>
 <span class="go">----&gt; 1 from mayavi import mlab</span>
 
 <span class="go">ImportError: No module named mayavi</span>
@@ -428,7 +428,7 @@ that it can descend to the true value. We could do that by first checking what
 the expected shape of the star is. However, since the Roche potential behaves well,
 we can be lazy and choose a value very close to (but not equal to) 0. We take an
 arbitrary 0.00001.</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="n">r_init</span> <span class="o">=</span> <span class="mf">1e-5</span>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [3]: </span><span class="n">r_init</span> <span class="o">=</span> <span class="mf">1e-5</span>
 </pre></div>
 </div>
 <p>Next, we need to iterate over all coordinates <tt class="docutils literal"><span class="pre">theta</span></tt> and <tt class="docutils literal"><span class="pre">phi</span></tt>, and apply
@@ -436,50 +436,50 @@ the Newton-Raphson method to find the radius (slow!). We constructed a two
 dimensional grid of coordinates, which is a bit anoying to iterate over (though
 possible for sure!). In this approach, we make the colatitude and longitude
 1D dimensional first, and iterate simultaneously over <tt class="docutils literal"><span class="pre">theta</span></tt> and <tt class="docutils literal"><span class="pre">phi</span></tt>:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="n">r1</span> <span class="o">=</span> <span class="p">[</span><span class="n">newton</span><span class="p">(</span><span class="n">roche</span><span class="p">,</span><span class="n">r_init</span><span class="p">,</span><span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">th</span><span class="p">,</span><span class="n">ph</span><span class="p">,</span><span class="n">pot1</span><span class="p">,</span><span class="n">q</span><span class="p">))</span> <span class="k">for</span> <span class="n">th</span><span class="p">,</span><span class="n">ph</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">theta</span><span class="o">.</span><span class="n">ravel</span><span class="p">(),</span><span class="n">phi</span><span class="o">.</span><span class="n">ravel</span><span class="p">())]</span>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [4]: </span><span class="n">r1</span> <span class="o">=</span> <span class="p">[</span><span class="n">newton</span><span class="p">(</span><span class="n">roche</span><span class="p">,</span><span class="n">r_init</span><span class="p">,</span><span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">th</span><span class="p">,</span><span class="n">ph</span><span class="p">,</span><span class="n">pot1</span><span class="p">,</span><span class="n">q</span><span class="p">))</span> <span class="k">for</span> <span class="n">th</span><span class="p">,</span><span class="n">ph</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">theta</span><span class="o">.</span><span class="n">ravel</span><span class="p">(),</span><span class="n">phi</span><span class="o">.</span><span class="n">ravel</span><span class="p">())]</span>
 
-<span class="gp">In [2]: </span><span class="n">r2</span> <span class="o">=</span> <span class="p">[</span><span class="n">newton</span><span class="p">(</span><span class="n">roche</span><span class="p">,</span><span class="n">r_init</span><span class="p">,</span><span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">th</span><span class="p">,</span><span class="n">ph</span><span class="p">,</span><span class="n">pot2</span><span class="p">,</span><span class="mf">1.</span><span class="o">/</span><span class="n">q</span><span class="p">))</span> <span class="k">for</span> <span class="n">th</span><span class="p">,</span><span class="n">ph</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">theta</span><span class="o">.</span><span class="n">ravel</span><span class="p">(),</span><span class="n">phi</span><span class="o">.</span><span class="n">ravel</span><span class="p">())]</span>
+<span class="gp">In [5]: </span><span class="n">r2</span> <span class="o">=</span> <span class="p">[</span><span class="n">newton</span><span class="p">(</span><span class="n">roche</span><span class="p">,</span><span class="n">r_init</span><span class="p">,</span><span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">th</span><span class="p">,</span><span class="n">ph</span><span class="p">,</span><span class="n">pot2</span><span class="p">,</span><span class="mf">1.</span><span class="o">/</span><span class="n">q</span><span class="p">))</span> <span class="k">for</span> <span class="n">th</span><span class="p">,</span><span class="n">ph</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">theta</span><span class="o">.</span><span class="n">ravel</span><span class="p">(),</span><span class="n">phi</span><span class="o">.</span><span class="n">ravel</span><span class="p">())]</span>
 </pre></div>
 </div>
 <p>The approach with list-comprehension implies that we need to convert the radii for
 both components explicitly to an array type, and we reshape it to match the
 original shape of <tt class="docutils literal"><span class="pre">theta</span></tt> and <tt class="docutils literal"><span class="pre">phi</span></tt>:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="n">r1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">r1</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">theta</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [6]: </span><span class="n">r1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">r1</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">theta</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 
-<span class="gp">In [2]: </span><span class="n">r2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">r2</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">theta</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="gp">In [7]: </span><span class="n">r2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">r2</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">theta</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>That&#8217;s basically it! We did everything in spherical coordinates because that is
 most natural in this case. To plot, however, we need cartesian coordinates:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="n">x1</span> <span class="o">=</span> <span class="n">r1</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span><span class="o">*</span><span class="n">cos</span><span class="p">(</span><span class="n">phi</span><span class="p">)</span>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [8]: </span><span class="n">x1</span> <span class="o">=</span> <span class="n">r1</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span><span class="o">*</span><span class="n">cos</span><span class="p">(</span><span class="n">phi</span><span class="p">)</span>
 
-<span class="gp">In [2]: </span><span class="n">y1</span> <span class="o">=</span> <span class="n">r1</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="n">phi</span><span class="p">)</span>
+<span class="gp">In [9]: </span><span class="n">y1</span> <span class="o">=</span> <span class="n">r1</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="n">phi</span><span class="p">)</span>
 
-<span class="gp">In [3]: </span><span class="n">z1</span> <span class="o">=</span> <span class="n">r1</span><span class="o">*</span><span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span>
+<span class="gp">In [10]: </span><span class="n">z1</span> <span class="o">=</span> <span class="n">r1</span><span class="o">*</span><span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="n">x2</span> <span class="o">=</span> <span class="n">r2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">phi</span><span class="p">)</span>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [11]: </span><span class="n">x2</span> <span class="o">=</span> <span class="n">r2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">phi</span><span class="p">)</span>
 
-<span class="gp">In [2]: </span><span class="n">y2</span> <span class="o">=</span> <span class="n">r2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">phi</span><span class="p">)</span>
+<span class="gp">In [12]: </span><span class="n">y2</span> <span class="o">=</span> <span class="n">r2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">phi</span><span class="p">)</span>
 
-<span class="gp">In [3]: </span><span class="n">z2</span> <span class="o">=</span> <span class="n">r2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span>
+<span class="gp">In [13]: </span><span class="n">z2</span> <span class="o">=</span> <span class="n">r2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Plotting with Mayavi is now as simple as with matplotlib. We color the surface
 according the size of the radius. An interactive display should appear after
 executing these commands (else, use <tt class="docutils literal"><span class="pre">mlab.show()</span></tt>):</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="n">mlab</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [14]: </span><span class="n">mlab</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
 <span class="go">---------------------------------------------------------------------------</span>
 <span class="go">NameError                                 Traceback (most recent call last)</span>
-<span class="go">/home/nhmc/code/repo/python4ESAC/source/py4ast/core/&lt;ipython-input-1-28cec454b7a9&gt; in &lt;module&gt;()</span>
+<span class="go">/home/nhmc/code/repo/python4ESAC/source/&lt;ipython-input-14-28cec454b7a9&gt; in &lt;module&gt;()</span>
 <span class="go">----&gt; 1 mlab.figure()</span>
 
 <span class="go">NameError: name &#39;mlab&#39; is not defined</span>
 
-<span class="gp">In [2]: </span><span class="n">mlab</span><span class="o">.</span><span class="n">mesh</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span><span class="n">y1</span><span class="p">,</span><span class="n">z1</span><span class="p">,</span><span class="n">scalars</span><span class="o">=</span><span class="n">r1</span><span class="p">)</span>
+<span class="gp">In [15]: </span><span class="n">mlab</span><span class="o">.</span><span class="n">mesh</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span><span class="n">y1</span><span class="p">,</span><span class="n">z1</span><span class="p">,</span><span class="n">scalars</span><span class="o">=</span><span class="n">r1</span><span class="p">)</span>
 <span class="go">---------------------------------------------------------------------------</span>
 <span class="go">NameError                                 Traceback (most recent call last)</span>
-<span class="go">/home/nhmc/code/repo/python4ESAC/source/py4ast/core/&lt;ipython-input-2-841728bc45e1&gt; in &lt;module&gt;()</span>
+<span class="go">/home/nhmc/code/repo/python4ESAC/source/&lt;ipython-input-15-841728bc45e1&gt; in &lt;module&gt;()</span>
 <span class="go">----&gt; 1 mlab.mesh(x1,y1,z1,scalars=r1)</span>
 
 <span class="go">NameError: name &#39;mlab&#39; is not defined</span>
@@ -489,48 +489,48 @@ executing these commands (else, use <tt class="docutils literal"><span class="pr
 <p>So what about the secondary? Because of the definition of the Roche surface we
 used, both stars are made in the same coordinate system, so they will overlap.
 We can easily but the secondary in its place by executing:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="n">x2_</span> <span class="o">=</span> <span class="o">-</span><span class="n">x2</span>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [16]: </span><span class="n">x2_</span> <span class="o">=</span> <span class="o">-</span><span class="n">x2</span>
 
-<span class="gp">In [2]: </span><span class="n">x2_</span><span class="o">+=</span> <span class="mi">1</span>
+<span class="gp">In [17]: </span><span class="n">x2_</span><span class="o">+=</span> <span class="mi">1</span>
 </pre></div>
 </div>
 <p>But we choose to do it the hard (but more general) way: via a proper coordinate
 transformation. The secondary needs to be rotated around the Z-axis, and then
 moved to its proper coordinates:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="n">rot_angle</span> <span class="o">=</span> <span class="n">pi</span>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [18]: </span><span class="n">rot_angle</span> <span class="o">=</span> <span class="n">pi</span>
 
-<span class="gp">In [2]: </span><span class="n">Rz</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="n">cos</span><span class="p">(</span><span class="n">rot_angle</span><span class="p">),</span><span class="o">-</span><span class="n">sin</span><span class="p">(</span><span class="n">rot_angle</span><span class="p">),</span><span class="mi">0</span><span class="p">],</span>
-<span class="gp">   ...:</span>                 <span class="p">[</span><span class="n">sin</span><span class="p">(</span><span class="n">rot_angle</span><span class="p">),</span> <span class="n">cos</span><span class="p">(</span><span class="n">rot_angle</span><span class="p">),</span><span class="mi">0</span><span class="p">],</span>
-<span class="gp">   ...:</span>                 <span class="p">[</span><span class="mi">0</span><span class="p">,</span>             <span class="mi">0</span><span class="p">,</span>              <span class="mi">1</span><span class="p">]])</span>
-<span class="gp">   ...:</span> 
+<span class="gp">In [19]: </span><span class="n">Rz</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="n">cos</span><span class="p">(</span><span class="n">rot_angle</span><span class="p">),</span><span class="o">-</span><span class="n">sin</span><span class="p">(</span><span class="n">rot_angle</span><span class="p">),</span><span class="mi">0</span><span class="p">],</span>
+<span class="gp">   ....:</span>                 <span class="p">[</span><span class="n">sin</span><span class="p">(</span><span class="n">rot_angle</span><span class="p">),</span> <span class="n">cos</span><span class="p">(</span><span class="n">rot_angle</span><span class="p">),</span><span class="mi">0</span><span class="p">],</span>
+<span class="gp">   ....:</span>                 <span class="p">[</span><span class="mi">0</span><span class="p">,</span>             <span class="mi">0</span><span class="p">,</span>              <span class="mi">1</span><span class="p">]])</span>
+<span class="gp">   ....:</span> 
 
-<span class="gp">In [3]: </span><span class="n">B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">Rz</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">x2</span><span class="p">,</span><span class="n">y2</span><span class="p">,</span><span class="n">z2</span><span class="p">])</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">)))</span> <span class="c"># we need to have a 3x3 times 3xN array</span>
+<span class="gp">In [20]: </span><span class="n">B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">Rz</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">x2</span><span class="p">,</span><span class="n">y2</span><span class="p">,</span><span class="n">z2</span><span class="p">])</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">)))</span> <span class="c"># we need to have a 3x3 times 3xN array</span>
 
-<span class="gp">In [4]: </span><span class="n">x2</span><span class="p">,</span><span class="n">y2</span><span class="p">,</span><span class="n">z2</span> <span class="o">=</span> <span class="n">B</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span><span class="n">x2</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">x2</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span> <span class="c"># but we want our original shape back</span>
+<span class="gp">In [21]: </span><span class="n">x2</span><span class="p">,</span><span class="n">y2</span><span class="p">,</span><span class="n">z2</span> <span class="o">=</span> <span class="n">B</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span><span class="n">x2</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">x2</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span> <span class="c"># but we want our original shape back</span>
 
-<span class="gp">In [5]: </span><span class="n">x2</span> <span class="o">+=</span> <span class="mi">1</span> <span class="c"># simple translation</span>
+<span class="gp">In [22]: </span><span class="n">x2</span> <span class="o">+=</span> <span class="mi">1</span> <span class="c"># simple translation</span>
 </pre></div>
 </div>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="n">mlab</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [23]: </span><span class="n">mlab</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
 <span class="go">---------------------------------------------------------------------------</span>
 <span class="go">NameError                                 Traceback (most recent call last)</span>
-<span class="go">/home/nhmc/code/repo/python4ESAC/source/py4ast/core/&lt;ipython-input-1-28cec454b7a9&gt; in &lt;module&gt;()</span>
+<span class="go">/home/nhmc/code/repo/python4ESAC/source/&lt;ipython-input-23-28cec454b7a9&gt; in &lt;module&gt;()</span>
 <span class="go">----&gt; 1 mlab.figure()</span>
 
 <span class="go">NameError: name &#39;mlab&#39; is not defined</span>
 
-<span class="gp">In [2]: </span><span class="n">mlab</span><span class="o">.</span><span class="n">mesh</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span><span class="n">y1</span><span class="p">,</span><span class="n">z1</span><span class="p">,</span><span class="n">scalars</span><span class="o">=</span><span class="n">r1</span><span class="p">)</span>
+<span class="gp">In [24]: </span><span class="n">mlab</span><span class="o">.</span><span class="n">mesh</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span><span class="n">y1</span><span class="p">,</span><span class="n">z1</span><span class="p">,</span><span class="n">scalars</span><span class="o">=</span><span class="n">r1</span><span class="p">)</span>
 <span class="go">---------------------------------------------------------------------------</span>
 <span class="go">NameError                                 Traceback (most recent call last)</span>
-<span class="go">/home/nhmc/code/repo/python4ESAC/source/py4ast/core/&lt;ipython-input-2-841728bc45e1&gt; in &lt;module&gt;()</span>
+<span class="go">/home/nhmc/code/repo/python4ESAC/source/&lt;ipython-input-24-841728bc45e1&gt; in &lt;module&gt;()</span>
 <span class="go">----&gt; 1 mlab.mesh(x1,y1,z1,scalars=r1)</span>
 
 <span class="go">NameError: name &#39;mlab&#39; is not defined</span>
 
-<span class="gp">In [3]: </span><span class="n">mlab</span><span class="o">.</span><span class="n">mesh</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span><span class="n">y2</span><span class="p">,</span><span class="n">z2</span><span class="p">,</span><span class="n">scalars</span><span class="o">=</span><span class="n">r2</span><span class="p">)</span>
+<span class="gp">In [25]: </span><span class="n">mlab</span><span class="o">.</span><span class="n">mesh</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span><span class="n">y2</span><span class="p">,</span><span class="n">z2</span><span class="p">,</span><span class="n">scalars</span><span class="o">=</span><span class="n">r2</span><span class="p">)</span>
 <span class="go">---------------------------------------------------------------------------</span>
 <span class="go">NameError                                 Traceback (most recent call last)</span>
-<span class="go">/home/nhmc/code/repo/python4ESAC/source/py4ast/core/&lt;ipython-input-3-d11dcb88da02&gt; in &lt;module&gt;()</span>
+<span class="go">/home/nhmc/code/repo/python4ESAC/source/&lt;ipython-input-25-d11dcb88da02&gt; in &lt;module&gt;()</span>
 <span class="go">----&gt; 1 mlab.mesh(x2,y2,z2,scalars=r2)</span>
 
 <span class="go">NameError: name &#39;mlab&#39; is not defined</span>
@@ -539,17 +539,17 @@ moved to its proper coordinates:</p>
 <a class="reference internal image-reference" href="../_images/mayavi_bin.png"><img alt="../_images/mayavi_bin.png" src="../_images/mayavi_bin.png" style="width: 400.0px; height: 325.0px;" /></a>
 <p>All the arrays presented above are 2D. This means we could also feed the radius
 array to pylab and make a color plot:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">r1</span><span class="p">)</span>
-<span class="gr">Out[1]: </span><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">AxesImage</span> <span class="n">at</span> <span class="mh">0x6913ad0</span><span class="o">&gt;</span>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [26]: </span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">r1</span><span class="p">)</span>
+<span class="gr">Out[26]: </span><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">AxesImage</span> <span class="n">at</span> <span class="mh">0x6b41d90</span><span class="o">&gt;</span>
 
-<span class="gp">In [2]: </span><span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
-<span class="gr">Out[2]: </span><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">colorbar</span><span class="o">.</span><span class="n">Colorbar</span> <span class="n">instance</span> <span class="n">at</span> <span class="mh">0x2005248</span><span class="o">&gt;</span>
+<span class="gp">In [27]: </span><span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
+<span class="gr">Out[27]: </span><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">colorbar</span><span class="o">.</span><span class="n">Colorbar</span> <span class="n">instance</span> <span class="n">at</span> <span class="mh">0x67c4b90</span><span class="o">&gt;</span>
 
-<span class="gp">In [3]: </span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">r2</span><span class="p">)</span>
-<span class="gr">Out[3]: </span><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">AxesImage</span> <span class="n">at</span> <span class="mh">0x6989990</span><span class="o">&gt;</span>
+<span class="gp">In [28]: </span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">r2</span><span class="p">)</span>
+<span class="gr">Out[28]: </span><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">AxesImage</span> <span class="n">at</span> <span class="mh">0x4b43c50</span><span class="o">&gt;</span>
 
-<span class="gp">In [4]: </span><span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
-<span class="gr">Out[4]: </span><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">colorbar</span><span class="o">.</span><span class="n">Colorbar</span> <span class="n">instance</span> <span class="n">at</span> <span class="mh">0x690cef0</span><span class="o">&gt;</span>
+<span class="gp">In [29]: </span><span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
+<span class="gr">Out[29]: </span><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">colorbar</span><span class="o">.</span><span class="n">Colorbar</span> <span class="n">instance</span> <span class="n">at</span> <span class="mh">0x5b415f0</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 <table border="1" class="docutils">
