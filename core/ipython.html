@@ -3,13 +3,16 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
+
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>IPython &mdash; Python4Astronomers v1.1 documentation</title>
+    <title>IPython &mdash; Python4Astronomers 1.1 documentation</title>
+    
     <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
@@ -22,7 +25,7 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="Python4Astronomers v1.1 documentation" href="../index.html" />
+    <link rel="top" title="Python4Astronomers 1.1 documentation" href="../index.html" />
     <link rel="up" title="Core packages for analysis: IPython, NumPy, and SciPy" href="core.html" />
     <link rel="next" title="NumPy" href="numpy_scipy.html" />
     <link rel="prev" title="Core packages for analysis: IPython, NumPy, and SciPy" href="core.html" />
@@ -284,7 +287,7 @@ display:none;
         <li class="right" >
           <a href="core.html" title="Core packages for analysis: IPython, NumPy, and SciPy"
              accesskey="P">previous</a> |</li>
-        <li><a href="../index.html">Python4Astronomers v1.1 documentation</a> &raquo;</li>
+        <li><a href="../index.html">Python4Astronomers 1.1 documentation</a> &raquo;</li>
           <li><a href="core.html" accesskey="U">Core packages for analysis: IPython, NumPy, and SciPy</a> &raquo;</li> 
       </ul>
     </div>
@@ -319,7 +322,7 @@ display:none;
 <div id="searchbox" style="display: none">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" size="18" />
+      <input type="text" name="q" />
       <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
@@ -454,10 +457,10 @@ whatever the object name) followed by <tt class="docutils literal"><span class="
 than the “string” version that gets returned with print. In many cases the
 “representation” of an object the same as Python code to create that object.</p>
 <p>Try:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [2]: </span><span class="n">y</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">((</span><span class="n">x</span><span class="p">,</span> <span class="s">&#39;value is </span><span class="si">%d</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="n">y</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">((</span><span class="n">x</span><span class="p">,</span> <span class="s">&#39;value is </span><span class="si">%d</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
 
-<span class="gp">In [3]: </span><span class="n">y</span>
-<span class="gr">Out[3]: </span>
+<span class="gp">In [2]: </span><span class="n">y</span>
+<span class="gr">Out[2]: </span>
 <span class="go">{0: &#39;value is 0&#39;,</span>
 <span class="go"> 1: &#39;value is 1&#39;,</span>
 <span class="go"> 2: &#39;value is 4&#39;,</span>
@@ -469,7 +472,7 @@ than the “string” version that gets returned with print. In many cases the
 <span class="go"> 8: &#39;value is 64&#39;,</span>
 <span class="go"> 9: &#39;value is 81&#39;}</span>
 
-<span class="gp">In [4]: </span><span class="k">print</span> <span class="n">y</span>
+<span class="gp">In [3]: </span><span class="k">print</span> <span class="n">y</span>
 <span class="go">{0: &#39;value is 0&#39;, 1: &#39;value is 1&#39;, 2: &#39;value is 4&#39;, 3: &#39;value is 9&#39;, 4: &#39;value is 16&#39;, 5: &#39;value is 25&#39;, 6: &#39;value is 36&#39;, 7: &#39;value is 49&#39;, 8: &#39;value is 64&#39;, 9: &#39;value is 81&#39;}</span>
 </pre></div>
 </div>
@@ -597,7 +600,7 @@ Simply do:</p>
         <li class="right" >
           <a href="core.html" title="Core packages for analysis: IPython, NumPy, and SciPy"
              >previous</a> |</li>
-        <li><a href="../index.html">Python4Astronomers v1.1 documentation</a> &raquo;</li>
+        <li><a href="../index.html">Python4Astronomers 1.1 documentation</a> &raquo;</li>
           <li><a href="core.html" >Core packages for analysis: IPython, NumPy, and SciPy</a> &raquo;</li> 
       </ul>
     </div>

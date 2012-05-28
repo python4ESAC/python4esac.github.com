@@ -24,7 +24,6 @@ Workshop goals:
    numpy_scipy
    numpy_recarray
    scipy_fft
-   f2py
    
 
 :Author: Tom Aldcroft, Moritz Guenther
