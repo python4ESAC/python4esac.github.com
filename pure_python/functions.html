@@ -3,16 +3,13 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Writing Functions &mdash; Python4Astronomers 1.1 documentation</title>
-    
+    <title>Writing Functions &mdash; Python4Astronomers v1.1 documentation</title>
     <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
@@ -25,7 +22,7 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="Python4Astronomers 1.1 documentation" href="../index.html" />
+    <link rel="top" title="Python4Astronomers v1.1 documentation" href="../index.html" />
     <link rel="up" title="An introduction to Pure Python" href="pure_python.html" />
     <link rel="next" title="Importing Modules" href="modules.html" />
     <link rel="prev" title="Control Flow Statements" href="control_flow.html" />
@@ -287,7 +284,7 @@ display:none;
         <li class="right" >
           <a href="control_flow.html" title="Control Flow Statements"
              accesskey="P">previous</a> |</li>
-        <li><a href="../index.html">Python4Astronomers 1.1 documentation</a> &raquo;</li>
+        <li><a href="../index.html">Python4Astronomers v1.1 documentation</a> &raquo;</li>
           <li><a href="pure_python.html" accesskey="U">An introduction to Pure Python</a> &raquo;</li> 
       </ul>
     </div>
@@ -315,7 +312,7 @@ display:none;
 <div id="searchbox" style="display: none">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
+      <input type="text" name="q" size="18" />
       <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
@@ -374,20 +371,19 @@ used. If you call it with an argument, the specified value will be
 used.</p>
 <div class="admonition-exercise admonition ">
 <p class="first admonition-title">Exercise</p>
-<p class="last">Write a function that prints the value of input argument
-multiplied by 7.  If no argument is given, it should print 7. If
-the input argument is 6, it should print &#8220;The Answer to the Ultimate
-Question of Life, The Universe, and Everything.&#8221;</p>
+<p class="last">Write a function that multiplies the input argument by 7.  If no
+argument is given, it prints 7. If the input argument 6, it
+should print &#8220;Answer to the Ultimate Question of Life, The
+Universe, and Everything.&#8221;</p>
 </div>
 <p class="flip8">Click to Show/Hide Solution</p> <div class="panel8"><div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">multiply_by_7</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">6</span><span class="p">:</span>
-        <span class="k">print</span> <span class="p">(</span><span class="s">&quot;The Answer to the Ultimate Question of Life, &quot;</span>
-               <span class="s">&quot;the Universe and Everything.&quot;</span><span class="p">)</span>
+        <span class="k">print</span> <span class="p">(</span><span class="s">&quot;The meaning of life, the Universe and everything.&quot;</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="k">print</span> <span class="n">x</span><span class="o">*</span><span class="mi">7</span>
 </pre></div>
 </div>
-</div><p>Functions can also have both keyword and standard arguments:</p>
+<p>Functions can also have both keyword and standard arguments:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">slicer</span><span class="p">(</span><span class="n">seq</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">stop</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
 <span class="gp">... </span>   <span class="sd">&quot;&quot;&quot; Implement basic Python slicing.&quot;&quot;&quot;</span>
 <span class="gp">... </span>   <span class="k">return</span> <span class="n">seq</span><span class="p">[</span><span class="n">start</span><span class="p">:</span><span class="n">stop</span><span class="p">:</span><span class="n">step</span><span class="p">]</span>
@@ -417,11 +413,7 @@ convention is:</p>
 <span class="gp">... </span>    <span class="k">pass</span>
 </pre></div>
 </div>
-<<<<<<< HEAD
 <p>Then the doctstring for that function can be accessed with:</p>
-=======
-<p>Then the docstring for that function can be accessed with:</p>
->>>>>>> 7f4c677100973efb57118f592cbd175db5b1b42e
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">help</span><span class="p">(</span><span class="n">funcname</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -448,7 +440,7 @@ convention is:</p>
         <li class="right" >
           <a href="control_flow.html" title="Control Flow Statements"
              >previous</a> |</li>
-        <li><a href="../index.html">Python4Astronomers 1.1 documentation</a> &raquo;</li>
+        <li><a href="../index.html">Python4Astronomers v1.1 documentation</a> &raquo;</li>
           <li><a href="pure_python.html" >An introduction to Pure Python</a> &raquo;</li> 
       </ul>
     </div>
