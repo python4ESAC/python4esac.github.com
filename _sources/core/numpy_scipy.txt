@@ -113,7 +113,7 @@ Now start IPython (``ipython --pylab``) or use your existing session and enter:
 
 .. ipython::
 
-  In [1]: import urllib2, tarfile
+  In [1]: import urllib2, tarfile, os
   
   In [1]: url = 'http://python4astronomers.github.com/core/core_examples.tar'
   
@@ -241,7 +241,7 @@ functions:
 
    </div>
 
-As you can see, it is hard to see things. So, let's set a few options for this
+As you can see, it is hard to see things. So, let's set a few option for this
 plot. First, we want the origin in the lower left instead of the upper left
 corner:
 
@@ -264,7 +264,7 @@ add a colorbar to our plot:
 
     In [1]: plt.colorbar()
 
-Your plot should look like this (it is possible that the colormap differs,
+Your plot should not look like this (it is possible that the colormap differs,
 if your matplotlib has different defaults set).
 
 .. image:: imgview_img.png
@@ -313,29 +313,6 @@ Next use ``help`` and note the slightly different information that you get::
 Use tab completion to see all the methods in short form::
 
   img.<TAB>
-  img.T                    img.__floordiv__         img.__isub__             img.__reduce__           img.__xor__              img.dumps                img.reshape
-  img.__abs__              img.__format__           img.__iter__             img.__reduce_ex__        img.all                  img.fill                 img.resize
-  img.__add__              img.__ge__               img.__itruediv__         img.__repr__             img.any                  img.flags                img.round
-  img.__and__              img.__getattribute__     img.__ixor__             img.__rfloordiv__        img.argmax               img.flat                 img.searchsorted
-  img.__array__            img.__getitem__          img.__le__               img.__rlshift__          img.argmin               img.flatten              img.setfield
-  img.__array_finalize__   img.__getslice__         img.__len__              img.__rmod__             img.argsort              img.getfield             img.setflags
-  img.__array_interface__  img.__gt__               img.__long__             img.__rmul__             img.astype               img.imag                 img.shape
-  img.__array_prepare__    img.__hash__             img.__lshift__           img.__ror__              img.base                 img.item                 img.size
-  img.__array_priority__   img.__hex__              img.__lt__               img.__rpow__             img.byteswap             img.itemset              img.sort
-  img.__array_struct__     img.__iadd__             img.__mod__              img.__rrshift__          img.choose               img.itemsize             img.squeeze
-  img.__array_wrap__       img.__iand__             img.__mul__              img.__rshift__           img.clip                 img.max                  img.std
-  img.__class__            img.__idiv__             img.__ne__               img.__rsub__             img.compress             img.mean                 img.strides
-  img.__contains__         img.__ifloordiv__        img.__neg__              img.__rtruediv__         img.conj                 img.min                  img.sum
-  img.__copy__             img.__ilshift__          img.__new__              img.__rxor__             img.conjugate            img.nbytes               img.swapaxes
-  img.__deepcopy__         img.__imod__             img.__nonzero__          img.__setattr__          img.copy                 img.ndim                 img.take
-  img.__delattr__          img.__imul__             img.__oct__              img.__setitem__          img.ctypes               img.newbyteorder         img.tofile
-  img.__delitem__          img.__index__            img.__or__               img.__setslice__         img.cumprod              img.nonzero              img.tolist
-  img.__delslice__         img.__init__             img.__pos__              img.__setstate__         img.cumsum               img.prod                 img.tostring
-  img.__div__              img.__int__              img.__pow__              img.__sizeof__           img.data                 img.ptp                  img.trace
-  img.__divmod__           img.__invert__           img.__radd__             img.__str__              img.diagonal             img.put                  img.transpose
-  img.__doc__              img.__ior__              img.__rand__             img.__sub__              img.dot                  img.ravel                img.var
-  img.__eq__               img.__ipow__             img.__rdiv__             img.__subclasshook__     img.dtype                img.real                 img.view
-  img.__float__            img.__irshift__          img.__rdivmod__          img.__truediv__          img.dump                 img.repeat 
 
 Finally find the shape of the image and its minimum value:
 
@@ -486,7 +463,7 @@ It is possible to operate with arrays of different dimensions as long as they fi
 
    In [1]: z = np.cos(r) / (r + 5)
 
-   In [1]: plt.imshow(z, origin = 'lower')
+   In [1]: plt.imshow(z, origin = 'lower)
 
 or alternatively:
 
@@ -498,7 +475,7 @@ or alternatively:
    
    In [1]: z = np.cos(r) / (r + 5)
 
-   In [1]: plt.imshow(z, origin = 'lower')
+   In [1]: plt.imshow(z, origin = 'lower)
 
 .. image:: ripple.png
    :scale: 50
@@ -732,7 +709,7 @@ and that you can compose logical expressions:
 
 .. raw:: html
 
-   <p class="flip3">Click to Show/Hide Solution</p> <div class="panel3">
+   <p class="flip10">Click to Show/Hide Solution</p> <div class="panel10">
 
 .. ipython::
 

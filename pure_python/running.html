@@ -3,13 +3,16 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
+
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Running Python code &mdash; Python4Astronomers v1.1 documentation</title>
+    <title>Running Python code &mdash; Python4Astronomers 1.1 documentation</title>
+    
     <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
@@ -22,7 +25,7 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="Python4Astronomers v1.1 documentation" href="../index.html" />
+    <link rel="top" title="Python4Astronomers 1.1 documentation" href="../index.html" />
     <link rel="up" title="An introduction to Pure Python" href="pure_python.html" />
     <link rel="next" title="Python Built-in Types and Operations" href="types.html" />
     <link rel="prev" title="An introduction to Pure Python" href="pure_python.html" />
@@ -284,7 +287,7 @@ display:none;
         <li class="right" >
           <a href="pure_python.html" title="An introduction to Pure Python"
              accesskey="P">previous</a> |</li>
-        <li><a href="../index.html">Python4Astronomers v1.1 documentation</a> &raquo;</li>
+        <li><a href="../index.html">Python4Astronomers 1.1 documentation</a> &raquo;</li>
           <li><a href="pure_python.html" accesskey="U">An introduction to Pure Python</a> &raquo;</li> 
       </ul>
     </div>
@@ -315,7 +318,7 @@ display:none;
 <div id="searchbox" style="display: none">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" size="18" />
+      <input type="text" name="q" />
       <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
@@ -335,28 +338,40 @@ display:none;
             
   <div class="section" id="running-python-code">
 <h1>Running Python code<a class="headerlink" href="#running-python-code" title="Permalink to this headline">¶</a></h1>
-<p>Before we learn about the actual Python language, we need to know where to
-enter it. Python can be used either interactively, or from scripts. There is
-not one right way to do it, and it depends whether you are interested in an
-interactive exploratory analysis, or running or re-running a more complex
-program.</p>
+<p>Before we learn about the actual Python language, we need to know
+where to enter it. Python can be used either interactively, or from
+scripts. There is not one right way to do it, and it depends whether
+you are interested in an interactive exploratory analysis, or running
+or re-running a more complex program.</p>
 <div class="section" id="interactive-use">
 <h2>Interactive use<a class="headerlink" href="#interactive-use" title="Permalink to this headline">¶</a></h2>
-<p>To run Python code interactively, one can use the standard Python prompt, which can be launched by typing <tt class="docutils literal"><span class="pre">python</span></tt> in your standard shell:</p>
+<p>To run Python code interactively, one can use the standard Python
+prompt, which can be launched by typing <tt class="docutils literal"><span class="pre">python</span></tt> in your standard
+shell:</p>
 <div class="highlight-python"><pre>$ python
 Python 2.7.2 (default, Nov  5 2011, 20:09:20)
 [GCC 4.2.1 (Apple Inc. build 5666) (dot 3)] on darwin
 Type "help", "copyright", "credits" or "license" for more information.
 &gt;&gt;&gt;</pre>
 </div>
-<p>The <tt class="docutils literal"><span class="pre">&gt;&gt;&gt;</span></tt> indicates that Python is ready to accept commands. If you type <tt class="docutils literal"><span class="pre">a=1</span></tt> then press enter, this will assign the value <tt class="docutils literal"><span class="pre">1</span></tt> to <tt class="docutils literal"><span class="pre">a</span></tt>. If you then type <tt class="docutils literal"><span class="pre">a</span></tt> you will see the value of <tt class="docutils literal"><span class="pre">a</span></tt> (this is equivalent to <tt class="docutils literal"><span class="pre">print</span> <span class="pre">a</span></tt>):</p>
+<p>The <tt class="docutils literal"><span class="pre">&gt;&gt;&gt;</span></tt> indicates that Python is ready to accept commands. If you
+type <tt class="docutils literal"><span class="pre">a=1</span></tt> then press enter, this will assign the value <tt class="docutils literal"><span class="pre">1</span></tt> to
+<tt class="docutils literal"><span class="pre">a</span></tt>. If you then type <tt class="docutils literal"><span class="pre">a</span></tt> you will see the value of <tt class="docutils literal"><span class="pre">a</span></tt> (this is
+equivalent to <tt class="docutils literal"><span class="pre">print</span> <span class="pre">a</span></tt>):</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span>
 <span class="go">1</span>
 </pre></div>
 </div>
-<p>The Python shell can execute any Python code, even multi-line statements, though it is often more convenient to use Python non-interactively for such cases.</p>
-<p>The default Python shell is limited, and in practice, you will want instead to use the IPython (or interactive Python) shell. This is an add-on package that adds many features to the default Python shell, including the ability to edit and navigate the history of previous commands, as well as the ability to tab-complete variable and function names. To start up IPython, type:</p>
+<p>The Python shell can execute any Python code, even multi-line
+statements, though it is often more convenient to use Python
+non-interactively for such cases.</p>
+<p>The default Python shell is limited, and in practice, you will want
+instead to use the IPython (or interactive Python) shell. This is an
+add-on package that adds many features to the default Python shell,
+including the ability to edit and navigate the history of previous
+commands, as well as the ability to tab-complete variable and function
+names. To start up IPython, type:</p>
 <div class="highlight-python"><pre>$ ipython
 Python 2.7.2 (default, Nov  5 2011, 20:09:20)
 Type "copyright", "credits" or "license" for more information.
@@ -369,7 +384,9 @@ object?   -&gt; Details about 'object', use 'object??' for extra details.
 
 In [1]:</pre>
 </div>
-<p>The <tt class="docutils literal"><span class="pre">&gt;&gt;&gt;</span></tt> symbols are now replaced by <tt class="docutils literal"><span class="pre">In</span> <span class="pre">[x]</span></tt>, and output, when present, is prepended with <tt class="docutils literal"><span class="pre">Out</span> <span class="pre">[x]</span></tt>. If we now type the same commands as before, we get:</p>
+<p>The <tt class="docutils literal"><span class="pre">&gt;&gt;&gt;</span></tt> symbols are now replaced by <tt class="docutils literal"><span class="pre">In</span> <span class="pre">[x]</span></tt>, and output, when
+present, is prepended with <tt class="docutils literal"><span class="pre">Out</span> <span class="pre">[x]</span></tt>. If we now type the same
+commands as before, we get:</p>
 <div class="highlight-python"><pre>In [1]: a = 1
 
 In [2]: a
@@ -408,7 +425,7 @@ own will only print out the value in interactive mode. In scripts,
 the printing has to be explicitly requested with the print
 command. To print multiple variables, just separate them with a
 comma after the print command: <tt class="docutils literal"><span class="pre">print</span> <span class="pre">a,</span> <span class="pre">1.5,</span> <span class="pre">&quot;spam&quot;</span></tt>. To print
-variable within strings use the following syntax: <tt class="docutils literal"><span class="pre">print</span> <span class="pre">(&quot;This</span> <span class="pre">is</span>
+variables within strings use the following syntax: <tt class="docutils literal"><span class="pre">print</span> <span class="pre">(&quot;This</span> <span class="pre">is</span>
 <span class="pre">a</span> <span class="pre">integer:</span> <span class="pre">%d,</span> <span class="pre">this</span> <span class="pre">is</span> <span class="pre">a</span> <span class="pre">float:</span> <span class="pre">%f,</span> <span class="pre">and</span> <span class="pre">is</span> <span class="pre">a</span> <span class="pre">string:</span> <span class="pre">%s&quot;</span> <span class="pre">%</span> <span class="pre">(5,</span>
 <span class="pre">3.141,</span> <span class="pre">&quot;spam&quot;))</span></tt></p>
 </div>
@@ -466,7 +483,7 @@ Out[2]: 2</pre>
         <li class="right" >
           <a href="pure_python.html" title="An introduction to Pure Python"
              >previous</a> |</li>
-        <li><a href="../index.html">Python4Astronomers v1.1 documentation</a> &raquo;</li>
+        <li><a href="../index.html">Python4Astronomers 1.1 documentation</a> &raquo;</li>
           <li><a href="pure_python.html" >An introduction to Pure Python</a> &raquo;</li> 
       </ul>
     </div>

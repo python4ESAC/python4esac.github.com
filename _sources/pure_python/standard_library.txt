@@ -114,10 +114,11 @@ Delete a file:
 Running an external command
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. sourcecode:: ipython
+::
 
   >>> from subprocess import call
   >>> call('chmod +x filename', shell=True)
+
 
 ``shutil``: high-level file operations
 ---------------------------------------
@@ -190,9 +191,7 @@ Environment variables:
 
 System-specific information related to the Python interpreter.
 
-* Which version of python are you running and where is it installed:
-
-  .. sourcecode:: ipython
+* Which version of python are you running and where is it installed::
 
     >>> sys.platform
     'darwin'
@@ -204,16 +203,14 @@ System-specific information related to the Python interpreter.
     >>> sys.prefix
     '/Library/Frameworks/Python.framework/Versions/2.5'
 
-* List of command line arguments passed to a Python script:
+* List of command line arguments passed to a Python script::
 
    >>> sys.argv
    ['/Users/cburns/local/bin/ipython']
 
 
 ``sys.path`` is a list of strings that specifies the search path for
-modules.  Initialized from PYTHONPATH:
-
-.. sourcecode:: ipython
+modules.  Initialized from PYTHONPATH::
 
     >>> sys.path 
     ['',
@@ -225,18 +222,3 @@ modules.  Initialized from PYTHONPATH:
      '/Users/cburns/local/lib/python2.5/site-packages/virtualenv-1.2-py2.5.egg',
      ...
 
-``pickle``: easy persistence
-----------------------------
-
-The Pickle module is useful to store arbitrary objects to a
-file. However, it isn't safe (don't use it for long-term storage) or
-very fast.
-
-  >>> import pickle
-
-  >>> l = [1, None, 'Stan']
-
-  >>> pickle.dump(l, file('test.pkl', 'w'))
-
-  >>> pickle.load(file('test.pkl'))
-  [1, None, 'Stan']

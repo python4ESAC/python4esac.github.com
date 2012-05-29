@@ -15,7 +15,7 @@ This can be called with ``my_function()``.
 
 .. note:: 
     It is considered good python style to have function names all in
-    lower case, with words separated by underscore to improve
+    lower case, with words separated by underscore if it improves
     readability.
 
 This is a rather boring function that does not take or return any
@@ -41,10 +41,10 @@ used.
 
 .. admonition::  Exercise
 
-    Write a function that multiplies the input argument by 7.  If no
-    argument is given, it prints 7. If the input argument 6, it
-    should print "Answer to the Ultimate Question of Life, The
-    Universe, and Everything."
+    Write a function that prints the value of input argument
+    multiplied by 7.  If no argument is given, it should print 7. If
+    the input argument is 6, it should print "The Answer to the Ultimate
+    Question of Life, The Universe, and Everything."
 
 .. raw:: html
 
@@ -54,10 +54,14 @@ used.
 
     def multiply_by_7(x=1):
         if x == 6:
-            print ("The meaning of life, the Universe and everything.")
+            print ("The Answer to the Ultimate Question of Life, "
+                   "the Universe and Everything.")
         else:
             print x*7
 
+.. raw:: html
+
+   </div>
 
 Functions can also have both keyword and standard arguments::
 
@@ -75,6 +79,7 @@ Functions can also have both keyword and standard arguments::
   >>> slicer(l, stop=5, step=2)
   [1, 3, 5]
 
+
 Docstrings
 ----------
 
@@ -90,7 +95,10 @@ convention is::
   ...	  # function body
   ...	  pass
 
+
+Then the docstring for that function can be accessed with::
+
   >>> help(funcname)
 
-In IPython you can access the same documentation about a function
-using ``funcname?`` (Try it now!).
+In IPython you can access the same documentation using ``funcname?``
+(Try it now!).

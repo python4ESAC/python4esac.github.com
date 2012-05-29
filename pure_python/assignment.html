@@ -3,13 +3,16 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
+
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Assignment operator &mdash; Python4Astronomers v1.1 documentation</title>
+    <title>Assignment operator &mdash; Python4Astronomers 1.1 documentation</title>
+    
     <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
@@ -22,7 +25,7 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="Python4Astronomers v1.1 documentation" href="../index.html" />
+    <link rel="top" title="Python4Astronomers 1.1 documentation" href="../index.html" />
     <link rel="up" title="An introduction to Pure Python" href="pure_python.html" />
     <link rel="next" title="Control Flow Statements" href="control_flow.html" />
     <link rel="prev" title="Python Built-in Types and Operations" href="types.html" />
@@ -284,7 +287,7 @@ display:none;
         <li class="right" >
           <a href="types.html" title="Python Built-in Types and Operations"
              accesskey="P">previous</a> |</li>
-        <li><a href="../index.html">Python4Astronomers v1.1 documentation</a> &raquo;</li>
+        <li><a href="../index.html">Python4Astronomers 1.1 documentation</a> &raquo;</li>
           <li><a href="pure_python.html" accesskey="U">An introduction to Pure Python</a> &raquo;</li> 
       </ul>
     </div>
@@ -304,7 +307,7 @@ display:none;
 <div id="searchbox" style="display: none">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" size="18" />
+      <input type="text" name="q" />
       <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
@@ -353,10 +356,10 @@ r.h.s. object</li>
 </pre></div>
 </div>
 </li>
-<li><p class="first">By modifying <cite>b</cite>, we have also modified <cite>a</cite>! This behaviour saves
-the time and memory needed to allocate extra space for a copy of the
-original list. If we want to make a copy, we can explicitly ask
-for one by using the <tt class="docutils literal"><span class="pre">list</span></tt> command:</p>
+<li><p class="first">By modifying <cite>b</cite>, we have also modified <cite>a</cite>! This is because <cite>a</cite> and
+<cite>b</cite> are just labels that point to the same object. If we want to
+make a copy, we can explicitly ask for one by using the <tt class="docutils literal"><span class="pre">list</span></tt>
+command:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">b</span>
@@ -369,7 +372,7 @@ for one by using the <tt class="docutils literal"><span class="pre">list</span><
 </pre></div>
 </div>
 </li>
-<li><p class="first">Taking slices of lists does perform a copy:</p>
+<li><p class="first">Note that taking slices of lists does perform a copy:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">a</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">b</span>
@@ -385,8 +388,8 @@ for one by using the <tt class="docutils literal"><span class="pre">list</span><
 <li><p class="first">The key concept here is <strong>mutable vs. immutable</strong></p>
 <blockquote>
 <div><ul class="simple">
-<li>mutable objects can be changed in place</li>
-<li>immutable objects cannot be modified once created</li>
+<li>mutable objects can be changed in place.</li>
+<li>immutable objects cannot be modified once created.</li>
 </ul>
 </div></blockquote>
 </li>
@@ -413,7 +416,7 @@ in David M. Beazley&#8217;s article <a class="reference external" href="http://w
         <li class="right" >
           <a href="types.html" title="Python Built-in Types and Operations"
              >previous</a> |</li>
-        <li><a href="../index.html">Python4Astronomers v1.1 documentation</a> &raquo;</li>
+        <li><a href="../index.html">Python4Astronomers 1.1 documentation</a> &raquo;</li>
           <li><a href="pure_python.html" >An introduction to Pure Python</a> &raquo;</li> 
       </ul>
     </div>
