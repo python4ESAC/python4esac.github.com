@@ -475,7 +475,10 @@ display:none;
 <span class="go">set([1, 2, 3, &#39;egg&#39;, &#39;spam&#39;])</span>
 </pre></div>
 </div>
-<p>Note that duplicate items have been removed. This is the mathematical definition of a set, i.e. a collection of <em>distinct</em> objects. The order of the objects is arbitrary (order is not preserved). Various operators can be used to represent set operations:</p>
+<p>Note that duplicate items have been removed. This is the mathematical
+definition of a set, i.e. a collection of <em>distinct</em> objects. The
+order of the objects is arbitrary (order is not preserved). Various
+operators can be used to represent set operations:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="nb">set</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span> <span class="o">-</span> <span class="nb">set</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>
 <span class="go">set([1, 2])</span>
 
@@ -484,6 +487,13 @@ display:none;
 
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">set</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span> <span class="o">|</span> <span class="nb">set</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>
 <span class="go">set([1, 2, 3, 4])</span>
+</pre></div>
+</div>
+<p>If you want to test whether a single item is member of a large
+collection of items, it is faster to use a set rather than a list or
+tuple:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="s">&#39;a&#39;</span> <span class="ow">in</span> <span class="nb">set</span><span class="p">(</span><span class="s">&#39;abcdef&#39;</span><span class="p">)</span>
+<span class="go">True</span>
 </pre></div>
 </div>
 </div>

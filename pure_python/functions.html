@@ -324,7 +324,12 @@ display:none;
             
   <div class="section" id="writing-functions">
 <h1>Writing Functions<a class="headerlink" href="#writing-functions" title="Permalink to this headline">¶</a></h1>
-<p>As with other languages, you can write functions in Python to avoid repeating code and to improve flow of your programs. Functions use a similar indented syntax to the loops introduced earlier, with a colon after the function name and the following lines indented. As with loops, it is considered good python style to indent with four blank space. Let&#8217;s start by defining a simple functions:</p>
+<p>As with other languages, you can write functions in Python to avoid
+repeating code and to improve flow of your programs. Functions use a
+similar indented syntax to the loops introduced earlier, with a colon
+after the function name and the following lines indented. As with
+loops, it is considered good python style to indent with four blank
+space. Let&#8217;s start by defining a simple function:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">my_function</span><span class="p">():</span>
     <span class="k">print</span> <span class="s">&quot;Hello World!&quot;</span>
 </pre></div>
@@ -332,9 +337,12 @@ display:none;
 <p>This can be called with <tt class="docutils literal"><span class="pre">my_function()</span></tt>.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">It is considered good python style to have function names all in lower case, with words separated by underscore to improve readability.</p>
+<p class="last">It is considered good python style to have function names all in
+lower case, with words separated by underscore to improve
+readability.</p>
 </div>
-<p>This is a rather boring function that does not take or return any arguments. Let&#8217;s make things a little more complicated:</p>
+<p>This is a rather boring function that does not take or return any
+arguments. Let&#8217;s make things a little more complicated:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">add_two_numbers</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">x2</span><span class="p">):</span>
     <span class="n">total</span> <span class="o">=</span> <span class="n">x1</span> <span class="o">+</span> <span class="n">x2</span>
     <span class="k">return</span> <span class="n">total</span>
@@ -346,10 +354,18 @@ can pass <em>any</em> Python object, even functions! Consider the flowing functi
     <span class="k">print</span> <span class="n">x</span>
 </pre></div>
 </div>
-<p>In this example, we have defined what the default value of the <tt class="docutils literal"><span class="pre">x</span></tt> variable in the function. If you try and call this function without any arguments, the default will be used. If you call it with an argument, the specified value will be used.</p>
+<p>In this example, we have defined what the default value of the <tt class="docutils literal"><span class="pre">x</span></tt>
+variable in the function. If you try and call this function without
+any arguments, the default will be used. If you call it with an
+argument, the specified value will be used.</p>
 <div class="admonition-exercise admonition ">
 <p class="first admonition-title">Exercise</p>
-<p class="last">Write a function that prints out &#8220;The managing director of MPIA is [name]&#8221;, where [name] is the argument that is given. If no argument is given, [name] should be the default string &#8220;Hans-Walter Rix&#8221;. If the argument &#8220;Thomas Henning&#8221; is given, the function should print &#8220;Thomas Henning was the managing director of MPIA last year&#8221;.</p>
+<p class="last">Write a function that prints out &#8220;The managing director of MPIA is
+[name]&#8221;, where [name] is the argument that is given. If no
+argument is given, [name] should be the default string
+&#8220;Hans-Walter Rix&#8221;. If the argument &#8220;Thomas Henning&#8221; is given, the
+function should print &#8220;Thomas Henning was the managing director of
+MPIA last year&#8221;.</p>
 </div>
 <p class="flip8">Click to Show/Hide Solution</p> <div class="panel8"><div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">mpia_director</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s">&quot;Hans-Walter Rix&quot;</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">name</span> <span class="o">==</span> <span class="s">&quot;Thomas Henning&quot;</span><span class="p">:</span>

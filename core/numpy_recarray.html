@@ -641,10 +641,10 @@ size of the dots with the brightness of star.</p>
 <span class="gp">In [39]: </span><span class="n">size_select</span> <span class="o">=</span> <span class="p">((</span><span class="n">cat</span><span class="p">[</span><span class="s">&#39;Vmag&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">-</span><span class="n">cat_select</span><span class="p">[</span><span class="s">&#39;Vmag&#39;</span><span class="p">])</span><span class="o">/</span><span class="mf">5.</span><span class="p">)</span><span class="o">**</span><span class="mi">3</span>
 
 <span class="gp">In [40]: </span><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">cat</span><span class="p">[</span><span class="s">&#39;_RAJ2000&#39;</span><span class="p">],</span><span class="n">cat</span><span class="p">[</span><span class="s">&#39;_DEJ2000&#39;</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s">&#39;0.5&#39;</span><span class="p">,</span><span class="n">s</span><span class="o">=</span><span class="n">size</span><span class="p">,</span><span class="n">edgecolors</span><span class="o">=</span><span class="s">&#39;none&#39;</span><span class="p">)</span>
-<span class="gr">Out[40]: </span><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">collections</span><span class="o">.</span><span class="n">CircleCollection</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0xb7fc40c</span><span class="o">&gt;</span>
+<span class="gr">Out[40]: </span><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">collections</span><span class="o">.</span><span class="n">CircleCollection</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0xb23e3ec</span><span class="o">&gt;</span>
 
 <span class="gp">In [41]: </span><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">cat_select</span><span class="p">[</span><span class="s">&#39;_RAJ2000&#39;</span><span class="p">],</span><span class="n">cat_select</span><span class="p">[</span><span class="s">&#39;_DEJ2000&#39;</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s">&#39;b&#39;</span><span class="p">,</span><span class="n">s</span><span class="o">=</span><span class="n">size_select</span><span class="p">,</span><span class="n">edgecolors</span><span class="o">=</span><span class="s">&#39;none&#39;</span><span class="p">)</span>
-<span class="gr">Out[41]: </span><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">collections</span><span class="o">.</span><span class="n">CircleCollection</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0xb16bf6c</span><span class="o">&gt;</span>
+<span class="gr">Out[41]: </span><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">collections</span><span class="o">.</span><span class="n">CircleCollection</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0xab52aec</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 <table border="1" class="docutils">
@@ -676,16 +676,12 @@ can use the non-standard package BeautifulSoup:</p>
 <span class="gp">   ....:</span>      <span class="n">sptype</span> <span class="o">=</span> <span class="n">page</span><span class="p">(</span><span class="s">&#39;sptype&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">text</span>
 <span class="gp">   ....:</span>      <span class="k">print</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="n">sptype</span><span class="p">)</span>
 <span class="gp">   ....:</span> 
-<span class="go">(u&#39;NAME SIRIUS A&#39;, u&#39;A1V&#39;)</span>
-<span class="go">(u&#39;NAME CANOPUS&#39;, u&#39;F0II&#39;)</span>
-<span class="go">(u&#39;HR  5459&#39;, u&#39;G2V&#39;)</span>
-<span class="go">(u&#39;HR  5459&#39;, u&#39;G2V&#39;)</span>
-<span class="go">(u&#39;NAME VEGA&#39;, u&#39;A0V&#39;)</span>
-<span class="go">(u&#39;V* bet Ori&#39;, u&#39;B8Iab:&#39;)</span>
-<span class="go">(u&#39;NAME PROCYON AB&#39;, u&#39;F5IV-V&#39;)</span>
-<span class="go">(u&#39;NAME ACHERNAR&#39;, u&#39;B6Vep&#39;)</span>
-<span class="go">(u&#39;V* bet Cen&#39;, u&#39;B1III&#39;)</span>
-<span class="go">(u&#39;NAME ACRUX&#39;, u&#39;B0.5IV&#39;)</span>
+<span class="go">---------------------------------------------------------------------------</span>
+<span class="go">IndexError                                Traceback (most recent call last)</span>
+
+<span class="go">/home/pieterd/python4esac/python4ESAC/source/&lt;ipython console&gt; in &lt;module&gt;()</span>
+
+<span class="go">IndexError: list index out of range</span>
 </pre></div>
 </div>
 <p>There seems to be a solar-like star in there!</p>
