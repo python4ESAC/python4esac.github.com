@@ -1,0 +1,555 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Scipy stats &mdash; Python4Astronomers v1.1 documentation</title>
+    <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="Python4Astronomers v1.1 documentation" href="../index.html" />
+    <link rel="up" title="Core packages for analysis: IPython, NumPy, and SciPy" href="core.html" />
+    <link rel="next" title="Optimization" href="f2py.html" />
+    <link rel="prev" title="Scipy FFT" href="scipy_fft.html" />
+ 
+<script type="text/javascript"> 
+$(document).ready(function(){
+
+$(".flip0").click(function(){
+    $(".panel0").slideToggle("normal");
+  });
+
+$(".flip1").click(function(){
+    $(".panel1").slideToggle("normal");
+  });
+
+$(".flip2").click(function(){
+    $(".panel2").slideToggle("normal");
+  });
+
+$(".flip3").click(function(){
+    $(".panel3").slideToggle("normal");
+  });
+
+$(".flip4").click(function(){
+    $(".panel4").slideToggle("normal");
+  });
+
+$(".flip5").click(function(){
+    $(".panel5").slideToggle("normal");
+  });
+
+$(".flip6").click(function(){
+    $(".panel6").slideToggle("normal");
+  });
+
+$(".flip7").click(function(){
+    $(".panel7").slideToggle("normal");
+  });
+
+$(".flip8").click(function(){
+    $(".panel8").slideToggle("normal");
+  });
+
+$(".flip9").click(function(){
+    $(".panel9").slideToggle("normal");
+  });
+
+});
+</script>
+ 
+<style type="text/css"> 
+
+div.panel0,p.flip0
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip0
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel0
+{
+display:none;
+}
+
+div.panel1,p.flip1
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip1
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel1
+{
+display:none;
+}
+
+div.panel2,p.flip2
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip2
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel2
+{
+display:none;
+}
+
+div.panel3,p.flip3
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip3
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel3
+{
+display:none;
+}
+
+div.panel4,p.flip4
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip4
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel4
+{
+display:none;
+}
+
+div.panel5,p.flip5
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip5
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel5
+{
+display:none;
+}
+
+div.panel6,p.flip6
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip6
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel6
+{
+display:none;
+}
+
+div.panel7,p.flip7
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip7
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel7
+{
+display:none;
+}
+
+div.panel8,p.flip8
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip8
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel8
+{
+display:none;
+}
+
+div.panel9,p.flip9
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip9
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel9
+{
+display:none;
+}
+
+</style>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-18709417-2']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="f2py.html" title="Optimization"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="scipy_fft.html" title="Scipy FFT"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">Python4Astronomers v1.1 documentation</a> &raquo;</li>
+          <li><a href="core.html" accesskey="U">Core packages for analysis: IPython, NumPy, and SciPy</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Scipy stats</a><ul>
+<li><a class="reference internal" href="#setup">Setup</a></li>
+<li><a class="reference internal" href="#the-kolmogorov-smirnov-test">The Kolmogorov-Smirnov test</a></li>
+<li><a class="reference internal" href="#a-chi-square-approach">A Chi-square approach</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="scipy_fft.html"
+                        title="previous chapter">Scipy FFT</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="f2py.html"
+                        title="next chapter">Optimization</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/core/scipy_stats.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="scipy-stats">
+<h1><a class="toc-backref" href="#id1">Scipy stats</a><a class="headerlink" href="#scipy-stats" title="Permalink to this headline">¶</a></h1>
+<div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#scipy-stats" id="id1">Scipy stats</a><ul>
+<li><a class="reference internal" href="#setup" id="id2">Setup</a></li>
+<li><a class="reference internal" href="#the-kolmogorov-smirnov-test" id="id3">The Kolmogorov-Smirnov test</a></li>
+<li><a class="reference internal" href="#a-chi-square-approach" id="id4">A Chi-square approach</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<p>Scipy contains a library with statistical functions, distributions and tests,
+called <tt class="docutils literal"><span class="pre">scipy.stats</span></tt>. In this example, we will explore some of the possibilities it offers, tackling the following problem from asteroseismology
+of sdB stars (see e.g. Kawaler 1988):</p>
+<blockquote>
+<div>Due to the interior structure of an sdB star, we expect long pulsation
+periods to follow an equidistant pattern (i.e., a period spacing). The
+value of the period spacing tells us more about the extent of the core and
+the envelope.</div></blockquote>
+<p>A complication is that often, not only periods from a period spacing are
+observed, but also other frequencies, e.g. due to rotational splitting. So
+given a list of observed periods, we need to find the value of the period spacing, and perhaps test whether it is significant.</p>
+<p>We use two approaches to this problem:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Following Kawaler 1988, we perform the Kolmogorov-Smirnov test to see
+whether a certain period spacing is significant. Doing this for a lot of
+trial period spacings, we can make some kind of <em>periodogram</em>.</li>
+<li>We run over a grid of possible periods, and compute the chi-square
+statistic for every trial period (and offset).</li>
+</ul>
+</div></blockquote>
+<p>The second strategy is incredibly crude, and, scientifically, not really the
+way to go. However, it allows us to use the chi-square distribution implemented
+in scipy to derive confidence intervals on the period spacing (and offset).</p>
+<div class="section" id="setup">
+<h2><a class="toc-backref" href="#id2">Setup</a><a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h2>
+<p>To explore this problem, we will simulate an observed set of period spacings,
+and add some noise to them.</p>
+<p>First, we need to do the usual imports:</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [266]: </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+
+<span class="gp">In [267]: </span><span class="kn">import</span> <span class="nn">pylab</span> <span class="kn">as</span> <span class="nn">plt</span>
+
+<span class="gp">In [268]: </span><span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">pi</span>
+
+<span class="gp">In [269]: </span><span class="kn">import</span> <span class="nn">scipy.stats</span>
+</pre></div>
+</div>
+<p>Now, generate 8 almost equidistant spacings, and add  3 random ones periods mixed with the equidistant structure. We fix the seed to be able to reproduce
+the results:</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [270]: </span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">1111</span><span class="p">)</span>
+
+<span class="gp">In [271]: </span><span class="n">periods</span> <span class="o">=</span> <span class="mf">1.23</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span><span class="o">*</span><span class="mf">0.43</span> <span class="c"># the spacing and offset</span>
+
+<span class="gp">In [272]: </span><span class="n">periods</span> <span class="o">+=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">periods</span><span class="p">),</span><span class="n">scale</span><span class="o">=</span><span class="mf">0.005</span><span class="p">)</span> <span class="c"># add normal noise</span>
+
+<span class="gp">In [273]: </span><span class="n">periods</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="n">periods</span><span class="p">,</span><span class="n">scipy</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">uniform</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span><span class="n">loc</span><span class="o">=</span><span class="mf">1.23</span><span class="p">,</span><span class="n">scale</span><span class="o">=</span><span class="mi">3</span><span class="p">)])</span> <span class="c"># mix with 3 others</span>
+
+<span class="gp">In [274]: </span><span class="n">periods</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Note that we could have used the <tt class="docutils literal"><span class="pre">np.random</span></tt> module too to generate the
+random variables. However, the <tt class="docutils literal"><span class="pre">scipy.stats</span></tt> module contains much more
+distributions and many more options. For every statistical distribution, you can</p>
+<ul class="simple">
+<li>generate random variables with <tt class="docutils literal"><span class="pre">.rvs()</span></tt></li>
+<li>compute the probability density function with <tt class="docutils literal"><span class="pre">.pdf()</span></tt></li>
+<li>compute the cumulative density function with <tt class="docutils literal"><span class="pre">.cdf()</span></tt></li>
+<li>... and much more</li>
+</ul>
+<p>This is a list of spacings we want to test:</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [275]: </span><span class="n">test_spacings</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.05</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1000</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="the-kolmogorov-smirnov-test">
+<h2><a class="toc-backref" href="#id3">The Kolmogorov-Smirnov test</a><a class="headerlink" href="#the-kolmogorov-smirnov-test" title="Permalink to this headline">¶</a></h2>
+<p>The following few lines of codes closely follow Kawaler (1988). Since this is
+not a tutorial on statistics, we refer to that paper for more information.</p>
+<p>We choose the shortest period to compare with, and remove it from the list of
+periods.</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [276]: </span><span class="n">index_short</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="n">periods</span><span class="p">)</span>
+
+<span class="gp">In [277]: </span><span class="n">p_short</span> <span class="o">=</span> <span class="n">periods</span><span class="p">[</span><span class="n">index_short</span><span class="p">]</span>
+
+<span class="gp">In [278]: </span><span class="n">periods_del</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">periods</span><span class="p">,</span><span class="n">index_short</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Then, we calculate the distribution of the periods compared to the tested
+spacing:</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [279]: </span><span class="n">dp</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="gp">In [280]: </span><span class="k">for</span> <span class="n">dp_test</span> <span class="ow">in</span> <span class="n">test_spacings</span><span class="p">:</span>
+<span class="gp">   .....:</span>      <span class="n">ri</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="gp">   .....:</span>      <span class="k">for</span> <span class="n">pi</span> <span class="ow">in</span> <span class="n">periods_del</span><span class="p">:</span>
+<span class="gp">   .....:</span>          <span class="n">ni</span> <span class="o">=</span> <span class="p">(</span><span class="n">pi</span><span class="o">-</span><span class="n">p_short</span><span class="p">)</span><span class="o">/</span><span class="n">dp_test</span>
+<span class="gp">   .....:</span>          <span class="n">ri</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ni</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">ni</span><span class="p">))</span>
+<span class="gp">   .....:</span>      <span class="n">dp</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ri</span><span class="p">)</span>
+<span class="gp">   .....:</span> 
+</pre></div>
+</div>
+<p>Next, we use the <strong>Kolmogorov-Smirnov</strong> test to derive whether the <tt class="docutils literal"><span class="pre">ri</span></tt> come
+from a uniform distribution. We do this for every test spacing:</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [286]: </span><span class="n">Q</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">dp</span><span class="p">))</span>
+
+<span class="gp">In [287]: </span><span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">ri</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">dp</span><span class="p">):</span>
+<span class="gp">   .....:</span>      <span class="n">ksstat</span><span class="p">,</span><span class="n">pvalue</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">kstest</span><span class="p">(</span><span class="n">ri</span><span class="p">,</span><span class="s">&#39;uniform&#39;</span><span class="p">)</span>
+<span class="gp">   .....:</span>      <span class="n">Q</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">pvalue</span> <span class="c"># we&#39;re only interested in the pvalue, not the KS statistic</span>
+<span class="gp">   .....:</span> 
+</pre></div>
+</div>
+<p>In principle, we should now correct for the number of trial periods (the
+Bonferroni correction, but we omit that step here. Finally, we can make a plot:</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [290]: </span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="gr">Out[290]: </span><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">figure</span><span class="o">.</span><span class="n">Figure</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0xca0854c</span><span class="o">&gt;</span>
+
+<span class="gp">In [291]: </span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">test_spacings</span><span class="p">,</span><span class="n">Q</span><span class="p">)</span>
+<span class="gr">Out[291]: </span><span class="p">[</span><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">lines</span><span class="o">.</span><span class="n">Line2D</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0xcaa8acc</span><span class="o">&gt;</span><span class="p">]</span>
+
+<span class="gp">In [292]: </span><span class="n">test_spacings</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="n">Q</span><span class="p">)]</span>
+<span class="gr">Out[292]: </span><span class="mf">0.42942942942942941</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../_images/ks_ks.png"><img alt="../_images/ks_ks.png" src="../_images/ks_ks.png" style="width: 406.0px; height: 306.0px;" /></a>
+</div>
+<div class="section" id="a-chi-square-approach">
+<h2><a class="toc-backref" href="#id4">A Chi-square approach</a><a class="headerlink" href="#a-chi-square-approach" title="Permalink to this headline">¶</a></h2>
+<p>The chi-square approach requires us to check a set of predicted period spacings,
+which all have their own offset value and period spacing, against the observed
+set of period spacing. We will make the huge assumption that we already know
+that we have 8 periods within a period spacing.</p>
+<p>We have to cycle over all the possibilities, build the set of period spacing,
+and match them with the closest values in the set of observed periods (we do not
+care about the three random ones, but we do not know which ones the are).</p>
+<p>Let us first make a search grid:</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [293]: </span><span class="n">test_offset</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">1.2</span><span class="p">,</span><span class="mf">1.25</span><span class="p">,</span><span class="mi">500</span><span class="p">)</span>
+
+<span class="gp">In [294]: </span><span class="n">test_spacings</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.3</span><span class="p">,</span><span class="mf">0.5</span><span class="p">,</span><span class="mi">500</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>And prepare for the computation of the chi-square statistic. We have 8 periods
+to match and free parameters, so we need to set <tt class="docutils literal"><span class="pre">k=8-2=6</span></tt> in the chi-square
+distribution:</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [295]: </span><span class="n">chi2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">test_offset</span><span class="p">),</span><span class="nb">len</span><span class="p">(</span><span class="n">test_spacings</span><span class="p">)))</span>
+
+<span class="gp">In [296]: </span><span class="n">k</span> <span class="o">=</span> <span class="mi">8</span><span class="o">-</span><span class="mi">2</span>
+</pre></div>
+</div>
+<p>Next, we run over the grid and compute the chi-square statistic, which is
+defined as the sum of the residuals-squared divided by the error-squared:</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [297]: </span><span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">to</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">test_offset</span><span class="p">):</span>
+<span class="gp">   .....:</span>      <span class="k">for</span> <span class="n">j</span><span class="p">,</span><span class="n">ts</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">test_spacings</span><span class="p">):</span>
+<span class="gp">   .....:</span>          <span class="n">test_periods</span> <span class="o">=</span> <span class="n">to</span><span class="o">+</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span><span class="o">*</span><span class="n">ts</span>
+<span class="gp">   .....:</span>          <span class="n">periods_</span> <span class="o">=</span> <span class="n">periods</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">periods</span><span class="p">)</span><span class="o">/</span><span class="mf">2.</span>
+<span class="gp">   .....:</span>          <span class="n">closest_index</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">searchsorted</span><span class="p">(</span><span class="n">periods_</span><span class="p">,</span><span class="n">test_periods</span><span class="p">)</span>
+<span class="gp">   .....:</span>          <span class="n">chi2</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">periods</span><span class="p">[</span><span class="n">closest_index</span><span class="p">]</span><span class="o">-</span><span class="n">test_periods</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="mf">0.005</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">   .....:</span> 
+</pre></div>
+</div>
+<p>Using <tt class="docutils literal"><span class="pre">scipy.stats</span></tt>, we can compute the cumulative density of the chi-square
+value, which corresponds to some kind of confidence rating:</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [303]: </span><span class="n">chi2_stat</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">distributions</span><span class="o">.</span><span class="n">chi2</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="n">chi2</span><span class="p">,</span><span class="n">k</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>That&#8217;s it! All is left is to make some plots: we choose to make a plot of the
+chi-square values themselves (left), and a plot of the confidence intervals (right).</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [304]: </span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">();</span>
+<span class="gp">In [305]: </span><span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">);</span>
+<span class="gp">In [306]: </span><span class="n">extent</span> <span class="o">=</span> <span class="n">test_spacings</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span><span class="n">test_spacings</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span><span class="n">test_offset</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span><span class="n">test_offset</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+
+<span class="gp">In [307]: </span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">chi2</span><span class="p">,</span><span class="n">aspect</span><span class="o">=</span><span class="s">&#39;auto&#39;</span><span class="p">,</span><span class="n">extent</span><span class="o">=</span><span class="n">extent</span><span class="p">,</span><span class="n">vmin</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span><span class="n">vmax</span><span class="o">=</span><span class="mi">3000</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">spectral</span><span class="p">);</span>
+<span class="gp">In [308]: </span><span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">();</span>
+<span class="gp">In [309]: </span><span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">);</span>
+<span class="gp">In [310]: </span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">chi2_stat</span><span class="o">*</span><span class="mi">100</span><span class="p">,</span><span class="n">aspect</span><span class="o">=</span><span class="s">&#39;auto&#39;</span><span class="p">,</span><span class="n">extent</span><span class="o">=</span><span class="n">extent</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">spectral</span><span class="p">);</span>
+<span class="gp">In [311]: </span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mf">0.43</span><span class="p">,</span><span class="mf">1.23</span><span class="p">,</span><span class="s">&#39;x&#39;</span><span class="p">,</span><span class="n">ms</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span><span class="n">mew</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s">&#39;1&#39;</span><span class="p">);</span>
+<span class="gp">In [312]: </span><span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mf">0.425</span><span class="p">,</span><span class="mf">0.434</span><span class="p">);</span>
+<span class="gp">In [313]: </span><span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mf">1.24</span><span class="p">,</span><span class="mf">1.212</span><span class="p">);</span>
+<span class="gp">In [314]: </span><span class="n">cbar</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">();</span>
+<span class="gp">In [315]: </span><span class="n">cbar</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="s">&#39;Confidence interval (%)&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../_images/ks_chi2.png"><img alt="../_images/ks_chi2.png" src="../_images/ks_chi2.png" style="width: 637.5px; height: 306.0px;" /></a>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="f2py.html" title="Optimization"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="scipy_fft.html" title="Scipy FFT"
+             >previous</a> |</li>
+        <li><a href="../index.html">Python4Astronomers v1.1 documentation</a> &raquo;</li>
+          <li><a href="core.html" >Core packages for analysis: IPython, NumPy, and SciPy</a> &raquo;</li> 
+      </ul>
+    </div>
+ <small>Copyright:
+ Smithsonian Astrophysical Observatory under terms of
+ <a rel="license"
+ href="http://creativecommons.org/licenses/by/3.0/">CC
+ Attribution 3.0</a></small> <a rel="license"
+ href="http://creativecommons.org/licenses/by/3.0/"><img alt="Creative Commons
+ License" style="border-width:0"
+ src="http://i.creativecommons.org/l/by/3.0/80x15.png" /></a>
+
+  </body>
+</html>

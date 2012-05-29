@@ -24,7 +24,7 @@
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="top" title="Python4Astronomers v1.1 documentation" href="../index.html" />
     <link rel="up" title="Core packages for analysis: IPython, NumPy, and SciPy" href="core.html" />
-    <link rel="next" title="Optimization" href="f2py.html" />
+    <link rel="next" title="Scipy stats" href="scipy_stats.html" />
     <link rel="prev" title="NumPy record arrays" href="numpy_recarray.html" />
  
 <script type="text/javascript"> 
@@ -279,7 +279,7 @@ display:none;
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="f2py.html" title="Optimization"
+          <a href="scipy_stats.html" title="Scipy stats"
              accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="numpy_recarray.html" title="NumPy record arrays"
@@ -307,8 +307,8 @@ display:none;
   <p class="topless"><a href="numpy_recarray.html"
                         title="previous chapter">NumPy record arrays</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="f2py.html"
-                        title="next chapter">Optimization</a></p>
+  <p class="topless"><a href="scipy_stats.html"
+                        title="next chapter">Scipy stats</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
     <li><a href="../_sources/core/scipy_fft.txt"
@@ -540,7 +540,7 @@ foreseen this, since</p>
 </div>
 <p>Finally make a plot of the rotational kernel.</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [223]: </span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">lambdas</span><span class="p">,</span><span class="n">G</span><span class="p">)</span>
-<span class="gr">Out[223]: </span><span class="p">[</span><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">lines</span><span class="o">.</span><span class="n">Line2D</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0xc938f8c</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="gr">Out[223]: </span><span class="p">[</span><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">lines</span><span class="o">.</span><span class="n">Line2D</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0xc4e3b8c</span><span class="o">&gt;</span><span class="p">]</span>
 </pre></div>
 </div>
 <a class="reference internal image-reference" href="../_images/rotkernel.png"><img alt="../_images/rotkernel.png" src="../_images/rotkernel.png" style="width: 400.0px; height: 300.0px;" /></a>
@@ -702,11 +702,11 @@ set the tickmarks to correspond to km/s.</p>
 <span class="gp">In [264]: </span><span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">();</span>
 <span class="gp">In [265]: </span><span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">minima_an</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span><span class="o">*</span><span class="n">midwave</span><span class="o">/</span><span class="n">q1</span><span class="o">/</span><span class="n">cc</span><span class="o">*</span><span class="mf">1e13</span><span class="p">,[</span><span class="s">&#39;{0:.2f}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">vsini_zeros_an</span><span class="p">[:</span><span class="mi">5</span><span class="p">]])</span>
 <span class="gr">Out[265]: </span>
-<span class="go">([&lt;matplotlib.axis.XTick object at 0xcb12f0c&gt;,</span>
-<span class="go">  &lt;matplotlib.axis.XTick object at 0xcb0af6c&gt;,</span>
-<span class="go">  &lt;matplotlib.axis.XTick object at 0xcb1b46c&gt;,</span>
-<span class="go">  &lt;matplotlib.axis.XTick object at 0xcb1b90c&gt;,</span>
-<span class="go">  &lt;matplotlib.axis.XTick object at 0xcb1bdec&gt;],</span>
+<span class="go">([&lt;matplotlib.axis.XTick object at 0xc6baeac&gt;,</span>
+<span class="go">  &lt;matplotlib.axis.XTick object at 0xc6b2f2c&gt;,</span>
+<span class="go">  &lt;matplotlib.axis.XTick object at 0xc6c348c&gt;,</span>
+<span class="go">  &lt;matplotlib.axis.XTick object at 0xc6c392c&gt;,</span>
+<span class="go">  &lt;matplotlib.axis.XTick object at 0xc6c3e0c&gt;],</span>
 <span class="go"> &lt;a list of 5 Text xticklabel objects&gt;)</span>
 </pre></div>
 </div>
@@ -727,7 +727,7 @@ set the tickmarks to correspond to km/s.</p>
           <a href="../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="f2py.html" title="Optimization"
+          <a href="scipy_stats.html" title="Scipy stats"
              >next</a> |</li>
         <li class="right" >
           <a href="numpy_recarray.html" title="NumPy record arrays"

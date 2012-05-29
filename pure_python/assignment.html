@@ -353,10 +353,10 @@ r.h.s. object</li>
 </pre></div>
 </div>
 </li>
-<li><p class="first">By modifying <cite>b</cite>, we have also modified <cite>a</cite>! This behaviour saves
-the time and memory needed to allocate extra space for a copy of the
-original list. If we want to make a copy, we can explicitly ask
-for one by using the <tt class="docutils literal"><span class="pre">list</span></tt> command:</p>
+<li><p class="first">By modifying <cite>b</cite>, we have also modified <cite>a</cite>! This is because <cite>a</cite> and
+<cite>b</cite> are just labels that point to the same object. If we want to
+make a copy, we can explicitly ask for one by using the <tt class="docutils literal"><span class="pre">list</span></tt>
+command:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">b</span>
@@ -369,7 +369,7 @@ for one by using the <tt class="docutils literal"><span class="pre">list</span><
 </pre></div>
 </div>
 </li>
-<li><p class="first">Taking slices of lists does perform a copy:</p>
+<li><p class="first">Note that taking slices of lists does perform a copy:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">a</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">b</span>
@@ -385,8 +385,8 @@ for one by using the <tt class="docutils literal"><span class="pre">list</span><
 <li><p class="first">The key concept here is <strong>mutable vs. immutable</strong></p>
 <blockquote>
 <div><ul class="simple">
-<li>mutable objects can be changed in place</li>
-<li>immutable objects cannot be modified once created</li>
+<li>mutable objects can be changed in place.</li>
+<li>immutable objects cannot be modified once created.</li>
 </ul>
 </div></blockquote>
 </li>
