@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>A Quick Note about Python 3 &mdash; Python4Astronomers v1.1 documentation</title>
+    <title>Assignment operator &mdash; Python4Astronomers v1.1 documentation</title>
     <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <script type="text/javascript">
@@ -24,8 +24,8 @@
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="top" title="Python4Astronomers v1.1 documentation" href="../index.html" />
     <link rel="up" title="An introduction to Pure Python" href="pure_python.html" />
-    <link rel="next" title="Reading and Writing files" href="../files/files.html" />
-    <link rel="prev" title="Standard Library" href="standard_library.html" />
+    <link rel="next" title="Control Flow Statements" href="control_flow.html" />
+    <link rel="prev" title="Python Built-in Types and Operations" href="types.html" />
  
 <script type="text/javascript"> 
 $(document).ready(function(){
@@ -279,10 +279,10 @@ display:none;
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="../files/files.html" title="Reading and Writing files"
+          <a href="control_flow.html" title="Control Flow Statements"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="standard_library.html" title="Standard Library"
+          <a href="types.html" title="Python Built-in Types and Operations"
              accesskey="P">previous</a> |</li>
         <li><a href="../index.html">Python4Astronomers v1.1 documentation</a> &raquo;</li>
           <li><a href="pure_python.html" accesskey="U">An introduction to Pure Python</a> &raquo;</li> 
@@ -290,26 +290,15 @@ display:none;
     </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
-  <h3><a href="../index.html">Table Of Contents</a></h3>
-  <ul>
-<li><a class="reference internal" href="#">A Quick Note about Python 3</a><ul>
-<li><a class="reference internal" href="#integer-division">Integer division</a></li>
-<li><a class="reference internal" href="#the-print-statement">The <tt class="docutils literal"><span class="pre">print</span></tt> statement</a></li>
-<li><a class="reference internal" href="#string-formatting">String formatting</a></li>
-<li><a class="reference internal" href="#writing-future-proof-scripts">Writing future-proof scripts</a></li>
-</ul>
-</li>
-</ul>
-
   <h4>Previous topic</h4>
-  <p class="topless"><a href="standard_library.html"
-                        title="previous chapter">Standard Library</a></p>
+  <p class="topless"><a href="types.html"
+                        title="previous chapter">Python Built-in Types and Operations</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="../files/files.html"
-                        title="next chapter">Reading and Writing files</a></p>
+  <p class="topless"><a href="control_flow.html"
+                        title="next chapter">Control Flow Statements</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
-    <li><a href="../_sources/pure_python/python3.txt"
+    <li><a href="../_sources/pure_python/assignment.txt"
            rel="nofollow">Show Source</a></li>
   </ul>
 <div id="searchbox" style="display: none">
@@ -333,66 +322,77 @@ display:none;
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="a-quick-note-about-python-3">
-<h1>A Quick Note about Python 3<a class="headerlink" href="#a-quick-note-about-python-3" title="Permalink to this headline">¶</a></h1>
-<p>There is currently a shift in the Python community as people move from Python 2.x to Python 3.x. The newer version of Python brings a number of improvements to the language, but also breaks backward compatibility. That is to say, programs written in Python 2.x will not necessarily run in Python 3.x. As a result of this, the Python community has been slow to move to the new version, as this requires that all of the pre-existing libraries and modules are updated. Nevertheless, this transition is now almost complete, with many of the large number of add-in packages now compatible with Python 3.x.</p>
-<p>Since this transition is not totally complete, we will concentrate on Python 2.x in these workshops. You should be aware that this transition is taking place, and that there will be some changes if you move to Python 3.x. We introduce two of the many differences in the following subsections.</p>
-<div class="section" id="integer-division">
-<h2>Integer division<a class="headerlink" href="#integer-division" title="Permalink to this headline">¶</a></h2>
-<p>In Python 2.x dividing two integers leads to unexpected results:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="mi">3</span> <span class="o">/</span> <span class="mi">2</span>
-<span class="go">1</span>
+  <div class="section" id="assignment-operator">
+<h1>Assignment operator<a class="headerlink" href="#assignment-operator" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference external" href="http://docs.python.org/reference/simple_stmts.html#assignment-statements">Python library reference</a>
+says:</p>
+<blockquote>
+<div>Assignment statements are used to (re)bind names to values and to
+modify attributes or items of mutable objects.</div></blockquote>
+<p>In short, it works as follows (simple assignment):</p>
+<ol class="arabic simple">
+<li>an expression on the right hand side is evaluated, the corresponding
+object is created/obtained</li>
+<li>a <strong>name</strong> on the left hand side is assigned, or bound, to the
+r.h.s. object</li>
+</ol>
+<p>Things to note:</p>
+<ul>
+<li><p class="first">a single object can have several names bound to it:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">a</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span>
+<span class="go">[1, 2, 3]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span>
+<span class="go">[1, 2, 3]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="ow">is</span> <span class="n">b</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#39;hi!&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span>
+<span class="go">[1, &#39;hi!&#39;, 3]</span>
 </pre></div>
 </div>
-<p>In Python 3.x this behavior has been fixed:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="mi">3</span> <span class="o">/</span> <span class="mi">2</span>
-<span class="go">1.5</span>
+</li>
+<li><p class="first">By modifying <cite>b</cite>, we have also modified <cite>a</cite>! This behaviour saves
+the time and memory needed to allocate extra space for a copy of the
+original list. If we want to make a copy, we can explicitly ask
+for one by using the <tt class="docutils literal"><span class="pre">list</span></tt> command:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span>
+<span class="go">[1, 2, 3]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="ow">is</span> <span class="n">b</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#39;hi!&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span>
+<span class="go">[1, 2, 3]</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="the-print-statement">
-<h2>The <tt class="docutils literal"><span class="pre">print</span></tt> statement<a class="headerlink" href="#the-print-statement" title="Permalink to this headline">¶</a></h2>
-<p>In Python 3.x, the <tt class="docutils literal"><span class="pre">print</span></tt> statement has been replaced with the <tt class="docutils literal"><span class="pre">print()</span></tt> function. The new syntax is therefore:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="s">&quot;Hello World!&quot;</span><span class="p">)</span>
-<span class="go">Hello World!</span>
+</li>
+<li><p class="first">Taking slices of lists does perform a copy:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">a</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span>
+<span class="go">[1, 2]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#39;hi!&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span>
+<span class="go">[&#39;hi!&#39;, 2]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span>
+<span class="go">[1, 2, 3]</span>
 </pre></div>
 </div>
-<p>instead of:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="s">&quot;Hello World!&quot;</span>
-<span class="go">Hello World!</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="string-formatting">
-<h2>String formatting<a class="headerlink" href="#string-formatting" title="Permalink to this headline">¶</a></h2>
-<p>Python 2 uses the following syntax for string formatting:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">format_string</span> <span class="o">%</span> <span class="n">values</span>
-</pre></div>
-</div>
-<p>for example:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="s">&quot;</span><span class="si">%s</span><span class="s"> </span><span class="si">%d</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="s">&#39;spam&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>while Python 3 uses:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">format_string</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>and uses a <tt class="docutils literal"><span class="pre">{}</span></tt> notation instead of <tt class="docutils literal"><span class="pre">%</span></tt>, for example:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="s">&quot;{:s} {:d}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s">&#39;spam&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="writing-future-proof-scripts">
-<h2>Writing future-proof scripts<a class="headerlink" href="#writing-future-proof-scripts" title="Permalink to this headline">¶</a></h2>
-<p>Python 2.6 and 2.7 already support the new formatting notation, so if you want
-to write future-proof scripts, you can already switch to using the new
-formatting in Python 2.</p>
-<p>In addition, you can also start using the new division and print statement. To do this, simply do:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">division</span><span class="p">,</span> <span class="n">print_function</span>
-</pre></div>
-</div>
-<p>e.g. at the start of a script, and you can then use Python 3 syntax for division and printing.</p>
-</div>
+</li>
+<li><p class="first">The key concept here is <strong>mutable vs. immutable</strong></p>
+<blockquote>
+<div><ul class="simple">
+<li>mutable objects can be changed in place</li>
+<li>immutable objects cannot be modified once created</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+<p>A very good and detailed explanation of the above issues can be found
+in David M. Beazley&#8217;s article <a class="reference external" href="http://www.informit.com/articles/article.aspx?p=453682">Types and Objects in Python</a>.</p>
 </div>
 
 
@@ -408,10 +408,10 @@ formatting in Python 2.</p>
           <a href="../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="../files/files.html" title="Reading and Writing files"
+          <a href="control_flow.html" title="Control Flow Statements"
              >next</a> |</li>
         <li class="right" >
-          <a href="standard_library.html" title="Standard Library"
+          <a href="types.html" title="Python Built-in Types and Operations"
              >previous</a> |</li>
         <li><a href="../index.html">Python4Astronomers v1.1 documentation</a> &raquo;</li>
           <li><a href="pure_python.html" >An introduction to Pure Python</a> &raquo;</li> 

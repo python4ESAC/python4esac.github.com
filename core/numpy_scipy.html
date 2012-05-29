@@ -437,7 +437,7 @@ the workshop.  Now that you have a working Python installation we can do this
 without worrying about details of the platform (e.g. linux has wget,
 Mac has curl, Windows might not have tar, etc etc).</p>
 <p>Now start IPython (<tt class="docutils literal"><span class="pre">ipython</span> <span class="pre">--pylab</span></tt>) or use your existing session and enter:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [50]: </span><span class="kn">import</span> <span class="nn">urllib2</span><span class="o">,</span> <span class="nn">tarfile</span><span class="o">,</span> <span class="nn">os</span>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [50]: </span><span class="kn">import</span> <span class="nn">urllib2</span><span class="o">,</span> <span class="nn">tarfile</span>
 
 <span class="gp">In [51]: </span><span class="n">url</span> <span class="o">=</span> <span class="s">&#39;http://python4astronomers.github.com/core/core_examples.tar&#39;</span>
 
@@ -478,10 +478,10 @@ values, and data quality for each pixel.  The slit direction is along the rows
 
 <span class="gp">In [57]: </span><span class="n">hdus</span>
 <span class="gr">Out[57]: </span>
-<span class="go">[&lt;pyfits.core.PrimaryHDU object at 0xb376dec&gt;,</span>
-<span class="go"> &lt;pyfits.core.ImageHDU object at 0xb384dac&gt;,</span>
-<span class="go"> &lt;pyfits.core.ImageHDU object at 0xb38b38c&gt;,</span>
-<span class="go"> &lt;pyfits.core.ImageHDU object at 0xb3be68c&gt;]</span>
+<span class="go">[&lt;pyfits.core.PrimaryHDU object at 0xbb89fec&gt;,</span>
+<span class="go"> &lt;pyfits.core.ImageHDU object at 0xbb05d0c&gt;,</span>
+<span class="go"> &lt;pyfits.core.ImageHDU object at 0xbce4e6c&gt;,</span>
+<span class="go"> &lt;pyfits.core.ImageHDU object at 0xbcf816c&gt;]</span>
 </pre></div>
 </div>
 <p>Type <tt class="docutils literal"><span class="pre">?hdus</span></tt> to get a little more detail on the <tt class="docutils literal"><span class="pre">hdus</span></tt> object.</p>
@@ -524,7 +524,7 @@ functions:</p>
 <span class="gp">In [67]: </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>  <span class="c"># not needed when you run ipython with the pylab option</span>
 
 <span class="gp">In [68]: </span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
-<span class="gr">Out[68]: </span><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">AxesImage</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0xb3cc5ac</span><span class="o">&gt;</span>
+<span class="gr">Out[68]: </span><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">AxesImage</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0xbcf860c</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 <p class="flip4">Click to Show/Hide Tip: matplotlib widget</p> <div class="panel4"><div class="admonition-tip-matplotlib-widget admonition ">
@@ -537,13 +537,13 @@ you call <tt class="docutils literal"><span class="pre">plt.show()</span></tt> i
 <li><em>pan</em> and <em>zoom</em> by clicking on the <em>pan</em> icon, click, hold and drag with the right mouse button.</li>
 </ul>
 </div>
-</div><p>As you can see, it is hard to see things. So, let&#8217;s set a few option for this
+</div><p>As you can see, it is hard to see things. So, let&#8217;s set a few options for this
 plot. First, we want the origin in the lower left instead of the upper left
 corner:</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [69]: </span><span class="n">plt</span><span class="o">.</span><span class="n">clf</span><span class="p">()</span>
 
 <span class="gp">In [70]: </span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">origin</span> <span class="o">=</span> <span class="s">&#39;lower&#39;</span><span class="p">)</span>
-<span class="gr">Out[70]: </span><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">AxesImage</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0xb4fb60c</span><span class="o">&gt;</span>
+<span class="gr">Out[70]: </span><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">AxesImage</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0xbb94b4c</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 <p>Second, let&#8217;s change the scaling to something more sensible. By default,
@@ -553,13 +553,13 @@ add a colorbar to our plot:</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [71]: </span><span class="n">plt</span><span class="o">.</span><span class="n">clf</span><span class="p">()</span>
 
 <span class="gp">In [72]: </span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">origin</span> <span class="o">=</span> <span class="s">&#39;lower&#39;</span><span class="p">,</span> <span class="n">vmin</span> <span class="o">=</span> <span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="n">vmax</span> <span class="o">=</span> <span class="mi">65</span><span class="p">)</span>
-<span class="gr">Out[72]: </span><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">AxesImage</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0xb5920ec</span><span class="o">&gt;</span>
+<span class="gr">Out[72]: </span><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">AxesImage</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0xb3d470c</span><span class="o">&gt;</span>
 
 <span class="gp">In [73]: </span><span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
-<span class="gr">Out[73]: </span><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">colorbar</span><span class="o">.</span><span class="n">Colorbar</span> <span class="n">instance</span> <span class="n">at</span> <span class="mh">0xb5923ec</span><span class="o">&gt;</span>
+<span class="gr">Out[73]: </span><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">colorbar</span><span class="o">.</span><span class="n">Colorbar</span> <span class="n">instance</span> <span class="n">at</span> <span class="mh">0xb3d4dac</span><span class="o">&gt;</span>
 </pre></div>
 </div>
-<p>Your plot should not look like this (it is possible that the colormap differs,
+<p>Your plot should look like this (it is possible that the colormap differs,
 if your matplotlib has different defaults set).</p>
 <a class="reference internal image-reference" href="../_images/imgview_img.png"><img alt="../_images/imgview_img.png" src="../_images/imgview_img.png" style="width: 406.0px; height: 306.0px;" /></a>
 <div class="admonition-exercise-view-the-error-and-data-quality-images admonition ">
@@ -589,7 +589,30 @@ work for you?</p>
 </pre></div>
 </div>
 <p>Use tab completion to see all the methods in short form:</p>
-<div class="highlight-python"><pre>img.&lt;TAB&gt;</pre>
+<div class="highlight-python"><pre>img.&lt;TAB&gt;
+img.T                    img.__floordiv__         img.__isub__             img.__reduce__           img.__xor__              img.dumps                img.reshape
+img.__abs__              img.__format__           img.__iter__             img.__reduce_ex__        img.all                  img.fill                 img.resize
+img.__add__              img.__ge__               img.__itruediv__         img.__repr__             img.any                  img.flags                img.round
+img.__and__              img.__getattribute__     img.__ixor__             img.__rfloordiv__        img.argmax               img.flat                 img.searchsorted
+img.__array__            img.__getitem__          img.__le__               img.__rlshift__          img.argmin               img.flatten              img.setfield
+img.__array_finalize__   img.__getslice__         img.__len__              img.__rmod__             img.argsort              img.getfield             img.setflags
+img.__array_interface__  img.__gt__               img.__long__             img.__rmul__             img.astype               img.imag                 img.shape
+img.__array_prepare__    img.__hash__             img.__lshift__           img.__ror__              img.base                 img.item                 img.size
+img.__array_priority__   img.__hex__              img.__lt__               img.__rpow__             img.byteswap             img.itemset              img.sort
+img.__array_struct__     img.__iadd__             img.__mod__              img.__rrshift__          img.choose               img.itemsize             img.squeeze
+img.__array_wrap__       img.__iand__             img.__mul__              img.__rshift__           img.clip                 img.max                  img.std
+img.__class__            img.__idiv__             img.__ne__               img.__rsub__             img.compress             img.mean                 img.strides
+img.__contains__         img.__ifloordiv__        img.__neg__              img.__rtruediv__         img.conj                 img.min                  img.sum
+img.__copy__             img.__ilshift__          img.__new__              img.__rxor__             img.conjugate            img.nbytes               img.swapaxes
+img.__deepcopy__         img.__imod__             img.__nonzero__          img.__setattr__          img.copy                 img.ndim                 img.take
+img.__delattr__          img.__imul__             img.__oct__              img.__setitem__          img.ctypes               img.newbyteorder         img.tofile
+img.__delitem__          img.__index__            img.__or__               img.__setslice__         img.cumprod              img.nonzero              img.tolist
+img.__delslice__         img.__init__             img.__pos__              img.__setstate__         img.cumsum               img.prod                 img.tostring
+img.__div__              img.__int__              img.__pow__              img.__sizeof__           img.data                 img.ptp                  img.trace
+img.__divmod__           img.__invert__           img.__radd__             img.__str__              img.diagonal             img.put                  img.transpose
+img.__doc__              img.__ior__              img.__rand__             img.__sub__              img.dot                  img.ravel                img.var
+img.__eq__               img.__ipow__             img.__rdiv__             img.__subclasshook__     img.dtype                img.real                 img.view
+img.__float__            img.__irshift__          img.__rdivmod__          img.__truediv__          img.dump                 img.repeat</pre>
 </div>
 <p>Finally find the shape of the image and its minimum value:</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [74]: </span><span class="n">img</span><span class="o">.</span><span class="n">shape</span>  <span class="c"># Get the shape of img</span>
@@ -760,12 +783,8 @@ Use <cite>plt.imshow</cite> to display the image of <tt class="docutils literal"
 
 <span class="gp">In [109]: </span><span class="n">z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">r</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">r</span> <span class="o">+</span> <span class="mi">5</span><span class="p">)</span>
 
-<span class="gp">In [110]: </span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">origin</span> <span class="o">=</span> <span class="s">&#39;lower)</span>
-<span class="go">------------------------------------------------------------</span>
-<span class="go">   File &quot;&lt;ipython console&gt;&quot;, line 1</span>
-<span class="go">     plt.imshow(z, origin = &#39;lower)</span>
-<span class="go">                                  ^</span>
-<span class="go">SyntaxError: EOL while scanning string literal</span>
+<span class="gp">In [110]: </span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">origin</span> <span class="o">=</span> <span class="s">&#39;lower&#39;</span><span class="p">)</span>
+<span class="gr">Out[110]: </span><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">AxesImage</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0xb57488c</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 <p>or alternatively:</p>
@@ -775,12 +794,8 @@ Use <cite>plt.imshow</cite> to display the image of <tt class="docutils literal"
 
 <span class="gp">In [113]: </span><span class="n">z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">r</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">r</span> <span class="o">+</span> <span class="mi">5</span><span class="p">)</span>
 
-<span class="gp">In [114]: </span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">origin</span> <span class="o">=</span> <span class="s">&#39;lower)</span>
-<span class="go">------------------------------------------------------------</span>
-<span class="go">   File &quot;&lt;ipython console&gt;&quot;, line 1</span>
-<span class="go">     plt.imshow(z, origin = &#39;lower)</span>
-<span class="go">                                  ^</span>
-<span class="go">SyntaxError: EOL while scanning string literal</span>
+<span class="gp">In [114]: </span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">origin</span> <span class="o">=</span> <span class="s">&#39;lower&#39;</span><span class="p">)</span>
+<span class="gr">Out[114]: </span><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">AxesImage</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0xb57e08c</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 <a class="reference internal image-reference" href="../_images/ripple.png"><img alt="../_images/ripple.png" src="../_images/ripple.png" style="width: 406.0px; height: 306.0px;" /></a>
@@ -818,10 +833,10 @@ below illustrate basic slicing, but you don&#8217;t need to type these examples:
 <p>As a first practical
 example plot column 300 of the longslit image to look at the spatial profile:</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [121]: </span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>             <span class="c"># make a new figure -- by default matplotlib overplots.</span>
-<span class="gr">Out[121]: </span><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">figure</span><span class="o">.</span><span class="n">Figure</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0xab42eec</span><span class="o">&gt;</span>
+<span class="gr">Out[121]: </span><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">figure</span><span class="o">.</span><span class="n">Figure</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0xb55f36c</span><span class="o">&gt;</span>
 
 <span class="gp">In [122]: </span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">img</span><span class="p">[:,</span> <span class="mi">300</span><span class="p">])</span>
-<span class="gr">Out[122]: </span><span class="p">[</span><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">lines</span><span class="o">.</span><span class="n">Line2D</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0xacc39ec</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="gr">Out[122]: </span><span class="p">[</span><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">lines</span><span class="o">.</span><span class="n">Line2D</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0xb4d962c</span><span class="o">&gt;</span><span class="p">]</span>
 </pre></div>
 </div>
 <p>Note that as long as you don&#8217;t close existing figures, they will be kept in memory.
@@ -848,7 +863,7 @@ array[&lt;slice0&gt;, &lt;slice1&gt;, ...]</pre>
 <p class="flip8">Click to Show/Hide Solution</p> <div class="panel8"><div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [123]: </span><span class="n">plt</span><span class="o">.</span><span class="n">clf</span><span class="p">()</span>
 
 <span class="gp">In [124]: </span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">err</span><span class="p">[</span><span class="mi">254</span><span class="p">,</span> <span class="mi">10</span><span class="p">:</span><span class="mi">200</span><span class="p">:</span><span class="mi">3</span><span class="p">])</span>
-<span class="gr">Out[124]: </span><span class="p">[</span><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">lines</span><span class="o">.</span><span class="n">Line2D</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0xb6203ec</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="gr">Out[124]: </span><span class="p">[</span><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">lines</span><span class="o">.</span><span class="n">Line2D</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0xbfdc48c</span><span class="o">&gt;</span><span class="p">]</span>
 
 <span class="gp">In [125]: </span><span class="n">dq</span><span class="p">[</span><span class="mi">251</span><span class="p">:</span><span class="mi">254</span><span class="p">,</span> <span class="mi">101</span><span class="p">:</span><span class="mi">105</span><span class="p">]</span>
 <span class="gr">Out[125]: </span>
@@ -870,20 +885,20 @@ this, but for now just accept and learn it.</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [126]: </span><span class="n">profile</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
 <span class="gp">In [127]: </span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
-<span class="gr">Out[127]: </span><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">figure</span><span class="o">.</span><span class="n">Figure</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0xb62948c</span><span class="o">&gt;</span>
+<span class="gr">Out[127]: </span><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">figure</span><span class="o">.</span><span class="n">Figure</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0xbfe1e8c</span><span class="o">&gt;</span>
 
 <span class="gp">In [128]: </span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">profile</span><span class="p">)</span>
-<span class="gr">Out[128]: </span><span class="p">[</span><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">lines</span><span class="o">.</span><span class="n">Line2D</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0xb6a320c</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="gr">Out[128]: </span><span class="p">[</span><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">lines</span><span class="o">.</span><span class="n">Line2D</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0xc04a4cc</span><span class="o">&gt;</span><span class="p">]</span>
 </pre></div>
 </div>
 <p>Now plot the spectrum by summing along the spatial direction:</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [129]: </span><span class="n">spectrum</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 
 <span class="gp">In [130]: </span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
-<span class="gr">Out[130]: </span><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">figure</span><span class="o">.</span><span class="n">Figure</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0xb6aa08c</span><span class="o">&gt;</span>
+<span class="gr">Out[130]: </span><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">figure</span><span class="o">.</span><span class="n">Figure</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0xc04ae8c</span><span class="o">&gt;</span>
 
 <span class="gp">In [131]: </span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">spectrum</span><span class="p">)</span>
-<span class="gr">Out[131]: </span><span class="p">[</span><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">lines</span><span class="o">.</span><span class="n">Line2D</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0xb81b9ac</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="gr">Out[131]: </span><span class="p">[</span><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">lines</span><span class="o">.</span><span class="n">Line2D</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0xc0d662c</span><span class="o">&gt;</span><span class="p">]</span>
 </pre></div>
 </div>
 <p>Since most of the sum is in the background region there is a lot of noise and
@@ -901,7 +916,7 @@ Hint: zoom into the profile plot to find the right row range.</p>
 <span class="gp">In [133]: </span><span class="n">plt</span><span class="o">.</span><span class="n">clf</span><span class="p">()</span>
 
 <span class="gp">In [134]: </span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">spectrum</span><span class="p">)</span>
-<span class="gr">Out[134]: </span><span class="p">[</span><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">lines</span><span class="o">.</span><span class="n">Line2D</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0xb8b2e4c</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="gr">Out[134]: </span><span class="p">[</span><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">lines</span><span class="o">.</span><span class="n">Line2D</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0xc113e4c</span><span class="o">&gt;</span><span class="p">]</span>
 </pre></div>
 </div>
 <a class="reference internal image-reference" href="../_images/spectrum_clean.png"><img alt="../_images/spectrum_clean.png" src="../_images/spectrum_clean.png" style="width: 406.0px; height: 306.0px;" /></a>
@@ -913,11 +928,11 @@ Hint: zoom into the profile plot to find the right row range.</p>
 
 <span class="gp">In [136]: </span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">img</span><span class="p">[:,</span> <span class="mi">254</span><span class="p">:</span><span class="mi">259</span><span class="p">])</span>
 <span class="gr">Out[136]: </span>
-<span class="go">[&lt;matplotlib.lines.Line2D object at 0xb9459ac&gt;,</span>
-<span class="go"> &lt;matplotlib.lines.Line2D object at 0xb945acc&gt;,</span>
-<span class="go"> &lt;matplotlib.lines.Line2D object at 0xb945bac&gt;,</span>
-<span class="go"> &lt;matplotlib.lines.Line2D object at 0xb945c8c&gt;,</span>
-<span class="go"> &lt;matplotlib.lines.Line2D object at 0xb945d6c&gt;]</span>
+<span class="go">[&lt;matplotlib.lines.Line2D object at 0xc1a3cac&gt;,</span>
+<span class="go"> &lt;matplotlib.lines.Line2D object at 0xc1aafac&gt;,</span>
+<span class="go"> &lt;matplotlib.lines.Line2D object at 0xc20912c&gt;,</span>
+<span class="go"> &lt;matplotlib.lines.Line2D object at 0xc20920c&gt;,</span>
+<span class="go"> &lt;matplotlib.lines.Line2D object at 0xc2092ec&gt;]</span>
 </pre></div>
 </div>
 <a class="reference internal image-reference" href="../_images/img_row254_noisy.png"><img alt="../_images/img_row254_noisy.png" src="../_images/img_row254_noisy.png" style="width: 406.0px; height: 306.0px;" /></a>
@@ -950,11 +965,11 @@ image.</p>
 
 <span class="gp">In [145]: </span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">img_cr</span><span class="p">[:,</span> <span class="mi">254</span><span class="p">:</span><span class="mi">259</span><span class="p">])</span>
 <span class="gr">Out[145]: </span>
-<span class="go">[&lt;matplotlib.lines.Line2D object at 0xbcaa06c&gt;,</span>
-<span class="go"> &lt;matplotlib.lines.Line2D object at 0xbcaa18c&gt;,</span>
-<span class="go"> &lt;matplotlib.lines.Line2D object at 0xbcaa26c&gt;,</span>
-<span class="go"> &lt;matplotlib.lines.Line2D object at 0xbcaa34c&gt;,</span>
-<span class="go"> &lt;matplotlib.lines.Line2D object at 0xbcaa42c&gt;]</span>
+<span class="go">[&lt;matplotlib.lines.Line2D object at 0xc56ed8c&gt;,</span>
+<span class="go"> &lt;matplotlib.lines.Line2D object at 0xc56eeac&gt;,</span>
+<span class="go"> &lt;matplotlib.lines.Line2D object at 0xc56ef8c&gt;,</span>
+<span class="go"> &lt;matplotlib.lines.Line2D object at 0xc57308c&gt;,</span>
+<span class="go"> &lt;matplotlib.lines.Line2D object at 0xc57316c&gt;]</span>
 </pre></div>
 </div>
 <a class="reference internal image-reference" href="../_images/img_row254_clean.png"><img alt="../_images/img_row254_clean.png" src="../_images/img_row254_clean.png" style="width: 406.0px; height: 306.0px;" /></a>
@@ -995,14 +1010,14 @@ and that you can compose logical expressions:</p>
 <p class="last">Remember the surface <tt class="docutils literal"><span class="pre">z</span> <span class="pre">=</span> <span class="pre">cos(r)</span> <span class="pre">/</span> <span class="pre">(r</span> <span class="pre">+</span> <span class="pre">5)</span></tt> that you made previously.  Set
 <tt class="docutils literal"><span class="pre">z</span> <span class="pre">=</span> <span class="pre">0</span></tt> for every pixel of <tt class="docutils literal"><span class="pre">z</span></tt> that is within 10 units of (x,y) = (10, 15).</p>
 </div>
-<p class="flip10">Click to Show/Hide Solution</p> <div class="panel10"><div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [155]: </span><span class="n">dist</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="n">x</span><span class="o">-</span><span class="mi">10</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">y</span><span class="o">-</span><span class="mi">15</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<p class="flip3">Click to Show/Hide Solution</p> <div class="panel3"><div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [155]: </span><span class="n">dist</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="n">x</span><span class="o">-</span><span class="mi">10</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">y</span><span class="o">-</span><span class="mi">15</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
 
 <span class="gp">In [156]: </span><span class="n">mask</span> <span class="o">=</span> <span class="n">dist</span> <span class="o">&lt;</span> <span class="mi">10</span>
 
 <span class="gp">In [157]: </span><span class="n">z</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
 
 <span class="gp">In [158]: </span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">origin</span> <span class="o">=</span> <span class="s">&#39;lower&#39;</span><span class="p">)</span>
-<span class="gr">Out[158]: </span><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">AxesImage</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0xbd19a4c</span><span class="o">&gt;</span>
+<span class="gr">Out[158]: </span><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">AxesImage</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0xc58c3ec</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 <a class="reference internal image-reference" href="../_images/ripple_masked.png"><img alt="../_images/ripple_masked.png" src="../_images/ripple_masked.png" style="width: 406.0px; height: 306.0px;" /></a>
@@ -1044,17 +1059,17 @@ image which includes the source region.</p>
 <span class="gp">In [165]: </span><span class="n">y</span> <span class="o">=</span> <span class="n">img_cr</span><span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="mi">10</span><span class="p">]</span>         <span class="c"># Background rows of column 10 of cleaned image</span>
 
 <span class="gp">In [166]: </span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
-<span class="gr">Out[166]: </span><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">figure</span><span class="o">.</span><span class="n">Figure</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0xbcb7d0c</span><span class="o">&gt;</span>
+<span class="gr">Out[166]: </span><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">figure</span><span class="o">.</span><span class="n">Figure</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0xc57aa8c</span><span class="o">&gt;</span>
 
 <span class="gp">In [167]: </span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-<span class="gr">Out[167]: </span><span class="p">[</span><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">lines</span><span class="o">.</span><span class="n">Line2D</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0xbd4bdac</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="gr">Out[167]: </span><span class="p">[</span><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">lines</span><span class="o">.</span><span class="n">Line2D</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0xc6919ec</span><span class="o">&gt;</span><span class="p">]</span>
 
 <span class="gp">In [168]: </span><span class="n">pfit</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>   <span class="c"># Fit a 2nd order polynomial to (x, y) data</span>
 
 <span class="gp">In [169]: </span><span class="n">yfit</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyval</span><span class="p">(</span><span class="n">pfit</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>   <span class="c"># Evaluate the polynomial at x</span>
 
 <span class="gp">In [170]: </span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">yfit</span><span class="p">)</span>
-<span class="gr">Out[170]: </span><span class="p">[</span><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">lines</span><span class="o">.</span><span class="n">Line2D</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0xbd5128c</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="gr">Out[170]: </span><span class="p">[</span><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">lines</span><span class="o">.</span><span class="n">Line2D</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0xc691eac</span><span class="o">&gt;</span><span class="p">]</span>
 
 <span class="gp">In [171]: </span><span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
 </pre></div>
@@ -1073,10 +1088,10 @@ image which includes the source region.</p>
 <span class="gp">In [177]: </span><span class="n">plt</span><span class="o">.</span><span class="n">clf</span><span class="p">()</span>
 
 <span class="gp">In [178]: </span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">bkg</span><span class="p">,</span> <span class="n">origin</span> <span class="o">=</span> <span class="s">&#39;lower&#39;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
-<span class="gr">Out[178]: </span><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">AxesImage</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0xbe39dec</span><span class="o">&gt;</span>
+<span class="gr">Out[178]: </span><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">AxesImage</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0xc704dac</span><span class="o">&gt;</span>
 
 <span class="gp">In [179]: </span><span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
-<span class="gr">Out[179]: </span><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">colorbar</span><span class="o">.</span><span class="n">Colorbar</span> <span class="n">instance</span> <span class="n">at</span> <span class="mh">0xbe401cc</span><span class="o">&gt;</span>
+<span class="gr">Out[179]: </span><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">colorbar</span><span class="o">.</span><span class="n">Colorbar</span> <span class="n">instance</span> <span class="n">at</span> <span class="mh">0xc70b1ec</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 <a class="reference internal image-reference" href="../_images/bkg_fit1.png"><img alt="../_images/bkg_fit1.png" src="../_images/bkg_fit1.png" style="width: 406.0px; height: 306.0px;" /></a>
@@ -1086,10 +1101,10 @@ image which includes the source region.</p>
 <span class="gp">In [181]: </span><span class="n">plt</span><span class="o">.</span><span class="n">clf</span><span class="p">()</span>
 
 <span class="gp">In [182]: </span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img_bkg</span><span class="p">,</span> <span class="n">origin</span> <span class="o">=</span> <span class="s">&#39;lower&#39;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">60</span><span class="p">)</span>
-<span class="gr">Out[182]: </span><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">AxesImage</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0xbf6af8c</span><span class="o">&gt;</span>
+<span class="gr">Out[182]: </span><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">AxesImage</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0xc82cc6c</span><span class="o">&gt;</span>
 
 <span class="gp">In [183]: </span><span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
-<span class="gr">Out[183]: </span><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">colorbar</span><span class="o">.</span><span class="n">Colorbar</span> <span class="n">instance</span> <span class="n">at</span> <span class="mh">0xbf7336c</span><span class="o">&gt;</span>
+<span class="gr">Out[183]: </span><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">colorbar</span><span class="o">.</span><span class="n">Colorbar</span> <span class="n">instance</span> <span class="n">at</span> <span class="mh">0xc83206c</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 <table border="1" class="docutils">

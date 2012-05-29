@@ -301,6 +301,7 @@ display:none;
 <li><a class="reference internal" href="#controlling-line-properties">Controlling line properties</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#colors">Colors</a></li>
 <li><a class="reference internal" href="#some-useful-functions-for-controlling-plotting">Some useful functions for controlling plotting</a></li>
 <li><a class="reference internal" href="#working-with-multiple-figures-and-axes">Working with multiple figures and axes</a></li>
 <li><a class="reference internal" href="#text-histograms-and-legends">Text, Histograms and Legends</a></li>
@@ -653,7 +654,63 @@ adjust the line and marker properties.</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
 </pre></div>
 </div>
+<p>The two-line plotting command can be written in one line in one of the following
+ways (there are more possibilities):</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="s">&#39;b*--&#39;</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span><span class="n">markerfacecolor</span><span class="o">=</span><span class="s">&#39;r&#39;</span><span class="p">,</span><span class="n">markeredgecolor</span><span class="o">=</span><span class="s">&#39;b&#39;</span><span class="p">,</span><span class="n">markeredgewidth</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span><span class="n">markersize</span><span class="o">=</span><span class="mi">40</span><span class="p">)</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="s">&#39;*--&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s">&#39;b&#39;</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span><span class="n">markerfacecolor</span><span class="o">=</span><span class="s">&#39;r&#39;</span><span class="p">,</span><span class="n">markeredgecolor</span><span class="o">=</span><span class="s">&#39;b&#39;</span><span class="p">,</span><span class="n">markeredgewidth</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span><span class="n">markersize</span><span class="o">=</span><span class="mi">40</span><span class="p">)</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">marker</span><span class="o">=</span><span class="s">&#39;*&#39;</span><span class="p">,</span><span class="n">linestyle</span><span class="o">=</span><span class="s">&#39;--&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s">&#39;b&#39;</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span><span class="n">markerfacecolor</span><span class="o">=</span><span class="s">&#39;r&#39;</span><span class="p">,</span><span class="n">markeredgecolor</span><span class="o">=</span><span class="s">&#39;b&#39;</span><span class="p">,</span><span class="n">markeredgewidth</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span><span class="n">markersize</span><span class="o">=</span><span class="mi">40</span><span class="p">)</span>
+</pre></div>
+</div>
 </div></div>
+</div>
+<div class="section" id="colors">
+<h2>Colors<a class="headerlink" href="#colors" title="Permalink to this headline">¶</a></h2>
+<p>Colors can be specified in an number of ways:</p>
+<ul class="simple">
+<li>via one of the following 7 abbreviations: <tt class="docutils literal"><span class="pre">b</span></tt>, <tt class="docutils literal"><span class="pre">g</span></tt>, <tt class="docutils literal"><span class="pre">r</span></tt>, <tt class="docutils literal"><span class="pre">c</span></tt>, <tt class="docutils literal"><span class="pre">m</span></tt>, <tt class="docutils literal"><span class="pre">y</span></tt>, <tt class="docutils literal"><span class="pre">k</span></tt>. This is
+also the default color cycle in matplotlib. That is, if you do not specify
+a color, the first object will be blue, the second green, then red, cyan,
+magenta, yellow and finally black. The next will be blue again, then green, red etc...</li>
+<li>via the name of a color, e.g. <tt class="docutils literal"><span class="pre">lightgoldenrodyellow</span></tt>...</li>
+<li>via a string of a float between 0 (black) and 1 (white), representing shades of gray.</li>
+<li>via an RGB tuple <tt class="docutils literal"><span class="pre">(1.0,0,1)</span></tt> (purple).</li>
+</ul>
+<p>The behaviour of the color cycle can be shown with the following code:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">scipy.special</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">15</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">scipy</span><span class="o">.</span><span class="n">special</span><span class="o">.</span><span class="n">jv</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">x</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>You can easily define a color cycle based on an existing colormap, and with
+the resolution you want. In the previous example, a color cycle of length 10
+would be more useful:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">itertools</span>
+<span class="n">color_cycle</span> <span class="o">=</span> <span class="n">itertools</span><span class="o">.</span><span class="n">cycle</span><span class="p">(</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">spectral</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">)))</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">scipy</span><span class="o">.</span><span class="n">special</span><span class="o">.</span><span class="n">jv</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">x</span><span class="p">),</span><span class="n">color</span><span class="o">=</span><span class="n">color_cycle</span><span class="o">.</span><span class="n">next</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>The use of the <tt class="docutils literal"><span class="pre">cycle</span></tt> method from the standard <tt class="docutils literal"><span class="pre">itertools</span></tt> package ensures
+that when we add a new object to plot, we start over in the color cycle.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="51%" />
+<col width="49%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head"><strong>Default color cycle</strong></th>
+<th class="head"><strong>Custom color cycle</strong></th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td><a class="first last reference internal image-reference" href="../_images/color_cycle1.png"><img alt="../_images/color_cycle1.png" src="../_images/color_cycle1.png" style="width: 406.0px; height: 306.0px;" /></a>
+</td>
+<td><a class="first last reference internal image-reference" href="../_images/color_cycle2.png"><img alt="../_images/color_cycle2.png" src="../_images/color_cycle2.png" style="width: 406.0px; height: 306.0px;" /></a>
+</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="section" id="some-useful-functions-for-controlling-plotting">
 <h2>Some useful functions for controlling plotting<a class="headerlink" href="#some-useful-functions-for-controlling-plotting" title="Permalink to this headline">¶</a></h2>
@@ -775,23 +832,30 @@ location, and the <a class="reference external" href="http://matplotlib.sourcefo
 add text in the indicated locations (see the <a class="reference external" href="http://matplotlib.sourceforge.net/users/text_intro.html#text-intro">text intro</a>
 for a more detailed example). Here we&#8217;ll create a histogram from some
 data using the <a class="reference external" href="http://matplotlib.sourceforge.net/api/pyplot_api.html#matplotlib.pyplot.hist">hist()</a> command and then annotate it with some text:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">10000</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">clf</span><span class="p">()</span>
+<div class="highlight-python"><pre>mu, sigma = 0, 1
+x = np.random.normal(mu, sigma, size=10000)
+plt.clf()
 
-<span class="c"># the histogram of the data</span>
-<span class="n">histvals</span><span class="p">,</span> <span class="n">binvals</span><span class="p">,</span> <span class="n">patches</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span>
-   <span class="n">x</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">normed</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s">&#39;g&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.75</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">&#39;my data&#39;</span><span class="p">)</span>
+# the histogram of the data
+histvals, binvals, patches = plt.hist(
+   x, bins=50, normed=1, facecolor='g', alpha=0.75, label='my data')
 
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;x&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">&#39;Probability&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">&#39;Gaussian distribution&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mf">0.45</span><span class="p">,</span> <span class="s">r&#39;$\mu=0,\ \sigma=1$&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
-</pre></div>
+plt.xlabel('x')
+plt.ylabel('Probability')
+plt.title('Gaussian distribution')
+plt.text(-2, 0.45, r'$\mu=0,\ \sigma=1$') # the prefix are makes it a `raw` string, ensuring that e.g. `\n` is not converted to a return
+plt.xlim(-4, 4)
+plt.ylim(0, 0.5)+------------------------------------+-----------------------------------+</pre>
 </div>
+<div class="line-block">
+<div class="line"><strong>Background subtracted</strong>         |   <strong>Original</strong>                    |</div>
+</div>
+<p>+====================================+===================================+
+| .. image:: bkg_fit2.png            | .. image:: imgview_img.png        |
+|    :scale: 50                      |    :scale: 50                     |
++&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;+&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8211;+</p>
+<blockquote>
+<div>plt.grid(True)</div></blockquote>
 <a class="reference internal image-reference" href="../_images/pyplot_text.png"><img alt="../_images/pyplot_text.png" src="../_images/pyplot_text.png" style="width: 560.0px; height: 420.0px;" /></a>
 <p>All of the <a class="reference external" href="http://matplotlib.sourceforge.net/api/pyplot_api.html#matplotlib.pyplot.text">text()</a> commands return a <tt class="xref py py-class docutils literal"><span class="pre">matplotlib.text.Text</span></tt>
 instance.  Just as with with lines above, you can customize the
@@ -925,7 +989,12 @@ inferred from the suffix of the filename:</p>
 posters it&#8217;s better to use a vector format like ps, pdf or svg. There
 can be small differences between the plot you see on the screen and a
 saved pdf or ps version, so check the saved version looks as you
-expect. (Often the saved vector format version will look better!)</p>
+expect. Often the saved vector format version will look better! However, plotting
+a large number of datapoints often results in a huge filesize. A possible workaround
+might be plotting while adding the <tt class="docutils literal"><span class="pre">rasterize=True</span></tt> option. If this does not
+help, a way out might be to save it to a png file and embed the bitmap
+in a eps file afterwards. This destroys the purpose of a vector format, but some
+journals require plots in eps format and with a small file size.</p>
 <p>You can also save a plot using the button in the plotting window.</p>
 <div class="admonition-exercise-make-a-contour-plot admonition ">
 <p class="first admonition-title">Exercise: Make a contour plot</p>

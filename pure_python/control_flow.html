@@ -25,7 +25,7 @@
     <link rel="top" title="Python4Astronomers v1.1 documentation" href="../index.html" />
     <link rel="up" title="An introduction to Pure Python" href="pure_python.html" />
     <link rel="next" title="Writing Functions" href="functions.html" />
-    <link rel="prev" title="Python Built-in Types and Operations" href="types.html" />
+    <link rel="prev" title="Assignment operator" href="assignment.html" />
  
 <script type="text/javascript"> 
 $(document).ready(function(){
@@ -282,7 +282,7 @@ display:none;
           <a href="functions.html" title="Writing Functions"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="types.html" title="Python Built-in Types and Operations"
+          <a href="assignment.html" title="Assignment operator"
              accesskey="P">previous</a> |</li>
         <li><a href="../index.html">Python4Astronomers v1.1 documentation</a> &raquo;</li>
           <li><a href="pure_python.html" accesskey="U">An introduction to Pure Python</a> &raquo;</li> 
@@ -295,14 +295,18 @@ display:none;
 <li><a class="reference internal" href="#">Control Flow Statements</a><ul>
 <li><a class="reference internal" href="#if-statements"><tt class="docutils literal"><span class="pre">if</span></tt> statements</a></li>
 <li><a class="reference internal" href="#for-loops"><tt class="docutils literal"><span class="pre">for</span></tt> loops</a></li>
-<li><a class="reference internal" href="#while-loops"><tt class="docutils literal"><span class="pre">while</span></tt> loops</a></li>
+<li><a class="reference internal" href="#while-loops"><tt class="docutils literal"><span class="pre">while</span></tt> loops</a><ul>
+<li><a class="reference internal" href="#keeping-track-of-enumeration-number">Keeping track of enumeration number</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#list-comprehensions">List Comprehensions</a></li>
 </ul>
 </li>
 </ul>
 
   <h4>Previous topic</h4>
-  <p class="topless"><a href="types.html"
-                        title="previous chapter">Python Built-in Types and Operations</a></p>
+  <p class="topless"><a href="assignment.html"
+                        title="previous chapter">Assignment operator</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="functions.html"
                         title="next chapter">Writing Functions</a></p>
@@ -363,7 +367,8 @@ code. For example, in the following example:</p>
 once Python exits the if statement.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">Indentation is very important in Python, and the convention is to use four spaces (not tabs) for each level of indent.</p>
+<p class="last">Indentation is very important in Python, and the convention is to
+use four spaces (not tabs) for each level of indent.</p>
 </div>
 <p>Back to the if-statements, the conditions in the statements can be anything
 that returns a boolean value. For example, <tt class="docutils literal"><span class="pre">a</span> <span class="pre">==</span> <span class="pre">1</span></tt>, <tt class="docutils literal"><span class="pre">b</span> <span class="pre">!=</span> <span class="pre">4</span></tt>, and <tt class="docutils literal"><span class="pre">c</span> <span class="pre">&lt;=</span>
@@ -379,6 +384,16 @@ comparisons should be executed, for example:</p>
 </div>
 <p>More generally, any function or expression that ultimately returns <tt class="xref docutils literal"><span class="pre">True</span></tt> or
 <tt class="xref docutils literal"><span class="pre">False</span></tt> can be used.</p>
+<p>Along with comparisons, another commonly-used operator is <tt class="docutils literal"><span class="pre">in</span></tt>. This
+is used to test whether an item is contained in any collection:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="mi">2</span> <span class="ow">in</span> <span class="n">b</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="mi">5</span> <span class="ow">in</span> <span class="n">b</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+<p>If <cite>b</cite> is a dictionary, this tests that the item is a key of <cite>b</cite>.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">In the previous examples we have included comments. All lines
@@ -403,8 +418,14 @@ includes lists, tuples, dictionaries, strings. Try the following in IPython:</p>
 1.2
 'a'</pre>
 </div>
-<p>Note that by putting the colon at the end of the first line, IPython automatically knows to indent the next line, so you don&#8217;t need to indent it yourself. After typing the <tt class="docutils literal"><span class="pre">print</span></tt> statement, you need to press enter twice to tell IPython you are finished writing code.</p>
-<p>A common type of for loop is one where the value should go between two integers with a specific set size. To do this, we can use the <tt class="docutils literal"><span class="pre">range</span></tt> function. If given a single value, it will give a list ranging from 0 to the value minus 1:</p>
+<p>Note that by putting the colon at the end of the first line, IPython
+automatically knows to indent the next line, so you don&#8217;t need to
+indent it yourself. After typing the <tt class="docutils literal"><span class="pre">print</span></tt> statement, you need to
+press enter twice to tell IPython you are finished writing code.</p>
+<p>A common type of for loop is one where the value should go between two
+integers with a specific set size. To do this, we can use the
+<tt class="docutils literal"><span class="pre">range</span></tt> function. If given a single value, it will give a list
+ranging from 0 to the value minus 1:</p>
 <div class="highlight-python"><pre>In [2]: range(10)
 Out[2]: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]</pre>
 </div>
@@ -437,7 +458,9 @@ Out[4]: [2, 4, 6, 8, 10, 12, 14, 16, 18]</pre>
 </div>
 <div class="section" id="while-loops">
 <h2><tt class="docutils literal"><span class="pre">while</span></tt> loops<a class="headerlink" href="#while-loops" title="Permalink to this headline">¶</a></h2>
-<p>Similarly to other programming languages, Python also provides a <tt class="docutils literal"><span class="pre">while</span></tt> loop which is similar to a <tt class="docutils literal"><span class="pre">for</span></tt> loop, but where the number of iterations is defined by a condition rather than an iterator:</p>
+<p>Python also provides a <tt class="docutils literal"><span class="pre">while</span></tt> loop which is similar to a <tt class="docutils literal"><span class="pre">for</span></tt>
+loop, but where the number of iterations is defined by a condition
+rather than an iterator:</p>
 <div class="highlight-python"><pre>while condition:
     # do something</pre>
 </div>
@@ -487,6 +510,71 @@ In [3]: while a &lt; 100:
 55
 89</pre>
 </div>
+<p><strong>More advanced features</strong></p>
+<p><tt class="docutils literal"><span class="pre">break</span></tt> out of enclosing for/while loop:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">z</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">while</span> <span class="nb">abs</span><span class="p">(</span><span class="n">z</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">100</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="k">if</span> <span class="n">z</span><span class="o">.</span><span class="n">imag</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+<span class="gp">... </span>        <span class="k">break</span>
+<span class="gp">... </span>    <span class="n">z</span> <span class="o">=</span> <span class="n">z</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p><tt class="docutils literal"><span class="pre">continue</span></tt> the next iteration of a loop.:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">a</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="k">if</span> <span class="n">element</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+<span class="gp">... </span>        <span class="k">continue</span>
+<span class="gp">... </span>    <span class="k">print</span> <span class="mf">1.</span> <span class="o">/</span> <span class="n">element</span>
+<span class="gp">...</span>
+<span class="go">1.0</span>
+<span class="go">0.5</span>
+<span class="go">0.25</span>
+</pre></div>
+</div>
+<div class="section" id="keeping-track-of-enumeration-number">
+<h3>Keeping track of enumeration number<a class="headerlink" href="#keeping-track-of-enumeration-number" title="Permalink to this headline">¶</a></h3>
+<p>Common task is to iterate over a sequence while keeping track of the
+item number.</p>
+<ul>
+<li><p class="first">Could use while loop with a counter as above. Or a for loop:</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [13]: </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">words</span><span class="p">)):</span>
+<span class="gp">   ....:</span>     <span class="k">print</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">words</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+<span class="gp">   ....:</span>
+<span class="gp">   ....:</span>
+<span class="go">0 cool</span>
+<span class="go">1 powerful</span>
+<span class="go">2 readable</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">But Python provides <strong>enumerate</strong> for this:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">words</span> <span class="o">=</span> <span class="p">(</span><span class="s">&#39;cool&#39;</span><span class="p">,</span> <span class="s">&#39;powerful&#39;</span><span class="p">,</span> <span class="s">&#39;readable&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">item</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">words</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="k">print</span> <span class="n">index</span><span class="p">,</span> <span class="n">item</span>
+<span class="gp">...</span>
+<span class="go">0 cool</span>
+<span class="go">1 powerful</span>
+<span class="go">2 readable</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="list-comprehensions">
+<h2>List Comprehensions<a class="headerlink" href="#list-comprehensions" title="Permalink to this headline">¶</a></h2>
+<p>A common programming structure when assigning values to a list is the
+following:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">l</span> <span class="o">=</span> <span class="p">[]</span>                      <span class="c"># create the list</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+<span class="gp">... </span>   <span class="n">l</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>List comprehensions provide a shorter and more readable way of writing
+the same loop:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">l</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span><span class="o">**</span><span class="mi">2</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)]</span>
+</pre></div>
+</div>
 </div>
 </div>
 
@@ -506,7 +594,7 @@ In [3]: while a &lt; 100:
           <a href="functions.html" title="Writing Functions"
              >next</a> |</li>
         <li class="right" >
-          <a href="types.html" title="Python Built-in Types and Operations"
+          <a href="assignment.html" title="Assignment operator"
              >previous</a> |</li>
         <li><a href="../index.html">Python4Astronomers v1.1 documentation</a> &raquo;</li>
           <li><a href="pure_python.html" >An introduction to Pure Python</a> &raquo;</li> 

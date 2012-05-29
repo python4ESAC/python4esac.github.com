@@ -386,7 +386,13 @@ capabilities!</p>
 </div>
 <div class="section" id="running-scripts">
 <h2>Running scripts<a class="headerlink" href="#running-scripts" title="Permalink to this headline">¶</a></h2>
-<p>While the interactive Python mode is very useful to exploring and trying out code, you will eventually want to write a script to record and reproduce what you did, or to do things that are too complex to type in interactively (defining functions, classes, etc.). To write a Python script, just use your favorite code editor to put the code in a file with a <tt class="docutils literal"><span class="pre">.py</span></tt> extension. For example, we can create a file called <tt class="docutils literal"><span class="pre">test.py</span></tt> containing:</p>
+<p>While the interactive Python mode is very useful for exploring and
+trying out code, you will eventually want to write a script to record
+and reproduce what you did, or to do things that are too complex to
+type in interactively (defining functions, classes, etc.). To write a
+Python script, just use your favorite code editor to put the code in a
+file with a <tt class="docutils literal"><span class="pre">.py</span></tt> extension. For example, we can create a file
+called <tt class="docutils literal"><span class="pre">test.py</span></tt> containing:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">a</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="k">print</span> <span class="n">a</span>
 </pre></div>
@@ -397,16 +403,32 @@ capabilities!</p>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">The <tt class="docutils literal"><span class="pre">print</span></tt> statement is necessary, because typing <tt class="docutils literal"><span class="pre">a</span></tt> on its own will only print out the value in interactive mode. In scripts, the printing has to be explicitly requested with the print command. To print multiple variables, just separate them with a comma after the print command: <tt class="docutils literal"><span class="pre">print</span> <span class="pre">a,</span> <span class="pre">1.5,</span> <span class="pre">&quot;spam&quot;</span></tt>. To print variable within strings use the following syntax: <tt class="docutils literal"><span class="pre">print</span> <span class="pre">(&quot;This</span> <span class="pre">is</span> <span class="pre">a</span> <span class="pre">integer:</span> <span class="pre">%d,</span> <span class="pre">this</span> <span class="pre">is</span> <span class="pre">a</span> <span class="pre">float:</span> <span class="pre">%f,</span> <span class="pre">and</span> <span class="pre">is</span> <span class="pre">a</span> <span class="pre">string:</span> <span class="pre">%s&quot;</span> <span class="pre">%</span> <span class="pre">(5,</span> <span class="pre">3.141,</span> <span class="pre">&quot;spam&quot;))</span></tt></p>
+<p class="last">The <tt class="docutils literal"><span class="pre">print</span></tt> statement is necessary, because typing <tt class="docutils literal"><span class="pre">a</span></tt> on its
+own will only print out the value in interactive mode. In scripts,
+the printing has to be explicitly requested with the print
+command. To print multiple variables, just separate them with a
+comma after the print command: <tt class="docutils literal"><span class="pre">print</span> <span class="pre">a,</span> <span class="pre">1.5,</span> <span class="pre">&quot;spam&quot;</span></tt>. To print
+variable within strings use the following syntax: <tt class="docutils literal"><span class="pre">print</span> <span class="pre">(&quot;This</span> <span class="pre">is</span>
+<span class="pre">a</span> <span class="pre">integer:</span> <span class="pre">%d,</span> <span class="pre">this</span> <span class="pre">is</span> <span class="pre">a</span> <span class="pre">float:</span> <span class="pre">%f,</span> <span class="pre">and</span> <span class="pre">is</span> <span class="pre">a</span> <span class="pre">string:</span> <span class="pre">%s&quot;</span> <span class="pre">%</span> <span class="pre">(5,</span>
+<span class="pre">3.141,</span> <span class="pre">&quot;spam&quot;))</span></tt></p>
 </div>
 </div>
 <div class="section" id="executable-scripts">
 <h2>Executable Scripts<a class="headerlink" href="#executable-scripts" title="Permalink to this headline">¶</a></h2>
-<p>It is also possible to make Python scripts executable. Simply add <tt class="docutils literal"><span class="pre">#!/usr/bin/env</span> <span class="pre">python</span></tt> on the first line of your <tt class="docutils literal"><span class="pre">test.py</span></tt> script and change the file permission to make it executable with <tt class="docutils literal"><span class="pre">chmod</span> <span class="pre">+x</span> <span class="pre">test.py</span></tt>. Now the script can be run without the preceeding <tt class="docutils literal"><span class="pre">python</span></tt> command; instead you can just type <tt class="docutils literal"><span class="pre">./test.py</span></tt> in the command line. Note that this will only work on Linux and Macs, not on Windows.</p>
+<p>It is also possible to make Python scripts executable. Simply add
+<tt class="docutils literal"><span class="pre">#!/usr/bin/env</span> <span class="pre">python</span></tt> on the first line of your <tt class="docutils literal"><span class="pre">test.py</span></tt> script
+and change the file permission to make it executable with <tt class="docutils literal"><span class="pre">chmod</span> <span class="pre">+x</span>
+<span class="pre">test.py</span></tt>. Now the script can be run without the preceeding <tt class="docutils literal"><span class="pre">python</span></tt>
+command; instead you can just type <tt class="docutils literal"><span class="pre">./test.py</span></tt> in the command
+line. Note that this will only work on Linux and Macs, not on Windows.</p>
 </div>
 <div class="section" id="combining-interactive-and-non-interactive-use">
 <h2>Combining interactive and non-interactive use<a class="headerlink" href="#combining-interactive-and-non-interactive-use" title="Permalink to this headline">¶</a></h2>
-<p>It can sometimes be useful to run a script to set things up, and to continue in interactive mode. This can be done using the <tt class="docutils literal"><span class="pre">%run</span></tt> IPython command to run the script, which then gets executed. The IPython session then has access to the last state of the variables from the script:</p>
+<p>It can sometimes be useful to run a script to set things up, and to
+continue in interactive mode. This can be done using the <tt class="docutils literal"><span class="pre">%run</span></tt>
+IPython command to run the script, which then gets executed. The
+IPython session then has access to the last state of the variables
+from the script:</p>
 <div class="highlight-python"><pre>$ ipython
 Python 2.7.2 (default, Nov  5 2011, 20:09:20)
 Type "copyright", "credits" or "license" for more information.

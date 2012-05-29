@@ -423,8 +423,8 @@ to breed with (determined with <tt class="docutils literal"><span class="pre">in
 is then straightforwardly implemented with:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">evolve</span><span class="p">(</span><span class="n">sample</span><span class="p">,</span><span class="n">eval_func</span><span class="p">,</span><span class="n">breed_func</span><span class="p">):</span>
     <span class="n">fitness</span> <span class="o">=</span> <span class="n">eval_func</span><span class="p">(</span><span class="n">sample</span><span class="o">.</span><span class="n">T</span><span class="p">)</span> <span class="c"># evaulation function needs 2xN instead of Nx2</span>
-    <span class="n">sample</span><span class="p">,</span><span class="n">fitness_</span> <span class="o">=</span> <span class="n">rank</span><span class="p">(</span><span class="n">sample</span><span class="p">,</span><span class="n">copy</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">fitness</span><span class="p">))</span>
-    <span class="n">good</span><span class="p">,</span><span class="n">bad</span> <span class="o">=</span> <span class="n">select_individuals</span><span class="p">(</span><span class="n">sample</span><span class="p">,</span><span class="n">fitness_</span><span class="p">)</span>
+    <span class="n">sample</span><span class="p">,</span><span class="n">fitness_</span> <span class="o">=</span> <span class="n">rank</span><span class="p">(</span><span class="n">sample</span><span class="p">,</span><span class="n">fitness</span><span class="o">.</span><span class="n">copy</span><span class="p">())</span>
+    <span class="n">good</span> <span class="o">=</span> <span class="n">select_individuals</span><span class="p">(</span><span class="n">fitness_</span><span class="p">)</span>
     <span class="n">children</span> <span class="o">=</span> <span class="n">generate_offspring</span><span class="p">(</span><span class="n">sample</span><span class="p">,</span><span class="n">good</span><span class="p">,</span><span class="n">breed_func</span><span class="p">)</span>
     <span class="n">sample</span><span class="p">[</span><span class="n">bad</span><span class="p">]</span> <span class="o">=</span> <span class="n">children</span>
     <span class="k">return</span> <span class="n">sample</span>
@@ -463,7 +463,7 @@ exit quitely.</p>
             <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">child</span><span class="p">,</span><span class="s">&#39;get_color&#39;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">child</span><span class="o">.</span><span class="n">get_color</span><span class="p">()</span><span class="o">==</span><span class="s">&#39;1&#39;</span><span class="p">:</span>
                 <span class="n">sample</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">child</span><span class="o">.</span><span class="n">get_data</span><span class="p">())</span><span class="o">.</span><span class="n">T</span> <span class="c"># put it in the right format</span>
                 <span class="k">break</span> <span class="c"># make sure `child` is now set to the right artist</span>
-        <span class="n">sample</span><span class="p">,</span><span class="n">fitness</span> <span class="o">=</span> <span class="n">evolve</span><span class="p">(</span><span class="n">sample</span><span class="p">,</span><span class="n">maxfunc</span><span class="p">,</span><span class="n">breed_crossover</span><span class="p">)</span>
+        <span class="n">sample</span> <span class="o">=</span> <span class="n">evolve</span><span class="p">(</span><span class="n">sample</span><span class="p">,</span><span class="n">maxfunc</span><span class="p">,</span><span class="n">breed_crossover</span><span class="p">)</span>
         <span class="n">child</span><span class="o">.</span><span class="n">set_data</span><span class="p">(</span><span class="n">sample</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span><span class="n">sample</span><span class="p">[:,</span><span class="mi">1</span><span class="p">])</span>
 
     <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">key</span><span class="o">==</span><span class="s">&#39;i&#39;</span><span class="p">:</span>
@@ -513,7 +513,30 @@ slide widget and build the GUI.</p>
 <p>Here, we made a new Slider axes and initiated the main axes used to plot all the
 results to. Then, we connected the <tt class="docutils literal"><span class="pre">ontype</span></tt> function to the current figure (<tt class="docutils literal"><span class="pre">plt.gcf()</span></tt>)
 and showed the main window to the screen.</p>
-<p>The first line in statement (<tt class="docutils literal"><span class="pre">if</span> <span class="pre">__name__==&quot;__main__&quot;</span></tt>) makes sure that this
+<p class="flip0">Click to Show/Hide Event tip</p> <div class="panel0"><div class="admonition-event-tip admonition ">
+<p class="first admonition-title">Event tip</p>
+<p>There exist three <tt class="docutils literal"><span class="pre">event</span></tt> types to which you can connect functions,
+most often aptly named <tt class="docutils literal"><span class="pre">ontype</span></tt>, <tt class="docutils literal"><span class="pre">onclick</span></tt>, <tt class="docutils literal"><span class="pre">onpick</span></tt>. To connect them,
+simply type:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">plt</span><span class="o">.</span><span class="n">gcf</span><span class="p">()</span><span class="o">.</span><span class="n">canvas</span><span class="o">.</span><span class="n">mpl_connect</span><span class="p">(</span><span class="s">&#39;key_press_event&#39;</span><span class="p">,</span><span class="n">ontype</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">gcf</span><span class="p">()</span><span class="o">.</span><span class="n">canvas</span><span class="o">.</span><span class="n">mpl_connect</span><span class="p">(</span><span class="s">&#39;button_press_event&#39;</span><span class="p">,</span><span class="n">onclick</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">gcf</span><span class="p">()</span><span class="o">.</span><span class="n">canvas</span><span class="o">.</span><span class="n">mpl_connect</span><span class="p">(</span><span class="s">&#39;pick_event&#39;</span><span class="p">,</span><span class="n">onpick</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The <tt class="docutils literal"><span class="pre">key_press_event</span></tt> is explained in the example.</p>
+<p>The <tt class="docutils literal"><span class="pre">button_press_event</span></tt>
+is very similar, but naturally the connected function is called when the user
+clicks somewhere on the canvas. Useful attributes are <tt class="docutils literal"><span class="pre">event.x</span></tt>,``event.xdata``
+and <tt class="docutils literal"><span class="pre">event.y</span></tt>,``event.ydata`` to get the pixel/data coordinates where the
+user clicked. The attribute <tt class="docutils literal"><span class="pre">button</span></tt> tells you whether it was a left (<tt class="docutils literal"><span class="pre">button=1</span></tt>),
+right (<tt class="docutils literal"><span class="pre">button=3</span></tt> or middle click (<tt class="docutils literal"><span class="pre">button=2</span></tt>). The attribute <tt class="docutils literal"><span class="pre">inaxes</span></tt>
+returns the Axes instance in which the click was made.</p>
+<p class="last">The <tt class="docutils literal"><span class="pre">pick_event</span></tt> is called when the user clicks on an object on the canvas
+for which the pick-radius is set (via <tt class="docutils literal"><span class="pre">picker=5</span></tt> for example when calling
+<tt class="docutils literal"><span class="pre">plt.plot</span></tt>). The pick event attributes include the artist that was clicked
+(<tt class="docutils literal"><span class="pre">artist</span></tt>), and the same <tt class="docutils literal"><span class="pre">button</span></tt> information as with the <tt class="docutils literal"><span class="pre">button_press_event</span></tt>.</p>
+</div>
+</div><p>The first line in the previous statement (<tt class="docutils literal"><span class="pre">if</span> <span class="pre">__name__==&quot;__main__&quot;</span></tt>) makes sure that this
 part of the code is only executed when run in the terminal with:</p>
 <div class="highlight-python"><pre>$:&gt; python ga.py</pre>
 </div>

@@ -24,7 +24,7 @@
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="top" title="Python4Astronomers v1.1 documentation" href="../index.html" />
     <link rel="up" title="An introduction to Pure Python" href="pure_python.html" />
-    <link rel="next" title="Control Flow Statements" href="control_flow.html" />
+    <link rel="next" title="Assignment operator" href="assignment.html" />
     <link rel="prev" title="Running Python code" href="running.html" />
  
 <script type="text/javascript"> 
@@ -279,7 +279,7 @@ display:none;
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="control_flow.html" title="Control Flow Statements"
+          <a href="assignment.html" title="Assignment operator"
              accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="running.html" title="Running Python code"
@@ -306,8 +306,8 @@ display:none;
   <p class="topless"><a href="running.html"
                         title="previous chapter">Running Python code</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="control_flow.html"
-                        title="next chapter">Control Flow Statements</a></p>
+  <p class="topless"><a href="assignment.html"
+                        title="next chapter">Assignment operator</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
     <li><a href="../_sources/pure_python/types.txt"
@@ -396,12 +396,17 @@ display:none;
 </div>
 </li>
 </ul>
-<p>However, there is one case where this happens but is not desirable, and that you should be aware of, which is the division of two integer numbers:</p>
+<p>However, there is one case where this happens but is not desirable,
+and that you should be aware of, which is the division of two integer
+numbers:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="mi">3</span> <span class="o">/</span> <span class="mi">2</span>
 <span class="go">1</span>
 </pre></div>
 </div>
-<p>This is behavior is widely regarded as a huge design mistake and Python 3.x has been fixed to behave like you would expect (more on Python 3.x later). A way to prevent this is to cast at least one of the integers in the division to a <tt class="docutils literal"><span class="pre">float</span></tt>:</p>
+<p>This is behavior is widely regarded as a design mistake and Python 3.x
+has been fixed to behave as you would expect (more on Python 3.x
+later). A way to prevent this is to cast at least one of the integers
+in the division to a <tt class="docutils literal"><span class="pre">float</span></tt>:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="mi">3</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 <span class="go">1.5</span>
 </pre></div>
@@ -414,7 +419,8 @@ display:none;
 </div>
 <div class="section" id="lists-tuples-and-sets">
 <h2>Lists, tuples, and sets<a class="headerlink" href="#lists-tuples-and-sets" title="Permalink to this headline">¶</a></h2>
-<p>There are two types of sequences that appear similar at first glance, both of which can contain inhomogeneous data types:</p>
+<p>There are two types of sequences that appear similar at first glance,
+both of which can contain inhomogeneous data types:</p>
 <ul>
 <li><p class="first">Lists (<tt class="docutils literal"><span class="pre">list</span></tt>):</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">l</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mf">5.5</span><span class="p">,</span> <span class="s">&quot;spam&quot;</span><span class="p">]</span>
@@ -439,7 +445,114 @@ display:none;
 </div>
 </li>
 </ul>
-<p>The difference between these two types is that lists are mutable, and tuples are immutable:</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last"><strong>Indexing starts at 0</strong> (as in C), not at 1 (as in Fortran or Matlab)!</p>
+</div>
+<ul>
+<li><p class="first">Slicing: obtaining sublists of regularly-spaced elements:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">l</span>
+<span class="go">[1, 2, 3, 4, 5]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">l</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span>
+<span class="go">[3, 4]</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<p><strong>Slicing syntax</strong>: <cite>l[start:stop:stride]</cite></p>
+<p>All slicing parameters are optional:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">l</span><span class="p">[</span><span class="mi">3</span><span class="p">:]</span>
+<span class="go">[4, 5]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">l</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span>
+<span class="go">[1, 2, 3]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">l</span><span class="p">[::</span><span class="mi">2</span><span class="p">]</span>
+<span class="go">[1, 3, 5]</span>
+</pre></div>
+</div>
+<p>Lists are <em>mutable</em> objects and can be modified:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">l</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">28</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">l</span>
+<span class="go">[28, 2, 3, 4, 5]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">l</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">8</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">l</span>
+<span class="go">[28, 2, 3, 8, 5]</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Note that <tt class="docutils literal"><span class="pre">l[start:stop]</span></tt> contains the elements with indices <tt class="docutils literal"><span class="pre">i</span></tt>
+such as  <tt class="docutils literal"><span class="pre">start&lt;=</span> <span class="pre">i</span> <span class="pre">&lt;</span> <span class="pre">stop</span></tt> (<tt class="docutils literal"><span class="pre">i</span></tt> ranging from <tt class="docutils literal"><span class="pre">start</span></tt> to
+<tt class="docutils literal"><span class="pre">stop-1</span></tt>). Therefore, <tt class="docutils literal"><span class="pre">l[start:stop]</span></tt> has <tt class="docutils literal"><span class="pre">(stop-start)</span></tt> elements.</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>The elements of a list may have different types:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">l</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s">&#39;hello&#39;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">l</span>
+<span class="go">[3, 2, &#39;hello&#39;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">l</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">l</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+<span class="go">(2, &#39;hello&#39;)</span>
+</pre></div>
+</div>
+<p class="last">For collections of numerical data that all have the same type, it
+is often <strong>more efficient</strong> to use the <tt class="docutils literal"><span class="pre">array</span></tt> type provided by
+the <tt class="docutils literal"><span class="pre">numpy</span></tt> module. A NumPy array is a chunk of memory
+containing fixed-sized items.  With NumPy arrays, operations on
+elements can be faster because elements are regularly spaced in
+memory and more operations are perfomed through specialized C
+functions instead of Python loops.</p>
+</div>
+<p>Python offers a large pnumber of functions to modify lists, or query
+them. Here are a few examples; for more details, see
+<a class="reference external" href="http://docs.python.org/tutorial/datastructures.html#more-on-lists">http://docs.python.org/tutorial/datastructures.html#more-on-lists</a></p>
+<p>Add and remove elements:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">l</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">l</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">l</span>
+<span class="go">[1, 2, 3, 4, 5, 6]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">l</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+<span class="go">6</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">l</span>
+<span class="go">[1, 2, 3, 4, 5]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">l</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">])</span> <span class="c"># extend l, in-place</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">l</span>
+<span class="go">[1, 2, 3, 4, 5, 6, 7]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">l</span> <span class="o">=</span> <span class="n">l</span><span class="p">[:</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">l</span>
+<span class="go">[1, 2, 3, 4, 5]</span>
+</pre></div>
+</div>
+<p>Reverse <cite>l</cite>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">r</span> <span class="o">=</span> <span class="n">l</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">r</span>
+<span class="go">[5, 4, 3, 2, 1]</span>
+</pre></div>
+</div>
+<p>Concatenate and repeat lists:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">r</span> <span class="o">+</span> <span class="n">l</span>
+<span class="go">[5, 4, 3, 2, 1, 1, 2, 3, 4, 5]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="mi">2</span> <span class="o">*</span> <span class="n">r</span>
+<span class="go">[5, 4, 3, 2, 1, 5, 4, 3, 2, 1]</span>
+</pre></div>
+</div>
+<p>Sort r (in-place):</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">r</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">r</span>
+<span class="go">[1, 2, 3, 4, 5]</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p><strong>Methods and Object-Oriented Programming</strong></p>
+<p class="last">The notation <tt class="docutils literal"><span class="pre">r.method()</span></tt> (<tt class="docutils literal"><span class="pre">r.sort(),</span> <span class="pre">r.append(3),</span> <span class="pre">l.pop()</span></tt>)
+is an example of object-oriented programming (OOP). Being a
+<tt class="docutils literal"><span class="pre">list</span></tt>, the object <cite>r</cite> owns the <em>method</em> <cite>function</cite> that is
+called using the notation <strong>.</strong>. No further knowledge of OOP than
+understanding the notation <strong>.</strong> is necessary for going through
+this tutorial.</p>
+</div>
+<p>The difference between lists and tuples is that lists are mutable, and
+tuples are immutable:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">l</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">3</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">l</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&#39;egg&#39;</span><span class="p">)</span>  <span class="c"># For a full list of methods, type l. then press TAB!</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">l</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="s">&#39;spam&#39;</span><span class="p">)</span>
@@ -452,25 +565,12 @@ display:none;
 <span class="gr">TypeError</span>: <span class="n">&#39;tuple&#39; object does not support item assignment</span>
 </pre></div>
 </div>
-<p>There are reasons why tuples are a useful feature (faster and <a class="reference external" href="http://docs.python.org/glossary.html#term-hashable">hashable</a> are the two main ones), but for now, it&#8217;s enough for you to know there is such a difference.</p>
-<p>One useful operation with lists and tuples is <tt class="docutils literal"><span class="pre">+</span></tt>, which can be used for concatenation:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]</span>
-<span class="go">[1, 2, 3, 4, 5, 6]</span>
-
-<span class="gp">&gt;&gt;&gt; </span><span class="p">(</span><span class="s">&#39;spam&#39;</span><span class="p">,</span> <span class="s">&#39;egg&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="s">&#39;more spam&#39;</span><span class="p">,</span><span class="s">&#39;!&#39;</span><span class="p">)</span>
-<span class="go">(&#39;spam&#39;, &#39;egg&#39;, &#39;more spam&#39;, &#39;!&#39;)</span>
-</pre></div>
-</div>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p>Unlike Numpy arrays:</p>
-<ul class="last simple">
-<li>Python lists can contain anything, including other lists, objects, or complex data structures.</li>
-<li>When you slice a Python list it returns a copy.</li>
-<li>Vector math does not work on lists. For example, multiplying a list by an int <tt class="docutils literal"><span class="pre">n</span></tt> gives <tt class="docutils literal"><span class="pre">n</span></tt> copies of the list, adding another list concatentates, and multiplying by a float gives an error.</li>
-</ul>
-</div>
-<p>Sets (<tt class="docutils literal"><span class="pre">set</span></tt>) are a third type of sequence which you can make from a tuple or a list:</p>
+<p>There are reasons why tuples are a useful feature (faster and
+<a class="reference external" href="http://docs.python.org/glossary.html#term-hashable">hashable</a> are
+the two main ones), but for now, it&#8217;s enough for you to know there is
+such a difference.</p>
+<p>Sets (<tt class="docutils literal"><span class="pre">set</span></tt>) are a third type of sequence which you can make from a
+tuple or a list:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="nb">set</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s">&#39;spam&#39;</span><span class="p">,</span> <span class="s">&#39;egg&#39;</span><span class="p">,</span> <span class="s">&#39;spam&#39;</span><span class="p">])</span>
 <span class="go">set([1, 2, 3, &#39;egg&#39;, &#39;spam&#39;])</span>
 </pre></div>
@@ -489,10 +589,10 @@ operators can be used to represent set operations:</p>
 <span class="go">set([1, 2, 3, 4])</span>
 </pre></div>
 </div>
-<p>If you want to test whether a single item is member of a large
-collection of items, it is faster to use a set rather than a list or
-tuple:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="s">&#39;a&#39;</span> <span class="ow">in</span> <span class="nb">set</span><span class="p">(</span><span class="s">&#39;abcdef&#39;</span><span class="p">)</span>
+<p>If you want to test whether a single item is member of a very large
+collection of items, it can be faster to use a set rather than a list
+or tuple:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="s">&#39;a&#39;</span> <span class="ow">in</span> <span class="nb">set</span><span class="p">([</span><span class="s">&#39;a&#39;</span><span class="p">,</span> <span class="s">&#39;b&#39;</span><span class="p">,</span> <span class="s">&#39;c&#39;</span><span class="p">,</span> <span class="s">&#39;d&#39;</span><span class="p">,</span> <span class="s">&#39;e&#39;</span><span class="p">,</span> <span class="s">&#39;f&#39;</span><span class="p">])</span>
 <span class="go">True</span>
 </pre></div>
 </div>
@@ -503,7 +603,10 @@ tuple:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="s">&quot;Spam egg spam spam&quot;</span>
 </pre></div>
 </div>
-<p>You can use either single quotes (<tt class="docutils literal"><span class="pre">'</span></tt>), double quotes (<tt class="docutils literal"><span class="pre">&quot;</span></tt>), or triple quotes (<tt class="docutils literal"><span class="pre">'''</span></tt>) to enclose a string (the last one is used for multi-line strings). To include single or double quotes inside a string, you can either use the opposite quote to enclose the string:</p>
+<p>You can use either single quotes (<tt class="docutils literal"><span class="pre">'</span></tt>), double quotes (<tt class="docutils literal"><span class="pre">&quot;</span></tt>), or
+triple quotes (<tt class="docutils literal"><span class="pre">'''</span></tt>) to enclose a string (the last one is used for
+multi-line strings). To include single or double quotes inside a
+string, you can either use the opposite quote to enclose the string:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="s">&quot;I&#39;m&quot;</span>
 <span class="go">&quot;I&#39;m&quot;</span>
 
@@ -519,19 +622,40 @@ tuple:</p>
 <span class="go">&#39;&quot;hello&quot;&#39;</span>
 </pre></div>
 </div>
-<p>You can access individual characters or chunks of characters:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span>
+<p>Strings are sequences like lists. Hence they can be indexed and
+sliced, using the same syntax and rules.</p>
+<p>Indexing:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="s">&quot;hello&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="go">&#39;h&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 <span class="go">&#39;e&#39;</span>
-
-<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="p">[</span><span class="mi">9</span><span class="p">:</span><span class="mi">13</span><span class="p">]</span>
-<span class="go">&#39;spam&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="go">&#39;o&#39;</span>
 </pre></div>
 </div>
-<p>Note that strings are immutable (like tuples), that is you cannot change the value of certain characters without creating a new string:</p>
+<p>(Remember that negative indices correspond to counting from the right
+end.)</p>
+<p>Slicing:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="s">&quot;hello, world!&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="p">[</span><span class="mi">3</span><span class="p">:</span><span class="mi">6</span><span class="p">]</span> <span class="c"># 3rd to 6th (excluded) elements: elements 3, 4, 5</span>
+<span class="go">&#39;lo,&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">10</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span> <span class="c"># Syntax: a[start:stop:step]</span>
+<span class="go">&#39;lo o&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="p">[::</span><span class="mi">3</span><span class="p">]</span> <span class="c"># every three characters, from beginning to end</span>
+<span class="go">&#39;hl r!&#39;</span>
+</pre></div>
+</div>
+<p>Note that strings are immutable (like tuples), that is you cannot
+change the value of certain characters without creating a new string:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#39;r&#39;</span>
 <span class="gt">Traceback (most recent call last):</span>
   File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
 <span class="gr">TypeError</span>: <span class="n">&#39;str&#39; object does not support item assignment</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">&#39;l&#39;</span><span class="p">,</span> <span class="s">&#39;z&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="s">&#39;hezlo, world!&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">&#39;l&#39;</span><span class="p">,</span> <span class="s">&#39;z&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="s">&#39;hezzo, worzd!&#39;</span>
 </pre></div>
 </div>
 <p>As for lists, and tuples, concatenation is done with <tt class="docutils literal"><span class="pre">+</span></tt>:</p>
@@ -539,7 +663,8 @@ tuple:</p>
 <span class="go">&#39;hello, world!&#39;</span>
 </pre></div>
 </div>
-<p>Finally, strings have many methods associated with them, here are a few examples:</p>
+<p>Finally, strings have many methods associated with them like
+<tt class="docutils literal"><span class="pre">.replace()</span></tt> used above. Here are a few more examples:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
 <span class="go">&#39;SPAM EGG SPAM SPAM&#39;  # An uppercase version of the string</span>
 
@@ -561,6 +686,12 @@ as look-up tables:</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="p">[</span><span class="s">&#39;flux&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">4.5</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">d</span>
 <span class="go">{&#39;flux&#39;: 4.5, &#39;dec&#39;: 41.27, &#39;name&#39;: &#39;m31&#39;, &#39;ra&#39;: 10.68}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+<span class="go">[&#39;dec&#39;, &#39;name&#39;, &#39;ra&#39;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
+<span class="go">[41.27, &#39;m31&#39;, 10.68]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="s">&#39;ra&#39;</span> <span class="ow">in</span> <span class="n">d</span>
+<span class="go">True</span>
 </pre></div>
 </div>
 </div>
@@ -616,7 +747,7 @@ a</pre>
           <a href="../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="control_flow.html" title="Control Flow Statements"
+          <a href="assignment.html" title="Assignment operator"
              >next</a> |</li>
         <li class="right" >
           <a href="running.html" title="Running Python code"

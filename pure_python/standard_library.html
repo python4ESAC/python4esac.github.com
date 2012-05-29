@@ -1,0 +1,626 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Standard Library &mdash; Python4Astronomers v1.1 documentation</title>
+    <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="Python4Astronomers v1.1 documentation" href="../index.html" />
+    <link rel="up" title="An introduction to Pure Python" href="pure_python.html" />
+    <link rel="next" title="A Quick Note about Python 3" href="python3.html" />
+    <link rel="prev" title="Importing Modules" href="modules.html" />
+ 
+<script type="text/javascript"> 
+$(document).ready(function(){
+
+$(".flip0").click(function(){
+    $(".panel0").slideToggle("normal");
+  });
+
+$(".flip1").click(function(){
+    $(".panel1").slideToggle("normal");
+  });
+
+$(".flip2").click(function(){
+    $(".panel2").slideToggle("normal");
+  });
+
+$(".flip3").click(function(){
+    $(".panel3").slideToggle("normal");
+  });
+
+$(".flip4").click(function(){
+    $(".panel4").slideToggle("normal");
+  });
+
+$(".flip5").click(function(){
+    $(".panel5").slideToggle("normal");
+  });
+
+$(".flip6").click(function(){
+    $(".panel6").slideToggle("normal");
+  });
+
+$(".flip7").click(function(){
+    $(".panel7").slideToggle("normal");
+  });
+
+$(".flip8").click(function(){
+    $(".panel8").slideToggle("normal");
+  });
+
+$(".flip9").click(function(){
+    $(".panel9").slideToggle("normal");
+  });
+
+});
+</script>
+ 
+<style type="text/css"> 
+
+div.panel0,p.flip0
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip0
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel0
+{
+display:none;
+}
+
+div.panel1,p.flip1
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip1
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel1
+{
+display:none;
+}
+
+div.panel2,p.flip2
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip2
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel2
+{
+display:none;
+}
+
+div.panel3,p.flip3
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip3
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel3
+{
+display:none;
+}
+
+div.panel4,p.flip4
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip4
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel4
+{
+display:none;
+}
+
+div.panel5,p.flip5
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip5
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel5
+{
+display:none;
+}
+
+div.panel6,p.flip6
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip6
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel6
+{
+display:none;
+}
+
+div.panel7,p.flip7
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip7
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel7
+{
+display:none;
+}
+
+div.panel8,p.flip8
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip8
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel8
+{
+display:none;
+}
+
+div.panel9,p.flip9
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip9
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel9
+{
+display:none;
+}
+
+</style>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-18709417-2']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="python3.html" title="A Quick Note about Python 3"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="modules.html" title="Importing Modules"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">Python4Astronomers v1.1 documentation</a> &raquo;</li>
+          <li><a href="pure_python.html" accesskey="U">An introduction to Pure Python</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Standard Library</a><ul>
+<li><a class="reference internal" href="#os-module-operating-system-functionality"><tt class="docutils literal"><span class="pre">os</span></tt> module: operating system functionality</a><ul>
+<li><a class="reference internal" href="#directory-and-file-manipulation">Directory and file manipulation</a></li>
+<li><a class="reference internal" href="#os-path-path-manipulations"><tt class="docutils literal"><span class="pre">os.path</span></tt>: path manipulations</a></li>
+<li><a class="reference internal" href="#running-an-external-command">Running an external command</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#shutil-high-level-file-operations"><tt class="docutils literal"><span class="pre">shutil</span></tt>: high-level file operations</a></li>
+<li><a class="reference internal" href="#glob-pattern-matching-on-files"><tt class="docutils literal"><span class="pre">glob</span></tt>: Pattern matching on files</a><ul>
+<li><a class="reference internal" href="#environment-variables">Environment variables:</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#sys-module-system-specific-information"><tt class="docutils literal"><span class="pre">sys</span></tt> module: system-specific information</a></li>
+<li><a class="reference internal" href="#pickle-easy-persistence"><tt class="docutils literal"><span class="pre">pickle</span></tt>: easy persistence</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="modules.html"
+                        title="previous chapter">Importing Modules</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="python3.html"
+                        title="next chapter">A Quick Note about Python 3</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/pure_python/standard_library.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="standard-library">
+<h1>Standard Library<a class="headerlink" href="#standard-library" title="Permalink to this headline">¶</a></h1>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>Reference document for this section:</p>
+<ul class="last simple">
+<li>The Python Standard Library documentation:
+<a class="reference external" href="http://docs.python.org/library/index.html">http://docs.python.org/library/index.html</a></li>
+<li>Python Essential Reference, David Beazley, Addison-Wesley Professional</li>
+</ul>
+</div>
+<div class="section" id="os-module-operating-system-functionality">
+<h2><tt class="docutils literal"><span class="pre">os</span></tt> module: operating system functionality<a class="headerlink" href="#os-module-operating-system-functionality" title="Permalink to this headline">¶</a></h2>
+<p><em>&#8220;A portable way of using operating system dependent functionality.&#8221;</em></p>
+<div class="section" id="directory-and-file-manipulation">
+<h3>Directory and file manipulation<a class="headerlink" href="#directory-and-file-manipulation" title="Permalink to this headline">¶</a></h3>
+<p>Current directory:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="s">&#39;/Users/cburns/src/scipy2009/scipy_2009_tutorial/source&#39;</span>
+</pre></div>
+</div>
+<p>List a directory:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">curdir</span><span class="p">)</span>
+<span class="go">[&#39;.index.rst.swo&#39;,</span>
+<span class="go"> &#39;.python_language.rst.swp&#39;,</span>
+<span class="go"> &#39;.view_array.py.swp&#39;,</span>
+<span class="go"> &#39;_static&#39;,</span>
+<span class="go"> &#39;_templates&#39;,</span>
+<span class="go"> &#39;basic_types.rst&#39;,</span>
+<span class="go"> &#39;conf.py&#39;,</span>
+<span class="go"> &#39;control_flow.rst&#39;,</span>
+<span class="go"> &#39;debugging.rst&#39;,</span>
+<span class="go"> ...</span>
+</pre></div>
+</div>
+<p>Make a directory:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="s">&#39;junkdir&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="s">&#39;junkdir&#39;</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">curdir</span><span class="p">)</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<p>Rename the directory:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="s">&#39;junkdir&#39;</span><span class="p">,</span> <span class="s">&#39;foodir&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="s">&#39;junkdir&#39;</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">curdir</span><span class="p">)</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="s">&#39;foodir&#39;</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">curdir</span><span class="p">)</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">rmdir</span><span class="p">(</span><span class="s">&#39;foodir&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="s">&#39;foodir&#39;</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">curdir</span><span class="p">)</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+<p>Delete a file:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">fp</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">&#39;junk.txt&#39;</span><span class="p">,</span> <span class="s">&#39;w&#39;</span><span class="p">)</span>    <span class="c"># first create an empty file</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fp</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="s">&#39;junk.txt&#39;</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">curdir</span><span class="p">)</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s">&#39;junk.txt&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="s">&#39;junk.txt&#39;</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">curdir</span><span class="p">)</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="os-path-path-manipulations">
+<h3><tt class="docutils literal"><span class="pre">os.path</span></tt>: path manipulations<a class="headerlink" href="#os-path-path-manipulations" title="Permalink to this headline">¶</a></h3>
+<p><tt class="docutils literal"><span class="pre">os.path</span></tt> provides common operations on pathnames:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">fp</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">&#39;junk.txt&#39;</span><span class="p">,</span> <span class="s">&#39;w&#39;</span><span class="p">)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fp</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="s">&#39;junk.txt&#39;</span><span class="p">)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span>
+<span class="go">    &#39;/Users/cburns/src/scipy2009/scipy_2009_tutorial/source/junk.txt&#39;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="go">    (&#39;/Users/cburns/src/scipy2009/scipy_2009_tutorial/source&#39;,</span>
+<span class="go">     &#39;junk.txt&#39;)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="go">    &#39;/Users/cburns/src/scipy2009/scipy_2009_tutorial/source&#39;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="go">    &#39;junk.txt&#39;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
+<span class="go">    (&#39;junk&#39;, &#39;.txt&#39;)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="s">&#39;junk.txt&#39;</span><span class="p">)</span>
+<span class="go">    True</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="s">&#39;junk.txt&#39;</span><span class="p">)</span>
+<span class="go">    True</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="s">&#39;junk.txt&#39;</span><span class="p">)</span>
+<span class="go">    False</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="s">&#39;~/local&#39;</span><span class="p">)</span>
+<span class="go">    &#39;/Users/cburns/local&#39;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="s">&#39;~&#39;</span><span class="p">),</span> <span class="s">&#39;local&#39;</span><span class="p">,</span> <span class="s">&#39;bin&#39;</span><span class="p">)</span>
+<span class="go">    &#39;/Users/cburns/local/bin&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="running-an-external-command">
+<h3>Running an external command<a class="headerlink" href="#running-an-external-command" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="go">&gt;&gt;&gt; from subprocess import call</span>
+<span class="go">&gt;&gt;&gt; call(&#39;chmod +x filename&#39;, shell=True)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="shutil-high-level-file-operations">
+<h2><tt class="docutils literal"><span class="pre">shutil</span></tt>: high-level file operations<a class="headerlink" href="#shutil-high-level-file-operations" title="Permalink to this headline">¶</a></h2>
+<p>The <tt class="docutils literal"><span class="pre">shutil</span></tt> provides useful file operations:</p>
+<blockquote>
+<div><ul class="simple">
+<li><tt class="docutils literal"><span class="pre">shutil.rmtree</span></tt>: Recursively delete a directory tree.</li>
+<li><tt class="docutils literal"><span class="pre">shutil.move</span></tt>: Recursively move a file or directory to another location.</li>
+<li><tt class="docutils literal"><span class="pre">shutil.copy</span></tt>: Copy files or directories.</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="glob-pattern-matching-on-files">
+<h2><tt class="docutils literal"><span class="pre">glob</span></tt>: Pattern matching on files<a class="headerlink" href="#glob-pattern-matching-on-files" title="Permalink to this headline">¶</a></h2>
+<p>The <tt class="docutils literal"><span class="pre">glob</span></tt> module provides convenient file pattern matching.</p>
+<p>Find all files ending in <tt class="docutils literal"><span class="pre">.txt</span></tt>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">glob</span> <span class="kn">import</span> <span class="n">glob</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">glob</span><span class="p">(</span><span class="s">&#39;*.txt&#39;</span><span class="p">)</span>
+<span class="go">[&#39;holy_grail.txt&#39;, &#39;junk.txt&#39;, &#39;newfile.txt&#39;]</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">glob</span><span class="p">(</span><span class="s">&#39;[hn]*.txt&#39;</span><span class="p">)</span>
+<span class="go">[&#39;holy_grail.txt&#39;, &#39;newfile.txt&#39;]</span>
+</pre></div>
+</div>
+<p>Note that by default the results aren&#8217;t sorted. If you want the output
+list sorted, use:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="nb">sorted</span><span class="p">(</span><span class="n">glob</span><span class="p">(</span><span class="s">&#39;[hn]*.txt&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="section" id="environment-variables">
+<h3>Environment variables:<a class="headerlink" href="#environment-variables" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">os</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+<span class="go">[&#39;_&#39;,</span>
+<span class="go"> &#39;FSLDIR&#39;,</span>
+<span class="go"> &#39;TERM_PROGRAM_VERSION&#39;,</span>
+<span class="go"> &#39;FSLREMOTECALL&#39;,</span>
+<span class="go"> &#39;USER&#39;,</span>
+<span class="go"> &#39;HOME&#39;,</span>
+<span class="go"> &#39;PATH&#39;,</span>
+<span class="go"> &#39;PS1&#39;,</span>
+<span class="go"> &#39;SHELL&#39;,</span>
+<span class="go"> &#39;EDITOR&#39;,</span>
+<span class="go"> &#39;WORKON_HOME&#39;,</span>
+<span class="go"> &#39;PYTHONPATH&#39;,</span>
+<span class="go"> ...</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s">&#39;PYTHONPATH&#39;</span><span class="p">]</span>
+<span class="go">&#39;.:/Users/cburns/src/utils:/Users/cburns/src/nitools:</span>
+<span class="go">/Users/cburns/local/lib/python2.5/site-packages/:</span>
+<span class="go">/usr/local/lib/python2.5/site-packages/:</span>
+<span class="go">/Library/Frameworks/Python.framework/Versions/2.5/lib/python2.5&#39;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s">&#39;PYTHONPATH&#39;</span><span class="p">)</span>
+<span class="go">&#39;.:/Users/cburns/src/utils:/Users/cburns/src/nitools:</span>
+<span class="go">/Users/cburns/local/lib/python2.5/site-packages/:</span>
+<span class="go">/usr/local/lib/python2.5/site-packages/:</span>
+<span class="go">/Library/Frameworks/Python.framework/Versions/2.5/lib/python2.5&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="sys-module-system-specific-information">
+<h2><tt class="docutils literal"><span class="pre">sys</span></tt> module: system-specific information<a class="headerlink" href="#sys-module-system-specific-information" title="Permalink to this headline">¶</a></h2>
+<p>System-specific information related to the Python interpreter.</p>
+<ul>
+<li><p class="first">Which version of python are you running and where is it installed:</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="go">&gt;&gt;&gt; sys.platform</span>
+<span class="go">&#39;darwin&#39;</span>
+
+<span class="go">&gt;&gt;&gt; sys.version</span>
+<span class="go">&#39;2.5.2 (r252:60911, Feb 22 2008, 07:57:53) \n</span>
+<span class="go">[GCC 4.0.1 (Apple Computer, Inc. build 5363)]&#39;</span>
+
+<span class="go">&gt;&gt;&gt; sys.prefix</span>
+<span class="go">&#39;/Library/Frameworks/Python.framework/Versions/2.5&#39;</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">List of command line arguments passed to a Python script:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span>
+<span class="go">[&#39;/Users/cburns/local/bin/ipython&#39;]</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<p><tt class="docutils literal"><span class="pre">sys.path</span></tt> is a list of strings that specifies the search path for
+modules.  Initialized from PYTHONPATH:</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="go">&gt;&gt;&gt; sys.path</span>
+<span class="go">[&#39;&#39;,</span>
+<span class="go"> &#39;/Users/cburns/local/bin&#39;,</span>
+<span class="go"> &#39;/Users/cburns/local/lib/python2.5/site-packages/grin-1.1-py2.5.egg&#39;,</span>
+<span class="go"> &#39;/Users/cburns/local/lib/python2.5/site-packages/argparse-0.8.0-py2.5.egg&#39;,</span>
+<span class="go"> &#39;/Users/cburns/local/lib/python2.5/site-packages/urwid-0.9.7.1-py2.5.egg&#39;,</span>
+<span class="go"> &#39;/Users/cburns/local/lib/python2.5/site-packages/yolk-0.4.1-py2.5.egg&#39;,</span>
+<span class="go"> &#39;/Users/cburns/local/lib/python2.5/site-packages/virtualenv-1.2-py2.5.egg&#39;,</span>
+<span class="go"> ...</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="pickle-easy-persistence">
+<h2><tt class="docutils literal"><span class="pre">pickle</span></tt>: easy persistence<a class="headerlink" href="#pickle-easy-persistence" title="Permalink to this headline">¶</a></h2>
+<p>The Pickle module is useful to store arbitrary objects to a
+file. However, it isn&#8217;t safe (don&#8217;t use it for long-term storage) or
+very fast.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pickle</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">l</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="s">&#39;Stan&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">l</span><span class="p">,</span> <span class="nb">file</span><span class="p">(</span><span class="s">&#39;test.pkl&#39;</span><span class="p">,</span> <span class="s">&#39;w&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="nb">file</span><span class="p">(</span><span class="s">&#39;test.pkl&#39;</span><span class="p">))</span>
+<span class="go">[1, None, &#39;Stan&#39;]</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="python3.html" title="A Quick Note about Python 3"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="modules.html" title="Importing Modules"
+             >previous</a> |</li>
+        <li><a href="../index.html">Python4Astronomers v1.1 documentation</a> &raquo;</li>
+          <li><a href="pure_python.html" >An introduction to Pure Python</a> &raquo;</li> 
+      </ul>
+    </div>
+ <small>Copyright:
+ Smithsonian Astrophysical Observatory under terms of
+ <a rel="license"
+ href="http://creativecommons.org/licenses/by/3.0/">CC
+ Attribution 3.0</a></small> <a rel="license"
+ href="http://creativecommons.org/licenses/by/3.0/"><img alt="Creative Commons
+ License" style="border-width:0"
+ src="http://i.creativecommons.org/l/by/3.0/80x15.png" /></a>
+
+  </body>
+</html>

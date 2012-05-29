@@ -24,7 +24,7 @@
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="top" title="Python4Astronomers v1.1 documentation" href="../index.html" />
     <link rel="up" title="An introduction to Pure Python" href="pure_python.html" />
-    <link rel="next" title="Reading and Writing files in Pure Python" href="files.html" />
+    <link rel="next" title="Importing Modules" href="modules.html" />
     <link rel="prev" title="Control Flow Statements" href="control_flow.html" />
  
 <script type="text/javascript"> 
@@ -279,7 +279,7 @@ display:none;
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="files.html" title="Reading and Writing files in Pure Python"
+          <a href="modules.html" title="Importing Modules"
              accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="control_flow.html" title="Control Flow Statements"
@@ -290,12 +290,20 @@ display:none;
     </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Writing Functions</a><ul>
+<li><a class="reference internal" href="#docstrings">Docstrings</a></li>
+</ul>
+</li>
+</ul>
+
   <h4>Previous topic</h4>
   <p class="topless"><a href="control_flow.html"
                         title="previous chapter">Control Flow Statements</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="files.html"
-                        title="next chapter">Reading and Writing files in Pure Python</a></p>
+  <p class="topless"><a href="modules.html"
+                        title="next chapter">Importing Modules</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
     <li><a href="../_sources/pure_python/functions.txt"
@@ -348,31 +356,67 @@ arguments. Let&#8217;s make things a little more complicated:</p>
     <span class="k">return</span> <span class="n">total</span>
 </pre></div>
 </div>
-<p>This function simply adds the two numbers that it is given as arguments. As you expect, we can pass integers, floats and strings to a function. Actually, we
-can pass <em>any</em> Python object, even functions! Consider the flowing function:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">print_argument</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="mi">5</span><span class="p">):</span>
+<p>This function simply adds the two numbers that it is given as
+arguments. As you expect, we can pass integers, floats and strings to
+a function. Actually, we can pass <em>any</em> Python object, even functions!
+Consider the following function:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">print_argument</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
     <span class="k">print</span> <span class="n">x</span>
 </pre></div>
 </div>
 <p>In this example, we have defined what the default value of the <tt class="docutils literal"><span class="pre">x</span></tt>
-variable in the function. If you try and call this function without
-any arguments, the default will be used. If you call it with an
-argument, the specified value will be used.</p>
+variable in the function. This is called a keyword argument. If you
+try and call this function without any arguments, the default will be
+used. If you call it with an argument, the specified value will be
+used.</p>
 <div class="admonition-exercise admonition ">
 <p class="first admonition-title">Exercise</p>
-<p class="last">Write a function that prints out &#8220;The managing director of MPIA is
-[name]&#8221;, where [name] is the argument that is given. If no
-argument is given, [name] should be the default string
-&#8220;Hans-Walter Rix&#8221;. If the argument &#8220;Thomas Henning&#8221; is given, the
-function should print &#8220;Thomas Henning was the managing director of
-MPIA last year&#8221;.</p>
+<p class="last">Write a function that multiplies the input argument by 7.  If no
+argument is given, it prints 7. If the input argument 6, it
+should print &#8220;Answer to the Ultimate Question of Life, The
+Universe, and Everything.&#8221;</p>
 </div>
-<p class="flip8">Click to Show/Hide Solution</p> <div class="panel8"><div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">mpia_director</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s">&quot;Hans-Walter Rix&quot;</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">name</span> <span class="o">==</span> <span class="s">&quot;Thomas Henning&quot;</span><span class="p">:</span>
-        <span class="k">print</span> <span class="p">(</span><span class="s">&quot;</span><span class="si">%s</span><span class="s"> was the managing director of MPIA last year.&quot;</span> <span class="o">%</span> <span class="n">name</span><span class="p">)</span>
+<p class="flip8">Click to Show/Hide Solution</p> <div class="panel8"><div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">multiply_by_7</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">6</span><span class="p">:</span>
+        <span class="k">print</span> <span class="p">(</span><span class="s">&quot;The meaning of life, the Universe and everything.&quot;</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="k">print</span> <span class="p">(</span><span class="s">&quot;The managing director of MPIA is &quot;</span> <span class="o">+</span> <span class="n">name</span> <span class="o">+</span> <span class="s">&quot;.&quot;</span><span class="p">)</span>
+        <span class="k">print</span> <span class="n">x</span><span class="o">*</span><span class="mi">7</span>
 </pre></div>
+</div>
+<p>Functions can also have both keyword and standard arguments:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">slicer</span><span class="p">(</span><span class="n">seq</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">stop</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+<span class="gp">... </span>   <span class="sd">&quot;&quot;&quot; Implement basic Python slicing.&quot;&quot;&quot;</span>
+<span class="gp">... </span>   <span class="k">return</span> <span class="n">seq</span><span class="p">[</span><span class="n">start</span><span class="p">:</span><span class="n">stop</span><span class="p">:</span><span class="n">step</span><span class="p">]</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">l</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">slicer</span><span class="p">()</span>
+<span class="go">TypeError: slicer() takes at least 1 argument (0 given)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">slicer</span><span class="p">(</span><span class="n">l</span><span class="p">)</span>
+<span class="go">[1, 2, 3, 4, 5, 6]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">slicer</span><span class="p">(</span><span class="n">l</span><span class="p">,</span> <span class="n">stop</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="go">[1, 2]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">slicer</span><span class="p">(</span><span class="n">l</span><span class="p">,</span> <span class="n">stop</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="go">[1, 3, 5]</span>
+</pre></div>
+</div>
+<div class="section" id="docstrings">
+<h2>Docstrings<a class="headerlink" href="#docstrings" title="Permalink to this headline">¶</a></h2>
+<p>You can use a single string after the first line of a function to
+describe what the function does and its parameters. The general
+convention is:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">funcname</span><span class="p">(</span><span class="n">params</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="sd">&quot;&quot;&quot;Concise one-line sentence describing the function.</span>
+<span class="gp">...</span><span class="sd"></span>
+<span class="gp">... </span><span class="sd">    Extended summary which can contain multiple paragraphs.</span>
+<span class="gp">... </span><span class="sd">    &quot;&quot;&quot;</span>
+<span class="gp">... </span>    <span class="c"># function body</span>
+<span class="gp">... </span>    <span class="k">pass</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">help</span><span class="p">(</span><span class="n">funcname</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>In IPython you can access the same documentation about a function
+using <tt class="docutils literal"><span class="pre">funcname?</span></tt> (Try it now!).</p>
 </div>
 </div>
 
@@ -389,7 +433,7 @@ MPIA last year&#8221;.</p>
           <a href="../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="files.html" title="Reading and Writing files in Pure Python"
+          <a href="modules.html" title="Importing Modules"
              >next</a> |</li>
         <li class="right" >
           <a href="control_flow.html" title="Control Flow Statements"

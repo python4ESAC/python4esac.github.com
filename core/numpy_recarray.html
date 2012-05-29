@@ -334,26 +334,26 @@ display:none;
 <p>The catalog we use is the Geneva Photometry Catalog from Rufener (1988).
 It is accessible through the ViZieR website via its designation <tt class="docutils literal"><span class="pre">II/169/main</span></tt>.
 First we will download the catalog to the local disk:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [5]: </span><span class="kn">import</span> <span class="nn">urllib</span><span class="o">,</span> <span class="nn">pyfits</span><span class="o">,</span> <span class="nn">os</span>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [2]: </span><span class="kn">import</span> <span class="nn">urllib</span><span class="o">,</span> <span class="nn">pyfits</span><span class="o">,</span> <span class="nn">os</span>
 
-<span class="gp">In [6]: </span><span class="n">vizier_url</span> <span class="o">=</span> <span class="s">&#39;http://vizier.u-strasbg.fr/viz-bin/asu-fits/VizieR?&#39;</span> <span class="c"># website of ViZieR</span>
+<span class="gp">In [3]: </span><span class="n">vizier_url</span> <span class="o">=</span> <span class="s">&#39;http://vizier.u-strasbg.fr/viz-bin/asu-fits/VizieR?&#39;</span> <span class="c"># website of ViZieR</span>
 
-<span class="gp">In [7]: </span><span class="n">cat_url</span> <span class="o">=</span> <span class="s">&#39;&amp;-source=II/169/main&#39;</span> <span class="c"># name of the catalog</span>
+<span class="gp">In [4]: </span><span class="n">cat_url</span> <span class="o">=</span> <span class="s">&#39;&amp;-source=II/169/main&#39;</span> <span class="c"># name of the catalog</span>
 
-<span class="gp">In [8]: </span><span class="n">cat_options</span> <span class="o">=</span> <span class="s">&#39;&amp;-oc=deg,eq=J2000&amp;-out.all&#39;</span> <span class="c"># retrieve all columns, coordinates in J2000 and degrees</span>
+<span class="gp">In [5]: </span><span class="n">cat_options</span> <span class="o">=</span> <span class="s">&#39;&amp;-oc=deg,eq=J2000&amp;-out.all&#39;</span> <span class="c"># retrieve all columns, coordinates in J2000 and degrees</span>
 
-<span class="gp">In [9]: </span><span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="s">&#39;gen.fits&#39;</span><span class="p">):</span> <span class="c"># don&#39;t download if the file already exists</span>
+<span class="gp">In [6]: </span><span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="s">&#39;gen.fits&#39;</span><span class="p">):</span> <span class="c"># don&#39;t download if the file already exists</span>
 <span class="gp">   ...:</span>      <span class="n">urllib</span><span class="o">.</span><span class="n">URLopener</span><span class="p">()</span><span class="o">.</span><span class="n">retrieve</span><span class="p">(</span><span class="n">vizier_url</span><span class="o">+</span><span class="n">cat_url</span><span class="o">+</span><span class="n">cat_options</span><span class="p">,</span><span class="n">filename</span><span class="o">=</span><span class="s">&#39;gen.fits&#39;</span><span class="p">)</span>
 <span class="gp">   ...:</span> 
 </pre></div>
 </div>
 <p>What&#8217;s in this FITS file? Let&#8217;s have a look:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [11]: </span><span class="n">hdus</span> <span class="o">=</span> <span class="n">pyfits</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s">&#39;gen.fits&#39;</span><span class="p">)</span>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [8]: </span><span class="n">hdus</span> <span class="o">=</span> <span class="n">pyfits</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s">&#39;gen.fits&#39;</span><span class="p">)</span>
 
-<span class="gp">In [12]: </span><span class="nb">len</span><span class="p">(</span><span class="n">hdus</span><span class="p">)</span> <span class="c"># 2 HDUs, an empty primary and a Table extension</span>
-<span class="gr">Out[12]: </span><span class="mi">2</span>
+<span class="gp">In [9]: </span><span class="nb">len</span><span class="p">(</span><span class="n">hdus</span><span class="p">)</span> <span class="c"># 2 HDUs, an empty primary and a Table extension</span>
+<span class="gr">Out[9]: </span><span class="mi">2</span>
 
-<span class="gp">In [13]: </span><span class="k">print</span><span class="p">(</span><span class="n">hdus</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">header</span><span class="p">)</span> <span class="c"># information on the columns names, contents and type</span>
+<span class="gp">In [10]: </span><span class="k">print</span><span class="p">(</span><span class="n">hdus</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">header</span><span class="p">)</span> <span class="c"># information on the columns names, contents and type</span>
 <span class="go">XTENSION= &#39;TABLE   &#39;           / Ascii Table Extension (TAB and NEWLINE sep)    </span>
 <span class="go">BITPIX  =                    8 / Character data                                 </span>
 <span class="go">NAXIS   =                    2 / Simple 2-D matrix                              </span>
@@ -509,10 +509,10 @@ and functions like <tt class="docutils literal"><span class="pre">sum</span></tt
 all the data in columns in a matrix is not optimal, because we want to access
 columns by their name (easy to remember), not by a number (difficult to remember).
 That&#8217;s easy enough with the FITS table extension:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [14]: </span><span class="k">print</span><span class="p">(</span><span class="n">hdus</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">names</span><span class="p">)</span>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [11]: </span><span class="k">print</span><span class="p">(</span><span class="n">hdus</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">names</span><span class="p">)</span>
 <span class="go">[&#39;_RAJ2000&#39;, &#39;_DEJ2000&#39;, &#39;recno&#39;, &#39;StarName&#39;, &#39;HR&#39;, &#39;HD&#39;, &#39;m_HD&#39;, &#39;DM&#39;, &#39;RA1900&#39;, &#39;DE1900&#39;, &#39;GLon&#39;, &#39;GLat&#39;, &#39;Cluster&#39;, &#39;Weight&#39;, &#39;Sigma&#39;, &#39;U-B&#39;, &#39;V-B&#39;, &#39;B1-B&#39;, &#39;B2-B&#39;, &#39;V1-B&#39;, &#39;G-B&#39;, &#39;B1-B2&#39;, &#39;B2-V1&#39;, &#39;V1-G&#39;, &#39;d&#39;, &#39;Delta&#39;, &#39;g&#39;, &#39;m2&#39;, &#39;w_Vmag&#39;, &#39;e_Vmag&#39;, &#39;Vmag&#39;, &#39;Remarks&#39;, &#39;SpType&#39;]</span>
 
-<span class="gp">In [15]: </span><span class="k">print</span><span class="p">(</span><span class="n">hdus</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">field</span><span class="p">(</span><span class="s">&#39;Vmag&#39;</span><span class="p">))</span>
+<span class="gp">In [12]: </span><span class="k">print</span><span class="p">(</span><span class="n">hdus</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">field</span><span class="p">(</span><span class="s">&#39;Vmag&#39;</span><span class="p">))</span>
 <span class="go">[  9.97700024   6.70200014  10.62899971 ...,   5.79199982  11.55700016</span>
 <span class="go">   7.72200012]</span>
 </pre></div>
@@ -526,16 +526,16 @@ recarray.</p>
 <p class="flip1">Click to Show/Hide Introduction to recarray</p> <div class="panel1"><p>Let&#8217;s start with a small example. We make a record array with 3 columns: an index
 array (integer type), a column with magnitude values, and a column with star
 names:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [16]: </span><span class="n">col1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [13]: </span><span class="n">col1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
 
-<span class="gp">In [17]: </span><span class="n">col2</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.03</span><span class="p">,</span><span class="o">-</span><span class="mf">1.47</span><span class="p">,</span><span class="mf">1.816</span><span class="p">,</span><span class="mf">0.42</span><span class="p">]</span>
+<span class="gp">In [14]: </span><span class="n">col2</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.03</span><span class="p">,</span><span class="o">-</span><span class="mf">1.47</span><span class="p">,</span><span class="mf">1.816</span><span class="p">,</span><span class="mf">0.42</span><span class="p">]</span>
 
-<span class="gp">In [18]: </span><span class="n">col3</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;Vega&#39;</span><span class="p">,</span> <span class="s">&#39;Sirius&#39;</span><span class="p">,</span> <span class="s">&#39;Mirfak&#39;</span><span class="p">,</span> <span class="s">&#39;Betelgeuse&#39;</span><span class="p">]</span>
+<span class="gp">In [15]: </span><span class="n">col3</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;Vega&#39;</span><span class="p">,</span> <span class="s">&#39;Sirius&#39;</span><span class="p">,</span> <span class="s">&#39;Mirfak&#39;</span><span class="p">,</span> <span class="s">&#39;Betelgeuse&#39;</span><span class="p">]</span>
 
-<span class="gp">In [19]: </span><span class="n">recarr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">rec</span><span class="o">.</span><span class="n">fromarrays</span><span class="p">([</span><span class="n">col1</span><span class="p">,</span><span class="n">col2</span><span class="p">,</span><span class="n">col3</span><span class="p">],</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;index&#39;</span><span class="p">,</span><span class="s">&#39;vmag&#39;</span><span class="p">,</span><span class="s">&#39;name&#39;</span><span class="p">])</span>
+<span class="gp">In [16]: </span><span class="n">recarr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">rec</span><span class="o">.</span><span class="n">fromarrays</span><span class="p">([</span><span class="n">col1</span><span class="p">,</span><span class="n">col2</span><span class="p">,</span><span class="n">col3</span><span class="p">],</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;index&#39;</span><span class="p">,</span><span class="s">&#39;vmag&#39;</span><span class="p">,</span><span class="s">&#39;name&#39;</span><span class="p">])</span>
 
-<span class="gp">In [20]: </span><span class="n">recarr</span>
-<span class="gr">Out[20]: </span>
+<span class="gp">In [17]: </span><span class="n">recarr</span>
+<span class="gr">Out[17]: </span>
 <span class="go">rec.array([(0, 0.03, &#39;Vega&#39;), (1, -1.47, &#39;Sirius&#39;), (2, 1.816, &#39;Mirfak&#39;),</span>
 <span class="go">       (3, 0.42, &#39;Betelgeuse&#39;)], </span>
 <span class="go">      dtype=[(&#39;index&#39;, &#39;&lt;i4&#39;), (&#39;vmag&#39;, &#39;&lt;f8&#39;), (&#39;name&#39;, &#39;|S10&#39;)])</span>
@@ -543,27 +543,27 @@ names:</p>
 </div>
 <p>The default string representation is quite difficult to read. Luckily, <tt class="docutils literal"><span class="pre">matplotlib</span></tt>
 provides us with a nice alternative:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [21]: </span><span class="kn">import</span> <span class="nn">pylab</span> <span class="kn">as</span> <span class="nn">plt</span>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [18]: </span><span class="kn">import</span> <span class="nn">pylab</span> <span class="kn">as</span> <span class="nn">plt</span>
 
-<span class="gp">In [22]: </span><span class="k">print</span><span class="p">(</span><span class="n">plt</span><span class="o">.</span><span class="n">mlab</span><span class="o">.</span><span class="n">rec2txt</span><span class="p">(</span><span class="n">recarr</span><span class="p">))</span> <span class="c"># pretty print</span>
+<span class="gp">In [19]: </span><span class="k">print</span><span class="p">(</span><span class="n">plt</span><span class="o">.</span><span class="n">mlab</span><span class="o">.</span><span class="n">rec2txt</span><span class="p">(</span><span class="n">recarr</span><span class="p">))</span> <span class="c"># pretty print</span>
 <span class="go">   index     vmag   name</span>
 <span class="go">       0    0.030   Vega         </span>
 <span class="go">       1   -1.470   Sirius       </span>
 <span class="go">       2    1.816   Mirfak       </span>
 <span class="go">       3    0.420   Betelgeuse   </span>
 
-<span class="gp">In [23]: </span><span class="n">recarr</span><span class="p">[</span><span class="s">&#39;vmag&#39;</span><span class="p">]</span> <span class="c"># extract one column</span>
-<span class="gr">Out[23]: </span><span class="n">array</span><span class="p">([</span> <span class="mf">0.03</span> <span class="p">,</span> <span class="o">-</span><span class="mf">1.47</span> <span class="p">,</span>  <span class="mf">1.816</span><span class="p">,</span>  <span class="mf">0.42</span> <span class="p">])</span>
+<span class="gp">In [20]: </span><span class="n">recarr</span><span class="p">[</span><span class="s">&#39;vmag&#39;</span><span class="p">]</span> <span class="c"># extract one column</span>
+<span class="gr">Out[20]: </span><span class="n">array</span><span class="p">([</span> <span class="mf">0.03</span> <span class="p">,</span> <span class="o">-</span><span class="mf">1.47</span> <span class="p">,</span>  <span class="mf">1.816</span><span class="p">,</span>  <span class="mf">0.42</span> <span class="p">])</span>
 
-<span class="gp">In [24]: </span><span class="n">recarr</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="c"># extract first row (or record)</span>
-<span class="gr">Out[24]: </span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.03</span><span class="p">,</span> <span class="s">&#39;Vega&#39;</span><span class="p">)</span>
+<span class="gp">In [21]: </span><span class="n">recarr</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="c"># extract first row (or record)</span>
+<span class="gr">Out[21]: </span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.03</span><span class="p">,</span> <span class="s">&#39;Vega&#39;</span><span class="p">)</span>
 
-<span class="gp">In [25]: </span><span class="n">recarr</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">names</span> <span class="c"># access column names</span>
-<span class="gr">Out[25]: </span><span class="p">(</span><span class="s">&#39;index&#39;</span><span class="p">,</span> <span class="s">&#39;vmag&#39;</span><span class="p">,</span> <span class="s">&#39;name&#39;</span><span class="p">)</span>
+<span class="gp">In [22]: </span><span class="n">recarr</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">names</span> <span class="c"># access column names</span>
+<span class="gr">Out[22]: </span><span class="p">(</span><span class="s">&#39;index&#39;</span><span class="p">,</span> <span class="s">&#39;vmag&#39;</span><span class="p">,</span> <span class="s">&#39;name&#39;</span><span class="p">)</span>
 
-<span class="gp">In [26]: </span><span class="n">recarr2</span> <span class="o">=</span> <span class="n">recarr</span><span class="p">[</span> <span class="p">(</span><span class="n">recarr</span><span class="p">[</span><span class="s">&#39;vmag&#39;</span><span class="p">]</span><span class="o">&lt;</span><span class="mi">0</span><span class="p">)</span> <span class="p">]</span> <span class="c"># slicing is possible as usual</span>
+<span class="gp">In [23]: </span><span class="n">recarr2</span> <span class="o">=</span> <span class="n">recarr</span><span class="p">[</span> <span class="p">(</span><span class="n">recarr</span><span class="p">[</span><span class="s">&#39;vmag&#39;</span><span class="p">]</span><span class="o">&lt;</span><span class="mi">0</span><span class="p">)</span> <span class="p">]</span> <span class="c"># slicing is possible as usual</span>
 
-<span class="gp">In [27]: </span><span class="k">print</span><span class="p">(</span><span class="n">plt</span><span class="o">.</span><span class="n">mlab</span><span class="o">.</span><span class="n">rec2txt</span><span class="p">(</span><span class="n">recarr2</span><span class="p">))</span> <span class="c"># pretty print</span>
+<span class="gp">In [24]: </span><span class="k">print</span><span class="p">(</span><span class="n">plt</span><span class="o">.</span><span class="n">mlab</span><span class="o">.</span><span class="n">rec2txt</span><span class="p">(</span><span class="n">recarr2</span><span class="p">))</span> <span class="c"># pretty print</span>
 <span class="go">   index     vmag   name</span>
 <span class="go">       1   -1.470   Sirius       </span>
 </pre></div>
@@ -571,28 +571,28 @@ provides us with a nice alternative:</p>
 </div><p>Though a pyFITS record has almost the same behaviour as
 we require, a numpy record array is more general in its use. Therefore, we convert
 the FITS record to a numpy record array:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [28]: </span><span class="n">names</span> <span class="o">=</span> <span class="n">hdus</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">names</span> <span class="c"># we need the column names</span>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [25]: </span><span class="n">names</span> <span class="o">=</span> <span class="n">hdus</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">names</span> <span class="c"># we need the column names</span>
 
-<span class="gp">In [29]: </span><span class="n">cols</span> <span class="o">=</span> <span class="p">[</span><span class="n">hdus</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">field</span><span class="p">(</span><span class="n">col</span><span class="p">)</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">names</span><span class="p">]</span> <span class="c"># and their content</span>
+<span class="gp">In [26]: </span><span class="n">cols</span> <span class="o">=</span> <span class="p">[</span><span class="n">hdus</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">field</span><span class="p">(</span><span class="n">col</span><span class="p">)</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">names</span><span class="p">]</span> <span class="c"># and their content</span>
 
-<span class="gp">In [30]: </span><span class="n">cat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">rec</span><span class="o">.</span><span class="n">fromarrays</span><span class="p">(</span><span class="n">cols</span><span class="p">,</span><span class="n">names</span><span class="o">=</span><span class="n">names</span><span class="p">)</span>
+<span class="gp">In [27]: </span><span class="n">cat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">rec</span><span class="o">.</span><span class="n">fromarrays</span><span class="p">(</span><span class="n">cols</span><span class="p">,</span><span class="n">names</span><span class="o">=</span><span class="n">names</span><span class="p">)</span>
 
-<span class="gp">In [31]: </span><span class="k">print</span><span class="p">(</span><span class="n">cat</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">names</span><span class="p">)</span> <span class="c"># similar to hdus[1].columns.names</span>
+<span class="gp">In [28]: </span><span class="k">print</span><span class="p">(</span><span class="n">cat</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">names</span><span class="p">)</span> <span class="c"># similar to hdus[1].columns.names</span>
 <span class="go">(&#39;_RAJ2000&#39;, &#39;_DEJ2000&#39;, &#39;recno&#39;, &#39;StarName&#39;, &#39;HR&#39;, &#39;HD&#39;, &#39;m_HD&#39;, &#39;DM&#39;, &#39;RA1900&#39;, &#39;DE1900&#39;, &#39;GLon&#39;, &#39;GLat&#39;, &#39;Cluster&#39;, &#39;Weight&#39;, &#39;Sigma&#39;, &#39;U-B&#39;, &#39;V-B&#39;, &#39;B1-B&#39;, &#39;B2-B&#39;, &#39;V1-B&#39;, &#39;G-B&#39;, &#39;B1-B2&#39;, &#39;B2-V1&#39;, &#39;V1-G&#39;, &#39;d&#39;, &#39;Delta&#39;, &#39;g&#39;, &#39;m2&#39;, &#39;w_Vmag&#39;, &#39;e_Vmag&#39;, &#39;Vmag&#39;, &#39;Remarks&#39;, &#39;SpType&#39;)</span>
 
-<span class="gp">In [32]: </span><span class="n">cat</span><span class="o">.</span><span class="n">shape</span> <span class="c"># and we have access to numpy commands</span>
-<span class="gr">Out[32]: </span><span class="p">(</span><span class="mi">29397</span><span class="p">,)</span>
+<span class="gp">In [29]: </span><span class="n">cat</span><span class="o">.</span><span class="n">shape</span> <span class="c"># and we have access to numpy commands</span>
+<span class="gr">Out[29]: </span><span class="p">(</span><span class="mi">29397</span><span class="p">,)</span>
 </pre></div>
 </div>
 <p>Next, we make a new catalog, with only the bright and blue stars.</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [33]: </span><span class="n">bright_blue</span> <span class="o">=</span> <span class="p">(</span><span class="n">cat</span><span class="p">[</span><span class="s">&#39;Vmag&#39;</span><span class="p">]</span><span class="o">&lt;</span><span class="mi">3</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">cat</span><span class="p">[</span><span class="s">&#39;V-B&#39;</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">)</span>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [30]: </span><span class="n">bright_blue</span> <span class="o">=</span> <span class="p">(</span><span class="n">cat</span><span class="p">[</span><span class="s">&#39;Vmag&#39;</span><span class="p">]</span><span class="o">&lt;</span><span class="mi">3</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">cat</span><span class="p">[</span><span class="s">&#39;V-B&#39;</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">)</span>
 
-<span class="gp">In [34]: </span><span class="nb">len</span><span class="p">(</span><span class="n">bright_blue</span><span class="p">),</span><span class="nb">sum</span><span class="p">(</span><span class="n">bright_blue</span><span class="p">)</span> <span class="c"># how many stars do we have, and how many or bright and blue?</span>
-<span class="gr">Out[34]: </span><span class="p">(</span><span class="mi">29397</span><span class="p">,</span> <span class="mi">115</span><span class="p">)</span>
+<span class="gp">In [31]: </span><span class="nb">len</span><span class="p">(</span><span class="n">bright_blue</span><span class="p">),</span><span class="nb">sum</span><span class="p">(</span><span class="n">bright_blue</span><span class="p">)</span> <span class="c"># how many stars do we have, and how many or bright and blue?</span>
+<span class="gr">Out[31]: </span><span class="p">(</span><span class="mi">29397</span><span class="p">,</span> <span class="mi">115</span><span class="p">)</span>
 
-<span class="gp">In [35]: </span><span class="n">cat_select</span> <span class="o">=</span> <span class="n">cat</span><span class="p">[</span><span class="n">bright_blue</span><span class="p">]</span> <span class="c"># make the selection</span>
+<span class="gp">In [32]: </span><span class="n">cat_select</span> <span class="o">=</span> <span class="n">cat</span><span class="p">[</span><span class="n">bright_blue</span><span class="p">]</span> <span class="c"># make the selection</span>
 
-<span class="gp">In [36]: </span><span class="n">cat_select</span> <span class="o">=</span> <span class="n">cat_select</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">cat_select</span><span class="p">[</span><span class="s">&#39;Vmag&#39;</span><span class="p">])]</span> <span class="c"># sort according to magnitude</span>
+<span class="gp">In [33]: </span><span class="n">cat_select</span> <span class="o">=</span> <span class="n">cat_select</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">cat_select</span><span class="p">[</span><span class="s">&#39;Vmag&#39;</span><span class="p">])]</span> <span class="c"># sort according to magnitude</span>
 </pre></div>
 </div>
 <p class="flip2">Click to Show/Hide Alternative with dictionaries</p> <div class="panel2"><p>How would the above look when we would use dictionaries instead of record arrays?
@@ -613,8 +613,8 @@ and does not require us to cycle over the columns in the catalog manually.</p>
 the magnitudes of all stars in the catalog. Then, we make a plot of the location
 of all stars (grey dots) and the selected one (blue dots). Also, we scale the
 size of the dots with the brightness of star.</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [37]: </span><span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">cat</span><span class="p">[</span><span class="s">&#39;Vmag&#39;</span><span class="p">],</span><span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
-<span class="gr">Out[37]: </span>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [34]: </span><span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">cat</span><span class="p">[</span><span class="s">&#39;Vmag&#39;</span><span class="p">],</span><span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+<span class="gr">Out[34]: </span>
 <span class="go">(array([   1,    0,    1,    1,    5,    3,    4,    5,    5,   22,   28,</span>
 <span class="go">         28,   58,   67,  104,  165,  212,  332,  488,  704,  959, 1278,</span>
 <span class="go">       1830, 1700, 1148, 1186, 1307, 1504, 1599, 1611, 1741, 1769, 1761,</span>
@@ -636,15 +636,15 @@ size of the dots with the brightness of star.</p>
 <span class="go"> &lt;a list of 50 Patch objects&gt;)</span>
 </pre></div>
 </div>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [38]: </span><span class="n">size</span> <span class="o">=</span> <span class="p">((</span><span class="n">cat</span><span class="p">[</span><span class="s">&#39;Vmag&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">-</span><span class="n">cat</span><span class="p">[</span><span class="s">&#39;Vmag&#39;</span><span class="p">])</span><span class="o">/</span><span class="mf">5.</span><span class="p">)</span><span class="o">**</span><span class="mi">3</span> <span class="c"># size the dots with mag</span>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [35]: </span><span class="n">size</span> <span class="o">=</span> <span class="p">((</span><span class="n">cat</span><span class="p">[</span><span class="s">&#39;Vmag&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">-</span><span class="n">cat</span><span class="p">[</span><span class="s">&#39;Vmag&#39;</span><span class="p">])</span><span class="o">/</span><span class="mf">5.</span><span class="p">)</span><span class="o">**</span><span class="mi">3</span> <span class="c"># size the dots with mag</span>
 
-<span class="gp">In [39]: </span><span class="n">size_select</span> <span class="o">=</span> <span class="p">((</span><span class="n">cat</span><span class="p">[</span><span class="s">&#39;Vmag&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">-</span><span class="n">cat_select</span><span class="p">[</span><span class="s">&#39;Vmag&#39;</span><span class="p">])</span><span class="o">/</span><span class="mf">5.</span><span class="p">)</span><span class="o">**</span><span class="mi">3</span>
+<span class="gp">In [36]: </span><span class="n">size_select</span> <span class="o">=</span> <span class="p">((</span><span class="n">cat</span><span class="p">[</span><span class="s">&#39;Vmag&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">-</span><span class="n">cat_select</span><span class="p">[</span><span class="s">&#39;Vmag&#39;</span><span class="p">])</span><span class="o">/</span><span class="mf">5.</span><span class="p">)</span><span class="o">**</span><span class="mi">3</span>
 
-<span class="gp">In [40]: </span><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">cat</span><span class="p">[</span><span class="s">&#39;_RAJ2000&#39;</span><span class="p">],</span><span class="n">cat</span><span class="p">[</span><span class="s">&#39;_DEJ2000&#39;</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s">&#39;0.5&#39;</span><span class="p">,</span><span class="n">s</span><span class="o">=</span><span class="n">size</span><span class="p">,</span><span class="n">edgecolors</span><span class="o">=</span><span class="s">&#39;none&#39;</span><span class="p">)</span>
-<span class="gr">Out[40]: </span><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">collections</span><span class="o">.</span><span class="n">CircleCollection</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0xb23e3ec</span><span class="o">&gt;</span>
+<span class="gp">In [37]: </span><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">cat</span><span class="p">[</span><span class="s">&#39;_RAJ2000&#39;</span><span class="p">],</span><span class="n">cat</span><span class="p">[</span><span class="s">&#39;_DEJ2000&#39;</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s">&#39;0.5&#39;</span><span class="p">,</span><span class="n">s</span><span class="o">=</span><span class="n">size</span><span class="p">,</span><span class="n">edgecolors</span><span class="o">=</span><span class="s">&#39;none&#39;</span><span class="p">)</span>
+<span class="gr">Out[37]: </span><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">collections</span><span class="o">.</span><span class="n">CircleCollection</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0xa25344c</span><span class="o">&gt;</span>
 
-<span class="gp">In [41]: </span><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">cat_select</span><span class="p">[</span><span class="s">&#39;_RAJ2000&#39;</span><span class="p">],</span><span class="n">cat_select</span><span class="p">[</span><span class="s">&#39;_DEJ2000&#39;</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s">&#39;b&#39;</span><span class="p">,</span><span class="n">s</span><span class="o">=</span><span class="n">size_select</span><span class="p">,</span><span class="n">edgecolors</span><span class="o">=</span><span class="s">&#39;none&#39;</span><span class="p">)</span>
-<span class="gr">Out[41]: </span><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">collections</span><span class="o">.</span><span class="n">CircleCollection</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0xab52aec</span><span class="o">&gt;</span>
+<span class="gp">In [38]: </span><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">cat_select</span><span class="p">[</span><span class="s">&#39;_RAJ2000&#39;</span><span class="p">],</span><span class="n">cat_select</span><span class="p">[</span><span class="s">&#39;_DEJ2000&#39;</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s">&#39;b&#39;</span><span class="p">,</span><span class="n">s</span><span class="o">=</span><span class="n">size_select</span><span class="p">,</span><span class="n">edgecolors</span><span class="o">=</span><span class="s">&#39;none&#39;</span><span class="p">)</span>
+<span class="gr">Out[38]: </span><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">collections</span><span class="o">.</span><span class="n">CircleCollection</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x9d7498c</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 <table border="1" class="docutils">
@@ -653,9 +653,9 @@ size of the dots with the brightness of star.</p>
 <col width="49%" />
 </colgroup>
 <tbody valign="top">
-<tr><td><a class="first last reference internal image-reference" href="../_images/genhist.png"><img alt="../_images/genhist.png" src="../_images/genhist.png" style="width: 400.0px; height: 300.0px;" /></a>
+<tr><td><a class="first last reference internal image-reference" href="../_images/genhist1.png"><img alt="../_images/genhist1.png" src="../_images/genhist1.png" style="width: 400.0px; height: 300.0px;" /></a>
 </td>
-<td><a class="first last reference internal image-reference" href="../_images/gencat.png"><img alt="../_images/gencat.png" src="../_images/gencat.png" style="width: 400.0px; height: 300.0px;" /></a>
+<td><a class="first last reference internal image-reference" href="../_images/gencat1.png"><img alt="../_images/gencat1.png" src="../_images/gencat1.png" style="width: 400.0px; height: 300.0px;" /></a>
 </td>
 </tr>
 </tbody>
@@ -665,27 +665,44 @@ We need to convert the HD number to the official star name. We use
 the <tt class="docutils literal"><span class="pre">sesame</span></tt> online database (i.e. SIMBAD), download the HTML files with the
 info on the stars, and extract their name and spectral types. We
 can use the non-standard package BeautifulSoup:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [42]: </span><span class="kn">import</span> <span class="nn">BeautifulSoup</span> <span class="kn">as</span> <span class="nn">bs</span>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [39]: </span><span class="kn">import</span> <span class="nn">BeautifulSoup</span> <span class="kn">as</span> <span class="nn">bs</span>
 
-<span class="gp">In [43]: </span><span class="kn">import</span> <span class="nn">urllib2</span>
+<span class="gp">In [40]: </span><span class="kn">import</span> <span class="nn">urllib2</span>
 
-<span class="gp">In [44]: </span><span class="k">for</span> <span class="n">hd</span> <span class="ow">in</span> <span class="n">cat_select</span><span class="p">[</span><span class="s">&#39;HD&#39;</span><span class="p">][:</span><span class="mi">10</span><span class="p">]:</span>
-<span class="gp">   ....:</span>      <span class="n">html</span> <span class="o">=</span> <span class="s">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">line</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">urllib2</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="s">&#39;http://cdsweb.u-strasbg.fr/cgi-bin/nph-sesame/-oxpsIF/S?HD{0}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">hd</span><span class="p">))</span><span class="o">.</span><span class="n">readlines</span><span class="p">()])</span>
+<span class="gp">In [41]: </span><span class="k">for</span> <span class="n">hd</span> <span class="ow">in</span> <span class="n">cat_select</span><span class="p">[</span><span class="s">&#39;HD&#39;</span><span class="p">][:</span><span class="mi">10</span><span class="p">]:</span>
+<span class="gp">   ....:</span>      <span class="n">html</span> <span class="o">=</span> <span class="s">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">urllib2</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="s">&#39;http://cdsweb.u-strasbg.fr/cgi-bin/nph-sesame/-oxpsIF/S?HD{0}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">hd</span><span class="p">))</span><span class="o">.</span><span class="n">readlines</span><span class="p">())</span>
 <span class="gp">   ....:</span>      <span class="n">page</span> <span class="o">=</span> <span class="n">bs</span><span class="o">.</span><span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">html</span><span class="p">)</span>
 <span class="gp">   ....:</span>      <span class="n">name</span> <span class="o">=</span> <span class="n">page</span><span class="p">(</span><span class="s">&#39;oname&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">text</span>
 <span class="gp">   ....:</span>      <span class="n">sptype</span> <span class="o">=</span> <span class="n">page</span><span class="p">(</span><span class="s">&#39;sptype&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">text</span>
 <span class="gp">   ....:</span>      <span class="k">print</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="n">sptype</span><span class="p">)</span>
 <span class="gp">   ....:</span> 
-<span class="go">---------------------------------------------------------------------------</span>
-<span class="go">IndexError                                Traceback (most recent call last)</span>
-
-<span class="go">/home/pieterd/python4esac/python4ESAC/source/&lt;ipython console&gt; in &lt;module&gt;()</span>
-
-<span class="go">IndexError: list index out of range</span>
+<span class="go">(u&#39;NAME SIRIUS A&#39;, u&#39;A1V&#39;)</span>
+<span class="go">(u&#39;NAME CANOPUS&#39;, u&#39;F0II&#39;)</span>
+<span class="go">(u&#39;HR  5459&#39;, u&#39;G2V&#39;)</span>
+<span class="go">(u&#39;HR  5459&#39;, u&#39;G2V&#39;)</span>
+<span class="go">(u&#39;NAME VEGA&#39;, u&#39;A0V&#39;)</span>
+<span class="go">(u&#39;V* bet Ori&#39;, u&#39;B8Iab:&#39;)</span>
+<span class="go">(u&#39;NAME PROCYON AB&#39;, u&#39;F5IV-V&#39;)</span>
+<span class="go">(u&#39;NAME ACHERNAR&#39;, u&#39;B6Vep&#39;)</span>
+<span class="go">(u&#39;V* bet Cen&#39;, u&#39;B1III&#39;)</span>
+<span class="go">(u&#39;NAME ACRUX&#39;, u&#39;B0.5IV&#39;)</span>
 </pre></div>
 </div>
 <p>There seems to be a solar-like star in there!</p>
-<p class="flip3">Click to Show/Hide Solution without BeatifulSoup </p> <div class="panel3"><p>What would the previous script look like when BeautifulSoup is not installed?</p>
+<p class="flip3">Click to Show/Hide Solution without BeatifulSoup </p> <div class="panel3"><p>What would the previous script look like when BeautifulSoup is not installed? In
+this case, we&#8217;ll have to read in the and extract the information manually. We
+could write a small function for that:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">info_from_sesame</span><span class="p">(</span><span class="n">hd</span><span class="p">):</span>
+    <span class="n">lines</span> <span class="o">=</span> <span class="n">urllib2</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="s">&#39;http://cdsweb.u-strasbg.fr/cgi-bin/nph-sesame/-oxpsIF/S?HD{0}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">hd</span><span class="p">))</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+    <span class="n">sptype</span><span class="p">,</span><span class="n">oname</span> <span class="o">=</span> <span class="s">&#39;NA&#39;</span><span class="p">,</span><span class="s">&#39;NA&#39;</span> <span class="c"># in case it was not found</span>
+    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">lines</span><span class="p">:</span>
+        <span class="k">if</span> <span class="s">&#39;spType&#39;</span> <span class="ow">in</span> <span class="n">line</span><span class="p">:</span>
+            <span class="n">sptype</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39;&gt;&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39;&lt;&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">if</span> <span class="s">&#39;oname&#39;</span> <span class="ow">in</span> <span class="n">line</span><span class="p">:</span>
+            <span class="n">oname</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39;&gt;&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39;&lt;&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">oname</span><span class="p">,</span><span class="n">sptype</span>
+</pre></div>
+</div>
 </div></div>
 
 
