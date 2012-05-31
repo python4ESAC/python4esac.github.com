@@ -220,11 +220,11 @@ The science-grade plot should look something like this:
 
 Subplots and DS9 Region Files
 -----------------------------
-With APLpy we're able to make subplots within a figure just like Matplotlib and we can pull in a DS9 region files. Unfortunately, there is a bug in the official pyregion release, so it's suggested that you download the latest development version `here <http://github.com/leejjoon/pyregion/zipball/master>`_. Use pip to install the package like the following::
+With APLpy we're able to make subplots within a figure just like Matplotlib and we can pull in a DS9 region files. Unfortunately, there is a bug in the official pyregion release, so it's suggested that you download the latest development version `here <http://github.com/leejjoon/pyregion/zipball/master>`_. Use pip to install the package like the following.::
 
-    $pip install pyregion --user --upgrade
+    $pip install pyregion/ --user --upgrade
 
-. Let's work on a example that shows both capabilities below.::
+Let's work on a example that shows both capabilities below.::
 
     import aplpy
     import pyfits
