@@ -490,7 +490,7 @@ ls</pre>
 <span class="n">img</span><span class="o">.</span><span class="n">show_markers</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">ra</span><span class="p">,</span> <span class="n">t</span><span class="o">.</span><span class="n">dec</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s">&#39;^&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
 
 <span class="c"># Let&#39;s add a contour from Av map of the region from COMPLETE Survey</span>
-<span class="n">img</span><span class="o">.</span><span class="n">show_contour</span><span class="p">(</span><span class="s">&#39;per_extn2mass.fits&#39;</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="p">[</span><span class="mi">8</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">4</span><span class="p">],</span> <span class="n">colors</span><span class="o">=</span><span class="s">&#39;green&#39;</span><span class="p">)</span>
+<span class="n">img</span><span class="o">.</span><span class="n">show_contour</span><span class="p">(</span><span class="s">&#39;per_extn2mass.fits&#39;</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="p">[</span><span class="mi">8</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">4</span><span class="p">],</span> <span class="n">colors</span><span class="o">=</span><span class="s">&#39;orange&#39;</span><span class="p">)</span>
 <span class="n">img</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s">&#39;ic348_marker_contour.png&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -535,12 +535,17 @@ ls</pre>
 </div></div>
 <div class="section" id="subplots-and-ds9-region-files">
 <h2>Subplots and DS9 Region Files<a class="headerlink" href="#subplots-and-ds9-region-files" title="Permalink to this headline">¶</a></h2>
-<p>With APLpy we&#8217;re able to make subplots within a figure just like Matplotlib and we can pull in DS9 region files. Let&#8217;s work on a example that shows both capabilities below.:</p>
+<p>With APLpy we&#8217;re able to make subplots within a figure just like Matplotlib and we can pull in a DS9 region files. Unfortunately, there is a bug in the official pyregion release, so it&#8217;s suggested that you download the latest development version <a class="reference external" href="http://github.com/leejjoon/pyregion/zipball/master">here</a>. Use pip to install the package like the following:</p>
+<div class="highlight-python"><pre>$pip install pyregion --user --upgrade</pre>
+</div>
+<p>. Let&#8217;s work on a example that shows both capabilities below.:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">aplpy</span>
 <span class="kn">import</span> <span class="nn">pyfits</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">mpl</span>
 
 <span class="n">fig</span> <span class="o">=</span> <span class="n">mpl</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+
+<span class="c"># Initiating first subplot</span>
 <span class="n">f1</span> <span class="o">=</span> <span class="n">aplpy</span><span class="o">.</span><span class="n">FITSFigure</span><span class="p">(</span><span class="s">&#39;w4.fits&#39;</span><span class="p">,</span> <span class="n">figure</span><span class="o">=</span><span class="n">fig</span><span class="p">)</span>
 <span class="n">f1</span><span class="o">.</span><span class="n">show_grayscale</span><span class="p">()</span>
 
@@ -551,6 +556,7 @@ ls</pre>
 <span class="n">f1</span><span class="o">.</span><span class="n">tick_labels</span><span class="o">.</span><span class="n">set_xformat</span><span class="p">(</span><span class="s">&#39;hhmmss&#39;</span><span class="p">)</span>
 <span class="n">f1</span><span class="o">.</span><span class="n">tick_labels</span><span class="o">.</span><span class="n">set_yformat</span><span class="p">(</span><span class="s">&#39;ddmm&#39;</span><span class="p">)</span>
 
+<span class="c"># Initiating second subplot</span>
 <span class="n">f2</span> <span class="o">=</span> <span class="n">aplpy</span><span class="o">.</span><span class="n">FITSFigure</span><span class="p">(</span><span class="s">&#39;w4_bw1.fits&#39;</span><span class="p">,</span> <span class="n">figure</span><span class="o">=</span><span class="n">fig</span><span class="p">,</span>
                        <span class="n">subplot</span><span class="o">=</span><span class="p">[</span><span class="mf">0.25</span><span class="p">,</span><span class="mf">0.15</span><span class="p">,</span><span class="mf">0.11</span><span class="p">,</span><span class="mf">0.15</span><span class="p">])</span>
 <span class="n">f2</span><span class="o">.</span><span class="n">show_colorscale</span><span class="p">(</span><span class="n">cmap</span> <span class="o">=</span> <span class="n">cm</span><span class="o">.</span><span class="n">jet</span><span class="p">)</span>
@@ -562,10 +568,10 @@ ls</pre>
 
 <span class="c"># Another way of adding a subplot to the figure</span>
 <span class="n">d</span> <span class="o">=</span> <span class="n">pyfits</span><span class="o">.</span><span class="n">getdata</span><span class="p">(</span><span class="s">&#39;w4_bw2.fits&#39;</span><span class="p">)</span>
-<span class="n">ax2</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_axes</span><span class="p">([</span><span class="mf">0.25</span><span class="p">,</span><span class="mf">0.7</span><span class="p">,</span><span class="mf">0.15</span><span class="p">,</span><span class="mf">0.15</span><span class="p">])</span>
-<span class="n">ax2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s">&#39;lower left&#39;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cm</span><span class="o">.</span><span class="n">jet</span><span class="p">)</span>
-<span class="n">ax2</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">get_xaxis</span><span class="p">()</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
-<span class="n">ax2</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">get_yaxis</span><span class="p">()</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
+<span class="n">f3</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_axes</span><span class="p">([</span><span class="mf">0.25</span><span class="p">,</span><span class="mf">0.7</span><span class="p">,</span><span class="mf">0.15</span><span class="p">,</span><span class="mf">0.15</span><span class="p">])</span>
+<span class="n">f3</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s">&#39;lower left&#39;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cm</span><span class="o">.</span><span class="n">jet</span><span class="p">)</span>
+<span class="n">f3</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">get_xaxis</span><span class="p">()</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
+<span class="n">f3</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">get_yaxis</span><span class="p">()</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
 
 <span class="n">fig</span><span class="o">.</span><span class="n">canvas</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
 

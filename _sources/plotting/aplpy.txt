@@ -163,7 +163,7 @@ We're ready at this point to start making science-grade plots with APLpy with co
     img.show_markers(t.ra, t.dec, marker='^', s=100)
 
     # Let's add a contour from Av map of the region from COMPLETE Survey
-    img.show_contour('per_extn2mass.fits', levels=[8,7,6,5,4], colors='green')
+    img.show_contour('per_extn2mass.fits', levels=[8,7,6,5,4], colors='orange')
     img.save('ic348_marker_contour.png')
     
 The science-grade plot should look something like this:
@@ -220,13 +220,19 @@ The science-grade plot should look something like this:
 
 Subplots and DS9 Region Files
 -----------------------------
-With APLpy we're able to make subplots within a figure just like Matplotlib and we can pull in DS9 region files. Let's work on a example that shows both capabilities below.::
+With APLpy we're able to make subplots within a figure just like Matplotlib and we can pull in a DS9 region files. Unfortunately, there is a bug in the official pyregion release, so it's suggested that you download the latest development version `here <http://github.com/leejjoon/pyregion/zipball/master>`_. Use pip to install the package like the following::
+
+    $pip install pyregion --user --upgrade
+
+. Let's work on a example that shows both capabilities below.::
 
     import aplpy
     import pyfits
     import matplotlib.pyplot as mpl
 
     fig = mpl.figure()
+    
+    # Initiating first subplot
     f1 = aplpy.FITSFigure('w4.fits', figure=fig)
     f1.show_grayscale()
 
@@ -237,6 +243,7 @@ With APLpy we're able to make subplots within a figure just like Matplotlib and 
     f1.tick_labels.set_xformat('hhmmss')
     f1.tick_labels.set_yformat('ddmm')
 
+    # Initiating second subplot
     f2 = aplpy.FITSFigure('w4_bw1.fits', figure=fig, 
                            subplot=[0.25,0.15,0.11,0.15])
     f2.show_colorscale(cmap = cm.jet)
@@ -248,10 +255,10 @@ With APLpy we're able to make subplots within a figure just like Matplotlib and 
 
     # Another way of adding a subplot to the figure
     d = pyfits.getdata('w4_bw2.fits')
-    ax2 = fig.add_axes([0.25,0.7,0.15,0.15])
-    ax2.imshow(d, origin='lower left', cmap=cm.jet)
-    ax2.axes.get_xaxis().set_visible(False)
-    ax2.axes.get_yaxis().set_visible(False)
+    f3 = fig.add_axes([0.25,0.7,0.15,0.15])
+    f3.imshow(d, origin='lower left', cmap=cm.jet)
+    f3.axes.get_xaxis().set_visible(False)
+    f3.axes.get_yaxis().set_visible(False)
 
     fig.canvas.draw()
 
