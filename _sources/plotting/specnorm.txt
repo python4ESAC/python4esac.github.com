@@ -10,7 +10,7 @@ terminal with the command::
     $:> python specnorm.py HD50230.txt
 
 or any other text file containing two columns (wavelength, flux). You can
-download the example file `here <python4esac.githumb.com/source/plotting/HD50230.txt>`_.
+download the example file `here <https://raw.github.com/python4ESAC/python4ESAC/master/source/plotting/HD50230.txt>`_.
 
 When started, you get a window like this:
     
