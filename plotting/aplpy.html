@@ -404,7 +404,17 @@ ls</pre>
 </pre></div>
 </div>
 <p>The latter is recommended because it will automatically figure out the best resolution with which to output your plot. Your plot should look something like this:</p>
-<img alt="../_images/ic348_basic.png" src="../_images/ic348_basic.png" />
+<blockquote>
+<div><img alt="../_images/ic348_basic.png" src="../_images/ic348_basic.png" />
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">scale:</th><td class="field-body">50</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
 <p>Now let&#8217;s do something a bit more advanced where we&#8217;ll make a color image from the fits files and plot some extra features on top of it. If you cannot get Montage and python-montage installed, then you can use the already produced files to follow along with the exercise:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">aplpy</span>
 
@@ -446,6 +456,14 @@ ls</pre>
 <p>Your final color plot should look something like this:</p>
 <blockquote>
 <div><img alt="../_images/ic348_color_scalebar.png" src="../_images/ic348_color_scalebar.png" />
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">scale:</th><td class="field-body">50</td>
+</tr>
+</tbody>
+</table>
 </div></blockquote>
 <p>We&#8217;re ready at this point to start making science-grade plots with APLpy with contours and markers:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">aplpy</span><span class="o">,</span> <span class="nn">atpy</span>
@@ -490,11 +508,27 @@ ls</pre>
 <p>The science-grade plot should look something like this:</p>
 <blockquote>
 <div><img alt="../_images/ic348_marker_contour.png" src="../_images/ic348_marker_contour.png" />
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">scale:</th><td class="field-body">50</td>
+</tr>
+</tbody>
+</table>
 </div></blockquote>
 <div class="admonition-exercise-1 admonition ">
 <p class="first admonition-title">Exercise 1</p>
 <p>Use the  <tt class="docutils literal"><span class="pre">help</span></tt> or <tt class="docutils literal"><span class="pre">?</span></tt> functionality in <tt class="docutils literal"><span class="pre">ipython</span></tt> to figure out how to reproduce (within reason) the image below. Additionally, using the tabbing feature to see what other methods are available is key for this exercise. Use the <a class="reference external" href="http://aplpy.github.com/documentation/quick_reference.html">Quick Reference Guide</a> for other information that may be helpful.</p>
-<img alt="../_images/per_av_grid_markers.png" class="last" src="../_images/per_av_grid_markers.png" />
+<img alt="../_images/per_av_grid_markers.png" src="../_images/per_av_grid_markers.png" />
+<table class="last docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">scale:</th><td class="field-body">50</td>
+</tr>
+</tbody>
+</table>
 </div>
 <p class="flip1">Click to Show/Hide Solution</p> <div class="panel1"><p>import aplpy
 import atpy</p>
