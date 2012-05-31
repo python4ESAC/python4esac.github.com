@@ -492,27 +492,38 @@ ls</pre>
 <p class="last">Use the  <tt class="docutils literal"><span class="pre">help</span></tt> or <tt class="docutils literal"><span class="pre">?</span></tt> functionality in <tt class="docutils literal"><span class="pre">ipython</span></tt> to figure out how to reproduce (within reason) the image below. Additionally, using the tabbing feature to see what other methods are available is key for this exercise. Use the <a class="reference external" href="http://aplpy.github.com/documentation/quick_reference.html">Quick Reference Guide</a> for other information that may be helpful.</p>
 </div>
 <a class="reference internal image-reference" href="../_images/per_av_grid_markers.png"><img alt="../_images/per_av_grid_markers.png" src="../_images/per_av_grid_markers.png" style="width: 449.0px; height: 395.5px;" /></a>
-<p class="flip1">Click to Show/Hide Solution</p> <div class="panel1"><p>import aplpy
-import atpy</p>
-<p># Exercise</p>
-<p>img = aplpy.FITSFigure(&#8216;per_av_j2000.fits&#8217;)</p>
-<p># Identical to show_grayscale
-img.show_colorscale()</p>
-<p># Recenter the image with a defined width of 5 degrees
-img.recenter(54.51, 31.39, radius=2.5)</p>
-<p># Show the grid
-img.show_grid()</p>
-<p># Define tick label style
-img.tick_labels.set_xformat(&#8216;hhmm&#8217;)
-img.tick_labels.set_yformat(&#8216;ddmm&#8217;)</p>
-<p>img.show_colorbar()</p>
-<p># Read in table using atpy
-t = atpy.Table(&#8216;per_ysoc_c2d.fits&#8217;)</p>
-<p># Plot markers
-img.show_markers(t.ra, t.dec, facecolor=&#8217;black&#8217;, edgecolor=&#8217;none&#8217;, s=20)</p>
-<p>img.save(&#8216;ic348_av_markers.png&#8217;)</p>
-<p>&lt;/div&gt;</p>
-<p>With APLpy we&#8217;re able to make subplots within a figure just like Matplotlib and we can pull in DS9 region files. Let&#8217;s work on a example that shows both capabilities below.:</p>
+<p class="flip1">Click to Show/Hide Solution</p> <div class="panel1"><div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">aplpy</span>
+<span class="kn">import</span> <span class="nn">atpy</span>
+
+<span class="c"># Exercise</span>
+
+<span class="n">img</span> <span class="o">=</span> <span class="n">aplpy</span><span class="o">.</span><span class="n">FITSFigure</span><span class="p">(</span><span class="s">&#39;per_av_j2000.fits&#39;</span><span class="p">)</span>
+
+<span class="c"># Identical to show_grayscale</span>
+<span class="n">img</span><span class="o">.</span><span class="n">show_colorscale</span><span class="p">()</span>
+
+<span class="c"># Recenter the image with a defined width of 5 degrees</span>
+<span class="n">img</span><span class="o">.</span><span class="n">recenter</span><span class="p">(</span><span class="mf">54.51</span><span class="p">,</span> <span class="mf">31.39</span><span class="p">,</span> <span class="n">radius</span><span class="o">=</span><span class="mf">2.5</span><span class="p">)</span>
+
+<span class="c"># Show the grid</span>
+<span class="n">img</span><span class="o">.</span><span class="n">show_grid</span><span class="p">()</span>
+
+<span class="c"># Define tick label style</span>
+<span class="n">img</span><span class="o">.</span><span class="n">tick_labels</span><span class="o">.</span><span class="n">set_xformat</span><span class="p">(</span><span class="s">&#39;hhmm&#39;</span><span class="p">)</span>
+<span class="n">img</span><span class="o">.</span><span class="n">tick_labels</span><span class="o">.</span><span class="n">set_yformat</span><span class="p">(</span><span class="s">&#39;ddmm&#39;</span><span class="p">)</span>
+
+<span class="n">img</span><span class="o">.</span><span class="n">show_colorbar</span><span class="p">()</span>
+
+<span class="c"># Read in table using atpy</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">atpy</span><span class="o">.</span><span class="n">Table</span><span class="p">(</span><span class="s">&#39;per_ysoc_c2d.fits&#39;</span><span class="p">)</span>
+
+<span class="c"># Plot markers</span>
+<span class="n">img</span><span class="o">.</span><span class="n">show_markers</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">ra</span><span class="p">,</span> <span class="n">t</span><span class="o">.</span><span class="n">dec</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s">&#39;black&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s">&#39;none&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+
+<span class="n">img</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s">&#39;ic348_av_markers.png&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div><p>With APLpy we&#8217;re able to make subplots within a figure just like Matplotlib and we can pull in DS9 region files. Let&#8217;s work on a example that shows both capabilities below.:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">aplpy</span>
 <span class="kn">import</span> <span class="nn">pyfits</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">mpl</span>

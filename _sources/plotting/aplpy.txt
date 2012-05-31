@@ -179,39 +179,41 @@ The science-grade plot should look something like this:
     
     <p class="flip1">Click to Show/Hide Solution</p> <div class="panel1">
     
-import aplpy
-import atpy
+::
 
-# Exercise
+    import aplpy
+    import atpy
 
-img = aplpy.FITSFigure('per_av_j2000.fits')
+    # Exercise
 
-# Identical to show_grayscale
-img.show_colorscale()
+    img = aplpy.FITSFigure('per_av_j2000.fits')
 
-# Recenter the image with a defined width of 5 degrees
-img.recenter(54.51, 31.39, radius=2.5)
+    # Identical to show_grayscale
+    img.show_colorscale()
 
-# Show the grid
-img.show_grid()
+    # Recenter the image with a defined width of 5 degrees
+    img.recenter(54.51, 31.39, radius=2.5)
 
-# Define tick label style
-img.tick_labels.set_xformat('hhmm')
-img.tick_labels.set_yformat('ddmm')
+    # Show the grid
+    img.show_grid()
 
-img.show_colorbar()
+    # Define tick label style
+    img.tick_labels.set_xformat('hhmm')
+    img.tick_labels.set_yformat('ddmm')
 
-# Read in table using atpy
-t = atpy.Table('per_ysoc_c2d.fits')
+    img.show_colorbar()
 
-# Plot markers 
-img.show_markers(t.ra, t.dec, facecolor='black', edgecolor='none', s=20)
+    # Read in table using atpy
+    t = atpy.Table('per_ysoc_c2d.fits')
 
-img.save('ic348_av_markers.png')
+    # Plot markers 
+    img.show_markers(t.ra, t.dec, facecolor='black', edgecolor='none', s=20)
+
+    img.save('ic348_av_markers.png')
 
 .. raw:: html
 
-</div>
+    </div>
 
 
 With APLpy we're able to make subplots within a figure just like Matplotlib and we can pull in DS9 region files. Let's work on a example that shows both capabilities below.::
