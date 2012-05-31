@@ -208,6 +208,45 @@ t = atpy.Table('per_ysoc_c2d.fits')
 img.show_markers(t.ra, t.dec, facecolor='black', edgecolor='none', s=20)
 
 img.save('ic348_av_markers.png')
-
-.. raw:: html
 </div>
+.. raw:: html
+
+With APLpy we're able to make subplots within a figure just like Matplotlib and we can pull in DS9 region files. Let's work on a example that shows both capabilities below.::
+
+    import aplpy
+    import pyfits
+    import matplotlib.pyplot as mpl
+
+    fig = mpl.figure()
+    f1 = aplpy.FITSFigure('w4.fits', figure=fig)
+    f1.show_grayscale()
+
+    # Load a regions file into APLpy plot
+    f1.show_regions('bowshock.reg')
+
+    # Modify the tick labels for precision and format
+    f1.tick_labels.set_xformat('hhmmss')
+    f1.tick_labels.set_yformat('ddmm')
+
+    f2 = aplpy.FITSFigure('w4_bw1.fits', figure=fig, 
+                           subplot=[0.25,0.15,0.11,0.15])
+    f2.show_colorscale(cmap = cm.jet)
+
+    # Hiding the ticks, tick labels (numbers) and axis labels (e.g. RA & Dec.)
+    f2.ticks.hide()
+    f2.tick_labels.hide()
+    f2.axis_labels.hide()
+
+    # Another way of adding a subplot to the figure
+    d = pyfits.getdata('w4_bw2.fits')
+    ax2 = fig.add_axes([0.25,0.7,0.15,0.15])
+    ax2.imshow(d, origin='lower left', cmap=cm.jet)
+    ax2.axes.get_xaxis().set_visible(False)
+    ax2.axes.get_yaxis().set_visible(False)
+
+    fig.canvas.draw()
+
+    fig.savefig('subplots.pdf', bbox_inches='tight')
+
+.. image:: subplots.png
+    :scale: 70
