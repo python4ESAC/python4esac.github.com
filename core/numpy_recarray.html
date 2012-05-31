@@ -3,13 +3,16 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
+
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>NumPy record arrays &mdash; Python4Astronomers v1.1 documentation</title>
+    <title>NumPy record arrays &mdash; Python4Astronomers 1.1 documentation</title>
+    
     <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
@@ -22,7 +25,7 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="Python4Astronomers v1.1 documentation" href="../index.html" />
+    <link rel="top" title="Python4Astronomers 1.1 documentation" href="../index.html" />
     <link rel="up" title="Core packages for analysis: IPython, NumPy, and SciPy" href="core.html" />
     <link rel="next" title="Scipy FFT" href="scipy_fft.html" />
     <link rel="prev" title="NumPy" href="numpy_scipy.html" />
@@ -284,7 +287,7 @@ display:none;
         <li class="right" >
           <a href="numpy_scipy.html" title="NumPy"
              accesskey="P">previous</a> |</li>
-        <li><a href="../index.html">Python4Astronomers v1.1 documentation</a> &raquo;</li>
+        <li><a href="../index.html">Python4Astronomers 1.1 documentation</a> &raquo;</li>
           <li><a href="core.html" accesskey="U">Core packages for analysis: IPython, NumPy, and SciPy</a> &raquo;</li> 
       </ul>
     </div>
@@ -304,7 +307,7 @@ display:none;
 <div id="searchbox" style="display: none">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" size="18" />
+      <input type="text" name="q" />
       <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
@@ -334,26 +337,26 @@ display:none;
 <p>The catalog we use is the Geneva Photometry Catalog from Rufener (1988).
 It is accessible through the ViZieR website via its designation <tt class="docutils literal"><span class="pre">II/169/main</span></tt>.
 First we will download the catalog to the local disk:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [5]: </span><span class="kn">import</span> <span class="nn">urllib</span><span class="o">,</span> <span class="nn">pyfits</span><span class="o">,</span> <span class="nn">os</span>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="kn">import</span> <span class="nn">urllib</span><span class="o">,</span> <span class="nn">pyfits</span><span class="o">,</span> <span class="nn">os</span>
 
-<span class="gp">In [6]: </span><span class="n">vizier_url</span> <span class="o">=</span> <span class="s">&#39;http://vizier.u-strasbg.fr/viz-bin/asu-fits/VizieR?&#39;</span> <span class="c"># website of ViZieR</span>
+<span class="gp">In [2]: </span><span class="n">vizier_url</span> <span class="o">=</span> <span class="s">&#39;http://vizier.u-strasbg.fr/viz-bin/asu-fits/VizieR?&#39;</span> <span class="c"># website of ViZieR</span>
 
-<span class="gp">In [7]: </span><span class="n">cat_url</span> <span class="o">=</span> <span class="s">&#39;&amp;-source=II/169/main&#39;</span> <span class="c"># name of the catalog</span>
+<span class="gp">In [3]: </span><span class="n">cat_url</span> <span class="o">=</span> <span class="s">&#39;&amp;-source=II/169/main&#39;</span> <span class="c"># name of the catalog</span>
 
-<span class="gp">In [8]: </span><span class="n">cat_options</span> <span class="o">=</span> <span class="s">&#39;&amp;-oc=deg,eq=J2000&amp;-out.all&#39;</span> <span class="c"># retrieve all columns, coordinates in J2000 and degrees</span>
+<span class="gp">In [4]: </span><span class="n">cat_options</span> <span class="o">=</span> <span class="s">&#39;&amp;-oc=deg,eq=J2000&amp;-out.all&#39;</span> <span class="c"># retrieve all columns, coordinates in J2000 and degrees</span>
 
-<span class="gp">In [9]: </span><span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="s">&#39;gen.fits&#39;</span><span class="p">):</span> <span class="c"># don&#39;t download if the file already exists</span>
+<span class="gp">In [5]: </span><span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="s">&#39;gen.fits&#39;</span><span class="p">):</span> <span class="c"># don&#39;t download if the file already exists</span>
 <span class="gp">   ...:</span>      <span class="n">urllib</span><span class="o">.</span><span class="n">URLopener</span><span class="p">()</span><span class="o">.</span><span class="n">retrieve</span><span class="p">(</span><span class="n">vizier_url</span><span class="o">+</span><span class="n">cat_url</span><span class="o">+</span><span class="n">cat_options</span><span class="p">,</span><span class="n">filename</span><span class="o">=</span><span class="s">&#39;gen.fits&#39;</span><span class="p">)</span>
 <span class="gp">   ...:</span> 
 </pre></div>
 </div>
 <p>What&#8217;s in this FITS file? Let&#8217;s have a look:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [11]: </span><span class="n">hdus</span> <span class="o">=</span> <span class="n">pyfits</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s">&#39;gen.fits&#39;</span><span class="p">)</span>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="n">hdus</span> <span class="o">=</span> <span class="n">pyfits</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s">&#39;gen.fits&#39;</span><span class="p">)</span>
 
-<span class="gp">In [12]: </span><span class="nb">len</span><span class="p">(</span><span class="n">hdus</span><span class="p">)</span> <span class="c"># 2 HDUs, an empty primary and a Table extension</span>
-<span class="gr">Out[12]: </span><span class="mi">2</span>
+<span class="gp">In [2]: </span><span class="nb">len</span><span class="p">(</span><span class="n">hdus</span><span class="p">)</span> <span class="c"># 2 HDUs, an empty primary and a Table extension</span>
+<span class="gr">Out[2]: </span><span class="mi">2</span>
 
-<span class="gp">In [13]: </span><span class="k">print</span><span class="p">(</span><span class="n">hdus</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">header</span><span class="p">)</span> <span class="c"># information on the columns names, contents and type</span>
+<span class="gp">In [3]: </span><span class="k">print</span><span class="p">(</span><span class="n">hdus</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">header</span><span class="p">)</span> <span class="c"># information on the columns names, contents and type</span>
 <span class="go">XTENSION= &#39;TABLE   &#39;           / Ascii Table Extension (TAB and NEWLINE sep)    </span>
 <span class="go">BITPIX  =                    8 / Character data                                 </span>
 <span class="go">NAXIS   =                    2 / Simple 2-D matrix                              </span>
@@ -509,10 +512,10 @@ and functions like <tt class="docutils literal"><span class="pre">sum</span></tt
 all the data in columns in a matrix is not optimal, because we want to access
 columns by their name (easy to remember), not by a number (difficult to remember).
 That&#8217;s easy enough with the FITS table extension:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [14]: </span><span class="k">print</span><span class="p">(</span><span class="n">hdus</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">names</span><span class="p">)</span>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="k">print</span><span class="p">(</span><span class="n">hdus</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">names</span><span class="p">)</span>
 <span class="go">[&#39;_RAJ2000&#39;, &#39;_DEJ2000&#39;, &#39;recno&#39;, &#39;StarName&#39;, &#39;HR&#39;, &#39;HD&#39;, &#39;m_HD&#39;, &#39;DM&#39;, &#39;RA1900&#39;, &#39;DE1900&#39;, &#39;GLon&#39;, &#39;GLat&#39;, &#39;Cluster&#39;, &#39;Weight&#39;, &#39;Sigma&#39;, &#39;U-B&#39;, &#39;V-B&#39;, &#39;B1-B&#39;, &#39;B2-B&#39;, &#39;V1-B&#39;, &#39;G-B&#39;, &#39;B1-B2&#39;, &#39;B2-V1&#39;, &#39;V1-G&#39;, &#39;d&#39;, &#39;Delta&#39;, &#39;g&#39;, &#39;m2&#39;, &#39;w_Vmag&#39;, &#39;e_Vmag&#39;, &#39;Vmag&#39;, &#39;Remarks&#39;, &#39;SpType&#39;]</span>
 
-<span class="gp">In [15]: </span><span class="k">print</span><span class="p">(</span><span class="n">hdus</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">field</span><span class="p">(</span><span class="s">&#39;Vmag&#39;</span><span class="p">))</span>
+<span class="gp">In [2]: </span><span class="k">print</span><span class="p">(</span><span class="n">hdus</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">field</span><span class="p">(</span><span class="s">&#39;Vmag&#39;</span><span class="p">))</span>
 <span class="go">[  9.97700024   6.70200014  10.62899971 ...,   5.79199982  11.55700016</span>
 <span class="go">   7.72200012]</span>
 </pre></div>
@@ -526,73 +529,152 @@ recarray.</p>
 <p class="flip1">Click to Show/Hide Introduction to recarray</p> <div class="panel1"><p>Let&#8217;s start with a small example. We make a record array with 3 columns: an index
 array (integer type), a column with magnitude values, and a column with star
 names:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [16]: </span><span class="n">col1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="n">col1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="go">---------------------------------------------------------------------------</span>
+<span class="go">NameError                                 Traceback (most recent call last)</span>
+<span class="go">/home/nhmc/code/repo/python4esac/source/&lt;ipython-input-1-b4065cd331b7&gt; in &lt;module&gt;()</span>
+<span class="go">----&gt; 1 col1 = np.arange(4)</span>
 
-<span class="gp">In [17]: </span><span class="n">col2</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.03</span><span class="p">,</span><span class="o">-</span><span class="mf">1.47</span><span class="p">,</span><span class="mf">1.816</span><span class="p">,</span><span class="mf">0.42</span><span class="p">]</span>
+<span class="go">NameError: name &#39;np&#39; is not defined</span>
 
-<span class="gp">In [18]: </span><span class="n">col3</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;Vega&#39;</span><span class="p">,</span> <span class="s">&#39;Sirius&#39;</span><span class="p">,</span> <span class="s">&#39;Mirfak&#39;</span><span class="p">,</span> <span class="s">&#39;Betelgeuse&#39;</span><span class="p">]</span>
+<span class="gp">In [2]: </span><span class="n">col2</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.03</span><span class="p">,</span><span class="o">-</span><span class="mf">1.47</span><span class="p">,</span><span class="mf">1.816</span><span class="p">,</span><span class="mf">0.42</span><span class="p">]</span>
 
-<span class="gp">In [19]: </span><span class="n">recarr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">rec</span><span class="o">.</span><span class="n">fromarrays</span><span class="p">([</span><span class="n">col1</span><span class="p">,</span><span class="n">col2</span><span class="p">,</span><span class="n">col3</span><span class="p">],</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;index&#39;</span><span class="p">,</span><span class="s">&#39;vmag&#39;</span><span class="p">,</span><span class="s">&#39;name&#39;</span><span class="p">])</span>
+<span class="gp">In [3]: </span><span class="n">col3</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;Vega&#39;</span><span class="p">,</span> <span class="s">&#39;Sirius&#39;</span><span class="p">,</span> <span class="s">&#39;Mirfak&#39;</span><span class="p">,</span> <span class="s">&#39;Betelgeuse&#39;</span><span class="p">]</span>
 
-<span class="gp">In [20]: </span><span class="n">recarr</span>
-<span class="gr">Out[20]: </span>
-<span class="go">rec.array([(0, 0.03, &#39;Vega&#39;), (1, -1.47, &#39;Sirius&#39;), (2, 1.816, &#39;Mirfak&#39;),</span>
-<span class="go">       (3, 0.42, &#39;Betelgeuse&#39;)], </span>
-<span class="go">      dtype=[(&#39;index&#39;, &#39;&lt;i4&#39;), (&#39;vmag&#39;, &#39;&lt;f8&#39;), (&#39;name&#39;, &#39;|S10&#39;)])</span>
+<span class="gp">In [4]: </span><span class="n">recarr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">rec</span><span class="o">.</span><span class="n">fromarrays</span><span class="p">([</span><span class="n">col1</span><span class="p">,</span><span class="n">col2</span><span class="p">,</span><span class="n">col3</span><span class="p">],</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;index&#39;</span><span class="p">,</span><span class="s">&#39;vmag&#39;</span><span class="p">,</span><span class="s">&#39;name&#39;</span><span class="p">])</span>
+<span class="go">---------------------------------------------------------------------------</span>
+<span class="go">NameError                                 Traceback (most recent call last)</span>
+<span class="go">/home/nhmc/code/repo/python4esac/source/&lt;ipython-input-4-57eefed2fbf5&gt; in &lt;module&gt;()</span>
+<span class="go">----&gt; 1 recarr = np.rec.fromarrays([col1,col2,col3],names=[&#39;index&#39;,&#39;vmag&#39;,&#39;name&#39;])</span>
+
+<span class="go">NameError: name &#39;np&#39; is not defined</span>
+
+<span class="gp">In [5]: </span><span class="n">recarr</span>
+<span class="go">---------------------------------------------------------------------------</span>
+<span class="go">NameError                                 Traceback (most recent call last)</span>
+<span class="go">/home/nhmc/code/repo/python4esac/source/&lt;ipython-input-5-24420bbe2c82&gt; in &lt;module&gt;()</span>
+<span class="go">----&gt; 1 recarr</span>
+
+<span class="go">NameError: name &#39;recarr&#39; is not defined</span>
 </pre></div>
 </div>
 <p>The default string representation is quite difficult to read. Luckily, <tt class="docutils literal"><span class="pre">matplotlib</span></tt>
 provides us with a nice alternative:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [21]: </span><span class="kn">import</span> <span class="nn">pylab</span> <span class="kn">as</span> <span class="nn">plt</span>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="kn">import</span> <span class="nn">pylab</span> <span class="kn">as</span> <span class="nn">plt</span>
 
-<span class="gp">In [22]: </span><span class="k">print</span><span class="p">(</span><span class="n">plt</span><span class="o">.</span><span class="n">mlab</span><span class="o">.</span><span class="n">rec2txt</span><span class="p">(</span><span class="n">recarr</span><span class="p">))</span> <span class="c"># pretty print</span>
-<span class="go">   index     vmag   name</span>
-<span class="go">       0    0.030   Vega         </span>
-<span class="go">       1   -1.470   Sirius       </span>
-<span class="go">       2    1.816   Mirfak       </span>
-<span class="go">       3    0.420   Betelgeuse   </span>
+<span class="gp">In [2]: </span><span class="k">print</span><span class="p">(</span><span class="n">plt</span><span class="o">.</span><span class="n">mlab</span><span class="o">.</span><span class="n">rec2txt</span><span class="p">(</span><span class="n">recarr</span><span class="p">))</span> <span class="c"># pretty print</span>
+<span class="go">---------------------------------------------------------------------------</span>
+<span class="go">NameError                                 Traceback (most recent call last)</span>
+<span class="go">/home/nhmc/code/repo/python4esac/source/&lt;ipython-input-2-4e8c35c4065d&gt; in &lt;module&gt;()</span>
+<span class="go">----&gt; 1 print(plt.mlab.rec2txt(recarr)) # pretty print</span>
 
-<span class="gp">In [23]: </span><span class="n">recarr</span><span class="p">[</span><span class="s">&#39;vmag&#39;</span><span class="p">]</span> <span class="c"># extract one column</span>
-<span class="gr">Out[23]: </span><span class="n">array</span><span class="p">([</span> <span class="mf">0.03</span> <span class="p">,</span> <span class="o">-</span><span class="mf">1.47</span> <span class="p">,</span>  <span class="mf">1.816</span><span class="p">,</span>  <span class="mf">0.42</span> <span class="p">])</span>
+<span class="go">NameError: name &#39;recarr&#39; is not defined</span>
 
-<span class="gp">In [24]: </span><span class="n">recarr</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="c"># extract first row (or record)</span>
-<span class="gr">Out[24]: </span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.03</span><span class="p">,</span> <span class="s">&#39;Vega&#39;</span><span class="p">)</span>
+<span class="gp">In [3]: </span><span class="n">recarr</span><span class="p">[</span><span class="s">&#39;vmag&#39;</span><span class="p">]</span> <span class="c"># extract one column</span>
+<span class="go">---------------------------------------------------------------------------</span>
+<span class="go">NameError                                 Traceback (most recent call last)</span>
+<span class="go">/home/nhmc/code/repo/python4esac/source/&lt;ipython-input-3-f1aea7f0c647&gt; in &lt;module&gt;()</span>
+<span class="go">----&gt; 1 recarr[&#39;vmag&#39;] # extract one column</span>
 
-<span class="gp">In [25]: </span><span class="n">recarr</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">names</span> <span class="c"># access column names</span>
-<span class="gr">Out[25]: </span><span class="p">(</span><span class="s">&#39;index&#39;</span><span class="p">,</span> <span class="s">&#39;vmag&#39;</span><span class="p">,</span> <span class="s">&#39;name&#39;</span><span class="p">)</span>
+<span class="go">NameError: name &#39;recarr&#39; is not defined</span>
 
-<span class="gp">In [26]: </span><span class="n">recarr2</span> <span class="o">=</span> <span class="n">recarr</span><span class="p">[</span> <span class="p">(</span><span class="n">recarr</span><span class="p">[</span><span class="s">&#39;vmag&#39;</span><span class="p">]</span><span class="o">&lt;</span><span class="mi">0</span><span class="p">)</span> <span class="p">]</span> <span class="c"># slicing is possible as usual</span>
+<span class="gp">In [4]: </span><span class="n">recarr</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="c"># extract first row (or record)</span>
+<span class="go">---------------------------------------------------------------------------</span>
+<span class="go">NameError                                 Traceback (most recent call last)</span>
+<span class="go">/home/nhmc/code/repo/python4esac/source/&lt;ipython-input-4-0ddd87358497&gt; in &lt;module&gt;()</span>
+<span class="go">----&gt; 1 recarr[0] # extract first row (or record)</span>
 
-<span class="gp">In [27]: </span><span class="k">print</span><span class="p">(</span><span class="n">plt</span><span class="o">.</span><span class="n">mlab</span><span class="o">.</span><span class="n">rec2txt</span><span class="p">(</span><span class="n">recarr2</span><span class="p">))</span> <span class="c"># pretty print</span>
-<span class="go">   index     vmag   name</span>
-<span class="go">       1   -1.470   Sirius       </span>
+<span class="go">NameError: name &#39;recarr&#39; is not defined</span>
+
+<span class="gp">In [5]: </span><span class="n">recarr</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">names</span> <span class="c"># access column names</span>
+<span class="go">---------------------------------------------------------------------------</span>
+<span class="go">NameError                                 Traceback (most recent call last)</span>
+<span class="go">/home/nhmc/code/repo/python4esac/source/&lt;ipython-input-5-5d8abefc041c&gt; in &lt;module&gt;()</span>
+<span class="go">----&gt; 1 recarr.dtype.names # access column names</span>
+
+<span class="go">NameError: name &#39;recarr&#39; is not defined</span>
+
+<span class="gp">In [6]: </span><span class="n">recarr2</span> <span class="o">=</span> <span class="n">recarr</span><span class="p">[</span> <span class="p">(</span><span class="n">recarr</span><span class="p">[</span><span class="s">&#39;vmag&#39;</span><span class="p">]</span><span class="o">&lt;</span><span class="mi">0</span><span class="p">)</span> <span class="p">]</span> <span class="c"># slicing is possible as usual</span>
+<span class="go">---------------------------------------------------------------------------</span>
+<span class="go">NameError                                 Traceback (most recent call last)</span>
+<span class="go">/home/nhmc/code/repo/python4esac/source/&lt;ipython-input-6-8d37ca3b6f4e&gt; in &lt;module&gt;()</span>
+<span class="go">----&gt; 1 recarr2 = recarr[ (recarr[&#39;vmag&#39;]&lt;0) ] # slicing is possible as usual</span>
+
+<span class="go">NameError: name &#39;recarr&#39; is not defined</span>
+
+<span class="gp">In [7]: </span><span class="k">print</span><span class="p">(</span><span class="n">plt</span><span class="o">.</span><span class="n">mlab</span><span class="o">.</span><span class="n">rec2txt</span><span class="p">(</span><span class="n">recarr2</span><span class="p">))</span> <span class="c"># pretty print</span>
+<span class="go">---------------------------------------------------------------------------</span>
+<span class="go">NameError                                 Traceback (most recent call last)</span>
+<span class="go">/home/nhmc/code/repo/python4esac/source/&lt;ipython-input-7-3fab79f8a568&gt; in &lt;module&gt;()</span>
+<span class="go">----&gt; 1 print(plt.mlab.rec2txt(recarr2)) # pretty print</span>
+
+<span class="go">NameError: name &#39;recarr2&#39; is not defined</span>
 </pre></div>
 </div>
 </div><p>Though a pyFITS record has almost the same behaviour as
 we require, a numpy record array is more general in its use. Therefore, we convert
 the FITS record to a numpy record array:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [28]: </span><span class="n">names</span> <span class="o">=</span> <span class="n">hdus</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">names</span> <span class="c"># we need the column names</span>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="n">names</span> <span class="o">=</span> <span class="n">hdus</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">names</span> <span class="c"># we need the column names</span>
 
-<span class="gp">In [29]: </span><span class="n">cols</span> <span class="o">=</span> <span class="p">[</span><span class="n">hdus</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">field</span><span class="p">(</span><span class="n">col</span><span class="p">)</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">names</span><span class="p">]</span> <span class="c"># and their content</span>
+<span class="gp">In [2]: </span><span class="n">cols</span> <span class="o">=</span> <span class="p">[</span><span class="n">hdus</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">field</span><span class="p">(</span><span class="n">col</span><span class="p">)</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">names</span><span class="p">]</span> <span class="c"># and their content</span>
 
-<span class="gp">In [30]: </span><span class="n">cat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">rec</span><span class="o">.</span><span class="n">fromarrays</span><span class="p">(</span><span class="n">cols</span><span class="p">,</span><span class="n">names</span><span class="o">=</span><span class="n">names</span><span class="p">)</span>
+<span class="gp">In [3]: </span><span class="n">cat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">rec</span><span class="o">.</span><span class="n">fromarrays</span><span class="p">(</span><span class="n">cols</span><span class="p">,</span><span class="n">names</span><span class="o">=</span><span class="n">names</span><span class="p">)</span>
+<span class="go">---------------------------------------------------------------------------</span>
+<span class="go">NameError                                 Traceback (most recent call last)</span>
+<span class="go">/home/nhmc/code/repo/python4esac/source/&lt;ipython-input-3-b677b371521b&gt; in &lt;module&gt;()</span>
+<span class="go">----&gt; 1 cat = np.rec.fromarrays(cols,names=names)</span>
 
-<span class="gp">In [31]: </span><span class="k">print</span><span class="p">(</span><span class="n">cat</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">names</span><span class="p">)</span> <span class="c"># similar to hdus[1].columns.names</span>
-<span class="go">(&#39;_RAJ2000&#39;, &#39;_DEJ2000&#39;, &#39;recno&#39;, &#39;StarName&#39;, &#39;HR&#39;, &#39;HD&#39;, &#39;m_HD&#39;, &#39;DM&#39;, &#39;RA1900&#39;, &#39;DE1900&#39;, &#39;GLon&#39;, &#39;GLat&#39;, &#39;Cluster&#39;, &#39;Weight&#39;, &#39;Sigma&#39;, &#39;U-B&#39;, &#39;V-B&#39;, &#39;B1-B&#39;, &#39;B2-B&#39;, &#39;V1-B&#39;, &#39;G-B&#39;, &#39;B1-B2&#39;, &#39;B2-V1&#39;, &#39;V1-G&#39;, &#39;d&#39;, &#39;Delta&#39;, &#39;g&#39;, &#39;m2&#39;, &#39;w_Vmag&#39;, &#39;e_Vmag&#39;, &#39;Vmag&#39;, &#39;Remarks&#39;, &#39;SpType&#39;)</span>
+<span class="go">NameError: name &#39;np&#39; is not defined</span>
 
-<span class="gp">In [32]: </span><span class="n">cat</span><span class="o">.</span><span class="n">shape</span> <span class="c"># and we have access to numpy commands</span>
-<span class="gr">Out[32]: </span><span class="p">(</span><span class="mi">29397</span><span class="p">,)</span>
+<span class="gp">In [4]: </span><span class="k">print</span><span class="p">(</span><span class="n">cat</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">names</span><span class="p">)</span> <span class="c"># similar to hdus[1].columns.names</span>
+<span class="go">---------------------------------------------------------------------------</span>
+<span class="go">NameError                                 Traceback (most recent call last)</span>
+<span class="go">/home/nhmc/code/repo/python4esac/source/&lt;ipython-input-4-dbae3e9aa6c4&gt; in &lt;module&gt;()</span>
+<span class="go">----&gt; 1 print(cat.dtype.names) # similar to hdus[1].columns.names</span>
+
+<span class="go">NameError: name &#39;cat&#39; is not defined</span>
+
+<span class="gp">In [5]: </span><span class="n">cat</span><span class="o">.</span><span class="n">shape</span> <span class="c"># and we have access to numpy commands</span>
+<span class="go">---------------------------------------------------------------------------</span>
+<span class="go">NameError                                 Traceback (most recent call last)</span>
+<span class="go">/home/nhmc/code/repo/python4esac/source/&lt;ipython-input-5-8f75c4ebac66&gt; in &lt;module&gt;()</span>
+<span class="go">----&gt; 1 cat.shape # and we have access to numpy commands</span>
+
+<span class="go">NameError: name &#39;cat&#39; is not defined</span>
 </pre></div>
 </div>
 <p>Next, we make a new catalog, with only the bright and blue stars.</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [33]: </span><span class="n">bright_blue</span> <span class="o">=</span> <span class="p">(</span><span class="n">cat</span><span class="p">[</span><span class="s">&#39;Vmag&#39;</span><span class="p">]</span><span class="o">&lt;</span><span class="mi">3</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">cat</span><span class="p">[</span><span class="s">&#39;V-B&#39;</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">)</span>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="n">bright_blue</span> <span class="o">=</span> <span class="p">(</span><span class="n">cat</span><span class="p">[</span><span class="s">&#39;Vmag&#39;</span><span class="p">]</span><span class="o">&lt;</span><span class="mi">3</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">cat</span><span class="p">[</span><span class="s">&#39;V-B&#39;</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">)</span>
+<span class="go">---------------------------------------------------------------------------</span>
+<span class="go">NameError                                 Traceback (most recent call last)</span>
+<span class="go">/home/nhmc/code/repo/python4esac/source/&lt;ipython-input-1-6ce81650ddfe&gt; in &lt;module&gt;()</span>
+<span class="go">----&gt; 1 bright_blue = (cat[&#39;Vmag&#39;]&lt;3) &amp; (cat[&#39;V-B&#39;]&gt;0)</span>
 
-<span class="gp">In [34]: </span><span class="nb">len</span><span class="p">(</span><span class="n">bright_blue</span><span class="p">),</span><span class="nb">sum</span><span class="p">(</span><span class="n">bright_blue</span><span class="p">)</span> <span class="c"># how many stars do we have, and how many or bright and blue?</span>
-<span class="gr">Out[34]: </span><span class="p">(</span><span class="mi">29397</span><span class="p">,</span> <span class="mi">115</span><span class="p">)</span>
+<span class="go">NameError: name &#39;cat&#39; is not defined</span>
 
-<span class="gp">In [35]: </span><span class="n">cat_select</span> <span class="o">=</span> <span class="n">cat</span><span class="p">[</span><span class="n">bright_blue</span><span class="p">]</span> <span class="c"># make the selection</span>
+<span class="gp">In [2]: </span><span class="nb">len</span><span class="p">(</span><span class="n">bright_blue</span><span class="p">),</span><span class="nb">sum</span><span class="p">(</span><span class="n">bright_blue</span><span class="p">)</span> <span class="c"># how many stars do we have, and how many or bright and blue?</span>
+<span class="go">---------------------------------------------------------------------------</span>
+<span class="go">NameError                                 Traceback (most recent call last)</span>
+<span class="go">/home/nhmc/code/repo/python4esac/source/&lt;ipython-input-2-836aba048677&gt; in &lt;module&gt;()</span>
+<span class="go">----&gt; 1 len(bright_blue),sum(bright_blue) # how many stars do we have, and how many or bright and blue?</span>
 
-<span class="gp">In [36]: </span><span class="n">cat_select</span> <span class="o">=</span> <span class="n">cat_select</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">cat_select</span><span class="p">[</span><span class="s">&#39;Vmag&#39;</span><span class="p">])]</span> <span class="c"># sort according to magnitude</span>
+<span class="go">NameError: name &#39;bright_blue&#39; is not defined</span>
+
+<span class="gp">In [3]: </span><span class="n">cat_select</span> <span class="o">=</span> <span class="n">cat</span><span class="p">[</span><span class="n">bright_blue</span><span class="p">]</span> <span class="c"># make the selection</span>
+<span class="go">---------------------------------------------------------------------------</span>
+<span class="go">NameError                                 Traceback (most recent call last)</span>
+<span class="go">/home/nhmc/code/repo/python4esac/source/&lt;ipython-input-3-e106553a2dc6&gt; in &lt;module&gt;()</span>
+<span class="go">----&gt; 1 cat_select = cat[bright_blue] # make the selection</span>
+
+<span class="go">NameError: name &#39;cat&#39; is not defined</span>
+
+<span class="gp">In [4]: </span><span class="n">cat_select</span> <span class="o">=</span> <span class="n">cat_select</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">cat_select</span><span class="p">[</span><span class="s">&#39;Vmag&#39;</span><span class="p">])]</span> <span class="c"># sort according to magnitude</span>
+<span class="go">---------------------------------------------------------------------------</span>
+<span class="go">NameError                                 Traceback (most recent call last)</span>
+<span class="go">/home/nhmc/code/repo/python4esac/source/&lt;ipython-input-4-0d26cec878e6&gt; in &lt;module&gt;()</span>
+<span class="go">----&gt; 1 cat_select = cat_select[np.argsort(cat_select[&#39;Vmag&#39;])] # sort according to magnitude</span>
+
+<span class="go">NameError: name &#39;cat_select&#39; is not defined</span>
 </pre></div>
 </div>
 <p class="flip2">Click to Show/Hide Alternative with dictionaries</p> <div class="panel2"><p>How would the above look when we would use dictionaries instead of record arrays?
@@ -613,38 +695,46 @@ and does not require us to cycle over the columns in the catalog manually.</p>
 the magnitudes of all stars in the catalog. Then, we make a plot of the location
 of all stars (grey dots) and the selected one (blue dots). Also, we scale the
 size of the dots with the brightness of star.</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [37]: </span><span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">cat</span><span class="p">[</span><span class="s">&#39;Vmag&#39;</span><span class="p">],</span><span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
-<span class="gr">Out[37]: </span>
-<span class="go">(array([   1,    0,    1,    1,    5,    3,    4,    5,    5,   22,   28,</span>
-<span class="go">         28,   58,   67,  104,  165,  212,  332,  488,  704,  959, 1278,</span>
-<span class="go">       1830, 1700, 1148, 1186, 1307, 1504, 1599, 1611, 1741, 1769, 1761,</span>
-<span class="go">       1594, 1350, 1090,  969,  709,  606,  494,  391,  249,  173,   69,</span>
-<span class="go">         37,   26,    4,    8,    0,    2]),</span>
-<span class="go"> array([ -1.44099998,  -1.10221998,  -0.76343998,  -0.42465998,</span>
-<span class="go">        -0.08587997,   0.25290003,   0.59168003,   0.93046003,</span>
-<span class="go">         1.26924004,   1.60802004,   1.94680004,   2.28558004,</span>
-<span class="go">         2.62436005,   2.96314005,   3.30192005,   3.64070005,</span>
-<span class="go">         3.97948006,   4.31826006,   4.65704006,   4.99582006,</span>
-<span class="go">         5.33460007,   5.67338007,   6.01216007,   6.35094007,</span>
-<span class="go">         6.68972008,   7.02850008,   7.36728008,   7.70606009,</span>
-<span class="go">         8.04484009,   8.38362009,   8.72240009,   9.0611801 ,</span>
-<span class="go">         9.3999601 ,   9.7387401 ,  10.0775201 ,  10.41630011,</span>
-<span class="go">        10.75508011,  11.09386011,  11.43264011,  11.77142012,</span>
-<span class="go">        12.11020012,  12.44898012,  12.78776012,  13.12654013,</span>
-<span class="go">        13.46532013,  13.80410013,  14.14288013,  14.48166014,</span>
-<span class="go">        14.82044014,  15.15922014,  15.49800014]),</span>
-<span class="go"> &lt;a list of 50 Patch objects&gt;)</span>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">cat</span><span class="p">[</span><span class="s">&#39;Vmag&#39;</span><span class="p">],</span><span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+<span class="go">---------------------------------------------------------------------------</span>
+<span class="go">NameError                                 Traceback (most recent call last)</span>
+<span class="go">/home/nhmc/code/repo/python4esac/source/&lt;ipython-input-1-877bceb7bcfc&gt; in &lt;module&gt;()</span>
+<span class="go">----&gt; 1 plt.hist(cat[&#39;Vmag&#39;],bins=50)</span>
+
+<span class="go">NameError: name &#39;cat&#39; is not defined</span>
 </pre></div>
 </div>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [38]: </span><span class="n">size</span> <span class="o">=</span> <span class="p">((</span><span class="n">cat</span><span class="p">[</span><span class="s">&#39;Vmag&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">-</span><span class="n">cat</span><span class="p">[</span><span class="s">&#39;Vmag&#39;</span><span class="p">])</span><span class="o">/</span><span class="mf">5.</span><span class="p">)</span><span class="o">**</span><span class="mi">3</span> <span class="c"># size the dots with mag</span>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="n">size</span> <span class="o">=</span> <span class="p">((</span><span class="n">cat</span><span class="p">[</span><span class="s">&#39;Vmag&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">-</span><span class="n">cat</span><span class="p">[</span><span class="s">&#39;Vmag&#39;</span><span class="p">])</span><span class="o">/</span><span class="mf">5.</span><span class="p">)</span><span class="o">**</span><span class="mi">3</span> <span class="c"># size the dots with mag</span>
+<span class="go">---------------------------------------------------------------------------</span>
+<span class="go">NameError                                 Traceback (most recent call last)</span>
+<span class="go">/home/nhmc/code/repo/python4esac/source/&lt;ipython-input-1-ce4df0f9e91b&gt; in &lt;module&gt;()</span>
+<span class="go">----&gt; 1 size = ((cat[&#39;Vmag&#39;].max()-cat[&#39;Vmag&#39;])/5.)**3 # size the dots with mag</span>
 
-<span class="gp">In [39]: </span><span class="n">size_select</span> <span class="o">=</span> <span class="p">((</span><span class="n">cat</span><span class="p">[</span><span class="s">&#39;Vmag&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">-</span><span class="n">cat_select</span><span class="p">[</span><span class="s">&#39;Vmag&#39;</span><span class="p">])</span><span class="o">/</span><span class="mf">5.</span><span class="p">)</span><span class="o">**</span><span class="mi">3</span>
+<span class="go">NameError: name &#39;cat&#39; is not defined</span>
 
-<span class="gp">In [40]: </span><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">cat</span><span class="p">[</span><span class="s">&#39;_RAJ2000&#39;</span><span class="p">],</span><span class="n">cat</span><span class="p">[</span><span class="s">&#39;_DEJ2000&#39;</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s">&#39;0.5&#39;</span><span class="p">,</span><span class="n">s</span><span class="o">=</span><span class="n">size</span><span class="p">,</span><span class="n">edgecolors</span><span class="o">=</span><span class="s">&#39;none&#39;</span><span class="p">)</span>
-<span class="gr">Out[40]: </span><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">collections</span><span class="o">.</span><span class="n">CircleCollection</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0xb67e3cc</span><span class="o">&gt;</span>
+<span class="gp">In [2]: </span><span class="n">size_select</span> <span class="o">=</span> <span class="p">((</span><span class="n">cat</span><span class="p">[</span><span class="s">&#39;Vmag&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">-</span><span class="n">cat_select</span><span class="p">[</span><span class="s">&#39;Vmag&#39;</span><span class="p">])</span><span class="o">/</span><span class="mf">5.</span><span class="p">)</span><span class="o">**</span><span class="mi">3</span>
+<span class="go">---------------------------------------------------------------------------</span>
+<span class="go">NameError                                 Traceback (most recent call last)</span>
+<span class="go">/home/nhmc/code/repo/python4esac/source/&lt;ipython-input-2-2c7a8a3909e2&gt; in &lt;module&gt;()</span>
+<span class="go">----&gt; 1 size_select = ((cat[&#39;Vmag&#39;].max()-cat_select[&#39;Vmag&#39;])/5.)**3</span>
 
-<span class="gp">In [41]: </span><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">cat_select</span><span class="p">[</span><span class="s">&#39;_RAJ2000&#39;</span><span class="p">],</span><span class="n">cat_select</span><span class="p">[</span><span class="s">&#39;_DEJ2000&#39;</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s">&#39;b&#39;</span><span class="p">,</span><span class="n">s</span><span class="o">=</span><span class="n">size_select</span><span class="p">,</span><span class="n">edgecolors</span><span class="o">=</span><span class="s">&#39;none&#39;</span><span class="p">)</span>
-<span class="gr">Out[41]: </span><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">collections</span><span class="o">.</span><span class="n">CircleCollection</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0xb111c4c</span><span class="o">&gt;</span>
+<span class="go">NameError: name &#39;cat&#39; is not defined</span>
+
+<span class="gp">In [3]: </span><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">cat</span><span class="p">[</span><span class="s">&#39;_RAJ2000&#39;</span><span class="p">],</span><span class="n">cat</span><span class="p">[</span><span class="s">&#39;_DEJ2000&#39;</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s">&#39;0.5&#39;</span><span class="p">,</span><span class="n">s</span><span class="o">=</span><span class="n">size</span><span class="p">,</span><span class="n">edgecolors</span><span class="o">=</span><span class="s">&#39;none&#39;</span><span class="p">)</span>
+<span class="go">---------------------------------------------------------------------------</span>
+<span class="go">NameError                                 Traceback (most recent call last)</span>
+<span class="go">/home/nhmc/code/repo/python4esac/source/&lt;ipython-input-3-e682f1bfeb1f&gt; in &lt;module&gt;()</span>
+<span class="go">----&gt; 1 plt.scatter(cat[&#39;_RAJ2000&#39;],cat[&#39;_DEJ2000&#39;],color=&#39;0.5&#39;,s=size,edgecolors=&#39;none&#39;)</span>
+
+<span class="go">NameError: name &#39;cat&#39; is not defined</span>
+
+<span class="gp">In [4]: </span><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">cat_select</span><span class="p">[</span><span class="s">&#39;_RAJ2000&#39;</span><span class="p">],</span><span class="n">cat_select</span><span class="p">[</span><span class="s">&#39;_DEJ2000&#39;</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s">&#39;b&#39;</span><span class="p">,</span><span class="n">s</span><span class="o">=</span><span class="n">size_select</span><span class="p">,</span><span class="n">edgecolors</span><span class="o">=</span><span class="s">&#39;none&#39;</span><span class="p">)</span>
+<span class="go">---------------------------------------------------------------------------</span>
+<span class="go">NameError                                 Traceback (most recent call last)</span>
+<span class="go">/home/nhmc/code/repo/python4esac/source/&lt;ipython-input-4-c9f7f8bf1b7b&gt; in &lt;module&gt;()</span>
+<span class="go">----&gt; 1 plt.scatter(cat_select[&#39;_RAJ2000&#39;],cat_select[&#39;_DEJ2000&#39;],color=&#39;b&#39;,s=size_select,edgecolors=&#39;none&#39;)</span>
+
+<span class="go">NameError: name &#39;cat_select&#39; is not defined</span>
 </pre></div>
 </div>
 <table border="1" class="docutils">
@@ -653,7 +743,7 @@ size of the dots with the brightness of star.</p>
 <col width="49%" />
 </colgroup>
 <tbody valign="top">
-<tr><td><a class="first last reference internal image-reference" href="../_images/genhist.png"><img alt="../_images/genhist.png" src="../_images/genhist.png" style="width: 400.0px; height: 300.0px;" /></a>
+<tr class="row-odd"><td><a class="first last reference internal image-reference" href="../_images/genhist.png"><img alt="../_images/genhist.png" src="../_images/genhist.png" style="width: 400.0px; height: 300.0px;" /></a>
 </td>
 <td><a class="first last reference internal image-reference" href="../_images/gencat.png"><img alt="../_images/gencat.png" src="../_images/gencat.png" style="width: 400.0px; height: 300.0px;" /></a>
 </td>
@@ -665,39 +755,42 @@ We need to convert the HD number to the official star name. We use
 the <tt class="docutils literal"><span class="pre">sesame</span></tt> online database (i.e. SIMBAD), download the HTML files with the
 info on the stars, and extract their name and spectral types. We
 can use the non-standard package BeautifulSoup:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [42]: </span><span class="kn">import</span> <span class="nn">BeautifulSoup</span> <span class="kn">as</span> <span class="nn">bs</span>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="kn">import</span> <span class="nn">BeautifulSoup</span> <span class="kn">as</span> <span class="nn">bs</span>
 
-<span class="gp">In [43]: </span><span class="kn">import</span> <span class="nn">urllib2</span>
+<span class="gp">In [2]: </span><span class="kn">import</span> <span class="nn">urllib2</span>
 
-<span class="gp">In [44]: </span><span class="k">for</span> <span class="n">hd</span> <span class="ow">in</span> <span class="n">cat_select</span><span class="p">[</span><span class="s">&#39;HD&#39;</span><span class="p">][:</span><span class="mi">10</span><span class="p">]:</span>
-<span class="gp">   ....:</span>      <span class="n">html</span> <span class="o">=</span> <span class="s">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">urllib2</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="s">&#39;http://cdsweb.u-strasbg.fr/cgi-bin/nph-sesame/-oxpsIF/S?HD{0}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">hd</span><span class="p">))</span><span class="o">.</span><span class="n">readlines</span><span class="p">())</span>
-<span class="gp">   ....:</span>      <span class="n">page</span> <span class="o">=</span> <span class="n">bs</span><span class="o">.</span><span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">html</span><span class="p">)</span>
-<span class="gp">   ....:</span>      <span class="n">name</span> <span class="o">=</span> <span class="n">page</span><span class="p">(</span><span class="s">&#39;oname&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">text</span>
-<span class="gp">   ....:</span>      <span class="n">sptype</span> <span class="o">=</span> <span class="n">page</span><span class="p">(</span><span class="s">&#39;sptype&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">text</span>
-<span class="gp">   ....:</span>      <span class="k">print</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="n">sptype</span><span class="p">)</span>
-<span class="gp">   ....:</span> 
-<span class="go">(u&#39;NAME SIRIUS A&#39;, u&#39;A1V&#39;)</span>
-<span class="go">(u&#39;NAME CANOPUS&#39;, u&#39;F0II&#39;)</span>
-<span class="go">(u&#39;HR  5459&#39;, u&#39;G2V&#39;)</span>
-<span class="go">(u&#39;HR  5459&#39;, u&#39;G2V&#39;)</span>
-<span class="go">(u&#39;NAME VEGA&#39;, u&#39;A0V&#39;)</span>
-<span class="go">(u&#39;V* bet Ori&#39;, u&#39;B8Iab:&#39;)</span>
-<span class="go">(u&#39;NAME PROCYON AB&#39;, u&#39;F5IV-V&#39;)</span>
-<span class="go">(u&#39;NAME ACHERNAR&#39;, u&#39;B6Vep&#39;)</span>
-<span class="go">(u&#39;V* bet Cen&#39;, u&#39;B1III&#39;)</span>
-<span class="go">(u&#39;NAME ACRUX&#39;, u&#39;B0.5IV&#39;)</span>
+<span class="gp">In [3]: </span><span class="k">for</span> <span class="n">hd</span> <span class="ow">in</span> <span class="n">cat_select</span><span class="p">[</span><span class="s">&#39;HD&#39;</span><span class="p">][:</span><span class="mi">10</span><span class="p">]:</span>
+<span class="gp">   ...:</span>      <span class="n">html</span> <span class="o">=</span> <span class="s">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">urllib2</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="s">&#39;http://cdsweb.u-strasbg.fr/cgi-bin/nph-sesame/-oxpsIF/S?HD{0}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">hd</span><span class="p">))</span><span class="o">.</span><span class="n">readlines</span><span class="p">())</span>
+<span class="gp">   ...:</span>      <span class="n">page</span> <span class="o">=</span> <span class="n">bs</span><span class="o">.</span><span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">html</span><span class="p">)</span>
+<span class="gp">   ...:</span>      <span class="n">name</span> <span class="o">=</span> <span class="n">page</span><span class="p">(</span><span class="s">&#39;oname&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">text</span>
+<span class="gp">   ...:</span>      <span class="n">sptype</span> <span class="o">=</span> <span class="n">page</span><span class="p">(</span><span class="s">&#39;sptype&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">text</span>
+<span class="gp">   ...:</span>      <span class="k">print</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="n">sptype</span><span class="p">)</span>
+<span class="gp">   ...:</span> 
+<span class="go">---------------------------------------------------------------------------</span>
+<span class="go">NameError                                 Traceback (most recent call last)</span>
+<span class="go">/home/nhmc/code/repo/python4esac/source/&lt;ipython-input-3-a3f00be53025&gt; in &lt;module&gt;()</span>
+<span class="go">----&gt; 1 for hd in cat_select[&#39;HD&#39;][:10]:</span>
+<span class="go">      2      html = &quot;&quot;.join(urllib2.urlopen(&#39;http://cdsweb.u-strasbg.fr/cgi-bin/nph-sesame/-oxpsIF/S?HD{0}&#39;.format(hd)).readlines())</span>
+<span class="go">      3      page = bs.BeautifulSoup(html)</span>
+<span class="go">      4      name = page(&#39;oname&#39;)[0].text</span>
+<span class="go">      5      sptype = page(&#39;sptype&#39;)[0].text</span>
+
+<span class="go">NameError: name &#39;cat_select&#39; is not defined</span>
 </pre></div>
 </div>
 <p>There seems to be a solar-like star in there!</p>
 <p class="flip3">Click to Show/Hide Solution without BeatifulSoup </p> <div class="panel3"><p>What would the previous script look like when BeautifulSoup is not installed? In
 this case, we&#8217;ll have to read in the and extract the information manually. We
-could write the following Python code:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">for</span> <span class="n">hd</span> <span class="ow">in</span> <span class="n">cat_select</span><span class="p">[</span><span class="s">&#39;HD&#39;</span><span class="p">][:</span><span class="mi">10</span><span class="p">]:</span>
+could write a small function for that:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">info_from_sesame</span><span class="p">(</span><span class="n">hd</span><span class="p">):</span>
     <span class="n">lines</span> <span class="o">=</span> <span class="n">urllib2</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="s">&#39;http://cdsweb.u-strasbg.fr/cgi-bin/nph-sesame/-oxpsIF/S?HD{0}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">hd</span><span class="p">))</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+    <span class="n">sptype</span><span class="p">,</span><span class="n">oname</span> <span class="o">=</span> <span class="s">&#39;NA&#39;</span><span class="p">,</span><span class="s">&#39;NA&#39;</span> <span class="c"># in case it was not found</span>
     <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">lines</span><span class="p">:</span>
-        <span class="k">if</span> <span class="s">&#39;spType&#39;</span> <span class="ow">in</span> <span class="n">line</span><span class="p">:</span> <span class="n">sptype</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39;&gt;&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39;&lt;&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
-        <span class="k">if</span> <span class="s">&#39;oname&#39;</span> <span class="ow">in</span> <span class="n">line</span><span class="p">:</span> <span class="n">name</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39;&gt;&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39;&lt;&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="n">sptype</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s">&#39;spType&#39;</span> <span class="ow">in</span> <span class="n">line</span><span class="p">:</span>
+            <span class="n">sptype</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39;&gt;&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39;&lt;&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">if</span> <span class="s">&#39;oname&#39;</span> <span class="ow">in</span> <span class="n">line</span><span class="p">:</span>
+            <span class="n">oname</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39;&gt;&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39;&lt;&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">oname</span><span class="p">,</span><span class="n">sptype</span>
 </pre></div>
 </div>
 </div></div>
@@ -720,7 +813,7 @@ could write the following Python code:</p>
         <li class="right" >
           <a href="numpy_scipy.html" title="NumPy"
              >previous</a> |</li>
-        <li><a href="../index.html">Python4Astronomers v1.1 documentation</a> &raquo;</li>
+        <li><a href="../index.html">Python4Astronomers 1.1 documentation</a> &raquo;</li>
           <li><a href="core.html" >Core packages for analysis: IPython, NumPy, and SciPy</a> &raquo;</li> 
       </ul>
     </div>

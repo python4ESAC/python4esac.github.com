@@ -1,4 +1,4 @@
-:tocdepth: 2
+: tocdepth: 2
 
 3D plotting with Mayavi
 =======================
@@ -8,7 +8,7 @@
 Introduction
 ------------
 
-Mayavi is a general 3D visualisation tool, for which python wrappers are available.
+Mayavi is general 3D visualisation tool, for which python wrappers are available.
 There are a lot of parallels between matplotlib and mayavi:
 
     * there exists huge object-oriented library, allowing you to control even the smallest detail in a plot.
@@ -17,10 +17,7 @@ There are a lot of parallels between matplotlib and mayavi:
 There are of course differences too. An advantage of ``mlab`` over ``pylab`` is
 its visualisation tool: the interactive display is *much* faster working in 3D
 than ``pylab``'s 3D toolkit. A disadvantage of ``mlab`` is that it is much more
-difficult to make publication quality plots.
-
-Running mayavi within ipython requires you to add the option ``-wthread`` or
-``--gui=wx`` (only with recent versions of ipython).
+difficult to make publication quality plots. 
 
 A binary system
 ---------------
@@ -45,7 +42,7 @@ optimizers.
 
     In [2]: import pylab as plt
 
-    In [1]: from mayavi import mlab # or from enthought.mayavi import mlab
+    In [1]: from mayavi import mlab
     
     In [2]: from scipy.optimize import newton
     

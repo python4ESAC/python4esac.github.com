@@ -3,13 +3,16 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
+
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Control Flow Statements &mdash; Python4Astronomers v1.1 documentation</title>
+    <title>Control Flow Statements &mdash; Python4Astronomers 1.1 documentation</title>
+    
     <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
@@ -22,7 +25,7 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="Python4Astronomers v1.1 documentation" href="../index.html" />
+    <link rel="top" title="Python4Astronomers 1.1 documentation" href="../index.html" />
     <link rel="up" title="An introduction to Pure Python" href="pure_python.html" />
     <link rel="next" title="Writing Functions" href="functions.html" />
     <link rel="prev" title="Assignment operator" href="assignment.html" />
@@ -284,7 +287,7 @@ display:none;
         <li class="right" >
           <a href="assignment.html" title="Assignment operator"
              accesskey="P">previous</a> |</li>
-        <li><a href="../index.html">Python4Astronomers v1.1 documentation</a> &raquo;</li>
+        <li><a href="../index.html">Python4Astronomers 1.1 documentation</a> &raquo;</li>
           <li><a href="pure_python.html" accesskey="U">An introduction to Pure Python</a> &raquo;</li> 
       </ul>
     </div>
@@ -318,7 +321,7 @@ display:none;
 <div id="searchbox" style="display: none">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" size="18" />
+      <input type="text" name="q" />
       <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
@@ -373,7 +376,7 @@ use four spaces (not tabs) for each level of indent.</p>
 <p>Back to the if-statements, the conditions in the statements can be
 anything that returns a boolean value. For example, <tt class="docutils literal"><span class="pre">a</span> <span class="pre">==</span> <span class="pre">1</span></tt>, <tt class="docutils literal"><span class="pre">b</span> <span class="pre">!=</span>
 <span class="pre">4</span></tt>, and <tt class="docutils literal"><span class="pre">c</span> <span class="pre">&lt;=</span> <span class="pre">5</span></tt> are valid conditions because they return either
-<tt class="xref docutils literal"><span class="pre">True</span></tt> or <tt class="xref docutils literal"><span class="pre">False</span></tt> depending on whether the statements are true or
+<tt class="docutils literal"><span class="pre">True</span></tt> or <tt class="docutils literal"><span class="pre">False</span></tt> depending on whether the statements are true or
 not. Standard comparisons can be used (<tt class="docutils literal"><span class="pre">==</span></tt> for equal, <tt class="docutils literal"><span class="pre">!=</span></tt> for
 not equal, <tt class="docutils literal"><span class="pre">&lt;=</span></tt> for less or equal, <tt class="docutils literal"><span class="pre">&gt;=</span></tt> for greater or equal,
 <tt class="docutils literal"><span class="pre">&lt;</span></tt> for less than, and <tt class="docutils literal"><span class="pre">&gt;</span></tt> for greater than), as well as logical
@@ -384,7 +387,7 @@ comparisons should be executed, for example:</p>
     # do something</pre>
 </div>
 <p>More generally, any function or expression that ultimately returns
-<tt class="xref docutils literal"><span class="pre">True</span></tt> or <tt class="xref docutils literal"><span class="pre">False</span></tt> can be used.</p>
+<tt class="docutils literal"><span class="pre">True</span></tt> or <tt class="docutils literal"><span class="pre">False</span></tt> can be used.</p>
 <p>Along with comparisons, another commonly-used operator is <tt class="docutils literal"><span class="pre">in</span></tt>. This
 is used to test whether an item is contained in any collection:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
@@ -449,7 +452,7 @@ the ending value:</p>
 <p class="first admonition-title">Exercise</p>
 <p class="last">Write a for loop that prints out the integers 1 to 9, but not 5 and 7.</p>
 </div>
-<p class="flip8">Click to Show/Hide Solution</p> <div class="panel8"><div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+<p class="flip8">Click to Show/Hide Solution</p> <div class="panel8"><div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">):</span>
 <span class="gp">... </span>   <span class="k">if</span> <span class="n">x</span> <span class="o">!=</span> <span class="mi">5</span> <span class="ow">and</span> <span class="n">x</span> <span class="o">!=</span> <span class="mi">7</span><span class="p">:</span>
 <span class="gp">... </span>       <span class="k">print</span> <span class="n">x</span>
 <span class="gp">...</span>
@@ -497,9 +500,7 @@ rather than an iterator:</p>
 <p class="last">Write a while loop to print out the Fibonacci numbers below 100.</p>
 </div>
 <p class="flip9">Click to Show/Hide Solution</p> <div class="panel9"><div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="go">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="go">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">while</span> <span class="n">a</span> <span class="o">&lt;</span> <span class="mi">100</span><span class="p">:</span>
 <span class="gp">... </span>    <span class="k">print</span> <span class="n">a</span>
 <span class="gp">... </span>    <span class="n">c</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
@@ -547,8 +548,9 @@ rather than an iterator:</p>
 item number.</p>
 <ul>
 <li><p class="first">Could use while loop with a counter as above. Or a for loop:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">words</span><span class="p">)):</span>
-<span class="gp">... </span>    <span class="k">print</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">words</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">words</span> <span class="o">=</span> <span class="p">(</span><span class="s">&#39;cool&#39;</span><span class="p">,</span> <span class="s">&#39;powerful&#39;</span><span class="p">,</span> <span class="s">&#39;readable&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">words</span><span class="p">)):</span>
+<span class="gp">... </span>    <span class="k">print</span> <span class="n">i</span><span class="p">,</span> <span class="n">words</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
 <span class="gp">...</span>
 <span class="gp">...</span>
 <span class="go">0 cool</span>
@@ -558,8 +560,7 @@ item number.</p>
 </div>
 </li>
 <li><p class="first">But Python provides <strong>enumerate</strong> for this:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">words</span> <span class="o">=</span> <span class="p">(</span><span class="s">&#39;cool&#39;</span><span class="p">,</span> <span class="s">&#39;powerful&#39;</span><span class="p">,</span> <span class="s">&#39;readable&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">item</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">words</span><span class="p">):</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">item</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">words</span><span class="p">):</span>
 <span class="gp">... </span>    <span class="k">print</span> <span class="n">index</span><span class="p">,</span> <span class="n">item</span>
 <span class="gp">...</span>
 <span class="go">0 cool</span>
@@ -606,7 +607,7 @@ the same loop:</p>
         <li class="right" >
           <a href="assignment.html" title="Assignment operator"
              >previous</a> |</li>
-        <li><a href="../index.html">Python4Astronomers v1.1 documentation</a> &raquo;</li>
+        <li><a href="../index.html">Python4Astronomers 1.1 documentation</a> &raquo;</li>
           <li><a href="pure_python.html" >An introduction to Pure Python</a> &raquo;</li> 
       </ul>
     </div>
