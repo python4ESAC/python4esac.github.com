@@ -1,4 +1,4 @@
-: tocdepth: 2
+:tocdepth: 2
 
 3D plotting with Mayavi
 =======================
@@ -8,7 +8,7 @@
 Introduction
 ------------
 
-Mayavi is general 3D visualisation tool, for which python wrappers are available.
+Mayavi is a general 3D visualisation tool, for which python wrappers are available.
 There are a lot of parallels between matplotlib and mayavi:
 
     * there exists huge object-oriented library, allowing you to control even the smallest detail in a plot.
@@ -17,7 +17,10 @@ There are a lot of parallels between matplotlib and mayavi:
 There are of course differences too. An advantage of ``mlab`` over ``pylab`` is
 its visualisation tool: the interactive display is *much* faster working in 3D
 than ``pylab``'s 3D toolkit. A disadvantage of ``mlab`` is that it is much more
-difficult to make publication quality plots. 
+difficult to make publication quality plots.
+
+Running mayavi within ipython requires you to add the option ``-wthread`` or
+``--gui=wx`` (only with recent versions of ipython).
 
 A binary system
 ---------------
@@ -36,23 +39,11 @@ optimizers.
 
 .. sourcecode:: python
 
-<<<<<<< HEAD
     import numpy as np
     from numpy import sin,cos,pi,sqrt # makes the code more readable
     import pylab as plt
     from mayavi import mlab # or from enthought.mayavi import mlab    
     from scipy.optimize import newton
-=======
-    In [2]: import numpy as np
-
-    In [2]: from numpy import sin,cos,pi,sqrt # makes the code more readable
-
-    In [2]: import pylab as plt
-
-    In [1]: from mayavi import mlab
-    
-    In [2]: from scipy.optimize import newton
->>>>>>> 4d376b64af6a2459d9986f4b3d4f75d6fb2b2c9f
     
 SciPy's optimizers usually need a function that returns the residuals of a fitting
 function. In this case, we want to fit the Roche surface (let us simplify it to

@@ -197,7 +197,7 @@ Suppose a line has an intrinsic Gaussian profile in absence of rotation:
     spec_line = 1-0.5*np.exp( -(wavelengths-midwave)**2/(2*0.1**2)) # width of 0.1A
 
 This needs to be convolved with the rotational broadening kernel. Scipy (and
-numpy have a ``convolve`` function that does not use the FFT, but here we choose
+numpy) have a ``convolve`` function that does not use the FFT, but here we choose
 to use the FFT version. We construct the new wavelength array for the convolved
 spectrum, and make sure the equivalent width has not changed during the
 convolution process:
@@ -331,8 +331,7 @@ Let's compare that to the minima from the analytical transform:
     neg_to_pos = (np.diff(g[:-1])<=0) & (np.diff(g[1:])>=0)
     minima_an = x[1:-1][neg_to_pos]
 
-The frequency domain can be converted to s/km (inverse velocity) as
-follows:
+The frequency domain can be converted to velocity (km/s) as follows:
 
 .. sourcecode:: python
 

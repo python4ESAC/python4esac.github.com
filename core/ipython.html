@@ -409,7 +409,7 @@ separate thread, allowing you to simultaneously edit data and view a plot:</p>
 <div class="section" id="keyboard-navigation-and-history">
 <h2><a class="toc-backref" href="#id3">Keyboard navigation and history</a><a class="headerlink" href="#keyboard-navigation-and-history" title="Permalink to this headline">¶</a></h2>
 <p>One of the most useful features of IPython is the ability to edit and navigate
-you command line history. This lets you quickly re-do commands, perhaps with a
+your command line history. This lets you quickly re-do commands, perhaps with a
 slight variation based on seeing the last result. Try cut-n-pasting the above
 lines in an IPython session. This should bring up a plot of a sine wave.</p>
 <p>Now hit up-arrow once and get back the <tt class="docutils literal"><span class="pre">plot(x,</span> <span class="pre">y)</span></tt> line. Hit the left-arrow
@@ -452,33 +452,13 @@ time for interactive analysis it is faster and better to simply type <tt class="
 whatever the object name) followed by <tt class="docutils literal"><span class="pre">&lt;Return&gt;</span></tt>. This returns the
 “representation” of the object which is often a cleaner and more informative
 than the “string” version that gets returned with print. In many cases the
-“representation” of an object the same as Python code to create that object.</p>
+“representation” of an object is the same as Python code to create that object.</p>
 <p>Try:</p>
-<<<<<<< HEAD
 <div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [6]: </span><span class="n">y</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">((</span><span class="n">x</span><span class="p">,</span> <span class="s">&#39;value is </span><span class="si">%d</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
 
 <span class="gp">In [7]: </span><span class="n">y</span>
 
 <span class="gp">In [8]: </span><span class="k">print</span> <span class="n">y</span>
-=======
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="n">y</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">((</span><span class="n">x</span><span class="p">,</span> <span class="s">&#39;value is </span><span class="si">%d</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
-
-<span class="gp">In [2]: </span><span class="n">y</span>
-<span class="gr">Out[2]: </span>
-<span class="go">{0: &#39;value is 0&#39;,</span>
-<span class="go"> 1: &#39;value is 1&#39;,</span>
-<span class="go"> 2: &#39;value is 4&#39;,</span>
-<span class="go"> 3: &#39;value is 9&#39;,</span>
-<span class="go"> 4: &#39;value is 16&#39;,</span>
-<span class="go"> 5: &#39;value is 25&#39;,</span>
-<span class="go"> 6: &#39;value is 36&#39;,</span>
-<span class="go"> 7: &#39;value is 49&#39;,</span>
-<span class="go"> 8: &#39;value is 64&#39;,</span>
-<span class="go"> 9: &#39;value is 81&#39;}</span>
-
-<span class="gp">In [3]: </span><span class="k">print</span> <span class="n">y</span>
-<span class="go">{0: &#39;value is 0&#39;, 1: &#39;value is 1&#39;, 2: &#39;value is 4&#39;, 3: &#39;value is 9&#39;, 4: &#39;value is 16&#39;, 5: &#39;value is 25&#39;, 6: &#39;value is 36&#39;, 7: &#39;value is 49&#39;, 8: &#39;value is 64&#39;, 9: &#39;value is 81&#39;}</span>
->>>>>>> 4d376b64af6a2459d9986f4b3d4f75d6fb2b2c9f
 </pre></div>
 </div>
 </div>
@@ -543,8 +523,8 @@ another terminal or type</p>
 once a module is loaded, a new <tt class="docutils literal"><span class="pre">import</span></tt> statement does not reload it again.
 Before loading a module, the Python interpreter checks if it already exists in
 the local namespace. If it does, the interpreter will simply skip loading the
-module. This means that <strong>a module can only be loaded once</strong>. This is valid in,
-general, and is not a restriction of IPython. To force a reload, you can do:</p>
+module. This means that <strong>a module can only be loaded once</strong>. This is valid in
+general and is not a restriction of IPython. To force a reload, you can do:</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [14]: </span><span class="nb">reload</span><span class="p">(</span><span class="n">mymodule</span><span class="p">)</span>
 
 <span class="gp">In [15]: </span><span class="n">mymodule</span><span class="o">.</span><span class="n">myfunction</span><span class="p">(</span><span class="mf">5.</span><span class="p">,</span><span class="mf">10.</span><span class="p">)</span>
