@@ -3,16 +3,13 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>3D plotting with Mayavi &mdash; Python4Astronomers 1.1 documentation</title>
-    
+    <title>3D plotting with Mayavi &mdash; Python4Astronomers v1.1 documentation</title>
     <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
@@ -25,10 +22,10 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="Python4Astronomers 1.1 documentation" href="../index.html" />
+    <link rel="top" title="Python4Astronomers v1.1 documentation" href="../index.html" />
     <link rel="up" title="Plotting and Images" href="plotting.html" />
     <link rel="next" title="Advanced plotting" href="advanced.html" />
-    <link rel="prev" title="Matplotlib" href="matplotlib.html" />
+    <link rel="prev" title="CONTEST: Make a fun bouncing balls demo" href="../contest/bounce.html" />
  
 <script type="text/javascript"> 
 $(document).ready(function(){
@@ -285,9 +282,9 @@ display:none;
           <a href="advanced.html" title="Advanced plotting"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="matplotlib.html" title="Matplotlib"
+          <a href="../contest/bounce.html" title="CONTEST: Make a fun bouncing balls demo"
              accesskey="P">previous</a> |</li>
-        <li><a href="../index.html">Python4Astronomers 1.1 documentation</a> &raquo;</li>
+        <li><a href="../index.html">Python4Astronomers v1.1 documentation</a> &raquo;</li>
           <li><a href="plotting.html" accesskey="U">Plotting and Images</a> &raquo;</li> 
       </ul>
     </div>
@@ -304,8 +301,8 @@ display:none;
 </ul>
 
   <h4>Previous topic</h4>
-  <p class="topless"><a href="matplotlib.html"
-                        title="previous chapter">Matplotlib</a></p>
+  <p class="topless"><a href="../contest/bounce.html"
+                        title="previous chapter">CONTEST: Make a fun bouncing balls demo</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="advanced.html"
                         title="next chapter">Advanced plotting</a></p>
@@ -317,7 +314,7 @@ display:none;
 <div id="searchbox" style="display: none">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
+      <input type="text" name="q" size="18" />
       <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
@@ -383,12 +380,6 @@ optimizers.</p>
 <span class="gp">In [15]: </span><span class="kn">import</span> <span class="nn">pylab</span> <span class="kn">as</span> <span class="nn">plt</span>
 
 <span class="gp">In [16]: </span><span class="kn">from</span> <span class="nn">mayavi</span> <span class="kn">import</span> <span class="n">mlab</span>
-<span class="go">---------------------------------------------------------------------------</span>
-<span class="go">ImportError                               Traceback (most recent call last)</span>
-<span class="go">/home/nhmc/code/repo/python4esac/source/py4ast/core/&lt;ipython-input-16-3f0e4b94a8ea&gt; in &lt;module&gt;()</span>
-<span class="go">----&gt; 1 from mayavi import mlab</span>
-
-<span class="go">ImportError: No module named mayavi</span>
 
 <span class="gp">In [17]: </span><span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">newton</span>
 </pre></div>
@@ -469,20 +460,10 @@ most natural in this case. To plot, however, we need cartesian coordinates:</p>
 according the size of the radius. An interactive display should appear after
 executing these commands (else, use <tt class="docutils literal"><span class="pre">mlab.show()</span></tt>):</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [33]: </span><span class="n">mlab</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
-<span class="go">---------------------------------------------------------------------------</span>
-<span class="go">NameError                                 Traceback (most recent call last)</span>
-<span class="go">/home/nhmc/code/repo/python4esac/source/py4ast/core/&lt;ipython-input-33-28cec454b7a9&gt; in &lt;module&gt;()</span>
-<span class="go">----&gt; 1 mlab.figure()</span>
-
-<span class="go">NameError: name &#39;mlab&#39; is not defined</span>
+<span class="gr">Out[33]: </span><span class="o">&lt;</span><span class="n">mayavi</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">scene</span><span class="o">.</span><span class="n">Scene</span> <span class="n">at</span> <span class="mh">0x18a92330</span><span class="o">&gt;</span>
 
 <span class="gp">In [34]: </span><span class="n">mlab</span><span class="o">.</span><span class="n">mesh</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span><span class="n">y1</span><span class="p">,</span><span class="n">z1</span><span class="p">,</span><span class="n">scalars</span><span class="o">=</span><span class="n">r1</span><span class="p">)</span>
-<span class="go">---------------------------------------------------------------------------</span>
-<span class="go">NameError                                 Traceback (most recent call last)</span>
-<span class="go">/home/nhmc/code/repo/python4esac/source/py4ast/core/&lt;ipython-input-34-841728bc45e1&gt; in &lt;module&gt;()</span>
-<span class="go">----&gt; 1 mlab.mesh(x1,y1,z1,scalars=r1)</span>
-
-<span class="go">NameError: name &#39;mlab&#39; is not defined</span>
+<span class="gr">Out[34]: </span><span class="o">&lt;</span><span class="n">mayavi</span><span class="o">.</span><span class="n">modules</span><span class="o">.</span><span class="n">surface</span><span class="o">.</span><span class="n">Surface</span> <span class="n">at</span> <span class="mh">0x1b3be3c0</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 <a class="reference internal image-reference" href="../_images/mayavi_prim.png"><img alt="../_images/mayavi_prim.png" src="../_images/mayavi_prim.png" style="width: 400.0px; height: 325.0px;" /></a>
@@ -512,44 +493,29 @@ moved to its proper coordinates:</p>
 </pre></div>
 </div>
 <div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [42]: </span><span class="n">mlab</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
-<span class="go">---------------------------------------------------------------------------</span>
-<span class="go">NameError                                 Traceback (most recent call last)</span>
-<span class="go">/home/nhmc/code/repo/python4esac/source/py4ast/core/&lt;ipython-input-42-28cec454b7a9&gt; in &lt;module&gt;()</span>
-<span class="go">----&gt; 1 mlab.figure()</span>
-
-<span class="go">NameError: name &#39;mlab&#39; is not defined</span>
+<span class="gr">Out[42]: </span><span class="o">&lt;</span><span class="n">mayavi</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">scene</span><span class="o">.</span><span class="n">Scene</span> <span class="n">at</span> <span class="mh">0x18c591e0</span><span class="o">&gt;</span>
 
 <span class="gp">In [43]: </span><span class="n">mlab</span><span class="o">.</span><span class="n">mesh</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span><span class="n">y1</span><span class="p">,</span><span class="n">z1</span><span class="p">,</span><span class="n">scalars</span><span class="o">=</span><span class="n">r1</span><span class="p">)</span>
-<span class="go">---------------------------------------------------------------------------</span>
-<span class="go">NameError                                 Traceback (most recent call last)</span>
-<span class="go">/home/nhmc/code/repo/python4esac/source/py4ast/core/&lt;ipython-input-43-841728bc45e1&gt; in &lt;module&gt;()</span>
-<span class="go">----&gt; 1 mlab.mesh(x1,y1,z1,scalars=r1)</span>
-
-<span class="go">NameError: name &#39;mlab&#39; is not defined</span>
+<span class="gr">Out[43]: </span><span class="o">&lt;</span><span class="n">mayavi</span><span class="o">.</span><span class="n">modules</span><span class="o">.</span><span class="n">surface</span><span class="o">.</span><span class="n">Surface</span> <span class="n">at</span> <span class="mh">0x1b3394b0</span><span class="o">&gt;</span>
 
 <span class="gp">In [44]: </span><span class="n">mlab</span><span class="o">.</span><span class="n">mesh</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span><span class="n">y2</span><span class="p">,</span><span class="n">z2</span><span class="p">,</span><span class="n">scalars</span><span class="o">=</span><span class="n">r2</span><span class="p">)</span>
-<span class="go">---------------------------------------------------------------------------</span>
-<span class="go">NameError                                 Traceback (most recent call last)</span>
-<span class="go">/home/nhmc/code/repo/python4esac/source/py4ast/core/&lt;ipython-input-44-d11dcb88da02&gt; in &lt;module&gt;()</span>
-<span class="go">----&gt; 1 mlab.mesh(x2,y2,z2,scalars=r2)</span>
-
-<span class="go">NameError: name &#39;mlab&#39; is not defined</span>
+<span class="gr">Out[44]: </span><span class="o">&lt;</span><span class="n">mayavi</span><span class="o">.</span><span class="n">modules</span><span class="o">.</span><span class="n">surface</span><span class="o">.</span><span class="n">Surface</span> <span class="n">at</span> <span class="mh">0x1b6d1120</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 <a class="reference internal image-reference" href="../_images/mayavi_bin.png"><img alt="../_images/mayavi_bin.png" src="../_images/mayavi_bin.png" style="width: 400.0px; height: 325.0px;" /></a>
 <p>All the arrays presented above are 2D. This means we could also feed the radius
 array to pylab and make a color plot:</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [45]: </span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">r1</span><span class="p">)</span>
-<span class="gr">Out[45]: </span><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">AxesImage</span> <span class="n">at</span> <span class="mh">0x79c8d50</span><span class="o">&gt;</span>
+<span class="gr">Out[45]: </span><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">AxesImage</span> <span class="n">at</span> <span class="mh">0x1b6db230</span><span class="o">&gt;</span>
 
 <span class="gp">In [46]: </span><span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
-<span class="gr">Out[46]: </span><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">colorbar</span><span class="o">.</span><span class="n">Colorbar</span> <span class="n">instance</span> <span class="n">at</span> <span class="mh">0x741fbd8</span><span class="o">&gt;</span>
+<span class="gr">Out[46]: </span><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">colorbar</span><span class="o">.</span><span class="n">Colorbar</span> <span class="n">instance</span> <span class="n">at</span> <span class="mh">0x18cb1f58</span><span class="o">&gt;</span>
 
 <span class="gp">In [47]: </span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">r2</span><span class="p">)</span>
-<span class="gr">Out[47]: </span><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">AxesImage</span> <span class="n">at</span> <span class="mh">0x74d0790</span><span class="o">&gt;</span>
+<span class="gr">Out[47]: </span><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">AxesImage</span> <span class="n">at</span> <span class="mh">0x18476ed0</span><span class="o">&gt;</span>
 
 <span class="gp">In [48]: </span><span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
-<span class="gr">Out[48]: </span><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">colorbar</span><span class="o">.</span><span class="n">Colorbar</span> <span class="n">instance</span> <span class="n">at</span> <span class="mh">0x756e758</span><span class="o">&gt;</span>
+<span class="gr">Out[48]: </span><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">colorbar</span><span class="o">.</span><span class="n">Colorbar</span> <span class="n">instance</span> <span class="n">at</span> <span class="mh">0x18478698</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 <table border="1" class="docutils">
@@ -558,7 +524,7 @@ array to pylab and make a color plot:</p>
 <col width="49%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="first last reference internal image-reference" href="../_images/pylab_prim.png"><img alt="../_images/pylab_prim.png" src="../_images/pylab_prim.png" style="width: 609.0px; height: 459.0px;" /></a>
+<tr><td><a class="first last reference internal image-reference" href="../_images/pylab_prim.png"><img alt="../_images/pylab_prim.png" src="../_images/pylab_prim.png" style="width: 609.0px; height: 459.0px;" /></a>
 </td>
 <td><a class="first last reference internal image-reference" href="../_images/pylab_sec.png"><img alt="../_images/pylab_sec.png" src="../_images/pylab_sec.png" style="width: 609.0px; height: 459.0px;" /></a>
 </td>
@@ -584,9 +550,9 @@ array to pylab and make a color plot:</p>
           <a href="advanced.html" title="Advanced plotting"
              >next</a> |</li>
         <li class="right" >
-          <a href="matplotlib.html" title="Matplotlib"
+          <a href="../contest/bounce.html" title="CONTEST: Make a fun bouncing balls demo"
              >previous</a> |</li>
-        <li><a href="../index.html">Python4Astronomers 1.1 documentation</a> &raquo;</li>
+        <li><a href="../index.html">Python4Astronomers v1.1 documentation</a> &raquo;</li>
           <li><a href="plotting.html" >Plotting and Images</a> &raquo;</li> 
       </ul>
     </div>

@@ -3,16 +3,13 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Scipy FFT &mdash; Python4Astronomers 1.1 documentation</title>
-    
+    <title>Scipy FFT &mdash; Python4Astronomers v1.1 documentation</title>
     <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
@@ -25,7 +22,7 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="Python4Astronomers 1.1 documentation" href="../index.html" />
+    <link rel="top" title="Python4Astronomers v1.1 documentation" href="../index.html" />
     <link rel="up" title="Core packages for analysis: IPython, NumPy, and SciPy" href="core.html" />
     <link rel="next" title="Scipy stats" href="scipy_stats.html" />
     <link rel="prev" title="NumPy record arrays" href="numpy_recarray.html" />
@@ -287,7 +284,7 @@ display:none;
         <li class="right" >
           <a href="numpy_recarray.html" title="NumPy record arrays"
              accesskey="P">previous</a> |</li>
-        <li><a href="../index.html">Python4Astronomers 1.1 documentation</a> &raquo;</li>
+        <li><a href="../index.html">Python4Astronomers v1.1 documentation</a> &raquo;</li>
           <li><a href="core.html" accesskey="U">Core packages for analysis: IPython, NumPy, and SciPy</a> &raquo;</li> 
       </ul>
     </div>
@@ -320,7 +317,7 @@ display:none;
 <div id="searchbox" style="display: none">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
+      <input type="text" name="q" size="18" />
       <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
@@ -427,6 +424,7 @@ broad enough, i.e. +/- 5 angstrom, using the spectral resolution given above.</p
 <span class="gp">In [2]: </span><span class="n">y</span> <span class="o">=</span> <span class="mi">1</span><span class="o">-</span><span class="p">(</span><span class="n">lambdas</span><span class="o">/</span><span class="n">delta</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="c"># transformation of wavelengths</span>
 
 <span class="gp">In [3]: </span><span class="n">G</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">epsilon</span><span class="p">)</span><span class="o">*</span><span class="n">sqrt</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="o">+</span><span class="n">pi</span><span class="o">*</span><span class="n">epsilon</span><span class="o">/</span><span class="mf">2.</span><span class="o">*</span><span class="n">y</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">pi</span><span class="o">*</span><span class="n">delta</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">epsilon</span><span class="o">/</span><span class="mi">3</span><span class="p">))</span>  <span class="c"># the kernel</span>
+<span class="go">invalid value encountered in sqrt</span>
 
 <span class="gp">In [4]: </span><span class="k">print</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
 <span class="go">[ nan  nan  nan ...,  nan  nan  nan]</span>
@@ -544,7 +542,7 @@ foreseen this, since</p>
 </div>
 <p>Finally make a plot of the rotational kernel.</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">lambdas</span><span class="p">,</span><span class="n">G</span><span class="p">)</span>
-<span class="gr">Out[1]: </span><span class="p">[</span><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">lines</span><span class="o">.</span><span class="n">Line2D</span> <span class="n">at</span> <span class="mh">0x4a83850</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="gr">Out[1]: </span><span class="p">[</span><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">lines</span><span class="o">.</span><span class="n">Line2D</span> <span class="n">at</span> <span class="mh">0xaaa9850</span><span class="o">&gt;</span><span class="p">]</span>
 </pre></div>
 </div>
 <a class="reference internal image-reference" href="../_images/rotkernel.png"><img alt="../_images/rotkernel.png" src="../_images/rotkernel.png" style="width: 400.0px; height: 300.0px;" /></a>
@@ -718,11 +716,11 @@ set the tickmarks to correspond to km/s.</p>
 
 <span class="gp">In [8]: </span><span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">minima_an</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span><span class="o">*</span><span class="n">midwave</span><span class="o">/</span><span class="n">q1</span><span class="o">/</span><span class="n">cc</span><span class="o">*</span><span class="mf">1e13</span><span class="p">,[</span><span class="s">&#39;{0:.2f}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">vsini_zeros_an</span><span class="p">[:</span><span class="mi">5</span><span class="p">]])</span>
 <span class="gr">Out[8]: </span>
-<span class="go">([&lt;matplotlib.axis.XTick at 0x46097d0&gt;,</span>
-<span class="go">  &lt;matplotlib.axis.XTick at 0x6471150&gt;,</span>
-<span class="go">  &lt;matplotlib.axis.XTick at 0x646d250&gt;,</span>
-<span class="go">  &lt;matplotlib.axis.XTick at 0x6477050&gt;,</span>
-<span class="go">  &lt;matplotlib.axis.XTick at 0x64776d0&gt;],</span>
+<span class="go">([&lt;matplotlib.axis.XTick at 0xab74770&gt;,</span>
+<span class="go">  &lt;matplotlib.axis.XTick at 0xaaedd90&gt;,</span>
+<span class="go">  &lt;matplotlib.axis.XTick at 0xab77d90&gt;,</span>
+<span class="go">  &lt;matplotlib.axis.XTick at 0xab7a170&gt;,</span>
+<span class="go">  &lt;matplotlib.axis.XTick at 0xab7a570&gt;],</span>
 <span class="go"> &lt;a list of 5 Text xticklabel objects&gt;)</span>
 </pre></div>
 </div>
@@ -748,7 +746,7 @@ set the tickmarks to correspond to km/s.</p>
         <li class="right" >
           <a href="numpy_recarray.html" title="NumPy record arrays"
              >previous</a> |</li>
-        <li><a href="../index.html">Python4Astronomers 1.1 documentation</a> &raquo;</li>
+        <li><a href="../index.html">Python4Astronomers v1.1 documentation</a> &raquo;</li>
           <li><a href="core.html" >Core packages for analysis: IPython, NumPy, and SciPy</a> &raquo;</li> 
       </ul>
     </div>

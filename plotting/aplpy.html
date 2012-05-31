@@ -3,16 +3,13 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>APLpy &mdash; Python4Astronomers 1.1 documentation</title>
-    
+    <title>APLpy &mdash; Python4Astronomers v1.1 documentation</title>
     <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
@@ -25,10 +22,10 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="Python4Astronomers 1.1 documentation" href="../index.html" />
+    <link rel="top" title="Python4Astronomers v1.1 documentation" href="../index.html" />
     <link rel="up" title="Plotting and Images" href="plotting.html" />
-    <link rel="next" title="Fitting and Modeling 1-D and 2-D Data" href="../fitting/fitting.html" />
-    <link rel="prev" title="Publication-quality plots" href="publication.html" />
+    <link rel="next" title="CONTEST: Make a fun bouncing balls demo" href="../contest/bounce.html" />
+    <link rel="prev" title="Python Objects - or what’s with the periods everywhere?" href="../python/objects.html" />
  
 <script type="text/javascript"> 
 $(document).ready(function(){
@@ -282,12 +279,12 @@ display:none;
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="../fitting/fitting.html" title="Fitting and Modeling 1-D and 2-D Data"
+          <a href="../contest/bounce.html" title="CONTEST: Make a fun bouncing balls demo"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="publication.html" title="Publication-quality plots"
+          <a href="../python/objects.html" title="Python Objects - or what’s with the periods everywhere?"
              accesskey="P">previous</a> |</li>
-        <li><a href="../index.html">Python4Astronomers 1.1 documentation</a> &raquo;</li>
+        <li><a href="../index.html">Python4Astronomers v1.1 documentation</a> &raquo;</li>
           <li><a href="plotting.html" accesskey="U">Plotting and Images</a> &raquo;</li> 
       </ul>
     </div>
@@ -304,11 +301,11 @@ display:none;
 </ul>
 
   <h4>Previous topic</h4>
-  <p class="topless"><a href="publication.html"
-                        title="previous chapter">Publication-quality plots</a></p>
+  <p class="topless"><a href="../python/objects.html"
+                        title="previous chapter">Python Objects - or what&#8217;s with the periods everywhere?</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="../fitting/fitting.html"
-                        title="next chapter">Fitting and Modeling 1-D and 2-D Data</a></p>
+  <p class="topless"><a href="../contest/bounce.html"
+                        title="next chapter">CONTEST: Make a fun bouncing balls demo</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
     <li><a href="../_sources/plotting/aplpy.txt"
@@ -317,7 +314,7 @@ display:none;
 <div id="searchbox" style="display: none">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
+      <input type="text" name="q" size="18" />
       <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
@@ -360,18 +357,18 @@ display:none;
 <div class="section" id="when-things-go-wrong">
 <h2>When things go wrong<a class="headerlink" href="#when-things-go-wrong" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>If you have issues with the installation, either send an email to a mailing list (e.g. astropy or pythonusers for CfA astronomers), or contact the authors directly at <a class="reference external" href="mailto:astropython&#37;&#52;&#48;gmail&#46;com">astropython<span>&#64;</span>gmail<span>&#46;</span>com</a>.</li>
+<li>Team up with someone for now. We can fix the installation errors afterward. The basic modules are aplpy, pywcs and pyfits (beyond NumPy and Matplotlib). The cool, but not required modules are pyregion, PIL, python-montage (Montage from IRSA will be needed).</li>
 <li>If you run into what you believe is a bug, please report it at the GitHub <a class="reference external" href="https://github.com/aplpy/aplpy/issues">Issue Tracker</a>.</li>
 </ul>
 </div>
 <div class="section" id="getting-started">
 <h2>Getting started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h2>
-<p>Start off by downloading <a class="reference download internal" href="../_downloads/APLpy-example.tar"><tt class="xref download docutils literal"><span class="pre">this</span> <span class="pre">tar</span> <span class="pre">file</span></tt></a>, expand it, and go to the <tt class="docutils literal"><span class="pre">APLpy-example</span></tt> directory on the command line. Then, launch pylab:</p>
+<p>Start off by downloading <a class="reference download internal" href="../_downloads/ic348_wise.tar"><tt class="xref download docutils literal"><span class="pre">this</span> <span class="pre">tar</span> <span class="pre">file</span></tt></a>, expand it, and go to the <tt class="docutils literal"><span class="pre">ic348_wise</span></tt> directory on the command line. Then, launch pylab:</p>
 <div class="highlight-python"><pre>$ ipython --pylab</pre>
 </div>
 <p>If you have trouble downloading the file, then start up IPython (<tt class="docutils literal"><span class="pre">ipython</span> <span class="pre">-pylab</span></tt>) and enter:</p>
 <div class="highlight-python"><pre>import urllib2, tarfile
-url = 'http://python4astronomers.github.com/_downloads/APLpy-example.tar'
+url = 'http://python4astronomers.github.com/_downloads/ic348_wise.tar'
 tarfile.open(fileobj=urllib2.urlopen(url), mode='r|').extractall()
 cd APLpy-example
 ls</pre>
@@ -381,77 +378,144 @@ ls</pre>
 </pre></div>
 </div>
 <p>And create a new figure to plot the FITS file with:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">f</span> <span class="o">=</span> <span class="n">aplpy</span><span class="o">.</span><span class="n">FITSFigure</span><span class="p">(</span><span class="s">&#39;ngc2264_cutout.fits&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>This should open up a matplotlib window and will show an empty set of axes with coordinates. From now on, you will interact with the figure by calling methods associated with <tt class="docutils literal"><span class="pre">f</span></tt>. For example, show the image as a grayscale:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">f</span><span class="o">.</span><span class="n">show_grayscale</span><span class="p">()</span>
-</pre></div>
-</div>
-<p>The automatic settings for the stretch should be decent, but there are of course options to allow custom min/max levels. You can now try panning around and zooming in like you would do in Matplotlib, and you will notice the coordinates updating. Press the Home button to reset the view.</p>
-<p>Next, let&#8217;s overlay a set of contours from a different image:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">f</span><span class="o">.</span><span class="n">show_contour</span><span class="p">(</span><span class="s">&#39;ngc2264_cutout_mips.fits&#39;</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>We can also add a coordinate grid:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">f</span><span class="o">.</span><span class="n">add_grid</span><span class="p">()</span>
-</pre></div>
-</div>
-<p>And finally let&#8217;s add a scalebar to make the plot look sciency:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">f</span><span class="o">.</span><span class="n">add_scalebar</span><span class="p">(</span><span class="mf">0.03</span><span class="p">,</span> <span class="s">&#39;0.5pc&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;white&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>We can now save our masterpiece either by clicking on the Save icon in the matplotlib window, or doing:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">f</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s">&#39;my_first_plot.eps&#39;</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># Launch APLpy figure of image</span>
+<span class="n">img</span> <span class="o">=</span> <span class="n">aplpy</span><span class="o">.</span><span class="n">FITSFigure</span><span class="p">(</span><span class="s">&#39;w1.fits&#39;</span><span class="p">)</span>
+
+<span class="c"># Apply grayscale mapping of image</span>
+<span class="n">img</span><span class="o">.</span><span class="n">show_grayscale</span><span class="p">()</span>
+
+<span class="c"># Or apply a different stretch to the image</span>
+<span class="n">img</span><span class="o">.</span><span class="n">show_grayscale</span><span class="p">(</span><span class="n">stretch</span><span class="o">=</span><span class="s">&#39;arcsinh&#39;</span><span class="p">)</span>
+
+<span class="c"># Specifically specify lower and upper limit</span>
+<span class="n">img</span><span class="o">.</span><span class="n">show_grayscale</span><span class="p">(</span><span class="n">stretch</span><span class="o">=</span><span class="s">&#39;arcsinh&#39;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">290</span><span class="p">)</span>
+
+<span class="c"># Display a grid and tweak the properties</span>
+<span class="n">img</span><span class="o">.</span><span class="n">show_grid</span><span class="p">()</span>
+
+<span class="c"># Modify the tick labels for precision and format</span>
+<span class="n">img</span><span class="o">.</span><span class="n">tick_labels</span><span class="o">.</span><span class="n">set_xformat</span><span class="p">(</span><span class="s">&#39;hhmm&#39;</span><span class="p">)</span>
+<span class="n">img</span><span class="o">.</span><span class="n">tick_labels</span><span class="o">.</span><span class="n">set_yformat</span><span class="p">(</span><span class="s">&#39;ddmm&#39;</span><span class="p">)</span>
+
+<span class="c"># Move the tick labels</span>
+<span class="n">img</span><span class="o">.</span><span class="n">tick_labels</span><span class="o">.</span><span class="n">set_xposition</span><span class="p">(</span><span class="s">&#39;top&#39;</span><span class="p">)</span>
+<span class="n">img</span><span class="o">.</span><span class="n">tick_labels</span><span class="o">.</span><span class="n">set_yposition</span><span class="p">(</span><span class="s">&#39;right&#39;</span><span class="p">)</span>
+<span class="n">img</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s">&#39;ic348_basic.eps&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>The latter is recommended because it will automatically figure out the best resolution with which to output your plot. Your plot should look something like this:</p>
-<img alt="../_images/aplpy_example.png" src="../_images/aplpy_example.png" />
+<img alt="../_images/ic348_basic.png" src="../_images/ic348_basic.png" />
+<p>Now let&#8217;s do something a bit more advanced where we&#8217;ll make a color image from the fits files and plot some extra features on top of it. If you cannot get Montage and python-montage installed, then you can use the already produced files to follow along with the exercise:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">aplpy</span>
+
+<span class="c"># Make RGB cube - images do not need not to have the same WCS</span>
+<span class="n">aplpy</span><span class="o">.</span><span class="n">make_rgb_cube</span><span class="p">([</span><span class="s">&#39;w3.fits&#39;</span><span class="p">,</span><span class="s">&#39;w2.fits&#39;</span><span class="p">,</span><span class="s">&#39;w1.fits&#39;</span><span class="p">],</span> <span class="s">&#39;cube.fits&#39;</span><span class="p">)</span>
+
+<span class="c"># Make RGB image - you can specify color parameters here</span>
+<span class="n">aplpy</span><span class="o">.</span><span class="n">make_rgb_image</span><span class="p">(</span><span class="s">&#39;cube.fits&#39;</span><span class="p">,</span><span class="s">&#39;rgb_image_linear.png&#39;</span><span class="p">)</span>
+
+<span class="c"># Customize it</span>
+<span class="n">aplpy</span><span class="o">.</span><span class="n">make_rgb_image</span><span class="p">(</span><span class="s">&#39;cube.fits&#39;</span><span class="p">,</span><span class="s">&#39;rgb_image_arcsinh.png&#39;</span><span class="p">,</span>
+                      <span class="n">stretch_r</span><span class="o">=</span><span class="s">&#39;arcsinh&#39;</span><span class="p">,</span> <span class="n">stretch_g</span><span class="o">=</span><span class="s">&#39;arcsinh&#39;</span><span class="p">,</span>
+                      <span class="n">stretch_b</span><span class="o">=</span><span class="s">&#39;arcsinh&#39;</span><span class="p">)</span>
+
+<span class="c"># Launch APLpy figure of 2D cube</span>
+<span class="n">img</span> <span class="o">=</span> <span class="n">aplpy</span><span class="o">.</span><span class="n">FITSFigure</span><span class="p">(</span><span class="s">&#39;cube_2d.fits&#39;</span><span class="p">)</span>
+<span class="n">img</span><span class="o">.</span><span class="n">show_rgb</span><span class="p">(</span><span class="s">&#39;ic348_color_linear.png&#39;</span><span class="p">)</span>
+
+<span class="c"># Maybe we would like the arcsinh stretched image more?</span>
+<span class="n">img</span><span class="o">.</span><span class="n">show_rgb</span><span class="p">(</span><span class="s">&#39;ic348_color_arcsinh.png&#39;</span><span class="p">)</span>
+
+<span class="c"># Modify the tick labels for precision and format</span>
+<span class="n">img</span><span class="o">.</span><span class="n">tick_labels</span><span class="o">.</span><span class="n">set_xformat</span><span class="p">(</span><span class="s">&#39;hhmmss&#39;</span><span class="p">)</span>
+<span class="n">img</span><span class="o">.</span><span class="n">tick_labels</span><span class="o">.</span><span class="n">set_yformat</span><span class="p">(</span><span class="s">&#39;ddmm&#39;</span><span class="p">)</span>
+
+<span class="c"># Let&#39;s add a scalebar to it</span>
+<span class="n">img</span><span class="o">.</span><span class="n">add_scalebar</span><span class="p">(</span><span class="mi">5</span><span class="o">/</span><span class="mf">60.</span><span class="p">)</span>
+<span class="n">img</span><span class="o">.</span><span class="n">scalebar</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="s">&#39;5 arcmin&#39;</span><span class="p">)</span>
+<span class="n">img</span><span class="o">.</span><span class="n">scalebar</span><span class="o">.</span><span class="n">set_color</span><span class="p">(</span><span class="s">&#39;white&#39;</span><span class="p">)</span>
+
+<span class="c"># We may want to lengthen the scalebar, move it to the top left,</span>
+<span class="c"># and apply a physical scale</span>
+<span class="n">img</span><span class="o">.</span><span class="n">scalebar</span><span class="o">.</span><span class="n">set_corner</span><span class="p">(</span><span class="s">&#39;top left&#39;</span><span class="p">)</span>
+<span class="n">img</span><span class="o">.</span><span class="n">scalebar</span><span class="o">.</span><span class="n">set_length</span><span class="p">(</span><span class="mi">17</span><span class="o">/</span><span class="mf">60.</span><span class="p">)</span>
+<span class="n">img</span><span class="o">.</span><span class="n">scalebar</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="s">&#39;1 parsec&#39;</span><span class="p">)</span>
+<span class="n">img</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s">&#39;ic348_color_arcsinh.pdf&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Your final color plot should look something like this:</p>
+<blockquote>
+<div><img alt="../_images/ic348_color_scalebar.png" src="../_images/ic348_color_scalebar.png" />
+</div></blockquote>
+<p>We&#8217;re ready at this point to start making science-grade plots with APLpy with contours and markers:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">aplpy</span><span class="o">,</span> <span class="nn">atpy</span>
+
+<span class="c"># Launch APLpy figure of image</span>
+<span class="n">img</span> <span class="o">=</span> <span class="n">aplpy</span><span class="o">.</span><span class="n">FITSFigure</span><span class="p">(</span><span class="s">&#39;w2.fits&#39;</span><span class="p">)</span>
+
+<span class="c"># Apply grayscale mapping of image</span>
+<span class="n">img</span><span class="o">.</span><span class="n">show_grayscale</span><span class="p">()</span>
+
+<span class="c"># Or apply a different stretch to the image</span>
+<span class="n">img</span><span class="o">.</span><span class="n">show_grayscale</span><span class="p">(</span><span class="n">stretch</span><span class="o">=</span><span class="s">&#39;arcsinh&#39;</span><span class="p">)</span>
+
+<span class="c"># Specifically specify lower and upper limit</span>
+<span class="n">img</span><span class="o">.</span><span class="n">show_grayscale</span><span class="p">(</span><span class="n">stretch</span><span class="o">=</span><span class="s">&#39;arcsinh&#39;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">180</span><span class="p">)</span>
+
+<span class="c"># Modify the tick labels for precision and format</span>
+<span class="n">img</span><span class="o">.</span><span class="n">tick_labels</span><span class="o">.</span><span class="n">set_xformat</span><span class="p">(</span><span class="s">&#39;hhmmss&#39;</span><span class="p">)</span>
+<span class="n">img</span><span class="o">.</span><span class="n">tick_labels</span><span class="o">.</span><span class="n">set_yformat</span><span class="p">(</span><span class="s">&#39;ddmm&#39;</span><span class="p">)</span>
+
+<span class="c"># ATpy to pull in sources</span>
+<span class="c"># If you want to see what columns are available - type t.describe()</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">atpy</span><span class="o">.</span><span class="n">Table</span><span class="p">(</span><span class="s">&#39;per_ysoc_c2d.fits&#39;</span><span class="p">)</span>
+
+<span class="c"># Now, let&#39;s display the young stellar objects (YSOs) in the region</span>
+<span class="c"># using c2d Spitzer data</span>
+<span class="n">img</span><span class="o">.</span><span class="n">show_markers</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">ra</span><span class="p">,</span> <span class="n">t</span><span class="o">.</span><span class="n">dec</span><span class="p">)</span>
+
+<span class="c"># But let&#39;s make the markers bigger and triangles instead</span>
+<span class="c"># Before we can do that we need to list the layers</span>
+<span class="n">img</span><span class="o">.</span><span class="n">list_layers</span><span class="p">()</span>
+<span class="n">img</span><span class="o">.</span><span class="n">remove_layer</span><span class="p">(</span><span class="s">&#39;marker_set_1&#39;</span><span class="p">)</span>
+
+<span class="c"># Now we add the new markers</span>
+<span class="n">img</span><span class="o">.</span><span class="n">show_markers</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">ra</span><span class="p">,</span> <span class="n">t</span><span class="o">.</span><span class="n">dec</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s">&#39;^&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+
+<span class="c"># Let&#39;s add a contour from Av map of the region from COMPLETE Survey</span>
+<span class="n">img</span><span class="o">.</span><span class="n">show_contour</span><span class="p">(</span><span class="s">&#39;per_extn2mass.fits&#39;</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="p">[</span><span class="mi">8</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">4</span><span class="p">],</span> <span class="n">colors</span><span class="o">=</span><span class="s">&#39;green&#39;</span><span class="p">)</span>
+<span class="n">img</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s">&#39;ic348_marker_contour.png&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The science-grade plot should look something like this:</p>
+<blockquote>
+<div><img alt="../_images/ic348_marker_contour.png" src="../_images/ic348_marker_contour.png" />
+</div></blockquote>
 <div class="admonition-exercise-1 admonition ">
 <p class="first admonition-title">Exercise 1</p>
-<p class="last">Use the  <tt class="docutils literal"><span class="pre">help</span></tt> or <tt class="docutils literal"><span class="pre">?</span></tt> functionality in <tt class="docutils literal"><span class="pre">ipython</span></tt> to figure out how to set the min/max levels on the grayscale manually, and to change the stretch function to a square-root stretch. Also use the Use the <a class="reference external" href="http://aplpy.github.com/documentation/quick_reference.html">Quick Reference Guide</a> to figure out how to change the grayscale to a colorscale.</p>
+<p>Use the  <tt class="docutils literal"><span class="pre">help</span></tt> or <tt class="docutils literal"><span class="pre">?</span></tt> functionality in <tt class="docutils literal"><span class="pre">ipython</span></tt> to figure out how to reproduce (within reason) the image below. Additionally, using the tabbing feature to see what other methods are available is key for this exercise. Use the <a class="reference external" href="http://aplpy.github.com/documentation/quick_reference.html">Quick Reference Guide</a> for other information that may be helpful.</p>
+<img alt="../_images/per_av_grid_markers.png" class="last" src="../_images/per_av_grid_markers.png" />
 </div>
-<p class="flip9">Click to Show/Hide Solution</p> <div class="panel9"><p>To manually set the levels:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">f</span><span class="o">.</span><span class="n">show_grayscale</span><span class="p">(</span><span class="n">vmin</span><span class="o">=</span><span class="mf">0.</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mf">200.</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>To additionally use a square-root stretch:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">f</span><span class="o">.</span><span class="n">show_grayscale</span><span class="p">(</span><span class="n">vmin</span><span class="o">=</span><span class="mf">0.</span><span class="p">,</span><span class="n">vmax</span><span class="o">=</span><span class="mf">200.</span><span class="p">,</span> <span class="n">stretch</span><span class="o">=</span><span class="s">&#39;sqrt&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>To change to a colorscale:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">f</span><span class="o">.</span><span class="n">show_colorscale</span><span class="p">()</span>
-</pre></div>
-</div>
-<p>Note that the colormap can be set using for example:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">f</span><span class="o">.</span><span class="n">show_colorscale</span><span class="p">(</span><span class="n">cmap</span><span class="o">=</span><span class="s">&#39;gist_heat&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>where the value of the cmap argument can be any of the names listed on <a class="reference external" href="http://www.scipy.org/Cookbook/Matplotlib/Show_colormaps">this</a> page.</p>
-</div><div class="admonition-exercise-2 admonition ">
-<p class="first admonition-title">Exercise 2</p>
-<p class="last">Use the <a class="reference external" href="http://aplpy.github.com/documentation/quick_reference.html">Quick Reference Guide</a> to manually set the tick spacing on both axes. In the default view for the example FITS file above, the arcseconds in the declination are not useful (they are always zero). Try and change the format of the y-axis labels so that they only include degrees and arcminutes.</p>
-</div>
-<p class="flip8">Click to Show/Hide Solution</p> <div class="panel8"><p>To set the tick spacing:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">f</span><span class="o">.</span><span class="n">ticks</span><span class="o">.</span><span class="n">set_xspacing</span><span class="p">(</span><span class="mf">0.05</span><span class="p">)</span>
-<span class="n">f</span><span class="o">.</span><span class="n">ticks</span><span class="o">.</span><span class="n">set_yspacing</span><span class="p">(</span><span class="mf">0.05</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>To show the y-axis labels in dd:mm format:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">f</span><span class="o">.</span><span class="n">tick_labels</span><span class="o">.</span><span class="n">set_yformat</span><span class="p">(</span><span class="s">&#39;dd:mm&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div><div class="admonition-exercise-3 admonition ">
-<p class="first admonition-title">Exercise 3</p>
-<p>Use APLpy to plot one of your own FITS images! If you don&#8217;t have any FITS files at hand, you can play with <a class="reference download internal" href="../_downloads/m82_wise.tar"><tt class="xref download docutils literal"><span class="pre">this</span></tt></a> newly-released WISE data of M82!</p>
-<p>If you have trouble downloading the file, then start up IPython (<tt class="docutils literal"><span class="pre">ipython</span> <span class="pre">-pylab</span></tt>) and enter:</p>
-<div class="last highlight-python"><pre>import urllib2, tarfile
-url = 'http://python4astronomers.github.com/_downloads/m82_wise.tar'
-tarfile.open(fileobj=urllib2.urlopen(url), mode='r|').extractall()
-cd m82_wise
-ls</pre>
-</div>
-</div>
+<p class="flip1">Click to Show/Hide Solution</p> <div class="panel1"><p>import aplpy
+import atpy</p>
+<p># Exercise</p>
+<p>img = aplpy.FITSFigure(&#8216;per_av_j2000.fits&#8217;)</p>
+<p># Identical to show_grayscale
+img.show_colorscale()</p>
+<p># Recenter the image with a defined width of 5 degrees
+img.recenter(54.51, 31.39, radius=2.5)</p>
+<p># Show the grid
+img.show_grid()</p>
+<p># Define tick label style
+img.tick_labels.set_xformat(&#8216;hhmm&#8217;)
+img.tick_labels.set_yformat(&#8216;ddmm&#8217;)</p>
+<p>img.show_colorbar()</p>
+<p># Read in table using atpy
+t = atpy.Table(&#8216;per_ysoc_c2d.fits&#8217;)</p>
+<p># Plot markers
+img.show_markers(t.ra, t.dec, facecolor=&#8217;black&#8217;, edgecolor=&#8217;none&#8217;, s=20)</p>
+<p>img.save(&#8216;ic348_av_markers.png&#8217;)</p>
+<p>&lt;/div&gt;</p>
 </div>
 </div>
 
@@ -468,12 +532,12 @@ ls</pre>
           <a href="../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="../fitting/fitting.html" title="Fitting and Modeling 1-D and 2-D Data"
+          <a href="../contest/bounce.html" title="CONTEST: Make a fun bouncing balls demo"
              >next</a> |</li>
         <li class="right" >
-          <a href="publication.html" title="Publication-quality plots"
+          <a href="../python/objects.html" title="Python Objects - or what’s with the periods everywhere?"
              >previous</a> |</li>
-        <li><a href="../index.html">Python4Astronomers 1.1 documentation</a> &raquo;</li>
+        <li><a href="../index.html">Python4Astronomers v1.1 documentation</a> &raquo;</li>
           <li><a href="plotting.html" >Plotting and Images</a> &raquo;</li> 
       </ul>
     </div>
