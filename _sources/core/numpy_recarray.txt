@@ -179,16 +179,19 @@ There seems to be a solar-like star in there!
 
 What would the previous script look like when BeautifulSoup is not installed? In
 this case, we'll have to read in the and extract the information manually. We
-could write the following Python code:
+could write a small function for that:
 
 .. sourcecode:: python
 
-    for hd in cat_select['HD'][:10]:
+    def info_from_sesame(hd):
         lines = urllib2.urlopen('http://cdsweb.u-strasbg.fr/cgi-bin/nph-sesame/-oxpsIF/S?HD{0}'.format(hd)).readlines()
+        sptype,oname = 'NA','NA' # in case it was not found
         for line in lines:
-            if 'spType' in line: sptype = line.split('>')[1].split('<')[0]
-            if 'oname' in line: name = line.split('>')[1].split('<')[0]
-        print(name,sptype)
+            if 'spType' in line:
+                sptype = line.split('>')[1].split('<')[0]
+            if 'oname' in line:
+                oname = line.split('>')[1].split('<')[0]
+        return oname,sptype
         
 
 

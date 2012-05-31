@@ -17,8 +17,11 @@ Plotting and Images
    
    matplotlib
    mayavi_example
+<<<<<<< HEAD
    ga_example
    specnorm
+=======
+>>>>>>> 4d376b64af6a2459d9986f4b3d4f75d6fb2b2c9f
 
 **More advanced plotting**
 
