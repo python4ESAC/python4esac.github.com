@@ -454,23 +454,11 @@ whatever the object name) followed by <tt class="docutils literal"><span class="
 than the “string” version that gets returned with print. In many cases the
 “representation” of an object is the same as Python code to create that object.</p>
 <p>Try:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [2]: </span><span class="n">y</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">((</span><span class="n">x</span><span class="p">,</span> <span class="s">&#39;value is </span><span class="si">%d</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [6]: </span><span class="n">y</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">((</span><span class="n">x</span><span class="p">,</span> <span class="s">&#39;value is </span><span class="si">%d</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
 
-<span class="gp">In [3]: </span><span class="n">y</span>
-<span class="gr">Out[3]: </span>
-<span class="go">{0: &#39;value is 0&#39;,</span>
-<span class="go"> 1: &#39;value is 1&#39;,</span>
-<span class="go"> 2: &#39;value is 4&#39;,</span>
-<span class="go"> 3: &#39;value is 9&#39;,</span>
-<span class="go"> 4: &#39;value is 16&#39;,</span>
-<span class="go"> 5: &#39;value is 25&#39;,</span>
-<span class="go"> 6: &#39;value is 36&#39;,</span>
-<span class="go"> 7: &#39;value is 49&#39;,</span>
-<span class="go"> 8: &#39;value is 64&#39;,</span>
-<span class="go"> 9: &#39;value is 81&#39;}</span>
+<span class="gp">In [7]: </span><span class="n">y</span>
 
-<span class="gp">In [4]: </span><span class="k">print</span> <span class="n">y</span>
-<span class="go">{0: &#39;value is 0&#39;, 1: &#39;value is 1&#39;, 2: &#39;value is 4&#39;, 3: &#39;value is 9&#39;, 4: &#39;value is 16&#39;, 5: &#39;value is 25&#39;, 6: &#39;value is 36&#39;, 7: &#39;value is 49&#39;, 8: &#39;value is 64&#39;, 9: &#39;value is 81&#39;}</span>
+<span class="gp">In [8]: </span><span class="k">print</span> <span class="n">y</span>
 </pre></div>
 </div>
 </div>

@@ -371,46 +371,38 @@ computed Fourier transform (<tt class="docutils literal"><span class="pre">fft</
 <div class="section" id="getting-started">
 <h2><a class="toc-backref" href="#id2">Getting started</a><a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h2>
 <p>We need a lot of functions. First, we import the Fourier functions:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [184]: </span><span class="kn">from</span> <span class="nn">scipy.fftpack</span> <span class="kn">import</span> <span class="n">fft</span><span class="p">,</span><span class="n">fftfreq</span>
-
-<span class="gp">In [185]: </span><span class="kn">from</span> <span class="nn">scipy.signal</span> <span class="kn">import</span> <span class="n">fftconvolve</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">scipy.fftpack</span> <span class="kn">import</span> <span class="n">fft</span><span class="p">,</span><span class="n">fftfreq</span>
+<span class="kn">from</span> <span class="nn">scipy.signal</span> <span class="kn">import</span> <span class="n">fftconvolve</span>
 </pre></div>
 </div>
 <p>For the analytical computation of the Fourier transformation, Bessel functions
 are required:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [186]: </span><span class="kn">from</span> <span class="nn">scipy.special</span> <span class="kn">import</span> <span class="n">j1</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">scipy.special</span> <span class="kn">import</span> <span class="n">j1</span>
 </pre></div>
 </div>
 <p>And of course the usual imports. An explicit import of <tt class="docutils literal"><span class="pre">pi</span></tt>, <tt class="docutils literal"><span class="pre">sin</span></tt>, <tt class="docutils literal"><span class="pre">cos</span></tt>
 and <tt class="docutils literal"><span class="pre">sqrt</span></tt> is done to avoid extensive use of <tt class="docutils literal"><span class="pre">np.</span></tt> which could make the code
 less readable.</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [187]: </span><span class="kn">import</span> <span class="nn">pylab</span> <span class="kn">as</span> <span class="nn">plt</span>
-
-<span class="gp">In [188]: </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-
-<span class="gp">In [189]: </span><span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">pi</span><span class="p">,</span><span class="n">sin</span><span class="p">,</span><span class="n">cos</span><span class="p">,</span><span class="n">sqrt</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">pylab</span> <span class="kn">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">pi</span><span class="p">,</span><span class="n">sin</span><span class="p">,</span><span class="n">cos</span><span class="p">,</span><span class="n">sqrt</span>
 </pre></div>
 </div>
 <p>To finalize the setup, we need some constants. We define them here explicitly,
 but there exists a module <a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/constants.html">scipy.constants</a>, with an
 extensive list of physical constants. However, it does not contain specifical astronomical constants such as the solar mass (see Prsa &amp; Harmanec 2011).</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [190]: </span><span class="n">midwave</span> <span class="o">=</span> <span class="mf">4480.</span> <span class="c"># central wavelength of line</span>
-
-<span class="gp">In [191]: </span><span class="n">cc</span> <span class="o">=</span> <span class="mf">2.99792458e+18</span> <span class="c"># velocity of light in angstrom/s</span>
-
-<span class="gp">In [192]: </span><span class="n">epsilon</span> <span class="o">=</span> <span class="mf">0.6</span> <span class="c"># linear limbdarkening parameter</span>
-
-<span class="gp">In [193]: </span><span class="n">vsini</span> <span class="o">=</span> <span class="mf">75.</span><span class="o">*</span><span class="mf">1e13</span> <span class="c"># input vsini in A/s (75 km/s)</span>
-
-<span class="gp">In [194]: </span><span class="n">dlam</span> <span class="o">=</span> <span class="mf">0.01</span> <span class="c"># spectrum resolution (A)</span>
-
-<span class="gp">In [195]: </span><span class="n">delta</span> <span class="o">=</span> <span class="n">midwave</span><span class="o">*</span><span class="n">vsini</span><span class="o">/</span><span class="n">cc</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">midwave</span> <span class="o">=</span> <span class="mf">4480.</span> <span class="c"># central wavelength of line</span>
+<span class="n">cc</span> <span class="o">=</span> <span class="mf">2.99792458e+18</span> <span class="c"># velocity of light in angstrom/s</span>
+<span class="n">epsilon</span> <span class="o">=</span> <span class="mf">0.6</span> <span class="c"># linear limbdarkening parameter</span>
+<span class="n">vsini</span> <span class="o">=</span> <span class="mf">75.</span><span class="o">*</span><span class="mf">1e13</span> <span class="c"># input vsini in A/s (75 km/s)</span>
+<span class="n">dlam</span> <span class="o">=</span> <span class="mf">0.01</span> <span class="c"># spectrum resolution (A)</span>
+<span class="n">delta</span> <span class="o">=</span> <span class="n">midwave</span><span class="o">*</span><span class="n">vsini</span><span class="o">/</span><span class="n">cc</span>
 </pre></div>
 </div>
 <p>We will add some noise to a generate spectrum. To be able to reproduce the results,
 we make sure that we always add the same noise, regardless of how many times
 we run the script:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [196]: </span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">1111</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">1111</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -419,14 +411,10 @@ we run the script:</p>
 <p>The rotational broadening function <em>G</em> is only defined on a certain wavelength interval, but
 we&#8217;ll be lazy and solve that issue later. For now, we make the wavelength interval
 broad enough, i.e. +/- 5 angstrom, using the spectral resolution given above.</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [197]: </span><span class="n">lambdas</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mf">10.</span><span class="o">/</span><span class="n">dlam</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="c"># wavelength interval</span>
-
-<span class="gp">In [198]: </span><span class="n">y</span> <span class="o">=</span> <span class="mi">1</span><span class="o">-</span><span class="p">(</span><span class="n">lambdas</span><span class="o">/</span><span class="n">delta</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="c"># transformation of wavelengths</span>
-
-<span class="gp">In [199]: </span><span class="n">G</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">epsilon</span><span class="p">)</span><span class="o">*</span><span class="n">sqrt</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="o">+</span><span class="n">pi</span><span class="o">*</span><span class="n">epsilon</span><span class="o">/</span><span class="mf">2.</span><span class="o">*</span><span class="n">y</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">pi</span><span class="o">*</span><span class="n">delta</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">epsilon</span><span class="o">/</span><span class="mi">3</span><span class="p">))</span>  <span class="c"># the kernel</span>
-
-<span class="gp">In [200]: </span><span class="k">print</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
-<span class="go">[ nan  nan  nan ...,  nan  nan  nan]</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">lambdas</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mf">10.</span><span class="o">/</span><span class="n">dlam</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="c"># wavelength interval</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mi">1</span><span class="o">-</span><span class="p">(</span><span class="n">lambdas</span><span class="o">/</span><span class="n">delta</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="c"># transformation of wavelengths</span>
+<span class="n">G</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">epsilon</span><span class="p">)</span><span class="o">*</span><span class="n">sqrt</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="o">+</span><span class="n">pi</span><span class="o">*</span><span class="n">epsilon</span><span class="o">/</span><span class="mf">2.</span><span class="o">*</span><span class="n">y</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">pi</span><span class="o">*</span><span class="n">delta</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">epsilon</span><span class="o">/</span><span class="mi">3</span><span class="p">))</span>  <span class="c"># the kernel</span>
+<span class="k">print</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>The <tt class="docutils literal"><span class="pre">sqrt</span></tt> is of course only defined for positive numbers. For negative numbers,
@@ -441,25 +429,18 @@ statements via <tt class="docutils literal"><span class="pre">np.seterr(all='ign
 <li><p class="first">In the example, we were lazy and let the <tt class="docutils literal"><span class="pre">nan</span></tt> be introduced in the
 arrays. In general, you should be <strong>very careful</strong> with this behaviour,
 since many statements will silently break if there are nan&#8217;s around:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [201]: </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
-
-<span class="gp">In [202]: </span><span class="n">x</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
-<span class="gr">Out[202]: </span><span class="mf">0.92660952831430698</span>
-
-<span class="gp">In [203]: </span><span class="n">x</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
-
-<span class="gp">In [204]: </span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="c"># std is not defined when there is a nan!</span>
-<span class="gr">Out[204]: </span><span class="n">nan</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">x</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+<span class="n">x</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+<span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="c"># std is not defined when there is a nan!</span>
 </pre></div>
 </div>
 <p>Some functions have an alternative that can handle nans:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [205]: </span><span class="n">np</span><span class="o">.</span><span class="n">nanmax</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-<span class="gr">Out[205]: </span><span class="mf">2.68798062625826</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">np</span><span class="o">.</span><span class="n">nanmax</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>but not all of them:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [206]: </span><span class="nb">hasattr</span><span class="p">(</span><span class="n">np</span><span class="p">,</span><span class="s">&#39;nanstd&#39;</span><span class="p">),</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">np</span><span class="p">,</span><span class="s">&#39;nansum&#39;</span><span class="p">)</span>
-<span class="gr">Out[206]: </span><span class="p">(</span><span class="bp">False</span><span class="p">,</span> <span class="bp">True</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="nb">hasattr</span><span class="p">(</span><span class="n">np</span><span class="p">,</span><span class="s">&#39;nanstd&#39;</span><span class="p">),</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">np</span><span class="p">,</span><span class="s">&#39;nansum&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </li>
@@ -468,54 +449,27 @@ e.g. when you want to compute the mean of an array. However, in the
 previous note we&#8217;ve seen that numpy functions will return <tt class="docutils literal"><span class="pre">np.nan</span></tt> when
 used on an array containing at least on <tt class="docutils literal"><span class="pre">np.nan</span></tt>. Numpy has a seperate
 array class for arrays with masked values, appropriately named <strong>masked arrays</strong>:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [207]: </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
-
-<span class="gp">In [208]: </span><span class="n">x</span>
-<span class="gr">Out[208]: </span>
-<span class="go">array([[-1.09748601, -0.71461959,  1.26747448,  0.43627688],</span>
-<span class="go">       [-0.00978103,  0.65313941,  1.21553136, -0.83680687],</span>
-<span class="go">       [ 0.82023114, -1.48203271, -0.56670933, -0.36410778],</span>
-<span class="go">       [ 0.31660582,  0.49014734, -1.0654382 ,  0.04824816]])</span>
-
-<span class="gp">In [209]: </span><span class="n">mask</span> <span class="o">=</span> <span class="n">x</span><span class="o">&lt;</span><span class="mi">0</span>
-
-<span class="gp">In [210]: </span><span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">mask</span><span class="o">=</span><span class="n">mask</span><span class="p">)</span>
-
-<span class="gp">In [211]: </span><span class="n">y</span>
-<span class="gr">Out[211]: </span>
-<span class="go">masked_array(data =</span>
-<span class="go"> [[-- -- 1.26747447851 0.436276879326]</span>
-<span class="go"> [-- 0.653139405632 1.21553136356 --]</span>
-<span class="go"> [0.820231141228 -- -- --]</span>
-<span class="go"> [0.316605819084 0.490147339063 -- 0.0482481581468]],</span>
-<span class="go">             mask =</span>
-<span class="go"> [[ True  True False False]</span>
-<span class="go"> [ True False False  True]</span>
-<span class="go"> [False  True  True  True]</span>
-<span class="go"> [False False  True False]],</span>
-<span class="go">       fill_value = 1e+20)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<span class="n">x</span>
+<span class="n">mask</span> <span class="o">=</span> <span class="n">x</span><span class="o">&lt;</span><span class="mi">0</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">mask</span><span class="o">=</span><span class="n">mask</span><span class="p">)</span>
+<span class="n">y</span>
 </pre></div>
 </div>
 <p>Notice that numpy actually uses a specific fill value for the masked values,
 usually <tt class="docutils literal"><span class="pre">1e+20</span></tt>, but you can control that value. Then finally, we can use
 the normal numpy functions again:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [212]: </span><span class="n">x</span><span class="o">.</span><span class="n">std</span><span class="p">(),</span><span class="n">y</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
-<span class="gr">Out[212]: </span><span class="p">(</span><span class="mf">0.82416273813686625</span><span class="p">,</span> <span class="mf">0.39910720469667704</span><span class="p">)</span>
-
-<span class="gp">In [213]: </span><span class="n">x</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span><span class="n">y</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
-<span class="gr">Out[213]: </span><span class="p">(</span><span class="o">-</span><span class="mf">1.4820327144374017</span><span class="p">,</span> <span class="mf">0.04824815814678067</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">x</span><span class="o">.</span><span class="n">std</span><span class="p">(),</span><span class="n">y</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+<span class="n">x</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span><span class="n">y</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
 </pre></div>
 </div>
 </li>
 <li><p class="first"><tt class="docutils literal"><span class="pre">matplotlib</span></tt> can handle <tt class="docutils literal"><span class="pre">np.nan</span></tt>:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [214]: </span><span class="n">X</span><span class="p">,</span><span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mgrid</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">:</span><span class="mi">5</span><span class="p">:</span><span class="mi">500</span><span class="n">j</span><span class="p">,</span><span class="o">-</span><span class="mi">5</span><span class="p">:</span><span class="mi">5</span><span class="p">:</span><span class="mi">500</span><span class="n">j</span><span class="p">]</span>
-
-<span class="gp">In [215]: </span><span class="n">Z</span> <span class="o">=</span> <span class="n">X</span><span class="o">*</span><span class="n">Y</span>
-
-<span class="gp">In [216]: </span><span class="n">Z</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="n">X</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="p">(</span><span class="n">Y</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">&lt;</span><span class="mf">1.</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
-
-<span class="gp">In [217]: </span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">Z</span><span class="p">);</span>
-<span class="gp">In [218]: </span><span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">();</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">X</span><span class="p">,</span><span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mgrid</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">:</span><span class="mi">5</span><span class="p">:</span><span class="mi">500</span><span class="n">j</span><span class="p">,</span><span class="o">-</span><span class="mi">5</span><span class="p">:</span><span class="mi">5</span><span class="p">:</span><span class="mi">500</span><span class="n">j</span><span class="p">]</span>
+<span class="n">Z</span> <span class="o">=</span> <span class="n">X</span><span class="o">*</span><span class="n">Y</span>
+<span class="n">Z</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="n">X</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="p">(</span><span class="n">Y</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">&lt;</span><span class="mf">1.</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">Z</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">();</span>
 </pre></div>
 </div>
 </li>
@@ -524,23 +478,18 @@ the normal numpy functions again:</p>
 </div>
 </div><p>We remove all the wavelength
 and kernel elements wherever the kernel is not defined:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [219]: </span><span class="n">keep</span> <span class="o">=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">G</span><span class="p">)</span> <span class="c"># returns boolean array with `False` where there are nans</span>
-
-<span class="gp">In [220]: </span><span class="n">lambdas</span><span class="p">,</span><span class="n">G</span> <span class="o">=</span> <span class="n">lambdas</span><span class="p">[</span><span class="n">keep</span><span class="p">],</span><span class="n">G</span><span class="p">[</span><span class="n">keep</span><span class="p">]</span> <span class="c"># crop the arrays not to contain nans</span>
-
-<span class="gp">In [221]: </span><span class="n">lambdas</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span><span class="n">lambdas</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
-<span class="gr">Out[221]: </span><span class="p">(</span><span class="o">-</span><span class="mf">1.1200000000000001</span><span class="p">,</span> <span class="mf">1.1200000000000001</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">keep</span> <span class="o">=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">G</span><span class="p">)</span> <span class="c"># returns boolean array with `False` where there are nans</span>
+<span class="n">lambdas</span><span class="p">,</span><span class="n">G</span> <span class="o">=</span> <span class="n">lambdas</span><span class="p">[</span><span class="n">keep</span><span class="p">],</span><span class="n">G</span><span class="p">[</span><span class="n">keep</span><span class="p">]</span> <span class="c"># crop the arrays not to contain nans</span>
+<span class="n">lambdas</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span><span class="n">lambdas</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>The broadening kernel is only defined between -1.12 and 1.12 A. We could have
 foreseen this, since</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [222]: </span><span class="mf">1.12</span><span class="o">/</span><span class="n">midwave</span><span class="o">*</span><span class="p">(</span><span class="mf">3e5</span><span class="p">)</span> <span class="c"># approximate velocity in km/s of 1.12 angstrom at 4480A</span>
-<span class="gr">Out[222]: </span><span class="mf">75.0</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="mf">1.12</span><span class="o">/</span><span class="n">midwave</span><span class="o">*</span><span class="p">(</span><span class="mf">3e5</span><span class="p">)</span> <span class="c"># approximate velocity in km/s of 1.12 angstrom at 4480A</span>
 </pre></div>
 </div>
 <p>Finally make a plot of the rotational kernel.</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [223]: </span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">lambdas</span><span class="p">,</span><span class="n">G</span><span class="p">)</span>
-<span class="gr">Out[223]: </span><span class="p">[</span><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">lines</span><span class="o">.</span><span class="n">Line2D</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0xc4e3b8c</span><span class="o">&gt;</span><span class="p">]</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">lambdas</span><span class="p">,</span><span class="n">G</span><span class="p">)</span>
 </pre></div>
 </div>
 <a class="reference internal image-reference" href="../_images/rotkernel.png"><img alt="../_images/rotkernel.png" src="../_images/rotkernel.png" style="width: 400.0px; height: 300.0px;" /></a>
@@ -548,9 +497,8 @@ foreseen this, since</p>
 <div class="section" id="the-synthetic-line">
 <h2><a class="toc-backref" href="#id4">The synthetic line</a><a class="headerlink" href="#the-synthetic-line" title="Permalink to this headline">¶</a></h2>
 <p>Suppose a line has an intrinsic Gaussian profile in absence of rotation:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [224]: </span><span class="n">wavelengths</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">midwave</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span><span class="n">midwave</span><span class="o">+</span><span class="mi">5</span><span class="o">+</span><span class="n">dlam</span><span class="p">,</span><span class="n">dlam</span><span class="p">)</span>
-
-<span class="gp">In [225]: </span><span class="n">spec_line</span> <span class="o">=</span> <span class="mi">1</span><span class="o">-</span><span class="mf">0.5</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span> <span class="o">-</span><span class="p">(</span><span class="n">wavelengths</span><span class="o">-</span><span class="n">midwave</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="mf">0.1</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span> <span class="c"># width of 0.1A</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">wavelengths</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">midwave</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span><span class="n">midwave</span><span class="o">+</span><span class="mi">5</span><span class="o">+</span><span class="n">dlam</span><span class="p">,</span><span class="n">dlam</span><span class="p">)</span>
+<span class="n">spec_line</span> <span class="o">=</span> <span class="mi">1</span><span class="o">-</span><span class="mf">0.5</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span> <span class="o">-</span><span class="p">(</span><span class="n">wavelengths</span><span class="o">-</span><span class="n">midwave</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="mf">0.1</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span> <span class="c"># width of 0.1A</span>
 </pre></div>
 </div>
 <p>This needs to be convolved with the rotational broadening kernel. Scipy (and
@@ -558,17 +506,12 @@ numpy) have a <tt class="docutils literal"><span class="pre">convolve</span></tt
 to use the FFT version. We construct the new wavelength array for the convolved
 spectrum, and make sure the equivalent width has not changed during the
 convolution process:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [226]: </span><span class="n">spec_conv</span> <span class="o">=</span> <span class="n">fftconvolve</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">spec_line</span><span class="p">,</span><span class="n">G</span><span class="p">,</span><span class="n">mode</span><span class="o">=</span><span class="s">&#39;full&#39;</span><span class="p">)</span>
-
-<span class="gp">In [227]: </span><span class="n">N</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">spec_conv</span><span class="p">)</span> <span class="c"># equals len(spec_line)+len(G)+1 when mode=&#39;full&#39;</span>
-
-<span class="gp">In [228]: </span><span class="n">wavelengths_conv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="n">N</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="n">N</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">dlam</span> <span class="o">+</span> <span class="n">midwave</span>
-
-<span class="gp">In [229]: </span><span class="n">EW_before</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">trapz</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">spec_line</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="n">wavelengths</span><span class="p">)</span> <span class="c"># trapezoidal integration</span>
-
-<span class="gp">In [230]: </span><span class="n">EW_after</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">trapz</span><span class="p">(</span><span class="n">spec_conv</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="n">wavelengths_conv</span><span class="p">)</span>
-
-<span class="gp">In [231]: </span><span class="n">spec_conv</span> <span class="o">=</span> <span class="mi">1</span><span class="o">-</span><span class="n">spec_conv</span><span class="o">/</span><span class="n">EW_after</span><span class="o">*</span><span class="n">EW_before</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">spec_conv</span> <span class="o">=</span> <span class="n">fftconvolve</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">spec_line</span><span class="p">,</span><span class="n">G</span><span class="p">,</span><span class="n">mode</span><span class="o">=</span><span class="s">&#39;full&#39;</span><span class="p">)</span>
+<span class="n">N</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">spec_conv</span><span class="p">)</span> <span class="c"># equals len(spec_line)+len(G)+1 when mode=&#39;full&#39;</span>
+<span class="n">wavelengths_conv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="n">N</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="n">N</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">dlam</span> <span class="o">+</span> <span class="n">midwave</span>
+<span class="n">EW_before</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">trapz</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">spec_line</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="n">wavelengths</span><span class="p">)</span> <span class="c"># trapezoidal integration</span>
+<span class="n">EW_after</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">trapz</span><span class="p">(</span><span class="n">spec_conv</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="n">wavelengths_conv</span><span class="p">)</span>
+<span class="n">spec_conv</span> <span class="o">=</span> <span class="mi">1</span><span class="o">-</span><span class="n">spec_conv</span><span class="o">/</span><span class="n">EW_after</span><span class="o">*</span><span class="n">EW_before</span>
 </pre></div>
 </div>
 <p class="flip2">Click to Show/Hide: NOTE on numerical integration</p> <div class="panel2"><div class="admonition note">
@@ -593,18 +536,10 @@ error.</p>
 the <a class="reference external" href="http://www.scipy.org/Cookbook/Zombie_Apocalypse_ODEINT">Zombie Apocalypse example</a>.</p>
 </div>
 </div><p>Finally, we simulate an observed profile by adding random Gaussian noise:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [232]: </span><span class="n">spec_obs</span> <span class="o">=</span> <span class="n">spec_conv</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">spec_conv</span><span class="p">),</span><span class="n">scale</span><span class="o">=</span><span class="mf">0.02</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">spec_obs</span> <span class="o">=</span> <span class="n">spec_conv</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">spec_conv</span><span class="p">),</span><span class="n">scale</span><span class="o">=</span><span class="mf">0.02</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>A plot of the unbroadened (black) and broadened line (red/blue) can be made with:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [233]: </span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
-<span class="gp">In [234]: </span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">wavelengths</span><span class="p">,</span><span class="n">spec_line</span><span class="p">,</span><span class="s">&#39;k-&#39;</span><span class="p">);</span>
-<span class="gp">In [235]: </span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">wavelengths_conv</span><span class="p">,</span><span class="n">spec_conv</span><span class="p">,</span><span class="s">&#39;r-&#39;</span><span class="p">);</span>
-<span class="gp">In [236]: </span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">wavelengths_conv</span><span class="p">,</span><span class="n">spec_obs</span><span class="p">,</span><span class="s">&#39;b-&#39;</span><span class="p">);</span>
-<span class="gp">In [237]: </span><span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">4478</span><span class="p">,</span><span class="mi">4482</span><span class="p">)</span>
-<span class="gr">Out[237]: </span><span class="p">(</span><span class="mi">4478</span><span class="p">,</span> <span class="mi">4482</span><span class="p">)</span>
-</pre></div>
-</div>
 <a class="reference internal image-reference" href="../_images/speclines.png"><img alt="../_images/speclines.png" src="../_images/speclines.png" style="width: 400.0px; height: 300.0px;" /></a>
 </div>
 <div class="section" id="the-analytical-fourier-transform">
@@ -613,14 +548,12 @@ the <a class="reference external" href="http://www.scipy.org/Cookbook/Zombie_Apo
 easily computed. First, we need to define the domain in frequency space on which
 to compute the transform, and then we evaluate it. Note the use of scipy&#8217;s
 Bessel function:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [238]: </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">1000</span><span class="p">)[</span><span class="mi">1</span><span class="p">:]</span>  <span class="c"># exclude zero</span>
-
-<span class="gp">In [239]: </span><span class="n">g</span> <span class="o">=</span> <span class="mf">2.</span> <span class="o">/</span> <span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">epsilon</span><span class="o">/</span><span class="mf">3.</span><span class="p">))</span> <span class="o">*</span> <span class="p">(</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">epsilon</span><span class="p">)</span><span class="o">*</span><span class="n">j1</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">+</span>  <span class="n">epsilon</span><span class="o">*</span> <span class="p">(</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="n">x</span><span class="p">))</span>
-
-<span class="gp">In [240]: </span><span class="n">g</span> <span class="o">=</span> <span class="n">g</span><span class="o">**</span><span class="mi">2</span> <span class="c"># convert to power</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">1000</span><span class="p">)[</span><span class="mi">1</span><span class="p">:]</span>  <span class="c"># exclude zero</span>
+<span class="n">g</span> <span class="o">=</span> <span class="mf">2.</span> <span class="o">/</span> <span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">epsilon</span><span class="o">/</span><span class="mf">3.</span><span class="p">))</span> <span class="o">*</span> <span class="p">(</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">epsilon</span><span class="p">)</span><span class="o">*</span><span class="n">j1</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">+</span>  <span class="n">epsilon</span><span class="o">*</span> <span class="p">(</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="n">x</span><span class="p">))</span>
+<span class="n">g</span> <span class="o">=</span> <span class="n">g</span><span class="o">**</span><span class="mi">2</span> <span class="c"># convert to power</span>
 </pre></div>
 </div>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [241]: </span><span class="n">x</span> <span class="o">/=</span> <span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">pi</span><span class="o">*</span><span class="n">delta</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">x</span> <span class="o">/=</span> <span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">pi</span><span class="o">*</span><span class="n">delta</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -637,22 +570,17 @@ the length of the input array, otherwise the input array is zero-padded until
 it is of size <tt class="docutils literal"><span class="pre">n</span></tt>. We choose to make our input array 100 times larger. Finally,
 the Fourier method is sensitive to noise outside of the spectral line region.
 Therefore, we cut the spectrum to have little continuum remaining.</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [242]: </span><span class="n">keep</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">midwave</span><span class="o">-</span><span class="n">wavelengths_conv</span><span class="p">)</span><span class="o">&lt;</span><span class="mf">1.2</span> <span class="c"># minimize contribution of continuum</span>
-
-<span class="gp">In [243]: </span><span class="n">spec_to_transform</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">spec_obs</span><span class="p">)[</span><span class="n">keep</span><span class="p">]</span> <span class="c"># we need the continuum at zero</span>
-
-<span class="gp">In [244]: </span><span class="n">new_n</span> <span class="o">=</span> <span class="mi">100</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">spec_to_transform</span><span class="p">)</span> <span class="c"># new length for zeropadding</span>
-
-<span class="gp">In [245]: </span><span class="n">spec_fft</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">fft</span><span class="p">(</span><span class="n">spec_to_transform</span><span class="p">,</span><span class="n">n</span><span class="o">=</span><span class="n">new_n</span><span class="p">))</span><span class="o">**</span><span class="mi">2</span> <span class="c"># power of FFT</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">keep</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">midwave</span><span class="o">-</span><span class="n">wavelengths_conv</span><span class="p">)</span><span class="o">&lt;</span><span class="mf">1.2</span> <span class="c"># minimize contribution of continuum</span>
+<span class="n">spec_to_transform</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">spec_obs</span><span class="p">)[</span><span class="n">keep</span><span class="p">]</span> <span class="c"># we need the continuum at zero</span>
+<span class="n">new_n</span> <span class="o">=</span> <span class="mi">100</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">spec_to_transform</span><span class="p">)</span> <span class="c"># new length for zeropadding</span>
+<span class="n">spec_fft</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">fft</span><span class="p">(</span><span class="n">spec_to_transform</span><span class="p">,</span><span class="n">n</span><span class="o">=</span><span class="n">new_n</span><span class="p">))</span><span class="o">**</span><span class="mi">2</span> <span class="c"># power of FFT</span>
 </pre></div>
 </div>
 <p>The domain of the Fourier transform is retrieved via <tt class="docutils literal"><span class="pre">fftfreq</span></tt>, but we exclude
 the negative frequencies:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [246]: </span><span class="n">x_fft</span> <span class="o">=</span> <span class="n">fftfreq</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">spec_fft</span><span class="p">),</span><span class="n">d</span><span class="o">=</span><span class="n">dlam</span><span class="p">)</span>
-
-<span class="gp">In [247]: </span><span class="n">keep</span> <span class="o">=</span> <span class="n">x_fft</span><span class="o">&gt;=</span><span class="mi">0</span> <span class="c"># only positive frequencies</span>
-
-<span class="gp">In [248]: </span><span class="n">x_fft</span><span class="p">,</span> <span class="n">spec_fft</span> <span class="o">=</span> <span class="n">x_fft</span><span class="p">[</span><span class="n">keep</span><span class="p">],</span> <span class="n">spec_fft</span><span class="p">[</span><span class="n">keep</span><span class="p">]</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">x_fft</span> <span class="o">=</span> <span class="n">fftfreq</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">spec_fft</span><span class="p">),</span><span class="n">d</span><span class="o">=</span><span class="n">dlam</span><span class="p">)</span>
+<span class="n">keep</span> <span class="o">=</span> <span class="n">x_fft</span><span class="o">&gt;=</span><span class="mi">0</span> <span class="c"># only positive frequencies</span>
+<span class="n">x_fft</span><span class="p">,</span> <span class="n">spec_fft</span> <span class="o">=</span> <span class="n">x_fft</span><span class="p">[</span><span class="n">keep</span><span class="p">],</span> <span class="n">spec_fft</span><span class="p">[</span><span class="n">keep</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -662,52 +590,36 @@ the negative frequencies:</p>
 to discretization and noise, zero will never be reached, so we need to look for
 local minima: those are the locations where the first derivative switches sign
 from negative to positive:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [249]: </span><span class="n">neg_to_pos</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">spec_fft</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span><span class="o">&lt;=</span><span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">spec_fft</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span><span class="o">&gt;=</span><span class="mi">0</span><span class="p">)</span>
-
-<span class="gp">In [250]: </span><span class="n">minima</span> <span class="o">=</span> <span class="n">x_fft</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="n">neg_to_pos</span><span class="p">]</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">neg_to_pos</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">spec_fft</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span><span class="o">&lt;=</span><span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">spec_fft</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span><span class="o">&gt;=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">minima</span> <span class="o">=</span> <span class="n">x_fft</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="n">neg_to_pos</span><span class="p">]</span>
 </pre></div>
 </div>
 <p>Let&#8217;s compare that to the minima from the analytical transform:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [251]: </span><span class="n">neg_to_pos</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">g</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span><span class="o">&lt;=</span><span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">g</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span><span class="o">&gt;=</span><span class="mi">0</span><span class="p">)</span>
-
-<span class="gp">In [252]: </span><span class="n">minima_an</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="n">neg_to_pos</span><span class="p">]</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">neg_to_pos</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">g</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span><span class="o">&lt;=</span><span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">g</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span><span class="o">&gt;=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">minima_an</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="n">neg_to_pos</span><span class="p">]</span>
 </pre></div>
 </div>
 <p>The frequency domain can be converted to velocity (km/s) as follows:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [253]: </span><span class="n">q1</span> <span class="o">=</span> <span class="mf">0.610</span> <span class="o">+</span> <span class="mf">0.062</span><span class="o">*</span><span class="n">epsilon</span> <span class="o">+</span> <span class="mf">0.027</span><span class="o">*</span><span class="n">epsilon</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mf">0.012</span><span class="o">*</span><span class="n">epsilon</span><span class="o">**</span><span class="mi">3</span> <span class="o">+</span> <span class="mf">0.004</span><span class="o">*</span><span class="n">epsilon</span><span class="o">**</span><span class="mi">4</span>
-
-<span class="gp">In [254]: </span><span class="n">vsini_zeros</span> <span class="o">=</span> <span class="n">cc</span><span class="o">/</span><span class="n">midwave</span><span class="o">*</span><span class="n">q1</span><span class="o">/</span><span class="n">minima</span><span class="o">/</span><span class="mf">1e13</span>
-
-<span class="gp">In [255]: </span><span class="n">vsini_zeros_an</span> <span class="o">=</span> <span class="n">cc</span><span class="o">/</span><span class="n">midwave</span><span class="o">*</span><span class="n">q1</span><span class="o">/</span><span class="n">minima_an</span><span class="o">/</span><span class="mf">1e13</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">q1</span> <span class="o">=</span> <span class="mf">0.610</span> <span class="o">+</span> <span class="mf">0.062</span><span class="o">*</span><span class="n">epsilon</span> <span class="o">+</span> <span class="mf">0.027</span><span class="o">*</span><span class="n">epsilon</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mf">0.012</span><span class="o">*</span><span class="n">epsilon</span><span class="o">**</span><span class="mi">3</span> <span class="o">+</span> <span class="mf">0.004</span><span class="o">*</span><span class="n">epsilon</span><span class="o">**</span><span class="mi">4</span>
+<span class="n">vsini_zeros</span> <span class="o">=</span> <span class="n">cc</span><span class="o">/</span><span class="n">midwave</span><span class="o">*</span><span class="n">q1</span><span class="o">/</span><span class="n">minima</span><span class="o">/</span><span class="mf">1e13</span>
+<span class="n">vsini_zeros_an</span> <span class="o">=</span> <span class="n">cc</span><span class="o">/</span><span class="n">midwave</span><span class="o">*</span><span class="n">q1</span><span class="o">/</span><span class="n">minima_an</span><span class="o">/</span><span class="mf">1e13</span>
 </pre></div>
 </div>
 <p>The first zero should be the input vsini:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [256]: </span><span class="k">print</span><span class="p">(</span><span class="n">vsini_zeros_an</span><span class="p">[:</span><span class="mi">10</span><span class="p">])</span>
-<span class="go">[ 75.05337352  42.62290348  29.76254467  22.91452554  18.6283553</span>
-<span class="go">  15.6929781   13.53903993  11.91871754  10.63384553]</span>
-
-<span class="gp">In [257]: </span><span class="k">print</span><span class="p">(</span><span class="n">vsini_zeros</span><span class="p">[:</span><span class="mi">10</span><span class="p">])</span>
-<span class="go">[ 73.41007508  42.07296793  28.38522903  21.28892177  14.95008551</span>
-<span class="go">  13.07673328  11.21650251   9.98542297   8.33552145   7.36640892]</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="n">vsini_zeros_an</span><span class="p">[:</span><span class="mi">10</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="n">vsini_zeros</span><span class="p">[:</span><span class="mi">10</span><span class="p">])</span>
 </pre></div>
 </div>
 <p>Finally, we can make a nice plot: We use the s/A scaling on the x-axis, but
 set the tickmarks to correspond to km/s.</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [258]: </span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">();</span>
-<span class="gp">In [259]: </span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">g</span><span class="o">/</span><span class="n">g</span><span class="o">.</span><span class="n">max</span><span class="p">());</span>
-<span class="gp">In [260]: </span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_fft</span><span class="p">,</span><span class="n">spec_fft</span><span class="o">/</span><span class="n">spec_fft</span><span class="o">.</span><span class="n">max</span><span class="p">());</span>
-<span class="gp">In [261]: </span><span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">set_yscale</span><span class="p">(</span><span class="s">&#39;log&#39;</span><span class="p">);</span>
-<span class="gp">In [262]: </span><span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.05</span><span class="p">);</span>
-<span class="gp">In [263]: </span><span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mf">1e-8</span><span class="p">,</span><span class="mf">1e1</span><span class="p">);</span>
-<span class="gp">In [264]: </span><span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">();</span>
-<span class="gp">In [265]: </span><span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">minima_an</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span><span class="o">*</span><span class="n">midwave</span><span class="o">/</span><span class="n">q1</span><span class="o">/</span><span class="n">cc</span><span class="o">*</span><span class="mf">1e13</span><span class="p">,[</span><span class="s">&#39;{0:.2f}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">vsini_zeros_an</span><span class="p">[:</span><span class="mi">5</span><span class="p">]])</span>
-<span class="gr">Out[265]: </span>
-<span class="go">([&lt;matplotlib.axis.XTick object at 0xc6baeac&gt;,</span>
-<span class="go">  &lt;matplotlib.axis.XTick object at 0xc6b2f2c&gt;,</span>
-<span class="go">  &lt;matplotlib.axis.XTick object at 0xc6c348c&gt;,</span>
-<span class="go">  &lt;matplotlib.axis.XTick object at 0xc6c392c&gt;,</span>
-<span class="go">  &lt;matplotlib.axis.XTick object at 0xc6c3e0c&gt;],</span>
-<span class="go"> &lt;a list of 5 Text xticklabel objects&gt;)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">();</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">g</span><span class="o">/</span><span class="n">g</span><span class="o">.</span><span class="n">max</span><span class="p">());</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_fft</span><span class="p">,</span><span class="n">spec_fft</span><span class="o">/</span><span class="n">spec_fft</span><span class="o">.</span><span class="n">max</span><span class="p">());</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">set_yscale</span><span class="p">(</span><span class="s">&#39;log&#39;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.05</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mf">1e-8</span><span class="p">,</span><span class="mf">1e1</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">();</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">minima_an</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span><span class="o">*</span><span class="n">midwave</span><span class="o">/</span><span class="n">q1</span><span class="o">/</span><span class="n">cc</span><span class="o">*</span><span class="mf">1e13</span><span class="p">,[</span><span class="s">&#39;{0:.2f}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">vsini_zeros_an</span><span class="p">[:</span><span class="mi">5</span><span class="p">]])</span>
 </pre></div>
 </div>
 <a class="reference internal image-reference" href="../_images/vsini.png"><img alt="../_images/vsini.png" src="../_images/vsini.png" style="width: 400.0px; height: 300.0px;" /></a>

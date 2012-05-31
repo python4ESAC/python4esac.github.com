@@ -374,26 +374,19 @@ in scipy to derive confidence intervals on the period spacing (and offset).</p>
 <p>To explore this problem, we will simulate an observed set of period spacings,
 and add some noise to them.</p>
 <p>First, we need to do the usual imports:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [266]: </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-
-<span class="gp">In [267]: </span><span class="kn">import</span> <span class="nn">pylab</span> <span class="kn">as</span> <span class="nn">plt</span>
-
-<span class="gp">In [268]: </span><span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">pi</span>
-
-<span class="gp">In [269]: </span><span class="kn">import</span> <span class="nn">scipy.stats</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pylab</span> <span class="kn">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">pi</span>
+<span class="kn">import</span> <span class="nn">scipy.stats</span>
 </pre></div>
 </div>
 <p>Now, generate 8 almost equidistant spacings, and add  3 random ones periods mixed with the equidistant structure. We fix the seed to be able to reproduce
 the results:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [270]: </span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">1111</span><span class="p">)</span>
-
-<span class="gp">In [271]: </span><span class="n">periods</span> <span class="o">=</span> <span class="mf">1.23</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span><span class="o">*</span><span class="mf">0.43</span> <span class="c"># the spacing and offset</span>
-
-<span class="gp">In [272]: </span><span class="n">periods</span> <span class="o">+=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">periods</span><span class="p">),</span><span class="n">scale</span><span class="o">=</span><span class="mf">0.005</span><span class="p">)</span> <span class="c"># add normal noise</span>
-
-<span class="gp">In [273]: </span><span class="n">periods</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="n">periods</span><span class="p">,</span><span class="n">scipy</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">uniform</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span><span class="n">loc</span><span class="o">=</span><span class="mf">1.23</span><span class="p">,</span><span class="n">scale</span><span class="o">=</span><span class="mi">3</span><span class="p">)])</span> <span class="c"># mix with 3 others</span>
-
-<span class="gp">In [274]: </span><span class="n">periods</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">1111</span><span class="p">)</span>
+<span class="n">periods</span> <span class="o">=</span> <span class="mf">1.23</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span><span class="o">*</span><span class="mf">0.43</span> <span class="c"># the spacing and offset</span>
+<span class="n">periods</span> <span class="o">+=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">periods</span><span class="p">),</span><span class="n">scale</span><span class="o">=</span><span class="mf">0.005</span><span class="p">)</span> <span class="c"># add normal noise</span>
+<span class="n">periods</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="n">periods</span><span class="p">,</span><span class="n">scipy</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">uniform</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span><span class="n">loc</span><span class="o">=</span><span class="mf">1.23</span><span class="p">,</span><span class="n">scale</span><span class="o">=</span><span class="mi">3</span><span class="p">)])</span> <span class="c"># mix with 3 others</span>
+<span class="n">periods</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>Note that we could have used the <tt class="docutils literal"><span class="pre">np.random</span></tt> module too to generate the
@@ -406,7 +399,7 @@ distributions and many more options. For every statistical distribution, you can
 <li>... and much more</li>
 </ul>
 <p>This is a list of spacings we want to test:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [275]: </span><span class="n">test_spacings</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.05</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1000</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">test_spacings</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.05</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1000</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -416,46 +409,35 @@ distributions and many more options. For every statistical distribution, you can
 not a tutorial on statistics, we refer to that paper for more information.</p>
 <p>We choose the shortest period to compare with, and remove it from the list of
 periods.</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [276]: </span><span class="n">index_short</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="n">periods</span><span class="p">)</span>
-
-<span class="gp">In [277]: </span><span class="n">p_short</span> <span class="o">=</span> <span class="n">periods</span><span class="p">[</span><span class="n">index_short</span><span class="p">]</span>
-
-<span class="gp">In [278]: </span><span class="n">periods_del</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">periods</span><span class="p">,</span><span class="n">index_short</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">index_short</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="n">periods</span><span class="p">)</span>
+<span class="n">p_short</span> <span class="o">=</span> <span class="n">periods</span><span class="p">[</span><span class="n">index_short</span><span class="p">]</span>
+<span class="n">periods_del</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">periods</span><span class="p">,</span><span class="n">index_short</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Then, we calculate the distribution of the periods compared to the tested
 spacing:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [279]: </span><span class="n">dp</span> <span class="o">=</span> <span class="p">[]</span>
-
-<span class="gp">In [280]: </span><span class="k">for</span> <span class="n">dp_test</span> <span class="ow">in</span> <span class="n">test_spacings</span><span class="p">:</span>
-<span class="gp">   .....:</span>      <span class="n">ri</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="gp">   .....:</span>      <span class="k">for</span> <span class="n">pi</span> <span class="ow">in</span> <span class="n">periods_del</span><span class="p">:</span>
-<span class="gp">   .....:</span>          <span class="n">ni</span> <span class="o">=</span> <span class="p">(</span><span class="n">pi</span><span class="o">-</span><span class="n">p_short</span><span class="p">)</span><span class="o">/</span><span class="n">dp_test</span>
-<span class="gp">   .....:</span>          <span class="n">ri</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ni</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">ni</span><span class="p">))</span>
-<span class="gp">   .....:</span>      <span class="n">dp</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ri</span><span class="p">)</span>
-<span class="gp">   .....:</span> 
+<div class="highlight-python"><div class="highlight"><pre><span class="n">dp</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">dp_test</span> <span class="ow">in</span> <span class="n">test_spacings</span><span class="p">:</span>
+    <span class="n">ri</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">pi</span> <span class="ow">in</span> <span class="n">periods_del</span><span class="p">:</span>
+        <span class="n">ni</span> <span class="o">=</span> <span class="p">(</span><span class="n">pi</span><span class="o">-</span><span class="n">p_short</span><span class="p">)</span><span class="o">/</span><span class="n">dp_test</span>
+        <span class="n">ri</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ni</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">ni</span><span class="p">))</span>
+    <span class="n">dp</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ri</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Next, we use the <strong>Kolmogorov-Smirnov</strong> test to derive whether the <tt class="docutils literal"><span class="pre">ri</span></tt> come
 from a uniform distribution. We do this for every test spacing:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [286]: </span><span class="n">Q</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">dp</span><span class="p">))</span>
-
-<span class="gp">In [287]: </span><span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">ri</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">dp</span><span class="p">):</span>
-<span class="gp">   .....:</span>      <span class="n">ksstat</span><span class="p">,</span><span class="n">pvalue</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">kstest</span><span class="p">(</span><span class="n">ri</span><span class="p">,</span><span class="s">&#39;uniform&#39;</span><span class="p">)</span>
-<span class="gp">   .....:</span>      <span class="n">Q</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">pvalue</span> <span class="c"># we&#39;re only interested in the pvalue, not the KS statistic</span>
-<span class="gp">   .....:</span> 
+<div class="highlight-python"><div class="highlight"><pre><span class="n">Q</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">dp</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">ri</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">dp</span><span class="p">):</span>
+    <span class="n">ksstat</span><span class="p">,</span><span class="n">pvalue</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">kstest</span><span class="p">(</span><span class="n">ri</span><span class="p">,</span><span class="s">&#39;uniform&#39;</span><span class="p">)</span>
+    <span class="n">Q</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">pvalue</span> <span class="c"># we&#39;re only interested in the pvalue, not the KS statistic</span>
 </pre></div>
 </div>
 <p>In principle, we should now correct for the number of trial periods (the
 Bonferroni correction, but we omit that step here. Finally, we can make a plot:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [290]: </span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
-<span class="gr">Out[290]: </span><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">figure</span><span class="o">.</span><span class="n">Figure</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0xca0854c</span><span class="o">&gt;</span>
-
-<span class="gp">In [291]: </span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">test_spacings</span><span class="p">,</span><span class="n">Q</span><span class="p">)</span>
-<span class="gr">Out[291]: </span><span class="p">[</span><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">lines</span><span class="o">.</span><span class="n">Line2D</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0xcaa8acc</span><span class="o">&gt;</span><span class="p">]</span>
-
-<span class="gp">In [292]: </span><span class="n">test_spacings</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="n">Q</span><span class="p">)]</span>
-<span class="gr">Out[292]: </span><span class="mf">0.42942942942942941</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">test_spacings</span><span class="p">,</span><span class="n">Q</span><span class="p">)</span>
+<span class="n">test_spacings</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="n">Q</span><span class="p">)]</span>
 </pre></div>
 </div>
 <a class="reference internal image-reference" href="../_images/ks_ks.png"><img alt="../_images/ks_ks.png" src="../_images/ks_ks.png" style="width: 406.0px; height: 306.0px;" /></a>
@@ -470,50 +452,46 @@ that we have 8 periods within a period spacing.</p>
 and match them with the closest values in the set of observed periods (we do not
 care about the three random ones, but we do not know which ones the are).</p>
 <p>Let us first make a search grid:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [293]: </span><span class="n">test_offset</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">1.2</span><span class="p">,</span><span class="mf">1.25</span><span class="p">,</span><span class="mi">500</span><span class="p">)</span>
-
-<span class="gp">In [294]: </span><span class="n">test_spacings</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.3</span><span class="p">,</span><span class="mf">0.5</span><span class="p">,</span><span class="mi">500</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">test_offset</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">1.2</span><span class="p">,</span><span class="mf">1.25</span><span class="p">,</span><span class="mi">500</span><span class="p">)</span>
+<span class="n">test_spacings</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.3</span><span class="p">,</span><span class="mf">0.5</span><span class="p">,</span><span class="mi">500</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>And prepare for the computation of the chi-square statistic. We have 8 periods
 to match and free parameters, so we need to set <tt class="docutils literal"><span class="pre">k=8-2=6</span></tt> in the chi-square
 distribution:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [295]: </span><span class="n">chi2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">test_offset</span><span class="p">),</span><span class="nb">len</span><span class="p">(</span><span class="n">test_spacings</span><span class="p">)))</span>
-
-<span class="gp">In [296]: </span><span class="n">k</span> <span class="o">=</span> <span class="mi">8</span><span class="o">-</span><span class="mi">2</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">chi2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">test_offset</span><span class="p">),</span><span class="nb">len</span><span class="p">(</span><span class="n">test_spacings</span><span class="p">)))</span>
+<span class="n">k</span> <span class="o">=</span> <span class="mi">8</span><span class="o">-</span><span class="mi">2</span>
 </pre></div>
 </div>
 <p>Next, we run over the grid and compute the chi-square statistic, which is
 defined as the sum of the residuals-squared divided by the error-squared:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [297]: </span><span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">to</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">test_offset</span><span class="p">):</span>
-<span class="gp">   .....:</span>      <span class="k">for</span> <span class="n">j</span><span class="p">,</span><span class="n">ts</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">test_spacings</span><span class="p">):</span>
-<span class="gp">   .....:</span>          <span class="n">test_periods</span> <span class="o">=</span> <span class="n">to</span><span class="o">+</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span><span class="o">*</span><span class="n">ts</span>
-<span class="gp">   .....:</span>          <span class="n">periods_</span> <span class="o">=</span> <span class="n">periods</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">periods</span><span class="p">)</span><span class="o">/</span><span class="mf">2.</span>
-<span class="gp">   .....:</span>          <span class="n">closest_index</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">searchsorted</span><span class="p">(</span><span class="n">periods_</span><span class="p">,</span><span class="n">test_periods</span><span class="p">)</span>
-<span class="gp">   .....:</span>          <span class="n">chi2</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">periods</span><span class="p">[</span><span class="n">closest_index</span><span class="p">]</span><span class="o">-</span><span class="n">test_periods</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="mf">0.005</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
-<span class="gp">   .....:</span> 
+<div class="highlight-python"><div class="highlight"><pre><span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">to</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">test_offset</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">j</span><span class="p">,</span><span class="n">ts</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">test_spacings</span><span class="p">):</span>
+        <span class="n">test_periods</span> <span class="o">=</span> <span class="n">to</span><span class="o">+</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span><span class="o">*</span><span class="n">ts</span>
+        <span class="n">periods_</span> <span class="o">=</span> <span class="n">periods</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">periods</span><span class="p">)</span><span class="o">/</span><span class="mf">2.</span>
+        <span class="n">closest_index</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">searchsorted</span><span class="p">(</span><span class="n">periods_</span><span class="p">,</span><span class="n">test_periods</span><span class="p">)</span>
+        <span class="n">chi2</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">periods</span><span class="p">[</span><span class="n">closest_index</span><span class="p">]</span><span class="o">-</span><span class="n">test_periods</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="mf">0.005</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Using <tt class="docutils literal"><span class="pre">scipy.stats</span></tt>, we can compute the cumulative density of the chi-square
 value, which corresponds to some kind of confidence rating:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [303]: </span><span class="n">chi2_stat</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">distributions</span><span class="o">.</span><span class="n">chi2</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="n">chi2</span><span class="p">,</span><span class="n">k</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">chi2_stat</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">distributions</span><span class="o">.</span><span class="n">chi2</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="n">chi2</span><span class="p">,</span><span class="n">k</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>That&#8217;s it! All is left is to make some plots: we choose to make a plot of the
 chi-square values themselves (left), and a plot of the confidence intervals (right).</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [304]: </span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">();</span>
-<span class="gp">In [305]: </span><span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">);</span>
-<span class="gp">In [306]: </span><span class="n">extent</span> <span class="o">=</span> <span class="n">test_spacings</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span><span class="n">test_spacings</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span><span class="n">test_offset</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span><span class="n">test_offset</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
-
-<span class="gp">In [307]: </span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">chi2</span><span class="p">,</span><span class="n">aspect</span><span class="o">=</span><span class="s">&#39;auto&#39;</span><span class="p">,</span><span class="n">extent</span><span class="o">=</span><span class="n">extent</span><span class="p">,</span><span class="n">vmin</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span><span class="n">vmax</span><span class="o">=</span><span class="mi">3000</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">spectral</span><span class="p">);</span>
-<span class="gp">In [308]: </span><span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">();</span>
-<span class="gp">In [309]: </span><span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">);</span>
-<span class="gp">In [310]: </span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">chi2_stat</span><span class="o">*</span><span class="mi">100</span><span class="p">,</span><span class="n">aspect</span><span class="o">=</span><span class="s">&#39;auto&#39;</span><span class="p">,</span><span class="n">extent</span><span class="o">=</span><span class="n">extent</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">spectral</span><span class="p">);</span>
-<span class="gp">In [311]: </span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mf">0.43</span><span class="p">,</span><span class="mf">1.23</span><span class="p">,</span><span class="s">&#39;x&#39;</span><span class="p">,</span><span class="n">ms</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span><span class="n">mew</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s">&#39;1&#39;</span><span class="p">);</span>
-<span class="gp">In [312]: </span><span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mf">0.425</span><span class="p">,</span><span class="mf">0.434</span><span class="p">);</span>
-<span class="gp">In [313]: </span><span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mf">1.24</span><span class="p">,</span><span class="mf">1.212</span><span class="p">);</span>
-<span class="gp">In [314]: </span><span class="n">cbar</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">();</span>
-<span class="gp">In [315]: </span><span class="n">cbar</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="s">&#39;Confidence interval (%)&#39;</span><span class="p">);</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">)</span>
+<span class="n">extent</span> <span class="o">=</span> <span class="n">test_spacings</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span><span class="n">test_spacings</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span><span class="n">test_offset</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span><span class="n">test_offset</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">chi2</span><span class="p">,</span><span class="n">aspect</span><span class="o">=</span><span class="s">&#39;auto&#39;</span><span class="p">,</span><span class="n">extent</span><span class="o">=</span><span class="n">extent</span><span class="p">,</span><span class="n">vmin</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span><span class="n">vmax</span><span class="o">=</span><span class="mi">3000</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">spectral</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">chi2_stat</span><span class="o">*</span><span class="mi">100</span><span class="p">,</span><span class="n">aspect</span><span class="o">=</span><span class="s">&#39;auto&#39;</span><span class="p">,</span><span class="n">extent</span><span class="o">=</span><span class="n">extent</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">spectral</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mf">0.43</span><span class="p">,</span><span class="mf">1.23</span><span class="p">,</span><span class="s">&#39;x&#39;</span><span class="p">,</span><span class="n">ms</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span><span class="n">mew</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s">&#39;1&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mf">0.425</span><span class="p">,</span><span class="mf">0.434</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mf">1.24</span><span class="p">,</span><span class="mf">1.212</span><span class="p">)</span>
+<span class="n">cbar</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
+<span class="n">cbar</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="s">&#39;Confidence interval (%)&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <a class="reference internal image-reference" href="../_images/ks_chi2.png"><img alt="../_images/ks_chi2.png" src="../_images/ks_chi2.png" style="width: 637.5px; height: 306.0px;" /></a>

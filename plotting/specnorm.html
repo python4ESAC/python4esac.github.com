@@ -1,0 +1,469 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>An interactive spectrum normalizer &mdash; Python4Astronomers v1.1 documentation</title>
+    <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="Python4Astronomers v1.1 documentation" href="../index.html" />
+    <link rel="up" title="Plotting and Images" href="plotting.html" />
+    <link rel="next" title="Advanced plotting" href="advanced.html" />
+    <link rel="prev" title="Random-point crossover genetic algorithm with demo GUI" href="ga_example.html" />
+ 
+<script type="text/javascript"> 
+$(document).ready(function(){
+
+$(".flip0").click(function(){
+    $(".panel0").slideToggle("normal");
+  });
+
+$(".flip1").click(function(){
+    $(".panel1").slideToggle("normal");
+  });
+
+$(".flip2").click(function(){
+    $(".panel2").slideToggle("normal");
+  });
+
+$(".flip3").click(function(){
+    $(".panel3").slideToggle("normal");
+  });
+
+$(".flip4").click(function(){
+    $(".panel4").slideToggle("normal");
+  });
+
+$(".flip5").click(function(){
+    $(".panel5").slideToggle("normal");
+  });
+
+$(".flip6").click(function(){
+    $(".panel6").slideToggle("normal");
+  });
+
+$(".flip7").click(function(){
+    $(".panel7").slideToggle("normal");
+  });
+
+$(".flip8").click(function(){
+    $(".panel8").slideToggle("normal");
+  });
+
+$(".flip9").click(function(){
+    $(".panel9").slideToggle("normal");
+  });
+
+});
+</script>
+ 
+<style type="text/css"> 
+
+div.panel0,p.flip0
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip0
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel0
+{
+display:none;
+}
+
+div.panel1,p.flip1
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip1
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel1
+{
+display:none;
+}
+
+div.panel2,p.flip2
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip2
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel2
+{
+display:none;
+}
+
+div.panel3,p.flip3
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip3
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel3
+{
+display:none;
+}
+
+div.panel4,p.flip4
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip4
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel4
+{
+display:none;
+}
+
+div.panel5,p.flip5
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip5
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel5
+{
+display:none;
+}
+
+div.panel6,p.flip6
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip6
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel6
+{
+display:none;
+}
+
+div.panel7,p.flip7
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip7
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel7
+{
+display:none;
+}
+
+div.panel8,p.flip8
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip8
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel8
+{
+display:none;
+}
+
+div.panel9,p.flip9
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip9
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel9
+{
+display:none;
+}
+
+</style>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-18709417-2']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="advanced.html" title="Advanced plotting"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="ga_example.html" title="Random-point crossover genetic algorithm with demo GUI"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">Python4Astronomers v1.1 documentation</a> &raquo;</li>
+          <li><a href="plotting.html" accesskey="U">Plotting and Images</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="ga_example.html"
+                        title="previous chapter">Random-point crossover genetic algorithm with demo GUI</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="advanced.html"
+                        title="next chapter">Advanced plotting</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/plotting/specnorm.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="an-interactive-spectrum-normalizer">
+<h1>An interactive spectrum normalizer<a class="headerlink" href="#an-interactive-spectrum-normalizer" title="Permalink to this headline">¶</a></h1>
+<p>The following script uses the matplotlib widget to normalise a spectrum using
+a spline fit on user-defined points.</p>
+<p>When saved to file <tt class="docutils literal"><span class="pre">specnorm.py</span></tt>, the user can invoke the script via the
+terminal with the command:</p>
+<div class="highlight-python"><pre>$:&gt; python specnorm.py HD50230.txt</pre>
+</div>
+<p>or any other text file containing two columns (wavelength, flux). You can
+download the example file <a class="reference external" href="python4esac.githumb.com/source/plotting/HD50230.txt">here</a>.</p>
+<p>When started, you get a window like this:</p>
+<a class="reference internal image-reference" href="../_images/specnorm_snapshot1.png"><img alt="../_images/specnorm_snapshot1.png" src="../_images/specnorm_snapshot1.png" style="width: 328.0px; height: 275.5px;" /></a>
+<p>A user can left/right-click to select/deselect continuum points:</p>
+<a class="reference internal image-reference" href="../_images/specnorm_snapshot2.png"><img alt="../_images/specnorm_snapshot2.png" src="../_images/specnorm_snapshot2.png" style="width: 328.0px; height: 275.5px;" /></a>
+<p>Hitting <tt class="docutils literal"><span class="pre">enter</span></tt> fits the splines throught the continuum points:</p>
+<a class="reference internal image-reference" href="../_images/specnorm_snapshot3.png"><img alt="../_images/specnorm_snapshot3.png" src="../_images/specnorm_snapshot3.png" style="width: 328.0px; height: 275.5px;" /></a>
+<p>Hitting <tt class="docutils literal"><span class="pre">n</span></tt> normalises the spectrum:</p>
+<a class="reference internal image-reference" href="../_images/specnorm_snapshot4.png"><img alt="../_images/specnorm_snapshot4.png" src="../_images/specnorm_snapshot4.png" style="width: 328.0px; height: 275.5px;" /></a>
+<p>The user can write the result to a file with <tt class="docutils literal"><span class="pre">w</span></tt> and reset to the
+original spectrum with <tt class="docutils literal"><span class="pre">r</span></tt>.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">pylab</span> <span class="kn">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">scipy.interpolate</span> <span class="kn">import</span> <span class="n">splrep</span><span class="p">,</span><span class="n">splev</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+<span class="k">def</span> <span class="nf">onclick</span><span class="p">(</span><span class="n">event</span><span class="p">):</span>
+    <span class="c"># when none of the toolbar buttons is activated and the user clicks in the</span>
+    <span class="c"># plot somewhere, compute the median value of the spectrum in a 10angstrom</span>
+    <span class="c"># window around the x-coordinate of the clicked point. The y coordinate</span>
+    <span class="c"># of the clicked point is not important. Make sure the continuum points</span>
+    <span class="c"># `feel` it when it gets clicked, set the `feel-radius` (picker) to 5 points</span>
+    <span class="n">toolbar</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">get_current_fig_manager</span><span class="p">()</span><span class="o">.</span><span class="n">toolbar</span>
+    <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">button</span><span class="o">==</span><span class="mi">1</span> <span class="ow">and</span> <span class="n">toolbar</span><span class="o">.</span><span class="n">mode</span><span class="o">==</span><span class="s">&#39;&#39;</span><span class="p">:</span>
+        <span class="n">window</span> <span class="o">=</span> <span class="p">((</span><span class="n">event</span><span class="o">.</span><span class="n">xdata</span><span class="o">-</span><span class="mi">5</span><span class="p">)</span><span class="o">&lt;=</span><span class="n">wave</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">wave</span><span class="o">&lt;=</span><span class="p">(</span><span class="n">event</span><span class="o">.</span><span class="n">xdata</span><span class="o">+</span><span class="mi">5</span><span class="p">))</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">flux</span><span class="p">[</span><span class="n">window</span><span class="p">])</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">event</span><span class="o">.</span><span class="n">xdata</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="s">&#39;rs&#39;</span><span class="p">,</span><span class="n">ms</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span><span class="n">picker</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s">&#39;cont_pnt&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">onpick</span><span class="p">(</span><span class="n">event</span><span class="p">):</span>
+    <span class="c"># when the user clicks right on a continuum point, remove it</span>
+    <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">mouseevent</span><span class="o">.</span><span class="n">button</span><span class="o">==</span><span class="mi">3</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">event</span><span class="o">.</span><span class="n">artist</span><span class="p">,</span><span class="s">&#39;get_label&#39;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">event</span><span class="o">.</span><span class="n">artist</span><span class="o">.</span><span class="n">get_label</span><span class="p">()</span><span class="o">==</span><span class="s">&#39;cont_pnt&#39;</span><span class="p">:</span>
+            <span class="n">event</span><span class="o">.</span><span class="n">artist</span><span class="o">.</span><span class="n">remove</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">ontype</span><span class="p">(</span><span class="n">event</span><span class="p">):</span>
+    <span class="c"># when the user hits enter:</span>
+    <span class="c"># 1. Cycle through the artists in the current axes. If it is a continuum</span>
+    <span class="c">#    point, remember its coordinates. If it is the fitted continuum from the</span>
+    <span class="c">#    previous step, remove it</span>
+    <span class="c"># 2. sort the continuum-point-array according to the x-values</span>
+    <span class="c"># 3. fit a spline and evaluate it in the wavelength points</span>
+    <span class="c"># 4. plot the continuum</span>
+    <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">key</span><span class="o">==</span><span class="s">&#39;enter&#39;</span><span class="p">:</span>
+        <span class="n">cont_pnt_coord</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">artist</span> <span class="ow">in</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">get_children</span><span class="p">():</span>
+            <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">artist</span><span class="p">,</span><span class="s">&#39;get_label&#39;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">artist</span><span class="o">.</span><span class="n">get_label</span><span class="p">()</span><span class="o">==</span><span class="s">&#39;cont_pnt&#39;</span><span class="p">:</span>
+                <span class="n">cont_pnt_coord</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">artist</span><span class="o">.</span><span class="n">get_data</span><span class="p">())</span>
+            <span class="k">elif</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">artist</span><span class="p">,</span><span class="s">&#39;get_label&#39;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">artist</span><span class="o">.</span><span class="n">get_label</span><span class="p">()</span><span class="o">==</span><span class="s">&#39;continuum&#39;</span><span class="p">:</span>
+                <span class="n">artist</span><span class="o">.</span><span class="n">remove</span><span class="p">()</span>
+        <span class="n">cont_pnt_coord</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">cont_pnt_coord</span><span class="p">)[</span><span class="o">...</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">sort_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">cont_pnt_coord</span><span class="p">[:,</span><span class="mi">0</span><span class="p">])</span>
+        <span class="n">x</span><span class="p">,</span><span class="n">y</span> <span class="o">=</span> <span class="n">cont_pnt_coord</span><span class="p">[</span><span class="n">sort_array</span><span class="p">]</span><span class="o">.</span><span class="n">T</span>
+        <span class="n">spline</span> <span class="o">=</span> <span class="n">splrep</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">k</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+        <span class="n">continuum</span> <span class="o">=</span> <span class="n">splev</span><span class="p">(</span><span class="n">wave</span><span class="p">,</span><span class="n">spline</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">wave</span><span class="p">,</span><span class="n">continuum</span><span class="p">,</span><span class="s">&#39;r-&#39;</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s">&#39;continuum&#39;</span><span class="p">)</span>
+
+    <span class="c"># when the user hits &#39;n&#39; and a spline-continuum is fitted, normalise the</span>
+    <span class="c"># spectrum</span>
+    <span class="k">elif</span> <span class="n">event</span><span class="o">.</span><span class="n">key</span><span class="o">==</span><span class="s">&#39;n&#39;</span><span class="p">:</span>
+        <span class="n">continuum</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="k">for</span> <span class="n">artist</span> <span class="ow">in</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">get_children</span><span class="p">():</span>
+            <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">artist</span><span class="p">,</span><span class="s">&#39;get_label&#39;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">artist</span><span class="o">.</span><span class="n">get_label</span><span class="p">()</span><span class="o">==</span><span class="s">&#39;continuum&#39;</span><span class="p">:</span>
+                <span class="n">continuum</span> <span class="o">=</span> <span class="n">artist</span><span class="o">.</span><span class="n">get_data</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span>
+                <span class="k">break</span>
+        <span class="k">if</span> <span class="n">continuum</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">cla</span><span class="p">()</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">wave</span><span class="p">,</span><span class="n">flux</span><span class="o">/</span><span class="n">continuum</span><span class="p">,</span><span class="s">&#39;k-&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s">&#39;normalised&#39;</span><span class="p">)</span>
+
+    <span class="c"># when the user hits &#39;r&#39;: clear the axes and plot the original spectrum</span>
+    <span class="k">elif</span> <span class="n">event</span><span class="o">.</span><span class="n">key</span><span class="o">==</span><span class="s">&#39;r&#39;</span><span class="p">:</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">cla</span><span class="p">()</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">wave</span><span class="p">,</span><span class="n">flux</span><span class="p">,</span><span class="s">&#39;k-&#39;</span><span class="p">)</span>
+
+    <span class="c"># when the user hits &#39;w&#39;: if the normalised spectrum exists, write it to a</span>
+    <span class="c"># file.</span>
+    <span class="k">elif</span> <span class="n">event</span><span class="o">.</span><span class="n">key</span><span class="o">==</span><span class="s">&#39;w&#39;</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">artist</span> <span class="ow">in</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">get_children</span><span class="p">():</span>
+            <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">artist</span><span class="p">,</span><span class="s">&#39;get_label&#39;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">artist</span><span class="o">.</span><span class="n">get_label</span><span class="p">()</span><span class="o">==</span><span class="s">&#39;normalised&#39;</span><span class="p">:</span>
+                <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">artist</span><span class="o">.</span><span class="n">get_data</span><span class="p">())</span>
+                <span class="n">np</span><span class="o">.</span><span class="n">savetxt</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">filename</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="s">&#39;.nspec&#39;</span><span class="p">,</span><span class="n">data</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+                <span class="k">print</span><span class="p">(</span><span class="s">&#39;Saved to file&#39;</span><span class="p">)</span>
+                <span class="k">break</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
+
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="c"># Get the filename of the spectrum from the command line, and plot it</span>
+    <span class="n">filename</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">wave</span><span class="p">,</span><span class="n">flux</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+    <span class="n">spectrum</span><span class="p">,</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">wave</span><span class="p">,</span><span class="n">flux</span><span class="p">,</span><span class="s">&#39;k-&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s">&#39;spectrum&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+
+    <span class="c"># Connect the different functions to the different events</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">gcf</span><span class="p">()</span><span class="o">.</span><span class="n">canvas</span><span class="o">.</span><span class="n">mpl_connect</span><span class="p">(</span><span class="s">&#39;key_press_event&#39;</span><span class="p">,</span><span class="n">ontype</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">gcf</span><span class="p">()</span><span class="o">.</span><span class="n">canvas</span><span class="o">.</span><span class="n">mpl_connect</span><span class="p">(</span><span class="s">&#39;button_press_event&#39;</span><span class="p">,</span><span class="n">onclick</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">gcf</span><span class="p">()</span><span class="o">.</span><span class="n">canvas</span><span class="o">.</span><span class="n">mpl_connect</span><span class="p">(</span><span class="s">&#39;pick_event&#39;</span><span class="p">,</span><span class="n">onpick</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span> <span class="c"># show the window</span>
+</pre></div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="advanced.html" title="Advanced plotting"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="ga_example.html" title="Random-point crossover genetic algorithm with demo GUI"
+             >previous</a> |</li>
+        <li><a href="../index.html">Python4Astronomers v1.1 documentation</a> &raquo;</li>
+          <li><a href="plotting.html" >Plotting and Images</a> &raquo;</li> 
+      </ul>
+    </div>
+ <small>Copyright:
+ Smithsonian Astrophysical Observatory under terms of
+ <a rel="license"
+ href="http://creativecommons.org/licenses/by/3.0/">CC
+ Attribution 3.0</a></small> <a rel="license"
+ href="http://creativecommons.org/licenses/by/3.0/"><img alt="Creative Commons
+ License" style="border-width:0"
+ src="http://i.creativecommons.org/l/by/3.0/80x15.png" /></a>
+
+  </body>
+</html>

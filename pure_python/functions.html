@@ -371,19 +371,20 @@ used. If you call it with an argument, the specified value will be
 used.</p>
 <div class="admonition-exercise admonition ">
 <p class="first admonition-title">Exercise</p>
-<p class="last">Write a function that multiplies the input argument by 7.  If no
-argument is given, it prints 7. If the input argument 6, it
-should print &#8220;Answer to the Ultimate Question of Life, The
-Universe, and Everything.&#8221;</p>
+<p class="last">Write a function that prints the value of input argument
+multiplied by 7.  If no argument is given, it should print 7. If
+the input argument is 6, it should print &#8220;The Answer to the Ultimate
+Question of Life, The Universe, and Everything.&#8221;</p>
 </div>
 <p class="flip8">Click to Show/Hide Solution</p> <div class="panel8"><div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">multiply_by_7</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">6</span><span class="p">:</span>
-        <span class="k">print</span> <span class="p">(</span><span class="s">&quot;The meaning of life, the Universe and everything.&quot;</span><span class="p">)</span>
+        <span class="k">print</span> <span class="p">(</span><span class="s">&quot;The Answer to the Ultimate Question of Life, &quot;</span>
+               <span class="s">&quot;the Universe and Everything.&quot;</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="k">print</span> <span class="n">x</span><span class="o">*</span><span class="mi">7</span>
 </pre></div>
 </div>
-<p>Functions can also have both keyword and standard arguments:</p>
+</div><p>Functions can also have both keyword and standard arguments:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">slicer</span><span class="p">(</span><span class="n">seq</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">stop</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
 <span class="gp">... </span>   <span class="sd">&quot;&quot;&quot; Implement basic Python slicing.&quot;&quot;&quot;</span>
 <span class="gp">... </span>   <span class="k">return</span> <span class="n">seq</span><span class="p">[</span><span class="n">start</span><span class="p">:</span><span class="n">stop</span><span class="p">:</span><span class="n">step</span><span class="p">]</span>
@@ -413,7 +414,7 @@ convention is:</p>
 <span class="gp">... </span>    <span class="k">pass</span>
 </pre></div>
 </div>
-<p>Then the doctstring for that function can be accessed with:</p>
+<p>Then the docstring for that function can be accessed with:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">help</span><span class="p">(</span><span class="n">funcname</span><span class="p">)</span>
 </pre></div>
 </div>

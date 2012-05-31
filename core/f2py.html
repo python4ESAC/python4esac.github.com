@@ -594,6 +594,46 @@ function <tt class="docutils literal"><span class="pre">multiprocesssing.cpu_cou
     <span class="k">return</span> <span class="n">f0</span><span class="o">+</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">nf</span><span class="p">)</span><span class="o">*</span><span class="n">df</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span> <span class="c"># and return the results</span>
 </pre></div>
 </div>
+<p>If you don&#8217;t want to share data between process, there exist more elegant ways
+of solving the problem. Suppose we want to median filter several FITS images in
+parallel. We can then use the <cite>multiprocessing.Pool</cite> function in combination
+with the <cite>map</cite> function:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">glob</span>
+<span class="kn">import</span> <span class="nn">multiprocessing</span>
+<span class="kn">import</span> <span class="nn">shutil</span>
+
+<span class="kn">import</span> <span class="nn">pyfits</span>
+<span class="kn">from</span> <span class="nn">scipy.ndimage</span> <span class="kn">import</span> <span class="n">median_filter</span>
+
+<span class="c"># Define a function to run on files. The steps are:</span>
+<span class="c"># - read in FITS file</span>
+<span class="c"># - convolve the data in the primary HDU</span>
+<span class="c"># - write out the result to a new file</span>
+<span class="k">def</span> <span class="nf">smooth</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+    <span class="k">print</span> <span class="s">&quot;Processing </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">filename</span>
+    <span class="n">hdulist</span> <span class="o">=</span> <span class="n">pyfits</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+    <span class="n">hdulist</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">median_filter</span><span class="p">(</span><span class="n">hdulist</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="mi">15</span><span class="p">)</span>
+    <span class="n">hdulist</span><span class="o">.</span><span class="n">writeto</span><span class="p">(</span><span class="n">filename</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">&#39;files/&#39;</span><span class="p">,</span> <span class="s">&#39;files_smooth/&#39;</span><span class="p">),</span>
+                    <span class="n">clobber</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+<span class="c"># Search for all FITS files</span>
+<span class="n">files</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s">&#39;files/*.fits&#39;</span><span class="p">)</span>
+
+<span class="c"># Remove output directory if it already exists</span>
+<span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="s">&#39;files_smooth&#39;</span><span class="p">):</span>
+    <span class="n">shutil</span><span class="o">.</span><span class="n">rmtree</span><span class="p">(</span><span class="s">&#39;files_smooth&#39;</span><span class="p">)</span>
+
+<span class="c"># Create output directory</span>
+<span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="s">&#39;files_smooth&#39;</span><span class="p">)</span>
+
+<span class="c"># Define a &#39;pool&#39; of 12 processes</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">multiprocessing</span><span class="o">.</span><span class="n">Pool</span><span class="p">(</span><span class="n">processes</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+
+<span class="c"># Run the function over all files in parallel</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">smooth</span><span class="p">,</span> <span class="n">files</span><span class="p">)</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="running-and-controlling-shell-programs">
 <h2><a class="toc-backref" href="#id6">Running and controlling shell programs</a><a class="headerlink" href="#running-and-controlling-shell-programs" title="Permalink to this headline">¶</a></h2>

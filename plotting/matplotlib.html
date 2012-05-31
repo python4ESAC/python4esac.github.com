@@ -24,7 +24,7 @@
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="top" title="Python4Astronomers v1.1 documentation" href="../index.html" />
     <link rel="up" title="Plotting and Images" href="plotting.html" />
-    <link rel="next" title="Python Objects - or what’s with the periods everywhere?" href="../python/objects.html" />
+    <link rel="next" title="3D plotting with Mayavi" href="mayavi_example.html" />
     <link rel="prev" title="Plotting and Images" href="plotting.html" />
  
 <script type="text/javascript"> 
@@ -279,7 +279,7 @@ display:none;
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="../python/objects.html" title="Python Objects - or what’s with the periods everywhere?"
+          <a href="mayavi_example.html" title="3D plotting with Mayavi"
              accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="plotting.html" title="Plotting and Images"
@@ -319,8 +319,8 @@ display:none;
   <p class="topless"><a href="plotting.html"
                         title="previous chapter">Plotting and Images</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="../python/objects.html"
-                        title="next chapter">Python Objects - or what&#8217;s with the periods everywhere?</a></p>
+  <p class="topless"><a href="mayavi_example.html"
+                        title="next chapter">3D plotting with Mayavi</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
     <li><a href="../_sources/plotting/matplotlib.txt"
@@ -832,30 +832,23 @@ location, and the <a class="reference external" href="http://matplotlib.sourcefo
 add text in the indicated locations (see the <a class="reference external" href="http://matplotlib.sourceforge.net/users/text_intro.html#text-intro">text intro</a>
 for a more detailed example). Here we&#8217;ll create a histogram from some
 data using the <a class="reference external" href="http://matplotlib.sourceforge.net/api/pyplot_api.html#matplotlib.pyplot.hist">hist()</a> command and then annotate it with some text:</p>
-<div class="highlight-python"><pre>mu, sigma = 0, 1
-x = np.random.normal(mu, sigma, size=10000)
-plt.clf()
+<div class="highlight-python"><div class="highlight"><pre><span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">10000</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">clf</span><span class="p">()</span>
 
-# the histogram of the data
-histvals, binvals, patches = plt.hist(
-   x, bins=50, normed=1, facecolor='g', alpha=0.75, label='my data')
+<span class="c"># the histogram of the data</span>
+<span class="n">histvals</span><span class="p">,</span> <span class="n">binvals</span><span class="p">,</span> <span class="n">patches</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span>
+   <span class="n">x</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">normed</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s">&#39;g&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.75</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">&#39;my data&#39;</span><span class="p">)</span>
 
-plt.xlabel('x')
-plt.ylabel('Probability')
-plt.title('Gaussian distribution')
-plt.text(-2, 0.45, r'$\mu=0,\ \sigma=1$') # the prefix are makes it a `raw` string, ensuring that e.g. `\n` is not converted to a return
-plt.xlim(-4, 4)
-plt.ylim(0, 0.5)+------------------------------------+-----------------------------------+</pre>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">&#39;Probability&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">&#39;Gaussian distribution&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mf">0.45</span><span class="p">,</span> <span class="s">r&#39;$\mu=0,\ \sigma=1$&#39;</span><span class="p">)</span> <span class="c"># the prefix are makes it a `raw` string, ensuring that e.g. `\n` is not converted to a return</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
+</pre></div>
 </div>
-<div class="line-block">
-<div class="line"><strong>Background subtracted</strong>         |   <strong>Original</strong>                    |</div>
-</div>
-<p>+====================================+===================================+
-| .. image:: bkg_fit2.png            | .. image:: imgview_img.png        |
-|    :scale: 50                      |    :scale: 50                     |
-+&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;+&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8211;+</p>
-<blockquote>
-<div>plt.grid(True)</div></blockquote>
 <a class="reference internal image-reference" href="../_images/pyplot_text.png"><img alt="../_images/pyplot_text.png" src="../_images/pyplot_text.png" style="width: 560.0px; height: 420.0px;" /></a>
 <p>All of the <a class="reference external" href="http://matplotlib.sourceforge.net/api/pyplot_api.html#matplotlib.pyplot.text">text()</a> commands return a <tt class="xref py py-class docutils literal"><span class="pre">matplotlib.text.Text</span></tt>
 instance.  Just as with with lines above, you can customize the
@@ -1125,7 +1118,7 @@ that&#8217;s going on here - if you don&#8217;t, please ask!:</p>
           <a href="../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="../python/objects.html" title="Python Objects - or what’s with the periods everywhere?"
+          <a href="mayavi_example.html" title="3D plotting with Mayavi"
              >next</a> |</li>
         <li class="right" >
           <a href="plotting.html" title="Plotting and Images"

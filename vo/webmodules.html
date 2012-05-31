@@ -23,9 +23,9 @@
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="top" title="Python4Astronomers v1.1 documentation" href="../index.html" />
-    <link rel="up" title="Online Astronomy and the virtual observatory" href="vo.html" />
-    <link rel="next" title="Virtual Observatory" href="votools.html" />
-    <link rel="prev" title="Modules" href="install.html" />
+    <link rel="up" title="Other useful techniques and packages" href="vo.html" />
+    <link rel="next" title="Example scatter plot" href="scatter.html" />
+    <link rel="prev" title="Other useful techniques and packages" href="vo.html" />
  
 <script type="text/javascript"> 
 $(document).ready(function(){
@@ -279,13 +279,13 @@ display:none;
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="votools.html" title="Virtual Observatory"
+          <a href="scatter.html" title="Example scatter plot"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="install.html" title="Modules"
+          <a href="vo.html" title="Other useful techniques and packages"
              accesskey="P">previous</a> |</li>
         <li><a href="../index.html">Python4Astronomers v1.1 documentation</a> &raquo;</li>
-          <li><a href="vo.html" accesskey="U">Online Astronomy and the virtual observatory</a> &raquo;</li> 
+          <li><a href="vo.html" accesskey="U">Other useful techniques and packages</a> &raquo;</li> 
       </ul>
     </div>
       <div class="sphinxsidebar">
@@ -300,11 +300,11 @@ display:none;
 </ul>
 
   <h4>Previous topic</h4>
-  <p class="topless"><a href="install.html"
-                        title="previous chapter">Modules</a></p>
+  <p class="topless"><a href="vo.html"
+                        title="previous chapter">Other useful techniques and packages</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="votools.html"
-                        title="next chapter">Virtual Observatory</a></p>
+  <p class="topless"><a href="scatter.html"
+                        title="next chapter">Example scatter plot</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
     <li><a href="../_sources/vo/webmodules.txt"
@@ -345,12 +345,13 @@ workshops when downloading example files or datasets, like this:</p>
 <div class="section" id="webpage-retrieval">
 <h2>Webpage Retrieval<a class="headerlink" href="#webpage-retrieval" title="Permalink to this headline">¶</a></h2>
 <p>It is useful to write the example above a bit differently since
-readability counts and we want to highlight a few steps.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">&#39;image_sources.csv&#39;</span><span class="p">,</span><span class="s">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">outfile</span><span class="p">:</span>
-    <span class="n">handler</span> <span class="o">=</span> <span class="n">urllib2</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
-    <span class="n">data</span> <span class="o">=</span> <span class="n">handler</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
-    <span class="n">outfile</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-    <span class="n">handler</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+readability counts and we want to highlight a few steps:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">handler</span> <span class="o">=</span> <span class="n">urllib2</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">handler</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="n">handler</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">&#39;image_sources.csv&#39;</span><span class="p">,</span><span class="s">&#39;wb&#39;</span><span class="p">)</span>
+<span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>First, <a class="reference external" href="http://docs.python.org/library/urllib2">urllib2</a> has returned a file like object <tt class="docutils literal"><span class="pre">handler</span></tt> that
@@ -371,14 +372,15 @@ parse the returned data stream into a table for further use.</p>
 <h2>Building Queries<a class="headerlink" href="#building-queries" title="Permalink to this headline">¶</a></h2>
 <p>Now we are getting closer to searching for data online via python.
 Traditionally, each data archive has implemented its own set of
-query parameters; more often then not you experience it as a web
+query parameters; more often than not you experience it as a web
 form with lots of check and input boxes. Most of the time these web
 forms  are simply input wrappers that build a query string and
 process the result.</p>
-<p>Here is a very simple query example: search for HST
-images near M 51. It is worth noting that you have
-to find and read the <a class="reference external" href="http://archive.stsci.edu/vo/mast_services.html">MAST HST documentation</a> to
-learn which <a class="reference external" href="http://archive.stsci.edu/vo/general_params.html">parameters</a> are needed to build the query.</p>
+<p>Here is a very simple query example: search for HST images near
+M 51. It is worth noting that you have to find and read the <a class="reference external" href="http://archive.stsci.edu/vo/mast_services.html">MAST HST
+documentation</a> to
+learn which <a class="reference external" href="http://archive.stsci.edu/vo/general_params.html">parameters</a> are needed to
+build the query:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">urllib2</span><span class="o">,</span> <span class="nn">urllib</span>
 
 <span class="c"># this is the query url for this service.</span>
@@ -406,13 +408,14 @@ learn which <a class="reference external" href="http://archive.stsci.edu/vo/gene
 <span class="k">print</span> <span class="n">handler</span><span class="o">.</span><span class="n">headers</span><span class="p">[</span><span class="s">&#39;content-type&#39;</span><span class="p">]</span>
 
 <span class="c"># save it</span>
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">&#39;hst_m51.csv&#39;</span><span class="p">,</span><span class="s">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">handler</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+<span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">&#39;hst_m51.csv&#39;</span><span class="p">,</span><span class="s">&#39;wb&#39;</span><span class="p">)</span>
+<span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">handler</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+<span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>The magic is that <a class="reference external" href="http://docs.python.org/library/urllib">urllib</a> module takes care of encoding the
 parameters using standard HTTP rules. You can compare the input
-dictionary key,value pairs with the HTTP url encoding.</p>
+dictionary key,value pairs with the HTTP url encoding:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="c"># some simple formatting where the format %-M.Ns means</span>
 <span class="c"># &quot;-&quot; :: &#39;left justified&#39;</span>
 <span class="c"># &quot;M&quot; :: &#39;minimum string length, padded&#39;</span>
@@ -421,19 +424,19 @@ dictionary key,value pairs with the HTTP url encoding.</p>
 <span class="n">sform</span> <span class="o">=</span> <span class="s">&quot;</span><span class="si">%-20.20s</span><span class="s"> </span><span class="si">%-10.10s</span><span class="s"> </span><span class="si">%-30.30s</span><span class="s">&quot;</span>
 
 <span class="c"># make a header</span>
-<span class="k">print</span> <span class="n">sform</span> <span class="o">%</span> <span class="p">(</span><span class="s">&#39;parameter&#39;</span><span class="p">,</span><span class="s">&#39;value&#39;</span><span class="p">,</span><span class="s">&#39;encoded&#39;</span><span class="p">)</span>
-<span class="k">print</span> <span class="n">sform</span> <span class="o">%</span> <span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="p">(</span><span class="mi">100</span><span class="o">*</span><span class="s">&#39;-&#39;</span><span class="p">,))</span>
+<span class="k">print</span> <span class="n">sform</span> <span class="o">%</span> <span class="p">(</span><span class="s">&#39;parameter&#39;</span><span class="p">,</span> <span class="s">&#39;value&#39;</span><span class="p">,</span> <span class="s">&#39;encoded&#39;</span><span class="p">)</span>
+<span class="k">print</span> <span class="n">sform</span> <span class="o">%</span> <span class="p">(</span><span class="mi">3</span> <span class="o">*</span> <span class="p">(</span><span class="mi">100</span> <span class="o">*</span> <span class="s">&#39;-&#39;</span><span class="p">,))</span>
 
-<span class="c"># for each paramter show the input items from the dictionary</span>
+<span class="c"># for each parameter show the input items from the dictionary</span>
 <span class="c"># &quot;p&quot; and the output query string.</span>
-<span class="k">for</span> <span class="n">a</span><span class="p">,</span><span class="n">b</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">items</span><span class="p">(),</span><span class="n">query</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39;&amp;&#39;</span><span class="p">)):</span>
-   <span class="k">print</span> <span class="n">sform</span> <span class="o">%</span> <span class="p">(</span><span class="n">a</span><span class="o">+</span><span class="p">(</span><span class="n">b</span><span class="p">,))</span>
+<span class="k">for</span> <span class="n">a</span><span class="p">,</span><span class="n">b</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">items</span><span class="p">(),</span> <span class="n">query</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39;&amp;&#39;</span><span class="p">)):</span>
+   <span class="k">print</span> <span class="n">sform</span> <span class="o">%</span> <span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="p">(</span><span class="n">b</span><span class="p">,))</span>
 </pre></div>
 </div>
 <div class="admonition-exercise-import-wise-catalog-data-for-a-young-cluster admonition ">
 <p class="first admonition-title">Exercise: import WISE catalog data for a young cluster</p>
-<p>In this exerice you will use a different service (IRSA) and
-with a different overall goal for these data.</p>
+<p>In this exercise you will use a different service (IRSA) and
+with a different overall goal for these data:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">atpy</span><span class="o">,</span> <span class="nn">urllib</span><span class="o">,</span> <span class="nn">urllib2</span>
 
 <span class="n">url</span> <span class="o">=</span> <span class="s">&quot;http://irsa.ipac.caltech.edu/cgi-bin/Gator/nph-query&quot;</span>
@@ -450,51 +453,30 @@ with a different overall goal for these data.</p>
 <span class="n">raw</span> <span class="o">=</span> <span class="n">handler</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
 <span class="k">print</span> <span class="n">raw</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">255</span><span class="p">]</span>
 
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">&#39;ic348_wise.tbl&#39;</span><span class="p">,</span> <span class="s">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">raw</span><span class="p">)</span>
+<span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">&#39;ic348_wise.tbl&#39;</span><span class="p">,</span> <span class="s">&#39;wb&#39;</span><span class="p">)</span>
+<span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">raw</span><span class="p">)</span>
+<span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </pre></div>
 </div>
 <p class="last">The challenge is to immediately analyze the results of this query. The
 exercise is to make a simple color-color plot of these objects.</p>
 </div>
-<p class="flip9">Click to Show/Hide Solution</p> <div class="panel9"><p>There are MANY ways we have looked at in the workshops for converting
-this result to a numpy array.  Some of these examples parse the raw
-web data directly, circumventing a need to write it to file. Some use
-different means to try to deal with the data types and null values
-in the result.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">t1</span> <span class="o">=</span> <span class="n">atpy</span><span class="o">.</span><span class="n">Table</span><span class="p">(</span><span class="s">&#39;ic348_wise.tbl&#39;</span><span class="p">,</span><span class="nb">type</span><span class="o">=</span><span class="s">&quot;ipac&quot;</span><span class="p">)</span>
-
-<span class="n">t2</span> <span class="o">=</span> <span class="n">asciitable</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">raw</span><span class="p">,</span> <span class="n">Reader</span><span class="o">=</span><span class="n">asciitable</span><span class="o">.</span><span class="n">IpacReader</span><span class="p">)</span>
-
-<span class="n">t3</span> <span class="o">=</span> <span class="n">atpy</span><span class="o">.</span><span class="n">Table</span><span class="p">(</span><span class="n">raw</span><span class="p">,</span><span class="nb">type</span><span class="o">=</span><span class="s">&#39;ascii&#39;</span><span class="p">)</span>
-
-<span class="n">fill_values</span> <span class="o">=</span> <span class="p">[(</span><span class="s">&#39;null&#39;</span><span class="p">,</span><span class="n">numpy</span><span class="o">.</span><span class="n">nan</span><span class="p">)]</span>
-
-<span class="n">t4</span> <span class="o">=</span> <span class="n">asciitable</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">raw</span><span class="p">,</span> <span class="n">Reader</span><span class="o">=</span><span class="n">asciitable</span><span class="o">.</span><span class="n">IpacReader</span><span class="p">,</span> \
-    <span class="n">fill_values</span><span class="o">=</span><span class="n">fill_values</span><span class="p">)</span>
-
-<span class="n">t5</span> <span class="o">=</span> <span class="n">atpy</span><span class="o">.</span><span class="n">Table</span><span class="p">(</span><span class="n">raw</span><span class="p">,</span><span class="nb">type</span><span class="o">=</span><span class="s">&#39;ascii&#39;</span><span class="p">,</span> <span class="n">fill_values</span><span class="o">=</span><span class="n">fill_values</span><span class="p">)</span>
+<p class="flip9">Click to Show/Hide Solution</p> <div class="panel9"><p>There are several ways we have looked at in the workshops for
+converting this result to a numpy array. We&#8217;re going to use atpy to
+read in the table:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">t</span> <span class="o">=</span> <span class="n">atpy</span><span class="o">.</span><span class="n">Table</span><span class="p">(</span><span class="s">&#39;ic348_wise.tbl&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Its important to realize that YMMV as to how these differ in their output.
-For example, lets look at the output table types and the data types for
-a couple of columns:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">t</span> <span class="o">=</span> <span class="p">[</span><span class="n">t1</span><span class="p">,</span> <span class="n">t2</span><span class="p">,</span> <span class="n">t3</span><span class="p">,</span> <span class="n">t4</span><span class="p">,</span> <span class="n">t5</span><span class="p">]</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">t</span><span class="p">:</span>
-    <span class="n">c</span> <span class="o">=</span> <span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">i</span><span class="p">),</span> <span class="n">i</span><span class="p">[</span><span class="s">&#39;j_m_2mass&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span> <span class="n">i</span><span class="p">[</span><span class="s">&#39;tmass_key&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
-    <span class="k">print</span> <span class="s">&quot;</span><span class="si">%40s%10s%10s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">c</span>
-</pre></div>
-</div>
-<p>The output table types (and hence their built-in utilities), column data types
-and treatment of null values vary and this matters when trying to make a plot
-or perform other types of analysis. We will use <tt class="docutils literal"><span class="pre">t1</span></tt> as the data types are
-correct. It also preserves more of the metadata of the query.
-Just a quick plot that reuses some of this metadata in the plot title.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">clf</span><span class="p">()</span>
-<span class="n">plot</span><span class="p">(</span><span class="n">t1</span><span class="p">[</span><span class="s">&#39;w2mag&#39;</span><span class="p">]</span><span class="o">-</span><span class="n">t1</span><span class="p">[</span><span class="s">&#39;w3mag&#39;</span><span class="p">],</span> <span class="n">t1</span><span class="p">[</span><span class="s">&#39;j_m_2mass&#39;</span><span class="p">]</span><span class="o">-</span><span class="n">t1</span><span class="p">[</span><span class="s">&#39;h_m_2mass&#39;</span><span class="p">],</span> <span class="s">&#39;ro&#39;</span><span class="p">)</span>
-<span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;W2 - W3&#39;</span><span class="p">)</span>
-<span class="n">ylabel</span><span class="p">(</span><span class="s">&#39;J - H&#39;</span><span class="p">)</span>
-<span class="n">title</span><span class="p">(</span><span class="n">t1</span><span class="o">.</span><span class="n">keywords</span><span class="p">[</span><span class="s">&#39;SKYAREA&#39;</span><span class="p">],</span> <span class="n">fontsize</span><span class="o">=</span><span class="s">&#39;small&#39;</span><span class="p">)</span>
+<p>You&#8217;ll notice that atpy automatically detects that this in ipac table,
+and automatically replaced &#8216;null&#8217; values with <tt class="docutils literal"><span class="pre">nan</span></tt>, correctly
+converts all the data types, and preserves more of the metadata of the
+query.  Now we can make a quick plot that reuses some of this metadata
+in the plot title:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">plt</span><span class="o">.</span><span class="n">clf</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="s">&#39;w2mag&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">t</span><span class="p">[</span><span class="s">&#39;w3mag&#39;</span><span class="p">],</span> <span class="n">t</span><span class="p">[</span><span class="s">&#39;j_m_2mass&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">t</span><span class="p">[</span><span class="s">&#39;h_m_2mass&#39;</span><span class="p">],</span> <span class="s">&#39;ro&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;W2 - W3&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">&#39;J - H&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">keywords</span><span class="p">[</span><span class="s">&#39;SKYAREA&#39;</span><span class="p">],</span> <span class="n">fontsize</span><span class="o">=</span><span class="s">&#39;small&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <a class="reference internal image-reference" href="../_images/wise_cc.png"><img alt="../_images/wise_cc.png" src="../_images/wise_cc.png" style="width: 400.0px; height: 300.0px;" /></a>
@@ -539,13 +521,13 @@ check your results before continuing.</p>
           <a href="../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="votools.html" title="Virtual Observatory"
+          <a href="scatter.html" title="Example scatter plot"
              >next</a> |</li>
         <li class="right" >
-          <a href="install.html" title="Modules"
+          <a href="vo.html" title="Other useful techniques and packages"
              >previous</a> |</li>
         <li><a href="../index.html">Python4Astronomers v1.1 documentation</a> &raquo;</li>
-          <li><a href="vo.html" >Online Astronomy and the virtual observatory</a> &raquo;</li> 
+          <li><a href="vo.html" >Other useful techniques and packages</a> &raquo;</li> 
       </ul>
     </div>
  <small>Copyright:

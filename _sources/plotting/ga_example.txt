@@ -19,7 +19,7 @@ terminology along the way:
     1. A function that needs to be maximized
     2. A function that returns the *fitness* of a set of parameters (*individual* from a *population*)
     3. A function that generates a new individual starting from other individuals
-    (*child* from *parents* via a *breeding mechanism*)
+       (*child* from *parents* via a *breeding mechanism*)
     4. A function that selects *fit* individuals (i.e. individuals with a high
     fitness) for breeding
 

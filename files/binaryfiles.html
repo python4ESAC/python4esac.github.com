@@ -486,7 +486,10 @@ then this is a matter of two lines:</p>
 <p class="first admonition-title">Exercise: Where is your data?</p>
 <p class="last"><tt class="docutils literal"><span class="pre">idlsave</span></tt> already prints some information on the screen while
 reading the file. Inspect the object <tt class="docutils literal"><span class="pre">data</span></tt>, find out how you
-use it to access the <tt class="docutils literal"><span class="pre">x</span></tt> and <tt class="docutils literal"><span class="pre">y</span></tt> data in it.</p>
+use it to access the <tt class="docutils literal"><span class="pre">x</span></tt> and <tt class="docutils literal"><span class="pre">y</span></tt> data in it.  Note you may get
+an error saying <tt class="docutils literal"><span class="pre">KeyError:</span> <span class="pre">'rewrite'</span></tt>. This can be ignored (it&#8217;s
+a bug involving IPython and SciPy).  You can still use tab
+completion to look at the attributes and methods of <tt class="docutils literal"><span class="pre">data</span></tt>.</p>
 </div>
 <p class="flip2">Click to Show/Hide Solution</p> <div class="panel2"><p><tt class="docutils literal"><span class="pre">data</span></tt> is a dictionary and all the variables in the <tt class="docutils literal"><span class="pre">.sav</span></tt> file
 are fields in this dictionary. You get a list with
