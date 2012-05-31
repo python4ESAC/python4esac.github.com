@@ -295,7 +295,10 @@ display:none;
 <li><a class="reference internal" href="#">APLpy</a><ul>
 <li><a class="reference internal" href="#documentation">Documentation</a></li>
 <li><a class="reference internal" href="#when-things-go-wrong">When things go wrong</a></li>
-<li><a class="reference internal" href="#getting-started">Getting started</a></li>
+<li><a class="reference internal" href="#getting-started">Getting Started</a></li>
+<li><a class="reference internal" href="#color-images">Color Images</a></li>
+<li><a class="reference internal" href="#publication-quality-images">Publication Quality Images</a></li>
+<li><a class="reference internal" href="#subplots-and-ds9-region-files">Subplots and DS9 Region Files</a></li>
 </ul>
 </li>
 </ul>
@@ -362,7 +365,7 @@ display:none;
 </ul>
 </div>
 <div class="section" id="getting-started">
-<h2>Getting started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h2>
+<h2>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h2>
 <p>Start off by downloading <a class="reference download internal" href="../_downloads/ic348_wise.tar"><tt class="xref download docutils literal"><span class="pre">this</span> <span class="pre">tar</span> <span class="pre">file</span></tt></a>, expand it, and go to the <tt class="docutils literal"><span class="pre">ic348_wise</span></tt> directory on the command line. Then, launch pylab:</p>
 <div class="highlight-python"><pre>$ ipython --pylab</pre>
 </div>
@@ -405,6 +408,9 @@ ls</pre>
 </div>
 <p>The latter is recommended because it will automatically figure out the best resolution with which to output your plot. Your plot should look something like this:</p>
 <a class="reference internal image-reference" href="../_images/ic348_basic.png"><img alt="../_images/ic348_basic.png" src="../_images/ic348_basic.png" style="width: 470.0px; height: 395.5px;" /></a>
+</div>
+<div class="section" id="color-images">
+<h2>Color Images<a class="headerlink" href="#color-images" title="Permalink to this headline">¶</a></h2>
 <p>Now let&#8217;s do something a bit more advanced where we&#8217;ll make a color image from the fits files and plot some extra features on top of it. If you cannot get Montage and python-montage installed, then you can use the already produced files to follow along with the exercise:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">aplpy</span>
 
@@ -421,7 +427,7 @@ ls</pre>
 
 <span class="c"># Launch APLpy figure of 2D cube</span>
 <span class="n">img</span> <span class="o">=</span> <span class="n">aplpy</span><span class="o">.</span><span class="n">FITSFigure</span><span class="p">(</span><span class="s">&#39;cube_2d.fits&#39;</span><span class="p">)</span>
-<span class="n">img</span><span class="o">.</span><span class="n">show_rgb</span><span class="p">(</span><span class="s">&#39;ic348_color_linear.png&#39;</span><span class="p">)</span>
+<span class="n">img</span><span class="o">.</span><span class="n">show_rgb</span><span class="p">(</span><span class="s">&#39;rgb_image_arcsinh.png&#39;</span><span class="p">)</span>
 
 <span class="c"># Maybe we would like the arcsinh stretched image more?</span>
 <span class="n">img</span><span class="o">.</span><span class="n">show_rgb</span><span class="p">(</span><span class="s">&#39;ic348_color_arcsinh.png&#39;</span><span class="p">)</span>
@@ -445,6 +451,9 @@ ls</pre>
 </div>
 <p>Your final color plot should look something like this:</p>
 <a class="reference internal image-reference" href="../_images/ic348_color_scalebar.png"><img alt="../_images/ic348_color_scalebar.png" src="../_images/ic348_color_scalebar.png" style="width: 436.0px; height: 395.5px;" /></a>
+</div>
+<div class="section" id="publication-quality-images">
+<h2>Publication Quality Images<a class="headerlink" href="#publication-quality-images" title="Permalink to this headline">¶</a></h2>
 <p>We&#8217;re ready at this point to start making science-grade plots with APLpy with contours and markers:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">aplpy</span><span class="o">,</span> <span class="nn">atpy</span>
 
@@ -523,7 +532,10 @@ ls</pre>
 <span class="n">img</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s">&#39;ic348_av_markers.png&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-</div><p>With APLpy we&#8217;re able to make subplots within a figure just like Matplotlib and we can pull in DS9 region files. Let&#8217;s work on a example that shows both capabilities below.:</p>
+</div></div>
+<div class="section" id="subplots-and-ds9-region-files">
+<h2>Subplots and DS9 Region Files<a class="headerlink" href="#subplots-and-ds9-region-files" title="Permalink to this headline">¶</a></h2>
+<p>With APLpy we&#8217;re able to make subplots within a figure just like Matplotlib and we can pull in DS9 region files. Let&#8217;s work on a example that shows both capabilities below.:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">aplpy</span>
 <span class="kn">import</span> <span class="nn">pyfits</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">mpl</span>
