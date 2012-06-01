@@ -16,18 +16,34 @@ Let's begin with a simple Gaussian problem. We will generate fake data first and
         return a*np.exp(-(x-x0)**2/(2*sigma**2))
 
     # Generating clean data
-    x = np.linspace(0, 10, 20)
+    x = np.linspace(0, 10, 100)
     y = func(x, 1, 5, 2)
 
     # Adding noise to the data
     yn = y + 0.2 * np.random.normal(size=len(x))
 
-
+    # Plot out the current state of the data and model
     fig = mpl.figure()
     ax = fig.add_subplot(111)
-    ax.plot(x, y)
+    ax.plot(x, y, c='k', label='Function')
     ax.scatter(x, yn)
     fig.savefig('model_and_noise.png')
 
-.. image:: example-chi2-manifold.png
+.. image:: model_and_noise.png
+
+Let's now use `curve_fit` function to see how well we can reconstruct the the data's original form before noise was added::
+
+    # Executing curve_fit on noisy data
+    popt, pcov = curve_fit(func, x, yn)
+
+    #popt returns the best fit values for parameters of the given model (func)
+    print popt
+
+    ym = func(x, popt[0], popt[1], popt[2])
+    ax.plot(x, ym, c='r', label='Best fit')
+    ax.legend()
+    fig.savefig('model_fit.png')
+
+.. image:: model_fit.png
+
   
