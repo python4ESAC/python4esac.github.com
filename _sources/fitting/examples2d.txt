@@ -1,4 +1,4 @@
-1D Examples and Exercise
+2D Examples and Exercise
 ========================
 
 Here we will run over a few simple examples using the `curve_fit` function for fitting data similar to emission and absorption spectra. We will not use any real data here, but simulate simple data to see how well we can fit the data. 
