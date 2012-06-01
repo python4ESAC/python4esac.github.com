@@ -105,7 +105,8 @@ It's all about the initial parameters
 .. raw:: html
 
     </div>
-    
+
+
     <p class="flip1">Click to Show/Hide Solution</p> <div class="panel1">
 
 Use the optional parameter p0 for the initial conditions::

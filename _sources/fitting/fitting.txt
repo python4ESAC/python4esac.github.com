@@ -24,7 +24,7 @@ Goals of this session
    
    introduction
    least-squares-fitting
-   examples
+   examples1d
    examples2d
 
 :Authors: Rene Andrae
