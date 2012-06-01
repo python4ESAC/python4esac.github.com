@@ -8,8 +8,8 @@ We are given:
 
 Goal:
 
-* Want to optimise some objective function.
-* E.g.: Want to minimise squared difference between some model and some given data.
+* Want to optimize some objective function.
+* E.g.: Want to minimize squared difference between some model and some given data.
 
 What we do not talk about:
 
