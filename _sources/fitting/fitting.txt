@@ -25,6 +25,7 @@ Goals of this session
    introduction
    least-squares-fitting
    examples
+   examples2d
 
 :Authors: Rene Andrae
 :Copyright: 2012, Rene Andrae
