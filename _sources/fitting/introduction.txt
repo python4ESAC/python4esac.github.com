@@ -6,23 +6,10 @@ We are given:
 * observational data
 * a model with a set of fit parameters
 
-Goal:
-
-* Want to optimize some objective function.
-* E.g.: Want to minimize squared difference between some model and some given data.
-
-What we do not talk about:
-
-* How to choose your objective function.
-* How to choose your model.
-
-
-
+Goal: Minimize squared difference between some model and some given data.
 
 Linear vs. non-linear models
-----------------
-
-A model :math:`f(x;\theta)` is called linear if and only if we can write it as :math:`f(x;\theta)=\theta^T\cdot x`. Examples for linear models are:
+----------------------------
 
 * :math:`f(x) = a + bx` (straight line)
 * :math:`f(x) = a + bx+cx^2+dx^3`
