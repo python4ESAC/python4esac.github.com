@@ -294,6 +294,7 @@ display:none;
   <ul>
 <li><a class="reference internal" href="#">1D Examples and Exercises</a><ul>
 <li><a class="reference internal" href="#simple-gaussian">Simple Gaussian</a></li>
+<li><a class="reference internal" href="#multiple-gaussian">Multiple Gaussian</a></li>
 </ul>
 </li>
 </ul>
@@ -359,7 +360,7 @@ display:none;
 <span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s">&#39;model_and_noise.png&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<a class="reference internal image-reference" href="../_images/model_and_noise.png"><img alt="../_images/model_and_noise.png" src="../_images/model_and_noise.png" style="width: 480.0px; height: 360.0px;" /></a>
+<a class="reference internal image-reference" href="../_images/model_and_noise.png"><img alt="../_images/model_and_noise.png" src="../_images/model_and_noise.png" style="width: 560.0px; height: 420.0px;" /></a>
 <p>Let&#8217;s now use <cite>curve_fit</cite> function to see how well we can reconstruct the the data&#8217;s original form before noise was added:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="c"># Executing curve_fit on noisy data</span>
 <span class="n">popt</span><span class="p">,</span> <span class="n">pcov</span> <span class="o">=</span> <span class="n">curve_fit</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">yn</span><span class="p">)</span>
@@ -373,8 +374,63 @@ display:none;
 <span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s">&#39;model_fit.png&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<a class="reference internal image-reference" href="../_images/model_fit.png"><img alt="../_images/model_fit.png" src="../_images/model_fit.png" style="width: 480.0px; height: 360.0px;" /></a>
+<a class="reference internal image-reference" href="../_images/model_fit.png"><img alt="../_images/model_fit.png" src="../_images/model_fit.png" style="width: 560.0px; height: 420.0px;" /></a>
 </div>
+<div class="section" id="multiple-gaussian">
+<h2>Multiple Gaussian<a class="headerlink" href="#multiple-gaussian" title="Permalink to this headline">¶</a></h2>
+<p>The optimization function <cite>curve_fit</cite> seems quite simple to use. When using it with simple and clean situations as shown above it can excel quite nicely. But, what about when there&#8217;s multiple Gaussian peaks and dips (i.e. emission and absorption) in a dataset?:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">curve_fit</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">mpl</span>
+
+<span class="c"># Let&#39;s create a function to model and create data</span>
+<span class="k">def</span> <span class="nf">func</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">sigma</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">a</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">x0</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">sigma</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
+
+<span class="c"># Generating clean data</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+<span class="n">y1</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">x</span> <span class="o">&lt;=</span> <span class="mi">10</span><span class="p">)],</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">y2</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">x</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">)],</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
+
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="n">y1</span><span class="p">,</span> <span class="n">y2</span><span class="p">])</span>
+
+<span class="c"># Adding noise to the data</span>
+<span class="n">yn</span> <span class="o">=</span> <span class="n">y</span> <span class="o">+</span> <span class="mf">0.2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+
+<span class="c"># Plot out the current state of the data and model</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">mpl</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s">&#39;k&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">&#39;Function&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">yn</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s">&#39;model_and_noise_multiple.png&#39;</span><span class="p">)</span>
+
+<span class="c"># Executing curve_fit on noisy data</span>
+<span class="n">popt</span><span class="p">,</span> <span class="n">pcov</span> <span class="o">=</span> <span class="n">curve_fit</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">yn</span><span class="p">)</span>
+
+<span class="c">#popt returns the best fit values for parameters of the given model (func)</span>
+<span class="k">print</span> <span class="n">popt</span>
+
+<span class="n">ym</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">popt</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">popt</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">popt</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">ym</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s">&#39;r&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">&#39;Best fit&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s">&#39;model_fit_multiple.png&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../_images/model_fit_multiple.png"><img alt="../_images/model_fit_multiple.png" src="../_images/model_fit_multiple.png" style="width: 560.0px; height: 420.0px;" /></a>
+<div class="admonition-exercise-1 admonition ">
+<p class="first admonition-title">Exercise 1</p>
+<p>Using the code from above utilize the <tt class="docutils literal"><span class="pre">help</span></tt> or <tt class="docutils literal"><span class="pre">?</span></tt> functionality in <tt class="docutils literal"><span class="pre">ipython</span></tt> to figure out how fit the dip. Otherwise, you can always refer to the online documentation for <a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.curve_fit.html">curve_fit</a>.</p>
+<p>to reproduce (within reason) the image below. Additionally, using the tabbing feature to see what other methods are available is key for this exercise. Use the <a class="reference external" href="http://aplpy.github.com/documentation/quick_reference.html">Quick Reference Guide</a> for other information that may be helpful.</p>
+<p class="last">&lt;p class=&#8221;flip1&#8221;&gt;Click to Show/Hide Hint&lt;/p&gt; &lt;div class=&#8221;panel1&#8221;&gt;</p>
+</div>
+<p>It&#8217;s all about the initial parameters</p>
+</div>
+
+<p class="flip2">Click to Show/Hide Solution</p> <div class="panel2"><p>Use the optional parameter p0 for the initial conditions:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">popt</span><span class="p">,</span> <span class="n">pcov</span> <span class="o">=</span> <span class="n">curve_fit</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">yn</span><span class="p">,</span> <span class="n">p0</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">15</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div></div>
 </div>
 
 
