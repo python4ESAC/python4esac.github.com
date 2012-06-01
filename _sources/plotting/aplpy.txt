@@ -224,7 +224,7 @@ With APLpy we're able to make subplots within a figure just like Matplotlib and 
 
     $pip install pyregion/ --user --upgrade
 
-Now, let's work on a example that shows both capabilities below.:
+Now, let's work on a example that shows both capabilities below.::
 
     import aplpy
     import pyfits
