@@ -7,24 +7,22 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Other useful techniques and packages &mdash; Python4Astronomers v1.1 documentation</title>
-    <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <title>Example: Salpeter stellar mass function &mdash; Python4Astronomers v1.1 documentation</title>
+    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '../',
+        URL_ROOT:    '',
         VERSION:     '1.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
       };
     </script>
-    <script type="text/javascript" src="../_static/jquery.js"></script>
-    <script type="text/javascript" src="../_static/underscore.js"></script>
-    <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="Python4Astronomers v1.1 documentation" href="../index.html" />
-    <link rel="next" title="Standard Python Tools" href="webmodules.html" />
-    <link rel="prev" title="APLpy" href="../plotting/aplpy.html" />
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Python4Astronomers v1.1 documentation" href="index.html" />
  
 <script type="text/javascript"> 
 $(document).ready(function(){
@@ -275,33 +273,31 @@ display:none;
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="../genindex.html" title="General Index"
+          <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
-        <li class="right" >
-          <a href="webmodules.html" title="Standard Python Tools"
-             accesskey="N">next</a> |</li>
-        <li class="right" >
-          <a href="../plotting/aplpy.html" title="APLpy"
-             accesskey="P">previous</a> |</li>
-        <li><a href="../index.html">Python4Astronomers v1.1 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Python4Astronomers v1.1 documentation</a> &raquo;</li> 
       </ul>
     </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="../plotting/aplpy.html"
-                        title="previous chapter">APLpy</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="webmodules.html"
-                        title="next chapter">Standard Python Tools</a></p>
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Example: Salpeter stellar mass function</a><ul>
+<li><a class="reference internal" href="#motivation">Motivation</a></li>
+<li><a class="reference internal" href="#salpeter-stellar-mass-function">Salpeter stellar mass function</a></li>
+<li><a class="reference internal" href="#outline">Outline</a></li>
+</ul>
+</li>
+</ul>
+
   <h3>This Page</h3>
   <ul class="this-page-menu">
-    <li><a href="../_sources/vo/vo.txt"
+    <li><a href="_sources/Salpeter-background.txt"
            rel="nofollow">Show Source</a></li>
   </ul>
 <div id="searchbox" style="display: none">
   <h3>Quick search</h3>
-    <form class="search" action="../search.html" method="get">
+    <form class="search" action="search.html" method="get">
       <input type="text" name="q" size="18" />
       <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
@@ -320,31 +316,29 @@ display:none;
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="other-useful-techniques-and-packages">
-<h1>Other useful techniques and packages<a class="headerlink" href="#other-useful-techniques-and-packages" title="Permalink to this headline">¶</a></h1>
-<p>Goals:</p>
-<ul class="simple">
-<li>Review basic python web interfacing tools</li>
-<li>Learn how to make remote queries</li>
-<li>Make a scatter plot, use numerical integration and make twin axes</li>
-<li>Find out how to locate documentation about NumPy and Scipy</li>
-<li>Use <cite>history</cite> and other magic functions in IPython.</li>
-</ul>
-<p><strong>Agenda</strong></p>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="webmodules.html">Standard Python Tools</a></li>
-<li class="toctree-l1"><a class="reference internal" href="scatter.html">Example scatter plot</a></li>
-</ul>
+  <div class="section" id="example-salpeter-stellar-mass-function">
+<h1>Example: Salpeter stellar mass function<a class="headerlink" href="#example-salpeter-stellar-mass-function" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="motivation">
+<h2>Motivation<a class="headerlink" href="#motivation" title="Permalink to this headline">¶</a></h2>
+<p>We have seen gradient methods, which are efficient but not very robust.</p>
+<p>And we have seen the Simplex algorithm, which is robust but not very efficient.</p>
+<p>Let us now try to discuss another class of fitting/optimisation algorithms, which try to be both - efficient and robust. This new class is broadly summarised as Monte-Carlo methods.</p>
+<p>Let us do this by considering an astrophysical example that also demonstrates that not all pratical problems can be expressed in terms of least squares.</p>
 </div>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field"><th class="field-name">Copyright:</th><td class="field-body">2011 Smithsonian Astrophysical Observatory</td>
-</tr>
-</tbody>
-</table>
+<div class="section" id="salpeter-stellar-mass-function">
+<h2>Salpeter stellar mass function<a class="headerlink" href="#salpeter-stellar-mass-function" title="Permalink to this headline">¶</a></h2>
+<p>Salpeter (1955) found that for stars of masses <img class="math" src="_images/math/1f55aa0ed0abfd7d54b7ad7869a3a5f801c098f7.png" alt="\geq 1M_\odot"/> the mass distribution is given by a power law:</p>
+<blockquote>
+<div><img class="math" src="_images/math/cd8dfa637f319792173c6b299097ac7d54d818f6.png" alt="\frac{dN}{dM}\propto \left(\frac{M}{M_\odot}\right)^{-\alpha}\quad"/>   or   <img class="math" src="_images/math/09d915e9fc2b9ca5b4f289d2864fb562930117c9.png" alt="\quad\frac{dN}{d\log M}=\frac{dN}{dM}\frac{dM}{d\log M}= \frac{dN}{dM}M\propto\left(\frac{M}{M_\odot}\right)^{1-\alpha}"/></div></blockquote>
+<p>He found <img class="math" src="_images/math/1d6f92f4492bd5219e9d9d48f92e8558e9a4b20b.png" alt="\alpha\approx 2.35"/>.</p>
+<p>Say you are the first person to have the catalogue of stellar masses from the Gaia mission and you want to estimate <img class="math" src="_images/math/10f32377ac67d94f764f12a15ea987e88c85d3e1.png" alt="\alpha"/> from the data. What do you do? Keep in mind that Gaia will observe a few billion stars!</p>
+</div>
+<div class="section" id="outline">
+<h2>Outline<a class="headerlink" href="#outline" title="Permalink to this headline">¶</a></h2>
+<p>First, we discuss how to draw samples from the Salpeter SMF in order to simulate data for testing purposes during algorithm development. This naturally leads us to Monte-Carlo sampling.</p>
+<p>Second, we discuss parameter optimisation, i.e., how to fit for <img class="math" src="_images/math/10f32377ac67d94f764f12a15ea987e88c85d3e1.png" alt="\alpha"/> if you are given data. This brings us to the Metropolis-Hastings algorithm.</p>
+<p>Finally, we discuss an improvement of the Metropolis-Hastings algorithm, which is Hamiltonian Monte-Carlo.</p>
+</div>
 </div>
 
 
@@ -357,15 +351,9 @@ display:none;
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="../genindex.html" title="General Index"
+          <a href="genindex.html" title="General Index"
              >index</a></li>
-        <li class="right" >
-          <a href="webmodules.html" title="Standard Python Tools"
-             >next</a> |</li>
-        <li class="right" >
-          <a href="../plotting/aplpy.html" title="APLpy"
-             >previous</a> |</li>
-        <li><a href="../index.html">Python4Astronomers v1.1 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Python4Astronomers v1.1 documentation</a> &raquo;</li> 
       </ul>
     </div>
  <small>Copyright:

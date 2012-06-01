@@ -7,24 +7,22 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Other useful techniques and packages &mdash; Python4Astronomers v1.1 documentation</title>
-    <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <title>Summary &mdash; Python4Astronomers v1.1 documentation</title>
+    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '../',
+        URL_ROOT:    '',
         VERSION:     '1.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
       };
     </script>
-    <script type="text/javascript" src="../_static/jquery.js"></script>
-    <script type="text/javascript" src="../_static/underscore.js"></script>
-    <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="Python4Astronomers v1.1 documentation" href="../index.html" />
-    <link rel="next" title="Standard Python Tools" href="webmodules.html" />
-    <link rel="prev" title="APLpy" href="../plotting/aplpy.html" />
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Python4Astronomers v1.1 documentation" href="index.html" />
  
 <script type="text/javascript"> 
 $(document).ready(function(){
@@ -275,33 +273,30 @@ display:none;
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="../genindex.html" title="General Index"
+          <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
-        <li class="right" >
-          <a href="webmodules.html" title="Standard Python Tools"
-             accesskey="N">next</a> |</li>
-        <li class="right" >
-          <a href="../plotting/aplpy.html" title="APLpy"
-             accesskey="P">previous</a> |</li>
-        <li><a href="../index.html">Python4Astronomers v1.1 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Python4Astronomers v1.1 documentation</a> &raquo;</li> 
       </ul>
     </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="../plotting/aplpy.html"
-                        title="previous chapter">APLpy</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="webmodules.html"
-                        title="next chapter">Standard Python Tools</a></p>
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Summary</a><ul>
+<li><a class="reference internal" href="#what-we-did-not-have-time-to-cover">What we did not have time to cover:</a></li>
+<li><a class="reference internal" href="#take-home-messages">Take home messages</a></li>
+</ul>
+</li>
+</ul>
+
   <h3>This Page</h3>
   <ul class="this-page-menu">
-    <li><a href="../_sources/vo/vo.txt"
+    <li><a href="_sources/summary.txt"
            rel="nofollow">Show Source</a></li>
   </ul>
 <div id="searchbox" style="display: none">
   <h3>Quick search</h3>
-    <form class="search" action="../search.html" method="get">
+    <form class="search" action="search.html" method="get">
       <input type="text" name="q" size="18" />
       <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
@@ -320,31 +315,36 @@ display:none;
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="other-useful-techniques-and-packages">
-<h1>Other useful techniques and packages<a class="headerlink" href="#other-useful-techniques-and-packages" title="Permalink to this headline">¶</a></h1>
-<p>Goals:</p>
+  <div class="section" id="summary">
+<h1>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
-<li>Review basic python web interfacing tools</li>
-<li>Learn how to make remote queries</li>
-<li>Make a scatter plot, use numerical integration and make twin axes</li>
-<li>Find out how to locate documentation about NumPy and Scipy</li>
-<li>Use <cite>history</cite> and other magic functions in IPython.</li>
+<li>Scipy provides least-squares codes (<cite>leastsq</cite> and <cite>curve_fit</cite>) that use a Levenburg-Marquardt gradient method.</li>
+<li>Scipy also provides a Simplex algorithm (<cite>fmin</cite>) for more general problems.</li>
+<li>Not all problems are least-square problems.</li>
+<li>Simplex is robust but inefficient.</li>
+<li>Gradient methods are efficient but not robust (assume convex problem).</li>
+<li>Metropolis-Hastings is robust but efficiency strongly depends on fine-tuning of numerous stepsizes.</li>
+<li>Hamiltonian Monte-Carlo is robust and efficiency depends on fine-tuning of a single stepsize.</li>
 </ul>
-<p><strong>Agenda</strong></p>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="webmodules.html">Standard Python Tools</a></li>
-<li class="toctree-l1"><a class="reference internal" href="scatter.html">Example scatter plot</a></li>
+<div class="section" id="what-we-did-not-have-time-to-cover">
+<h2>What we did not have time to cover:<a class="headerlink" href="#what-we-did-not-have-time-to-cover" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference external" href="http://python4mpia.github.com/intro/quick-tour.html">making a fancy plot from Monte-Carlo samples</a></li>
+<li>gradient methods (read additional material)</li>
+<li>testing convexity</li>
+<li><a class="reference external" href="http://arxiv.org/abs/1202.3665">emcee Python package by Foreman-Mackey et al. (2012)</a></li>
+<li>multistate/nested sampling</li>
+<li>genetic algorithms</li>
 </ul>
 </div>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field"><th class="field-name">Copyright:</th><td class="field-body">2011 Smithsonian Astrophysical Observatory</td>
-</tr>
-</tbody>
-</table>
+<div class="section" id="take-home-messages">
+<h2>Take home messages<a class="headerlink" href="#take-home-messages" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>There is no &#8216;&#8217;perfect&#8217;&#8217; fit algorithm that solves all problems.</li>
+<li>You need to be able to identify and implement the fit algorithm that solves your problem.</li>
+<li>Python is well suited to implement simple and advanced fit algorithms.</li>
+</ul>
+</div>
 </div>
 
 
@@ -357,15 +357,9 @@ display:none;
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="../genindex.html" title="General Index"
+          <a href="genindex.html" title="General Index"
              >index</a></li>
-        <li class="right" >
-          <a href="webmodules.html" title="Standard Python Tools"
-             >next</a> |</li>
-        <li class="right" >
-          <a href="../plotting/aplpy.html" title="APLpy"
-             >previous</a> |</li>
-        <li><a href="../index.html">Python4Astronomers v1.1 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Python4Astronomers v1.1 documentation</a> &raquo;</li> 
       </ul>
     </div>
  <small>Copyright:
