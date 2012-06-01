@@ -30,6 +30,7 @@ Let's begin with a simple Gaussian problem. We will generate fake data first and
     fig.savefig('model_and_noise.png')
 
 .. image:: model_and_noise.png
+    :scale: 60
 
 Let's now use `curve_fit` function to see how well we can reconstruct the the data's original form before noise was added::
 
@@ -45,5 +46,5 @@ Let's now use `curve_fit` function to see how well we can reconstruct the the da
     fig.savefig('model_fit.png')
 
 .. image:: model_fit.png
-
+    :scale: 60
   
