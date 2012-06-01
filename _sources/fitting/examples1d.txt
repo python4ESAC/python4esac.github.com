@@ -109,7 +109,7 @@ It's all about the initial parameters.
 
 .. raw:: html
 
-    <p class="flip2">Click to Show/Hide Solution</p> <div class="panel1">
+    <p class="flip2">Click to Show/Hide Solution</p> <div class="panel2">
 
 Use the optional parameter p0 for the initial conditions::
 
