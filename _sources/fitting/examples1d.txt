@@ -96,9 +96,7 @@ The optimization function `curve_fit` seems quite simple to use. When using it w
 
     Using the code from above utilize the ``help`` or ``?`` functionality in ``ipython`` to figure out how fit the dip. Otherwise, you can always refer to the online documentation for `curve_fit <http://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.curve_fit.html>`_.
     
-    to reproduce (within reason) the image below. Additionally, using the tabbing feature to see what other methods are available is key for this exercise. Use the `Quick Reference Guide <http://aplpy.github.com/documentation/quick_reference.html>`_ for other information that may be helpful.
-    
-Hint: It's all about the initial parameters.
+    to reproduce (within reason) the image below. Additionally, using the tabbing feature to see what other methods are available is key for this exercise. Use the `Quick Reference Guide <http://aplpy.github.com/documentation/quick_reference.html>`_ for other information that may be helpful. Hint: It's all about the initial parameters.
 
     <p class="flip1">Click to Show/Hide Solution</p> <div class="panel1">
 
