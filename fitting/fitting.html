@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Fitting and Modeling 1-D and 2-D Data &mdash; Python4Astronomers v1.1 documentation</title>
+    <title>Fitting data with Python &mdash; Python4Astronomers v1.1 documentation</title>
     <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <script type="text/javascript">
@@ -23,7 +23,7 @@
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="top" title="Python4Astronomers v1.1 documentation" href="../index.html" />
-    <link rel="next" title="Sherpa Installation" href="installation.html" />
+    <link rel="next" title="Introduction" href="introduction.html" />
     <link rel="prev" title="APLpy" href="../plotting/aplpy.html" />
  
 <script type="text/javascript"> 
@@ -278,7 +278,7 @@ display:none;
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="installation.html" title="Sherpa Installation"
+          <a href="introduction.html" title="Introduction"
              accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="../plotting/aplpy.html" title="APLpy"
@@ -288,12 +288,22 @@ display:none;
     </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Fitting data with Python</a><ul>
+<li><a class="reference internal" href="#goals-of-this-session">Goals of this session</a><ul>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
   <h4>Previous topic</h4>
   <p class="topless"><a href="../plotting/aplpy.html"
                         title="previous chapter">APLpy</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="installation.html"
-                        title="next chapter">Sherpa Installation</a></p>
+  <p class="topless"><a href="introduction.html"
+                        title="next chapter">Introduction</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
     <li><a href="../_sources/fitting/fitting.txt"
@@ -320,35 +330,55 @@ display:none;
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="fitting-and-modeling-1-d-and-2-d-data">
-<h1>Fitting and Modeling 1-D and 2-D Data<a class="headerlink" href="#fitting-and-modeling-1-d-and-2-d-data" title="Permalink to this headline">¶</a></h1>
-<p>Workshop goals:</p>
+  <div class="section" id="fitting-data-with-python">
+<h1>Fitting data with Python<a class="headerlink" href="#fitting-data-with-python" title="Permalink to this headline">¶</a></h1>
+<p>Fitting models to data is one of the key steps in scientific work:</p>
 <ul class="simple">
-<li>Discover Python classes and Object-Oriented Programming</li>
-<li>Learn the basics of modeling and fitting with Sherpa</li>
-<li>Fit a MAST spectrum of 3c 273</li>
-<li>Fit a Chandra image of G21.5-0.9</li>
+<li>fitting some spectrum/spectral line</li>
+<li>fitting 2D light distribution of a galaxy</li>
+<li>fitting orbits of exoplanets</li>
+<li>estimating the stellar IMF from a set of observed masses</li>
+<li>estimating the galaxy luminosity function from data</li>
+<li>...</li>
 </ul>
+<p>Numpy and Scipy provide readily usable tools to fit models to data.</p>
+<p>Moreover, Python is an excellent environment to develop your own fitting routines for more advanced problems.</p>
+<div class="section" id="goals-of-this-session">
+<h2>Goals of this session<a class="headerlink" href="#goals-of-this-session" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>This is a Python tutorial but some statistics are inevitable!</li>
+<li>How to use implemented routines: <cite>leastsq</cite>, <cite>curve_fit</cite> and Simplex.</li>
+<li>Astrophysical example: Salpeter mass function.</li>
+<li>Metropolis-Hastings MCMC.</li>
+<li>Hamiltonian Monte-Carlo.</li>
+</ul>
+<p>At the end of this session, participants will have code fragments that can be readily used or easily adopted for their own scientific work.</p>
 <p><strong>Agenda</strong></p>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="installation.html">Sherpa Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="classes.html">Python Classes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sherpa.html">Sherpa Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="spectrum.html">1-D Fitting in Sherpa</a></li>
-<li class="toctree-l1"><a class="reference internal" href="image.html">2-D Fitting in Sherpa</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="least-squares-fitting.html">Least-squares fitting in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="simplex-fitting.html">Simplex algorithm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gradient-methods.html">Additional material: Gradient methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Salpeter-background.html">Example: Salpeter stellar mass function</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MC-sampling-from-Salpeter.html">Additional material: Monte-Carlo sampling from Salpeter SMF</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Metropolis-Hastings.html">Metropolis-Hastings algorithm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Hamiltonian-MCMC.html">Hamiltonian Monte-Carlo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="convex-Salpeter-problem.html">Additional material: Convexity of the Salpeter problem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="summary.html">Summary</a></li>
 </ul>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">Author:</th><td class="field-body">Brian Refsdal</td>
+<tr class="field"><th class="field-name">Authors:</th><td class="field-body">Rene Andrae</td>
 </tr>
-<tr class="field"><th class="field-name">Copyright:</th><td class="field-body">2011 Smithsonian Astrophysical Observatory</td>
+<tr class="field"><th class="field-name">Copyright:</th><td class="field-body">2012, Rene Andrae</td>
 </tr>
 </tbody>
 </table>
+</div>
 </div>
 
 
@@ -364,7 +394,7 @@ display:none;
           <a href="../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="installation.html" title="Sherpa Installation"
+          <a href="introduction.html" title="Introduction"
              >next</a> |</li>
         <li class="right" >
           <a href="../plotting/aplpy.html" title="APLpy"
