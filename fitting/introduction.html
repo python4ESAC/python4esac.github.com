@@ -294,8 +294,7 @@ display:none;
   <ul>
 <li><a class="reference internal" href="#">Introduction</a><ul>
 <li><a class="reference internal" href="#linear-vs-non-linear-models">Linear vs. non-linear models</a></li>
-<li><a class="reference internal" href="#first-idea-brute-force-grids">First idea: Brute-force grids</a></li>
-<li><a class="reference internal" href="#second-idea-random-grids">Second idea: Random grids</a></li>
+<li><a class="reference internal" href="#first-idea-brute-force-grids">First Idea: Brute-force grids</a></li>
 </ul>
 </li>
 </ul>
@@ -347,29 +346,28 @@ display:none;
 <li><img class="math" src="../_images/math/0a114401772a4e12d497a78ca32659b1c0f84d7c.png" alt="f(x) = a + bx+cx^2+dx^3"/></li>
 <li><img class="math" src="../_images/math/7c515d90cdf6dbc432419df7eab8076e00988b5c.png" alt="f(x) = a\cos(x)+b\sin(x)"/></li>
 </ul>
-<p>If the optimisation problem is a least-squares problem, fitting linear models can be done analytically using linear algebra (matrices)! In this case, the resulting likelihood is always exactly Gaussian (no approximation!), i.e., it is unimodal and there is a single global optimum (convex problem).</p>
-<p>However, many interesting astrophysical problems are not linear! Examples for non-linear models are:</p>
+<p>If the optimization problem is a least-squares problem, fitting linear models can be done analytically using linear algebra (matrices)! However, many interesting astrophysical problems are not linear! Examples for non-linear models are:</p>
 <ul class="simple">
 <li><img class="math" src="../_images/math/91acd9afbbff348061de30dfdbefec20a76695c0.png" alt="f(x) = a\cos(b*x)"/></li>
 <li>fitting emission/absorption features in a spectrum</li>
 <li>fitting light profiles of galaxies (morphology)</li>
 </ul>
-<p>For nonlinear models or linear models without least-squares formulation, there is usually no analytic solution and the likelihood may also be multimodal. In this case, we need an optimisation algorithm in order to fit the model parameters.</p>
+<p>For nonlinear models or linear models without least-squares formulation, there is usually no analytic solution and the likelihood may also be multimodal. In this case, we need an optimization algorithm in order to fit the model parameters.</p>
 </div>
 <div class="section" id="first-idea-brute-force-grids">
-<h2>First idea: Brute-force grids<a class="headerlink" href="#first-idea-brute-force-grids" title="Permalink to this headline">¶</a></h2>
+<h2>First Idea: Brute-force grids<a class="headerlink" href="#first-idea-brute-force-grids" title="Permalink to this headline">¶</a></h2>
 <p>Try brute-force all combinations of fit parameters and find the optimum of the objective function.</p>
 <p>Let&#8217;s create some toy data:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">numpy</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
 
-<span class="c"># Create 1D Gaussian toy data.</span>
+<span class="c"># Create 1D Gaussian data.</span>
 <span class="n">numpy</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>  <span class="c"># set random seed</span>
 <span class="c"># Draw 10 values from unit Gaussian.</span>
 <span class="n">Data</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Our model is a straight line with true parameters offset a = 0.0 and slope  b = 0.0. Fit for a and b using a brute-force grid:</p>
+<p>Our model is a straight line with true parameters offset a = 0.0 and slope b = 0.0. Fit for a and b using a brute-force grid:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="c"># Range of parameter a.</span>
 <span class="n">a_min</span> <span class="o">=</span> <span class="o">-</span><span class="mf">2.5</span>
 <span class="n">a_max</span> <span class="o">=</span>  <span class="mf">2.5</span>
@@ -377,27 +375,26 @@ display:none;
 <span class="n">b_min</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.0</span>
 <span class="n">b_max</span> <span class="o">=</span>  <span class="mf">1.0</span>
 <span class="c"># Number of steps of grid.</span>
-<span class="n">Steps</span> <span class="o">=</span> <span class="mi">51</span>
+<span class="n">steps</span> <span class="o">=</span> <span class="mi">51</span>
 <span class="c"># Allocate grid as matrix.</span>
-<span class="n">Grid</span>  <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="n">Steps</span><span class="p">,</span><span class="n">Steps</span><span class="p">])</span>
+<span class="n">grid</span>  <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="n">steps</span><span class="p">,</span><span class="n">steps</span><span class="p">])</span>
 <span class="c"># Try all parameter combinations.</span>
-<span class="k">for</span> <span class="n">s1</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">Steps</span><span class="p">):</span>
-    <span class="k">for</span> <span class="n">s2</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">Steps</span><span class="p">):</span>
+<span class="k">for</span> <span class="n">s1</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">steps</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">s2</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">steps</span><span class="p">):</span>
         <span class="c"># Current parameter combination.</span>
-        <span class="n">a</span> <span class="o">=</span> <span class="n">a_min</span> <span class="o">+</span> <span class="p">(</span><span class="n">a_max</span> <span class="o">-</span> <span class="n">a_min</span><span class="p">)</span><span class="o">*</span><span class="nb">float</span><span class="p">(</span><span class="n">s1</span><span class="p">)</span><span class="o">/</span><span class="nb">float</span><span class="p">(</span><span class="n">Steps</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
-        <span class="n">b</span> <span class="o">=</span> <span class="n">b_min</span> <span class="o">+</span> <span class="p">(</span><span class="n">b_max</span> <span class="o">-</span> <span class="n">b_min</span><span class="p">)</span><span class="o">*</span><span class="nb">float</span><span class="p">(</span><span class="n">s2</span><span class="p">)</span><span class="o">/</span><span class="nb">float</span><span class="p">(</span><span class="n">Steps</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">a</span> <span class="o">=</span> <span class="n">a_min</span> <span class="o">+</span> <span class="p">(</span><span class="n">a_max</span> <span class="o">-</span> <span class="n">a_min</span><span class="p">)</span><span class="o">*</span><span class="nb">float</span><span class="p">(</span><span class="n">s1</span><span class="p">)</span><span class="o">/</span><span class="nb">float</span><span class="p">(</span><span class="n">steps</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">b</span> <span class="o">=</span> <span class="n">b_min</span> <span class="o">+</span> <span class="p">(</span><span class="n">b_max</span> <span class="o">-</span> <span class="n">b_min</span><span class="p">)</span><span class="o">*</span><span class="nb">float</span><span class="p">(</span><span class="n">s2</span><span class="p">)</span><span class="o">/</span><span class="nb">float</span><span class="p">(</span><span class="n">steps</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
 
         <span class="c"># Evaluate chi-squared.</span>
-        <span class="n">chi2</span> <span class="o">=</span> <span class="mf">0.0</span>
         <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Data</span><span class="p">)):</span>
             <span class="c"># Use index n as pseudo-position</span>
-            <span class="n">residual</span> <span class="o">=</span> <span class="p">(</span><span class="n">Data</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">-</span> <span class="n">a</span> <span class="o">-</span> <span class="n">n</span><span class="o">*</span><span class="n">b</span><span class="p">)</span>
-            <span class="n">chi2</span>     <span class="o">=</span> <span class="n">chi2</span> <span class="o">+</span> <span class="n">residual</span><span class="o">*</span><span class="n">residual</span>
-        <span class="n">Grid</span><span class="p">[</span><span class="n">Steps</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="n">s2</span><span class="p">,</span><span class="n">s1</span><span class="p">]</span> <span class="o">=</span> <span class="n">chi2</span>
+            <span class="n">residual</span> <span class="o">=</span> <span class="p">(</span><span class="n">Data</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">-</span> <span class="n">a</span> <span class="o">-</span> <span class="n">n</span> <span class="o">*</span> <span class="n">b</span><span class="p">)</span>
+            <span class="n">chi2</span> <span class="o">=</span> <span class="n">residual</span> <span class="o">*</span> <span class="n">residual</span>
+        <span class="n">grid</span><span class="p">[</span><span class="n">steps</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">s2</span><span class="p">,</span> <span class="n">s1</span><span class="p">]</span> <span class="o">=</span> <span class="n">chi2</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
-<span class="n">mini</span>  <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">Grid</span><span class="p">)</span>  <span class="c"># minimal value of chi2</span>
-<span class="n">image</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">Grid</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="n">mini</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="n">mini</span><span class="o">+</span><span class="mf">20.0</span><span class="p">,</span>
+<span class="n">mini</span>  <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">grid</span><span class="p">)</span>  <span class="c"># minimal value of chi2</span>
+<span class="n">image</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="n">mini</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="n">mini</span><span class="o">+</span><span class="mf">20.0</span><span class="p">,</span>
                          <span class="n">extent</span><span class="o">=</span><span class="p">[</span><span class="n">a_min</span><span class="p">,</span><span class="n">a_max</span><span class="p">,</span><span class="n">b_min</span><span class="p">,</span><span class="n">b_max</span><span class="p">])</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">r&#39;$a$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">24</span><span class="p">)</span>
@@ -408,14 +405,7 @@ display:none;
 </div>
 <p>Here is what the resulting <img class="math" src="../_images/math/a61c1e51680e27d35d05bebed87d474972fc70bd.png" alt="\chi^2"/>-manifold looks like:</p>
 <img alt="../_images/example-chi2-manifold.png" src="../_images/example-chi2-manifold.png" />
-<p>Brute-force grids may seem naive but this method is the first to consider!</p>
-</div>
-<div class="section" id="second-idea-random-grids">
-<h2>Second idea: Random grids<a class="headerlink" href="#second-idea-random-grids" title="Permalink to this headline">¶</a></h2>
-<p>Brute-force grids quickly become computationally infeasible for more than 1 or 2 fit parameters. Computation times increase exponentially.</p>
-<p>Instead of using a regular grid, simply try random values of all parameters and finally take that one with best objective function.</p>
-<p>However, if we have a lot of fit parameters, the chance that we hit a good parameter combination by pure luck decreases exponentially.</p>
-<p>Consequently, we need to talk about more elaborate optimisation algorithms.</p>
+<p>Brute-force grids may seem naive but this method is the first to consider! Note that brute-force grids quickly become computationally infeasible for more than 1 or 2 fit parameters. Computation times increase exponentially, so more intelligent methods are needed.</p>
 </div>
 </div>
 

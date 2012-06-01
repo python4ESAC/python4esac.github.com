@@ -7,8 +7,6 @@ What is least squares?
 ----------------
 
 * Minimise :math:`\chi^2 = \sum_{n=1}^N \left(\frac{y_n - f(x_n)}{\sigma_n}\right)^2`
-* If and only if the data's noise is Gaussian, minimising :math:`\chi^2` is identical to maximising the likelihood :math:`\mathcal L\propto e^{-\chi^2/2}`.
-* If data's noise model is unknown, then minimise :math:`J(\theta) = \sum_{n=1}^N \left[(y_n - f(x_n;\theta)\right]^2`
 * For non-Gaussian data noise, least squares is just a recipe (usually) without any probabilistic interpretation (no uncertainty estimates).
 
 

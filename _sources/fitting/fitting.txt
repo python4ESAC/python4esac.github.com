@@ -24,7 +24,7 @@ Goals of this session
    
    introduction
    least-squares-fitting
-   Hamiltonian-MCMC
+   examples
 
 :Authors: Rene Andrae
 :Copyright: 2012, Rene Andrae

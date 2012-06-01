@@ -1,0 +1,33 @@
+1D Examples and Exercises
+=========================
+
+Here we will run over a few simple examples using the `curve_fit` function for fitting data similar to emission and absorption spectra. We will not use any real data here, but simulate simple data to see how well we can fit the data. 
+
+Simple Gaussian
+---------------
+Let's begin with a simple Gaussian problem. We will generate fake data first and compare it to the `real` data::
+
+    import numpy as np
+    from scipy.optimize import curve_fit
+    import matplotlib.pyplot as mpl
+
+    # Let's create a function to model and create data
+    def func(x, a, x0, sigma):
+        return a*np.exp(-(x-x0)**2/(2*sigma**2))
+
+    # Generating clean data
+    x = np.linspace(0, 10, 20)
+    y = func(x, 1, 5, 2)
+
+    # Adding noise to the data
+    yn = y + 0.2 * np.random.normal(size=len(x))
+
+
+    fig = mpl.figure()
+    ax = fig.add_subplot(111)
+    ax.plot(x, y)
+    ax.scatter(x, yn)
+    fig.savefig('model_and_noise.png')
+
+.. image:: example-chi2-manifold.png
+  

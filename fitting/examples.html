@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Fitting data with Python &mdash; Python4Astronomers v1.1 documentation</title>
+    <title>1D Examples and Exercises &mdash; Python4Astronomers v1.1 documentation</title>
     <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <script type="text/javascript">
@@ -23,8 +23,9 @@
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="top" title="Python4Astronomers v1.1 documentation" href="../index.html" />
-    <link rel="next" title="Introduction" href="introduction.html" />
-    <link rel="prev" title="APLpy" href="../plotting/aplpy.html" />
+    <link rel="up" title="Fitting data with Python" href="fitting.html" />
+    <link rel="next" title="Other useful techniques and packages" href="../vo/vo.html" />
+    <link rel="prev" title="Least-squares fitting in Python" href="least-squares-fitting.html" />
  
 <script type="text/javascript"> 
 $(document).ready(function(){
@@ -278,35 +279,34 @@ display:none;
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="introduction.html" title="Introduction"
+          <a href="../vo/vo.html" title="Other useful techniques and packages"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="../plotting/aplpy.html" title="APLpy"
+          <a href="least-squares-fitting.html" title="Least-squares fitting in Python"
              accesskey="P">previous</a> |</li>
-        <li><a href="../index.html">Python4Astronomers v1.1 documentation</a> &raquo;</li> 
+        <li><a href="../index.html">Python4Astronomers v1.1 documentation</a> &raquo;</li>
+          <li><a href="fitting.html" accesskey="U">Fitting data with Python</a> &raquo;</li> 
       </ul>
     </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
   <h3><a href="../index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">Fitting data with Python</a><ul>
-<li><a class="reference internal" href="#goals-of-this-session">Goals of this session</a><ul>
-</ul>
-</li>
+<li><a class="reference internal" href="#">1D Examples and Exercises</a><ul>
+<li><a class="reference internal" href="#simple-gaussian">Simple Gaussian</a></li>
 </ul>
 </li>
 </ul>
 
   <h4>Previous topic</h4>
-  <p class="topless"><a href="../plotting/aplpy.html"
-                        title="previous chapter">APLpy</a></p>
+  <p class="topless"><a href="least-squares-fitting.html"
+                        title="previous chapter">Least-squares fitting in Python</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="introduction.html"
-                        title="next chapter">Introduction</a></p>
+  <p class="topless"><a href="../vo/vo.html"
+                        title="next chapter">Other useful techniques and packages</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
-    <li><a href="../_sources/fitting/fitting.txt"
+    <li><a href="../_sources/fitting/examples.txt"
            rel="nofollow">Show Source</a></li>
   </ul>
 <div id="searchbox" style="display: none">
@@ -330,41 +330,36 @@ display:none;
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="fitting-data-with-python">
-<h1>Fitting data with Python<a class="headerlink" href="#fitting-data-with-python" title="Permalink to this headline">¶</a></h1>
-<p>Fitting models to data is one of the key steps in scientific work. Some examples are:</p>
-<ul class="simple">
-<li>fitting some spectrum/spectral line</li>
-<li>fitting 2D light distribution of a galaxy</li>
-<li>fitting orbits of exoplanets</li>
-<li>estimating the galaxy luminosity function from data</li>
-</ul>
-<p>Numpy and Scipy provide readily usable tools to fit models to data. Moreover, Python is an excellent environment to develop your own fitting routines for more advanced problems.</p>
-<div class="section" id="goals-of-this-session">
-<h2>Goals of this session<a class="headerlink" href="#goals-of-this-session" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li>How to use implemented routines: <cite>leastsq</cite> and <cite>curve_fit</cite>.</li>
-<li>Astrophysical example: Salpeter mass function.</li>
-<li>MCMC using <cite>emcee</cite> the MCMC Hammer</li>
-</ul>
-<p><strong>Agenda</strong></p>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="least-squares-fitting.html">Least-squares fitting in Python</a></li>
-<li class="toctree-l1"><a class="reference internal" href="examples.html">1D Examples and Exercises</a></li>
-</ul>
+  <div class="section" id="d-examples-and-exercises">
+<h1>1D Examples and Exercises<a class="headerlink" href="#d-examples-and-exercises" title="Permalink to this headline">¶</a></h1>
+<p>Here we will run over a few simple examples using the <cite>curve_fit</cite> function for fitting data similar to emission and absorption spectra. We will not use any real data here, but simulate simple data to see how well we can fit the data.</p>
+<div class="section" id="simple-gaussian">
+<h2>Simple Gaussian<a class="headerlink" href="#simple-gaussian" title="Permalink to this headline">¶</a></h2>
+<p>Let&#8217;s begin with a simple Gaussian problem. We will generate fake data first and compare it to the <cite>real</cite> data:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">curve_fit</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">mpl</span>
+
+<span class="c"># Let&#39;s create a function to model and create data</span>
+<span class="k">def</span> <span class="nf">func</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">sigma</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">a</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">x0</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">sigma</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
+
+<span class="c"># Generating clean data</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="c"># Adding noise to the data</span>
+<span class="n">yn</span> <span class="o">=</span> <span class="n">y</span> <span class="o">+</span> <span class="mf">0.2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">mpl</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">yn</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s">&#39;model_and_noise.png&#39;</span><span class="p">)</span>
+</pre></div>
 </div>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field"><th class="field-name">Authors:</th><td class="field-body">Rene Andrae</td>
-</tr>
-<tr class="field"><th class="field-name">Copyright:</th><td class="field-body">2012, Rene Andrae</td>
-</tr>
-</tbody>
-</table>
+<img alt="../_images/example-chi2-manifold.png" src="../_images/example-chi2-manifold.png" />
 </div>
 </div>
 
@@ -381,12 +376,13 @@ display:none;
           <a href="../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="introduction.html" title="Introduction"
+          <a href="../vo/vo.html" title="Other useful techniques and packages"
              >next</a> |</li>
         <li class="right" >
-          <a href="../plotting/aplpy.html" title="APLpy"
+          <a href="least-squares-fitting.html" title="Least-squares fitting in Python"
              >previous</a> |</li>
-        <li><a href="../index.html">Python4Astronomers v1.1 documentation</a> &raquo;</li> 
+        <li><a href="../index.html">Python4Astronomers v1.1 documentation</a> &raquo;</li>
+          <li><a href="fitting.html" >Fitting data with Python</a> &raquo;</li> 
       </ul>
     </div>
  <small>Copyright:
