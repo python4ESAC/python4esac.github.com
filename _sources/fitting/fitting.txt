@@ -25,6 +25,7 @@ Goals of this session
    introduction
    least-squares-fitting
    examples1d
+   example_blackbody
 
-:Authors: Rene Andrae
-:Copyright: 2012, Rene Andrae
+:Authors: Eli Bressert, Rene Andrea & Neil Crighton
+:Copyright: 2012, Eli Bressert, Rene Andrae & Neil Crighton

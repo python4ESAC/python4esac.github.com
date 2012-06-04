@@ -1,0 +1,451 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Fitting a spectrum with Blackbody curves &mdash; Python4Astronomers 1.1 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="Python4Astronomers 1.1 documentation" href="../index.html" />
+    <link rel="up" title="Fitting data with Python" href="fitting.html" />
+    <link rel="next" title="Interfacing the web, finding help, and further examples" href="../vo/vo.html" />
+    <link rel="prev" title="1D Examples and Exercise" href="examples1d.html" />
+ 
+<script type="text/javascript"> 
+$(document).ready(function(){
+
+$(".flip0").click(function(){
+    $(".panel0").slideToggle("normal");
+  });
+
+$(".flip1").click(function(){
+    $(".panel1").slideToggle("normal");
+  });
+
+$(".flip2").click(function(){
+    $(".panel2").slideToggle("normal");
+  });
+
+$(".flip3").click(function(){
+    $(".panel3").slideToggle("normal");
+  });
+
+$(".flip4").click(function(){
+    $(".panel4").slideToggle("normal");
+  });
+
+$(".flip5").click(function(){
+    $(".panel5").slideToggle("normal");
+  });
+
+$(".flip6").click(function(){
+    $(".panel6").slideToggle("normal");
+  });
+
+$(".flip7").click(function(){
+    $(".panel7").slideToggle("normal");
+  });
+
+$(".flip8").click(function(){
+    $(".panel8").slideToggle("normal");
+  });
+
+$(".flip9").click(function(){
+    $(".panel9").slideToggle("normal");
+  });
+
+});
+</script>
+ 
+<style type="text/css"> 
+
+div.panel0,p.flip0
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip0
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel0
+{
+display:none;
+}
+
+div.panel1,p.flip1
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip1
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel1
+{
+display:none;
+}
+
+div.panel2,p.flip2
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip2
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel2
+{
+display:none;
+}
+
+div.panel3,p.flip3
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip3
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel3
+{
+display:none;
+}
+
+div.panel4,p.flip4
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip4
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel4
+{
+display:none;
+}
+
+div.panel5,p.flip5
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip5
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel5
+{
+display:none;
+}
+
+div.panel6,p.flip6
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip6
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel6
+{
+display:none;
+}
+
+div.panel7,p.flip7
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip7
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel7
+{
+display:none;
+}
+
+div.panel8,p.flip8
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip8
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel8
+{
+display:none;
+}
+
+div.panel9,p.flip9
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip9
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel9
+{
+display:none;
+}
+
+</style>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-18709417-2']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../vo/vo.html" title="Interfacing the web, finding help, and further examples"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="examples1d.html" title="1D Examples and Exercise"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">Python4Astronomers 1.1 documentation</a> &raquo;</li>
+          <li><a href="fitting.html" accesskey="U">Fitting data with Python</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="examples1d.html"
+                        title="previous chapter">1D Examples and Exercise</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="../vo/vo.html"
+                        title="next chapter">Interfacing the web, finding help, and further examples</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/fitting/example_blackbody.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="fitting-a-spectrum-with-blackbody-curves">
+<h1>Fitting a spectrum with Blackbody curves<a class="headerlink" href="#fitting-a-spectrum-with-blackbody-curves" title="Permalink to this headline">¶</a></h1>
+<p>In this example we fit a 1-d spectrum using <tt class="docutils literal"><span class="pre">curve_fit</span></tt> that we
+generate from a known model. We use the covariance matrix returned by
+<tt class="docutils literal"><span class="pre">curve_fit</span></tt> to estimate the 1-sigma parameter uncertainties for the
+best fitting model:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">curve_fit</span>
+<span class="kn">import</span> <span class="nn">pylab</span> <span class="kn">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+
+<span class="k">def</span> <span class="nf">blackbody_lam</span><span class="p">(</span><span class="n">lam</span><span class="p">,</span> <span class="n">T</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Blackbody as a function of wavelength (um) and temperature (K).</span>
+
+<span class="sd">    returns units of erg/s/cm^2/cm/Steradian</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="kn">from</span> <span class="nn">scipy.constants</span> <span class="kn">import</span> <span class="n">h</span><span class="p">,</span><span class="n">k</span><span class="p">,</span><span class="n">c</span>
+    <span class="n">lam</span> <span class="o">=</span> <span class="mf">1e-6</span> <span class="o">*</span> <span class="n">lam</span> <span class="c"># convert to metres</span>
+    <span class="k">return</span> <span class="mi">2</span><span class="o">*</span><span class="n">h</span><span class="o">*</span><span class="n">c</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="n">lam</span><span class="o">**</span><span class="mi">5</span> <span class="o">*</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">h</span><span class="o">*</span><span class="n">c</span> <span class="o">/</span> <span class="p">(</span><span class="n">lam</span><span class="o">*</span><span class="n">k</span><span class="o">*</span><span class="n">T</span><span class="p">))</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
+
+<span class="n">wa</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>   <span class="c"># wavelengths in um</span>
+<span class="n">T1</span> <span class="o">=</span> <span class="mf">5000.</span>
+<span class="n">T2</span> <span class="o">=</span> <span class="mf">8000.</span>
+<span class="n">y1</span> <span class="o">=</span> <span class="n">blackbody_lam</span><span class="p">(</span><span class="n">wa</span><span class="p">,</span> <span class="n">T1</span><span class="p">)</span>
+<span class="n">y2</span> <span class="o">=</span> <span class="n">blackbody_lam</span><span class="p">(</span><span class="n">wa</span><span class="p">,</span> <span class="n">T2</span><span class="p">)</span>
+<span class="n">ytot</span> <span class="o">=</span> <span class="n">y1</span> <span class="o">+</span> <span class="n">y2</span>
+
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c"># make synthetic data with Gaussian errors</span>
+
+<span class="n">sigma</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">wa</span><span class="p">))</span> <span class="o">*</span> <span class="mi">1</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">ytot</span><span class="p">)</span>
+<span class="n">ydata</span> <span class="o">=</span> <span class="n">ytot</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">wa</span><span class="p">))</span> <span class="o">*</span> <span class="n">sigma</span>
+
+<span class="c"># plot the input model and synthetic data</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">wa</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="s">&#39;:&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">&#39;T1=</span><span class="si">%.0f</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">T1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">wa</span><span class="p">,</span> <span class="n">y2</span><span class="p">,</span> <span class="s">&#39;:&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">&#39;T2=</span><span class="si">%.0f</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">T2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">wa</span><span class="p">,</span> <span class="n">ytot</span><span class="p">,</span> <span class="s">&#39;:&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">&#39;T1 + T2</span><span class="se">\n</span><span class="s">(true model)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">wa</span><span class="p">,</span> <span class="n">ydata</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s">&#39;steps-mid&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">&#39;Fake data&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;Wavelength (microns)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">&#39;Intensity (erg/s/cm$^2$/cm/Steradian)&#39;</span><span class="p">)</span>
+
+<span class="c"># fit two blackbodies to the synthetic data</span>
+
+<span class="k">def</span> <span class="nf">func</span><span class="p">(</span><span class="n">wa</span><span class="p">,</span> <span class="n">T1</span><span class="p">,</span> <span class="n">T2</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">blackbody_lam</span><span class="p">(</span><span class="n">wa</span><span class="p">,</span> <span class="n">T1</span><span class="p">)</span> <span class="o">+</span> <span class="n">blackbody_lam</span><span class="p">(</span><span class="n">wa</span><span class="p">,</span> <span class="n">T2</span><span class="p">)</span>
+
+<span class="c"># Note the initial guess values for T1 and T2 (p0 keyword below). They</span>
+<span class="c"># are quite different to the known true values, but not *too*</span>
+<span class="c"># different. If these are too far away from the solution curve_fit()</span>
+<span class="c"># will not be able to find a solution. This is not a Python-specific</span>
+<span class="c"># problem, it is true for almost every fitting algorithm for</span>
+<span class="c"># non-linear models. The initial guess is important!</span>
+
+<span class="n">popt</span><span class="p">,</span> <span class="n">pcov</span> <span class="o">=</span> <span class="n">curve_fit</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">wa</span><span class="p">,</span> <span class="n">ydata</span><span class="p">,</span> <span class="n">p0</span><span class="o">=</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">3000</span><span class="p">),</span> <span class="n">sigma</span><span class="o">=</span><span class="n">sigma</span><span class="p">)</span>
+
+<span class="c"># get the best fitting parameter values and their 1 sigma errors</span>
+<span class="c"># (assuming the parameters aren&#39;t strongly correlated).</span>
+
+<span class="n">bestT1</span><span class="p">,</span> <span class="n">bestT2</span> <span class="o">=</span> <span class="n">popt</span>
+<span class="n">sigmaT1</span><span class="p">,</span> <span class="n">sigmaT2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">pcov</span><span class="p">))</span>
+
+<span class="n">ybest</span> <span class="o">=</span> <span class="n">blackbody_lam</span><span class="p">(</span><span class="n">wa</span><span class="p">,</span> <span class="n">bestT1</span><span class="p">)</span> <span class="o">+</span> <span class="n">blackbody_lam</span><span class="p">(</span><span class="n">wa</span><span class="p">,</span> <span class="n">bestT2</span><span class="p">)</span>
+
+<span class="k">print</span> <span class="s">&#39;True model values&#39;</span>
+<span class="k">print</span> <span class="s">&#39;  T1 = </span><span class="si">%.2f</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">T1</span>
+<span class="k">print</span> <span class="s">&#39;  T2 = </span><span class="si">%.2f</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">T2</span>
+
+<span class="k">print</span> <span class="s">&#39;Parameters of best-fitting model:&#39;</span>
+<span class="k">print</span> <span class="s">&#39;  T1 = </span><span class="si">%.2f</span><span class="s"> +/- </span><span class="si">%.2f</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">bestT1</span><span class="p">,</span> <span class="n">sigmaT1</span><span class="p">)</span>
+<span class="k">print</span> <span class="s">&#39;  T2 = </span><span class="si">%.2f</span><span class="s"> +/- </span><span class="si">%.2f</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">bestT2</span><span class="p">,</span> <span class="n">sigmaT2</span><span class="p">)</span>
+
+<span class="n">degrees_of_freedom</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">wa</span><span class="p">)</span> <span class="o">-</span> <span class="mi">2</span>
+<span class="n">resid</span> <span class="o">=</span> <span class="p">(</span><span class="n">ydata</span> <span class="o">-</span> <span class="n">func</span><span class="p">(</span><span class="n">wa</span><span class="p">,</span> <span class="o">*</span><span class="n">popt</span><span class="p">))</span> <span class="o">/</span> <span class="n">sigma</span>
+<span class="n">chisq</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">resid</span><span class="p">,</span> <span class="n">resid</span><span class="p">)</span>
+
+<span class="k">print</span> <span class="n">degrees_of_freedom</span><span class="p">,</span> <span class="s">&#39;dof&#39;</span>
+<span class="k">print</span> <span class="s">&#39;chi squared </span><span class="si">%.2f</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">chisq</span>
+<span class="k">print</span> <span class="s">&#39;nchi2 </span><span class="si">%.2f</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">chisq</span> <span class="o">/</span> <span class="n">degrees_of_freedom</span><span class="p">)</span>
+
+<span class="c"># plot the solution</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">wa</span><span class="p">,</span> <span class="n">ybest</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">&#39;Best fitting</span><span class="se">\n</span><span class="s">model&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">frameon</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s">&#39;fit_bb.png&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../vo/vo.html" title="Interfacing the web, finding help, and further examples"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="examples1d.html" title="1D Examples and Exercise"
+             >previous</a> |</li>
+        <li><a href="../index.html">Python4Astronomers 1.1 documentation</a> &raquo;</li>
+          <li><a href="fitting.html" >Fitting data with Python</a> &raquo;</li> 
+      </ul>
+    </div>
+ <small>Copyright:
+ Smithsonian Astrophysical Observatory under terms of
+ <a rel="license"
+ href="http://creativecommons.org/licenses/by/3.0/">CC
+ Attribution 3.0</a></small> <a rel="license"
+ href="http://creativecommons.org/licenses/by/3.0/"><img alt="Creative Commons
+ License" style="border-width:0"
+ src="http://i.creativecommons.org/l/by/3.0/80x15.png" /></a>
+
+  </body>
+</html>
